@@ -105,27 +105,39 @@ def _team_half_rows(tournament: str, match_id: int, events: list[dict]) -> list[
 def _player_rows(tournament: str, match_id: int, events: list[dict]) -> list[dict]:
     stats: dict[str, dict] = {}
 
-    def entry(e):
-        player = e["player"]["name"]
+    def entry(player: str, team: str) -> dict:
         return stats.setdefault(player, {
             "tournament": tournament, "match_id": match_id, "player": player,
-            "team": e["team"]["name"], "shots": 0, "sot": 0, "goals": 0, "assists": 0,
+            "team": team, "shots": 0, "sot": 0, "goals": 0, "assists": 0,
         })
+
+    # Appearances first — starters from the Starting XI lineups, plus anyone
+    # who came on as a substitute. One row per player per match *played*, so
+    # downstream per-appearance rates are honest (a striker with no shots in
+    # a match still counts that match in his denominator).
+    for e in events:
+        etype = e["type"]["name"]
+        if etype == "Starting XI":
+            for slot in e.get("tactics", {}).get("lineup", []):
+                entry(slot["player"]["name"], e["team"]["name"])
+        elif etype == "Substitution":
+            replacement = e.get("substitution", {}).get("replacement", {}).get("name")
+            if replacement:
+                entry(replacement, e["team"]["name"])
 
     for e in events:
         if "player" not in e:
             continue
         if e["type"]["name"] == "Shot":
-            s = entry(e)
-            shot = e["shot"]
+            s = entry(e["player"]["name"], e["team"]["name"])
             s["shots"] += 1
-            outcome = shot.get("outcome", {}).get("name")
+            outcome = e["shot"].get("outcome", {}).get("name")
             if outcome in ("Goal", "Saved", "Saved To Post"):
                 s["sot"] += 1
             if outcome == "Goal":
                 s["goals"] += 1
         elif e["type"]["name"] == "Pass" and e.get("pass", {}).get("goal_assist"):
-            entry(e)["assists"] += 1
+            entry(e["player"]["name"], e["team"]["name"])["assists"] += 1
     return list(stats.values())
 
 

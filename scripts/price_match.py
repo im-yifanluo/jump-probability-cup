@@ -15,7 +15,6 @@ Manual odds fallback (data/manual_odds.yaml), used when ESPN has no line:
 
 import argparse
 import sys
-import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -26,27 +25,16 @@ import yaml
 
 from models.counts import CountPricer, load_count_models, tournament_aggregates
 from models.goals import ScorelineModel
-from models.players import PlayerModel
+from models.players import OVERRIDES_PATH, PlayerModel
 from models.pricer import MatchPricer
 from probability_cup import ProbabilityCup
 from questions.parser import parse
-from questions.teams import ALL_TEAM_NAMES, match_teams
+from questions.teams import ALL_TEAM_NAMES, match_teams, names_match
 from wcdata.odds_feeds import MatchOdds, fetch_match_odds
 from wcdata.statsbomb import build_aggregates
 
 MANUAL_ODDS = ROOT / "data" / "manual_odds.yaml"
 TOURNAMENT_AVG_LAM = 1.30  # structural baseline goal rate per side
-
-
-def _ascii(name: str) -> str:
-    return unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode().lower()
-
-
-def _same_team(a: str, b: str) -> bool:
-    """Fuzzy bridge between our names and ESPN's (Bosnia and Herzegovina vs
-    Bosnia-Herzegovina, Türkiye vs Turkey, ...)."""
-    a, b = _ascii(a).replace("-", " "), _ascii(b).replace("-", " ")
-    return a == b or a in b or b in a or a.split()[0] == b.split()[0]
 
 
 def get_anchors(match_name: str, kickoff) -> tuple[float, float, float]:
@@ -59,36 +47,53 @@ def get_anchors(match_name: str, kickoff) -> tuple[float, float, float]:
             return m["p_home"], m["p_draw"], m["total_goals"]
 
     odds: MatchOdds = fetch_match_odds(kickoff.strftime("%Y%m%d"), home_full.split()[0])
-    if _same_team(odds.home_name, home_full):
+    if names_match(home_full, odds.home_name):
         p_team = odds.p_home
-    elif _same_team(odds.away_name, home_full):
+    elif names_match(home_full, odds.away_name):
         p_team = odds.p_away
     else:
         raise SystemExit(f"Cannot orient ESPN teams {odds.home_name}/{odds.away_name} "
-                         f"to {home_full}/{away_full}")
+                         f"to {home_full}/{away_full} — extend EXTERNAL_ALIASES")
     print(f"odds source: {odds.source}  ({odds.home_name} {odds.p_home:.3f} / "
           f"draw {odds.p_draw:.3f} / {odds.away_name} {odds.p_away:.3f}, "
           f"total {odds.total_goals:.2f})")
     return p_team, odds.p_draw, odds.total_goals
 
 
+def _scorer_props_from_overrides() -> dict[str, float]:
+    """De-margined anytime-scorer prop probabilities researched into the
+    overrides YAML (key: scorer_prop_prob). Markets beat models — when one
+    exists, MatchPricer uses it outright for that player's scorer market."""
+    if not OVERRIDES_PATH.exists():
+        return {}
+    overrides = yaml.safe_load(OVERRIDES_PATH.read_text()) or {}
+    return {name: o["scorer_prop_prob"] for name, o in overrides.items()
+            if isinstance(o, dict) and "scorer_prop_prob" in o}
+
+
 def build_pricer(match_name: str, kickoff) -> MatchPricer:
     home_full, away_full = match_teams(match_name)
     p_home, p_draw, total = get_anchors(match_name, kickoff)
 
-    goals = ScorelineModel.from_market(p_home, p_draw, total)
+    # Tournament aggregates drive every half-split, including goals — the
+    # 2H goal share at international tournaments (~0.60) is materially higher
+    # than the club default, and half-based markets are priced off it.
     params = load_count_models()
     team_halves, sb_players = build_aggregates()
     aggregates = tournament_aggregates(team_halves)
+    h2_goals = aggregates["stats"]["goals"]["h2_share"]
+
+    goals = ScorelineModel.from_market(p_home, p_draw, total, h2_share=h2_goals)
     players = PlayerModel(sb_players)
 
     counts = CountPricer(goals.lam_home, goals.lam_away, params, aggregates)
-    base_goals = ScorelineModel(TOURNAMENT_AVG_LAM, TOURNAMENT_AVG_LAM, goals.rho)
+    base_goals = ScorelineModel(TOURNAMENT_AVG_LAM, TOURNAMENT_AVG_LAM, goals.rho, h2_goals)
     baseline = MatchPricer(
         home_full, away_full, base_goals,
         CountPricer(TOURNAMENT_AVG_LAM, TOURNAMENT_AVG_LAM, params, aggregates),
         players)
-    return MatchPricer(home_full, away_full, goals, counts, players, baseline=baseline)
+    return MatchPricer(home_full, away_full, goals, counts, players,
+                       scorer_props=_scorer_props_from_overrides(), baseline=baseline)
 
 
 def price_match(match_name: str) -> pd.DataFrame:

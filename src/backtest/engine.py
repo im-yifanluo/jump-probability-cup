@@ -53,45 +53,54 @@ def _rho_linearized(lam_h: float, lam_a: float, p_draw_market: float,
 
 
 def _question_rows(row, goals: ScorelineModel, counts: CountPricer) -> list[tuple[str, float, int]]:
-    """(family_label, prediction, outcome) triples for one historical match."""
+    """(family_label, prediction, outcome) triples for one historical match.
+    Every question is gated on its *own* inputs being present — a missing
+    stat must mean "skip", never "score the outcome as False"."""
     hg, ag = row.home_goals, row.away_goals
-    h1h, h1a = row.home_goals_1h, row.away_goals_1h
-    h2h, h2a = hg - h1h, ag - h1a
-    total, ht_total = hg + ag, h1h + h1a
+    total = hg + ag
 
     out = [
-        ("team_win",            goals.p_home_win(),                      hg > ag),
-        ("total_goals_ge3",     goals.p_total_goals(3, ">="),            total >= 3),
-        ("btts_and_ge3",        goals.p_btts_and_total_ge(3),            hg >= 1 and ag >= 1 and total >= 3),
-        ("team_goals_ge2",      goals.p_team_goals_ge("home", 2),        hg >= 2),
-        ("ht_tied",             goals.p_ht_tied(),                       h1h == h1a),
-        ("ht_team_winning",     goals.p_ht_winning("home"),              h1h > h1a),
-        ("team_scores_2h",      goals.p_team_scores_in_half("home", "2h"), h2h >= 1),
-        ("h2_more_than_h1",     goals.p_h2_more_goals_than_h1(),         (h2h + h2a) > ht_total),
-        ("team_more_goals_2h",  goals.p_team_more_goals_2h("home"),      h2h > h2a),
-        ("total_goals_2h_ge2",  goals.p_total_goals_half_ge(2, "2h"),    (h2h + h2a) >= 2),
+        ("team_win",        goals.p_home_win(),               hg > ag),
+        ("total_goals_ge3", goals.p_total_goals(3, ">="),     total >= 3),
+        ("btts_and_ge3",    goals.p_btts_and_total_ge(3),     hg >= 1 and ag >= 1 and total >= 3),
+        ("team_goals_ge2",  goals.p_team_goals_ge("home", 2), hg >= 2),
     ]
-    if not np.isnan(row.home_corners):
+
+    if np.isfinite(row.home_goals_1h) and np.isfinite(row.away_goals_1h):
+        h1h, h1a = row.home_goals_1h, row.away_goals_1h
+        h2h, h2a = hg - h1h, ag - h1a
+        ht_total = h1h + h1a
         out += [
-            ("total_corners_ge10", counts.p_total_count_ge("corners", 10, "match"),
-             row.home_corners + row.away_corners >= 10),
-            ("total_cards_ge4",    counts.p_total_count_ge("cards", 4, "match"),
-             row.home_cards + row.away_cards >= 4),
-            ("total_sot_ge8",      counts.p_total_count_ge("sot", 8, "match"),
-             row.home_sot + row.away_sot >= 8),
-            ("team_corners_ge5",   counts.p_team_count_ge("corners", "home", 5, "match"),
-             row.home_corners >= 5),
-            ("team_sot_ge4",       counts.p_team_count_ge("sot", "home", 4, "match"),
-             row.home_sot >= 4),
-            ("more_corners",       counts.p_more_than("corners", "home", "match"),
-             row.home_corners > row.away_corners),
-            ("more_sot",           counts.p_more_than("sot", "home", "match"),
-             row.home_sot > row.away_sot),
-            ("more_fouls",         counts.p_more_than("fouls", "home", "match"),
-             row.home_fouls > row.away_fouls),
-            ("more_cards",         counts.p_more_than("cards", "home", "match"),
-             row.home_cards > row.away_cards),
+            ("ht_tied",            goals.p_ht_tied(),                         h1h == h1a),
+            ("ht_team_winning",    goals.p_ht_winning("home"),                h1h > h1a),
+            ("team_scores_2h",     goals.p_team_scores_in_half("home", "2h"), h2h >= 1),
+            ("h2_more_than_h1",    goals.p_h2_more_goals_than_h1(),           (h2h + h2a) > ht_total),
+            ("team_more_goals_2h", goals.p_team_more_goals_2h("home"),        h2h > h2a),
+            ("total_goals_2h_ge2", goals.p_total_goals_half_ge(2, "2h"),      (h2h + h2a) >= 2),
         ]
+
+    per_stat = {
+        "corners": [("total_corners_ge10", "total", 10), ("team_corners_ge5", "team", 5),
+                    ("more_corners", "more", None)],
+        "cards":   [("total_cards_ge4", "total", 4), ("more_cards", "more", None)],
+        "sot":     [("total_sot_ge8", "total", 8), ("team_sot_ge4", "team", 4),
+                    ("more_sot", "more", None)],
+        "fouls":   [("more_fouls", "more", None)],
+    }
+    for stat, questions in per_stat.items():
+        home_v, away_v = getattr(row, f"home_{stat}"), getattr(row, f"away_{stat}")
+        if not (np.isfinite(home_v) and np.isfinite(away_v)):
+            continue
+        for family, kind, threshold in questions:
+            if kind == "total":
+                out.append((family, counts.p_total_count_ge(stat, threshold, "match"),
+                            home_v + away_v >= threshold))
+            elif kind == "team":
+                out.append((family, counts.p_team_count_ge(stat, "home", threshold, "match"),
+                            home_v >= threshold))
+            else:
+                out.append((family, counts.p_more_than(stat, "home", "match"),
+                            home_v > away_v))
     return [(family, p, int(outcome)) for family, p, outcome in out]
 
 

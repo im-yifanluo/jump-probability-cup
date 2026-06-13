@@ -12,12 +12,26 @@ morning pass, use 14 for an afternoon final pass).
 
 Steps:
 1. `cd "/home/yifan/World Cup Predictions/jump-probability-cup"` and run
-   `.venv/bin/python scripts/daily_run.py --hours <horizon> --submit`
-2. For each player in the NEEDS ATTENTION output: web-search current-season
-   form (shots on target per match), starter status, injury news. Write
-   findings as *inputs* to `data/player_overrides.yaml` (sot_per_match,
-   goal_share, involvement_share, source) — never write probabilities.
-   Also scan for major team news (key injuries, rotation) on today's matches.
+   `.venv/bin/python scripts/daily_run.py --hours <horizon> --submit --agent`
+   (the `--agent` flag drops a heartbeat so the deterministic crontab fallback
+   defers to this run and never overwrites your research-informed values).
+2. For each player in the NEEDS ATTENTION output: first run
+   `python3 scripts/update_player_rates.py "<match>"` to pull current club
+   SOT/goal rates from API-Football (this fixes both "prior" and
+   "sparse/old data" flags — the latter are players whose StatsBomb history
+   predates a role change). For anyone the API can't match, web-search
+   current-season shots-on-target per match. Write findings as *inputs* to
+   `data/player_overrides.yaml`: `sot_per_match` (club-season rate — the model
+   applies the 0.839 international discount automatically), `goal_share`,
+   `involvement_share`, and `expected_minutes` (set < 90 for confirmed
+   rotation/sub risks; the SOT rate scales by minutes/90). Never write
+   probabilities. Also scan for major team news (key injuries, rotation).
+2b. For every "Will <player> score a goal" market on matches kicking off
+   today: web-search the player's anytime-goalscorer odds (FanDuel/DraftKings/
+   bet365). Convert: implied = 100/(100+american), then divide by ~1.10 prop
+   margin. Write the result as `scorer_prop_prob` in that player's
+   player_overrides.yaml entry — the pricer uses a prop-market price outright
+   when one exists (markets beat models).
 3. If any override changed, re-run the step-1 command (it PATCHes only
    changed values).
 4. Check calibration: `ProbabilityCup(bot=1).results_df()` — realized mean
@@ -26,6 +40,11 @@ Steps:
 5. Report: matches covered, creates/updates/skips, attention items resolved
    and unresolved, settled-Brier summary, anything anomalous (odds source
    fallbacks, API budget below 20 — check `ApiFootball().remaining_today()`).
+6. Persist the report: append the full report from step 5 (markdown, with a
+   `## <UTC timestamp> — /matchday <horizon>` heading) to
+   `data/logs/matchday_reports.md`. This is mandatory — a routine run that
+   isn't logged there didn't happen. (The pipeline independently logs every
+   run to data/logs/runs.log and every submission to data/logs/submissions.csv.)
 
 Constraints: respect the API-Football budget (leave 20 requests spare); the
 pipeline never submits past kickoff; do not modify model code or blend

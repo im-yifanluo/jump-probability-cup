@@ -176,8 +176,12 @@ class CountPricer:
         return p_ge(self.mean(stat, side, period), self.alpha(stat), threshold)
 
     def p_total_count_ge(self, stat: str, threshold: int, period: str) -> float:
-        total = self.mean(stat, "home", period) + self.mean(stat, "away", period)
-        return p_ge(total, self.alpha(stat) / 2, threshold)  # sum of two NBs is less dispersed
+        # Exact: convolve the two teams' NB distributions (a sum of NBs with
+        # unequal means is not NB; an alpha shortcut misprices uneven matches).
+        home = nb_pmf_grid(self.mean(stat, "home", period), self.alpha(stat))
+        away = nb_pmf_grid(self.mean(stat, "away", period), self.alpha(stat))
+        total = np.convolve(home, away)
+        return float(total[threshold:].sum())
 
     def p_both_teams_ge(self, stat: str, threshold: int, period: str) -> float:
         return (p_ge(self.mean(stat, "home", period), self.alpha(stat), threshold)

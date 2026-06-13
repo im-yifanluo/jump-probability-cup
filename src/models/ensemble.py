@@ -21,14 +21,18 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 CHECKPOINT = ROOT / "data" / "deep_model.pt"
+# Two-man rule for the deep model: a checkpoint alone is not enough (smoke
+# tests also write one). The model only activates once its held-out Brier has
+# been compared against the statistical stack and a human creates this marker.
+APPROVAL_MARKER = ROOT / "data" / "deep_model_APPROVED"
 
 
 def deep_rate_adjustments(lam_home: float, lam_away: float,
                           home_form: np.ndarray | None = None,
                           away_form: np.ndarray | None = None) -> dict | None:
     """Multiplicative adjustments {(side, stat): factor} from the deep model,
-    or None when no trained checkpoint is available."""
-    if not CHECKPOINT.exists():
+    or None unless a trained AND approved checkpoint exists."""
+    if not (CHECKPOINT.exists() and APPROVAL_MARKER.exists()):
         return None
 
     import torch

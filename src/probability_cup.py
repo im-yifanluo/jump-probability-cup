@@ -40,6 +40,7 @@ class ProbabilityCup:
     """High-level interface to one bot's view of the Probability Cup."""
 
     def __init__(self, bot: int = 1):
+        self.bot = bot
         self.api = Client(bot=bot)
         self._event: dict | None = None
         self._lobby: dict | None = None
@@ -176,7 +177,18 @@ class ProbabilityCup:
         plan = self._plan(probs)
         if not dry_run:
             self._execute(plan)
+            self._log_submission(plan)
         return pd.DataFrame(plan)
+
+    def _log_submission(self, plan: list[dict]) -> None:
+        """Append an audit trail of every real submission to
+        data/logs/submissions.csv (timestamp, market, value, action, error)."""
+        log_path = ROOT / "data" / "logs" / "submissions.csv"
+        log_path.parent.mkdir(parents=True, exist_ok=True)
+        stamp = _now().isoformat(timespec="seconds")
+        rows = pd.DataFrame(plan).assign(submitted_at=stamp, bot=self.bot)
+        rows = rows[["submitted_at", "bot", "market_id", "probability", "action", "error"]]
+        rows.to_csv(log_path, mode="a", header=not log_path.exists(), index=False)
 
     def _plan(self, probs: dict[str, float]) -> list[dict]:
         """Decide an action per market without performing any writes."""

@@ -63,6 +63,40 @@ CODE_TO_NAME = {
 
 ALL_TEAM_NAMES = frozenset(CODE_TO_NAME.values())
 
+# External feeds (ESPN, odds sites) use different conventions for some teams.
+# Keys are our canonical names; values are normalized alias forms (lowercase,
+# ascii, alphanumeric+spaces). Extend here whenever a feed mismatch appears.
+EXTERNAL_ALIASES = {
+    "Türkiye": {"turkiye", "turkey"},
+    "Ivory Coast": {"ivory coast", "cote divoire", "cote d ivoire", "cote d'ivoire"},
+    "Cape Verde": {"cape verde", "cabo verde", "cape verde islands"},
+    "DR Congo": {"dr congo", "congo dr", "democratic republic of the congo", "dr of congo"},
+    "South Korea": {"south korea", "korea republic", "republic of korea"},
+    "United States": {"united states", "usa", "united states of america"},
+    "Bosnia and Herzegovina": {"bosnia and herzegovina", "bosnia herzegovina", "bosnia"},
+    "Czechia": {"czechia", "czech republic"},
+    "Iran": {"iran", "ir iran", "iran islamic republic"},
+    "Curaçao": {"curacao"},
+    "Saudi Arabia": {"saudi arabia", "ksa"},
+    "New Zealand": {"new zealand"},
+}
+
+
+def _normalize(name: str) -> str:
+    import re
+    import unicodedata
+    folded = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode()
+    return re.sub(r"[^a-z0-9 ]+", " ", folded.lower()).strip()
+
+
+def names_match(our_name: str, external_name: str) -> bool:
+    """Does an external feed's team name refer to our canonical team?"""
+    ext = _normalize(external_name)
+    if ext in EXTERNAL_ALIASES.get(our_name, set()):
+        return True
+    ours = _normalize(our_name)
+    return ours == ext or ours in ext or ext in ours
+
 
 def match_teams(match_name: str) -> tuple[str, str]:
     """'KOR vs CZE' -> ('South Korea', 'Czechia'). First listed team first."""

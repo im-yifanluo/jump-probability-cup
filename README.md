@@ -26,8 +26,11 @@ that anchor on it and extend it to markets the bookmakers don't price, win.
 
 - **1X2 odds** (ESPN public API → DraftKings, de-margined proportionally)
   price "Will X win the match?" outright.
-- **Anytime-scorer prop odds**, when available, price "Will [player] score?"
-  outright (margin-stripped).
+- **Anytime-scorer prop odds** price "Will [player] score?" outright when
+  researched: the daily routine (`/matchday`) looks up each scorer market's
+  prop odds, de-margins them, and writes `scorer_prop_prob` into
+  `data/player_overrides.yaml`; `build_pricer` feeds those to the pricer,
+  which prefers them over the model. No prop entry → model fallback.
 
 ### Layer 2 — odds-anchored Dixon-Coles goal engine (`src/models/goals.py`)
 
@@ -46,7 +49,9 @@ Every goal-derived market — BTTS+totals combos, "team scores in 2nd half",
 halftime tied/leading, "first goal of the game/half", "2nd half more goals
 than 1st" — is then priced by enumerating the scoreline grid, so all answers
 are mutually consistent. Half-based questions use per-half Poisson rates
-λ·share, with shares measured from data (goals ≈ 0.54 club / 0.60 tournament).
+λ·share; live pricing uses the **tournament-measured** second-half goal share
+(~0.60 from 314 StatsBomb matches — international tournaments skew later than
+the ~0.54 club figure, which remains the backtest default).
 
 ### Layer 3 — count models for markets without odds (`src/models/counts.py`)
 
@@ -69,9 +74,21 @@ comparisons price at ~40%, not 50% (a recurring crowd error we collect on).
 
 Player props (`src/models/players.py`): scorer probability
 `1 − exp(−goal_share · λ_team)` with shares from StatsBomb history shrunk
-toward positional priors; SOT props from per-match rates scaled by the
-match's SOT tempo. Hand-researched rates and confirmed-lineup info go in
-`data/player_overrides.yaml` and take precedence.
+toward positional priors (this family scored Brier ~0.10 live and is unchanged).
+
+Shots-on-target props were rebuilt 2026-06-13 after scoring worse than a coin
+flip live. Three data-driven corrections, each measured rather than assumed:
+(1) an **international discount** of 0.839 on club-sourced rates (tournament
+team SOT 3.70 vs club 4.41); (2) **Poisson** for P(≥k), which StatsBomb shows
+is calibrated *conditional on the right rate* — the population overdispersion
+is entirely between players, not within; (3) **shrinkage** of each rate toward
+the 0.72 tournament-forward prior. Validated leave-one-tournament-out
+(`scripts/validate_player_sot.py`): Brier 0.176 vs the old 0.212 and 0.25
+coin-flip, on 4,982 held-out player-matches. Rates prefer current club form
+(API-Football via `scripts/update_player_rates.py`, discounted) over thin/stale
+StatsBomb history; `data/player_overrides.yaml` (`sot_per_match`,
+`expected_minutes`, scorer `scorer_prop_prob`) takes precedence, and the daily
+routine flags players on sparse history for current-form research.
 
 ### One match model, many readouts — how composite questions are priced
 
@@ -201,10 +218,69 @@ If ESPN lacks odds for a fixture, add a manual entry to
 `data/manual_odds.yaml` (`CAN vs BIH: {p_home: .52, p_draw: .27, total_goals: 2.4}`,
 first-listed team = p_home) and re-run `price_match.py`.
 
+### Automation architecture (agent-primary, deterministic fallback)
+
+Two layers run the daily routine, coordinated so they never conflict:
+
+1. **Agentic orchestrator (primary)** — a Claude session runs `/matchday` on a
+   schedule: it researches lineups/props/odds, writes findings to the override
+   YAMLs, then runs `daily_run.py --submit --agent`. The `--agent` flag drops a
+   heartbeat at `data/logs/agent_last_run`.
+2. **OS crontab (fallback)** — runs `daily_run.py --submit --defer-to-agent 45`.
+   If the agent's heartbeat is younger than 45 min, **the cron run defers and
+   does nothing** — so the deterministic pipeline never overwrites the agent's
+   research-informed values. It only fires when the agent *didn't* run (session
+   closed, app crashed), guaranteeing a backtested submission either way.
+
+The agent is the orchestrator; the model does all the math; the crontab is a
+pure safety net. Install the fallback (survives the app closing — the only
+layer that does):
+
+```bash
+cd "/home/yifan/World Cup Predictions/jump-probability-cup"
+(crontab -l 2>/dev/null
+ echo "10 8  * * * cd \"$(pwd)\" && .venv/bin/python scripts/daily_run.py --hours 48 --submit --defer-to-agent 45 >> data/logs/daily.log 2>&1"
+ echo "35 11 * * * cd \"$(pwd)\" && .venv/bin/python scripts/daily_run.py --hours 6  --submit --defer-to-agent 45 >> data/logs/daily.log 2>&1"
+ echo "5 16  * * * cd \"$(pwd)\" && .venv/bin/python scripts/daily_run.py --hours 14 --submit --defer-to-agent 45 >> data/logs/daily.log 2>&1"
+) | crontab -
+```
+
 ### Tests
 
 `python3 -m pytest tests/` — includes the guarantee that all 710 snapshot
 questions parse into priceable families.
+
+### Verifying the automation
+
+`python3 scripts/check_automation.py` — one-shot health check: runs the pipeline
+dry-run, reports log freshness, whether the OS crontab is installed, and the live
+prediction count. Exit 0 = all green.
+
+**Verifying submissions landed** — the authoritative source is the platform itself:
+
+```bash
+# Raw API call: everything stored for your account (independent of our code)
+curl -s "https://api.sportspredict.com/api/v1/predictions" \
+  -H "Authorization: Bearer $SPORTSPREDICT_KEY_1" | python3 -m json.tool
+
+# Settled predictions with Brier scores
+curl -s "https://api.sportspredict.com/api/v1/results" \
+  -H "Authorization: Bearer $SPORTSPREDICT_KEY_1" | python3 -m json.tool
+```
+
+`python3 scripts/verify_submissions.py` reconciles our submission log against
+`GET /predictions`, flagging any market that's MISSING (logged but not stored)
+or MISMATCH (stored value ≠ last submitted). Exit 0 = every submission confirmed.
+
+To prove cron itself executes on this machine (the persistent layer), add a
+dry-run self-test that runs every minute, wait ~2 min, check the log, remove it:
+
+```bash
+(crontab -l 2>/dev/null; echo "* * * * * cd \"$(pwd)\" && .venv/bin/python scripts/daily_run.py --hours 48 --dry-run >> data/logs/cron_selftest.log 2>&1") | crontab -
+# wait 2 minutes, then:
+tail data/logs/cron_selftest.log         # should show dry-run output
+crontab -l | grep -v cron_selftest | crontab -   # remove the self-test
+```
 
 ## Layout
 

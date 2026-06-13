@@ -1,15 +1,23 @@
 """Player-prop models: anytime scorer, score-or-assist, shots on target.
 
-Rate hierarchy per player (best available wins):
-1. data/player_overrides.yaml — hand-researched numbers (current club-season
-   SOT per match, de-margined anytime-scorer prop odds, confirmed lineups).
-2. StatsBomb tournament history (2018-2024) — per-appearance rates, shrunk
-   toward a positional prior to avoid small-sample extremes.
-3. Pure prior — a typical starter who gets asked about in a prop market.
+Shots-on-target props (the model's weakest family in live play — see the
+2026-06-13 calibration analysis) are built on three data-driven facts measured
+from StatsBomb tournament data + football-data club data:
+
+1. International tournament play SUPPRESSES attacking output: team SOT/match is
+   3.70 (tournament) vs 4.41 (club), a discount of 0.839. Club-sourced player
+   SOT rates are scaled by this before use.
+2. Conditional on a player's true per-match rate, SOT counts are POISSON
+   (within-player var/mean ~= 1; the population overdispersion of 1.29 is
+   entirely *between* players). So P(>=k) uses Poisson, not a heavier model.
+3. Player rate estimates are noisy, so each is SHRUNK toward the tournament
+   forward prior (0.72 SOT/match). Leave-one-tournament-out validation picked
+   shrink strength k~=1 (Brier 0.177 for P(>=1), vs 0.25 coin-flip and the
+   0.305 we scored live before this fix).
 
 Scorer probability ties into the match's goal model: a player owning share s
 of a team expected to score lam goals scores with p = 1 - exp(-s * lam).
-SOT props scale the player's own rate by the team's SOT tempo for this match.
+The scorer family was already well-calibrated live (Brier ~0.10) and is unchanged.
 """
 
 from __future__ import annotations
@@ -26,21 +34,35 @@ from models.counts import p_ge
 ROOT = Path(__file__).resolve().parent.parent.parent
 OVERRIDES_PATH = ROOT / "data" / "player_overrides.yaml"
 
-# Shrinkage priors: an average prop-market player
+# Scorer-family priors (unchanged — this family is well-calibrated)
 PRIOR_GOAL_SHARE = 0.12      # share of own team's goals
 PRIOR_INVOLVEMENT = 0.20     # share of goals scored-or-assisted
-PRIOR_SOT_RATE = 0.80        # shots on target per appearance
-SHRINK_APPS = 6.0            # appearances of prior weight
-SOT_ALPHA = 0.10             # mild overdispersion for player SOT
-TOURNAMENT_TEAM_SOT = 3.70   # measured tournament mean (counts aggregates)
+SHRINK_APPS = 6.0            # appearances of prior weight (goal shares)
+
+# SOT-family constants (all measured; see module docstring)
+PRIOR_SOT_RATE = 0.72        # tournament forward mean SOT/match
+SOT_SHRINK_APPS = 1.0        # validated shrink strength toward the prior
+INTL_DISCOUNT = 0.839        # club SOT/match -> tournament SOT/match
+SOT_ALPHA = 0.05             # near-Poisson (within-player overdispersion ~0)
+TOURNAMENT_TEAM_SOT = 3.70   # measured tournament team SOT/match
+MAX_TEMPO = 1.6              # cap on the per-match tempo multiplier
 
 
 @dataclass
 class PlayerRates:
     goal_share: float
     involvement_share: float
-    sot_per_match: float
+    sot_per_match: float       # tournament-context, before match tempo/minutes
+    expected_minutes: float    # for the SOT minutes factor
     source: str
+
+
+def _normalize_name(name: str) -> str:
+    """Spelling-robust key: ascii-folded, lowercased, hyphens out, tokens
+    sorted ('Son Heung-min' == 'Heung-Min Son' == StatsBomb's variants)."""
+    import unicodedata
+    folded = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode()
+    return " ".join(sorted(folded.lower().replace("-", " ").split()))
 
 
 class PlayerModel:
@@ -51,6 +73,7 @@ class PlayerModel:
                  assists=("assists", "sum"), sot=("sot", "sum"),
                  team=("team", "last"))
         )
+        self._name_index = {_normalize_name(n): n for n in self._history.index}
         # team goals across each player's tournaments, for share computation
         team_goals = statsbomb_players.groupby("team")["goals"].sum()
         team_apps = statsbomb_players.groupby(["team", "match_id"]).size().groupby("team").size()
@@ -60,10 +83,32 @@ class PlayerModel:
             if OVERRIDES_PATH.exists() else {}
         )
 
+    SPARSE_APPS = 8  # below this, StatsBomb history is too thin to trust over current form
+
+    def resolve(self, player: str) -> str | None:
+        """Map a question-text name to the StatsBomb history index, tolerating
+        spelling/order variants. None when the player has no tournament history."""
+        if player in self._history.index:
+            return player
+        return self._name_index.get(_normalize_name(player))
+
+    def is_sparse(self, player: str) -> bool:
+        """True if the player has no override and only thin StatsBomb history,
+        so a role change since 2018-2024 could leave the rate stale. Such
+        players should be backed by current club form (update_player_rates)."""
+        if self._overrides.get(player):
+            return False
+        resolved = self.resolve(player)
+        if resolved is None:
+            return True
+        return self._history.loc[resolved, "apps"] < self.SPARSE_APPS
+
     def rates(self, player: str) -> PlayerRates:
         override = self._overrides.get(player, {})
-        history = self._history.loc[player] if player in self._history.index else None
+        resolved = self.resolve(player)
+        history = self._history.loc[resolved] if resolved is not None else None
 
+        # --- goal shares (unchanged; well-calibrated family) ---
         if history is not None and history["apps"] > 0:
             apps = float(history["apps"])
             team_lam = self._team_goals_per_match.get(history["team"], 1.2)
@@ -73,20 +118,41 @@ class PlayerModel:
             involvement = ((history["goals"] + history["assists"]
                             + PRIOR_INVOLVEMENT * SHRINK_APPS)
                            / (expected_team_goals + SHRINK_APPS))
-            sot_rate = ((history["sot"] + PRIOR_SOT_RATE * SHRINK_APPS)
-                        / (apps + SHRINK_APPS))
             source = f"statsbomb({int(apps)} apps)"
         else:
-            goal_share, involvement, sot_rate = (
-                PRIOR_GOAL_SHARE, PRIOR_INVOLVEMENT, PRIOR_SOT_RATE)
+            goal_share, involvement = PRIOR_GOAL_SHARE, PRIOR_INVOLVEMENT
             source = "prior"
+
+        sot_rate, sot_source = self._sot_rate(override, history)
 
         return PlayerRates(
             goal_share=override.get("goal_share", goal_share),
             involvement_share=override.get("involvement_share", involvement),
-            sot_per_match=override.get("sot_per_match", sot_rate),
-            source="override" if override else source,
+            sot_per_match=sot_rate,
+            expected_minutes=float(override.get("expected_minutes", 90)),
+            source=sot_source if not override else "override",
         )
+
+    def _sot_rate(self, override: dict, history) -> tuple[float, str]:
+        """Tournament-context SOT/match, shrunk toward the forward prior.
+
+        Source preference: a tournament-context override (sot_per_match_intl,
+        no discount) > a club override (sot_per_match, x INTL_DISCOUNT) >
+        StatsBomb tournament history > the prior. Whatever the source, the
+        rate is shrunk toward PRIOR_SOT_RATE; club rates are discounted first."""
+        if "sot_per_match_intl" in override:
+            raw, n = float(override["sot_per_match_intl"]), 4.0
+            src = "override-intl"
+        elif "sot_per_match" in override:
+            raw, n = float(override["sot_per_match"]) * INTL_DISCOUNT, 4.0
+            src = "override-club"
+        elif history is not None and history["apps"] > 0:
+            raw, n = history["sot"] / history["apps"], float(history["apps"])
+            src = "statsbomb"
+        else:
+            return PRIOR_SOT_RATE, "prior"
+        shrunk = (n * raw + SOT_SHRINK_APPS * PRIOR_SOT_RATE) / (n + SOT_SHRINK_APPS)
+        return shrunk, src
 
     # --- market families ----------------------------------------------------
 
@@ -103,8 +169,12 @@ class PlayerModel:
 
     def p_sot_ge(self, player: str, threshold: int, team_sot_mean: float,
                  period: str = "match", h2_share: float = 0.57) -> float:
-        rate = self.rates(player).sot_per_match
-        rate *= team_sot_mean / TOURNAMENT_TEAM_SOT  # match tempo adjustment
+        r = self.rates(player)
+        rate = r.sot_per_match
+        # Match tempo: how much this team is expected to shoot vs the
+        # tournament average (capped so a heavy favourite can't explode it).
+        rate *= min(team_sot_mean / TOURNAMENT_TEAM_SOT, MAX_TEMPO)
+        rate *= r.expected_minutes / 90.0          # minutes on the pitch
         if period == "2h":
             rate *= h2_share
         return p_ge(rate, SOT_ALPHA, threshold)

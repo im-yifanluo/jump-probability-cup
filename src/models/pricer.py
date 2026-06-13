@@ -22,11 +22,11 @@ from questions.parser import MarketSpec
 BLEND_WEIGHTS = {
     ("total_count_ge", "cards"): 0.40,
     ("team_count_ge", "cards"): 0.40,     # borrows the total-cards evidence
-    ("total_count_ge", "corners"): 0.93,
+    ("total_count_ge", "corners"): 0.94,
     ("team_more_count_than", "fouls"): 0.82,
     ("team_more_count_than", "cards"): 0.95,
     ("team_more_count_than", "corners"): 0.97,
-    ("h2_more_goals_than_h1", "goals"): 0.66,
+    ("h2_more_goals_than_h1", "goals"): 0.67,
 }
 
 
@@ -57,9 +57,9 @@ class MatchPricer:
         which is the honest stance for an unmapped squad player."""
         team = self.player_teams.get(player)
         if team is None:
-            history = self.players._history
-            if player in history.index:
-                team = history.loc[player, "team"]
+            resolved = self.players.resolve(player)
+            if resolved is not None:
+                team = self.players._history.loc[resolved, "team"]
         if team in (self.home_name, self.away_name):
             return self._side(team)
         return None
