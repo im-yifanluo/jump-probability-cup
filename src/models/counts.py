@@ -42,6 +42,21 @@ OFFSIDE_TEMPO_EXPONENT = 0.18  # measured offside-vs-attack elasticity (StatsBom
 # club backtest. Fouls > 1: tournament play is more cagey/physical.
 COUNT_INTL_DISCOUNT = {"cards": 0.849, "corners": 0.872, "sot": 0.839, "fouls": 1.104}
 
+# Tournament-intensity multiplier on count MEANS — a WC-2026-specific low-event
+# correction (2026-06-19). The realized 2026 group stage runs materially below
+# the historical StatsBomb level across cards/SOT/offsides/corners: our threshold
+# predictions (and the crowd's) sat ~7-8pts above the realized hit rate in every
+# probability bucket. Validated OUT-OF-SAMPLE on 237 settled markets via
+# chronological split (train-early->test-late +15.1 RBP; reverse +26.9) and a
+# card-cap+intensity grid (optimum 0.88, +61.5 on 76 count-threshold markets).
+# Set conservatively at 0.90 (vs the 0.88 optimum) to hedge a knockout-stage
+# reversion; re-estimate with scripts/parse_history_rbp.py as more data settles.
+# Uniform, so it only moves THRESHOLD markets (X+ count) — head-to-head
+# "more-than X" comparisons are unchanged (asymmetry cancels). NOT applied in the
+# club backtest (this is a live-tournament calibration, deliberately below the
+# StatsBomb-calibrated base).
+TOURNAMENT_INTENSITY = 0.90
+
 
 def nb_pmf_grid(mean: float, alpha: float, n: int = MAX_COUNT) -> np.ndarray:
     """Negative binomial pmf over 0..n with Var = mean(1 + alpha*mean).
@@ -179,6 +194,8 @@ class CountPricer:
                 # Referee strictness is the dominant driver of card counts
                 # (StatsBomb: a strict vs lenient ref swings P(4+ cards) ~0.24->0.66).
                 mu *= self.card_factor
+        if self.tournament:
+            mu *= TOURNAMENT_INTENSITY  # WC-2026 low-event correction (validated OOS)
         if period != "match":
             share = self.aggregates["stats"][stat]["h2_share"]
             mu *= share if period == "2h" else 1 - share

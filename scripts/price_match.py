@@ -55,9 +55,15 @@ def _card_factor(match_name: str) -> float:
     entry = refs.get(match_name)
     if not entry or "cards_per_game" not in entry:
         return 1.0
-    # Cap to [0.6, 1.6]: referee domestic card rates are noisy and run higher
-    # than international tournaments, so don't let one extreme number dominate.
-    return min(1.6, max(0.6, float(entry["cards_per_game"]) / TOURNAMENT_CARDS_PER_MATCH))
+    # ASYMMETRIC CAP at 1.0 (2026-06-19, RBP-validated). A referee multiplier
+    # ABOVE 1.0 (strict ref) consistently OVER-predicted cards and was our single
+    # worst RBP leak — card markets flipped +15.5 -> -12.4/market once aggressive
+    # referee factors went in; the backtest shows capping at 1.0 recovers +37.7
+    # RBP. We still let a LENIENT ref reduce cards (we over-predict, so that's
+    # safe) but never let a strict ref inflate them. The base card model is
+    # already StatsBomb-calibrated; a properly-calibrated upward model could
+    # return later. (The remaining low-event level is handled by TOURNAMENT_INTENSITY.)
+    return min(1.0, max(0.6, float(entry["cards_per_game"]) / TOURNAMENT_CARDS_PER_MATCH))
 
 
 def get_anchors(match_name: str, kickoff) -> tuple[float, float, float]:
