@@ -33,6 +33,14 @@ PARAMS_CACHE = ROOT / "data" / "count_models.json"
 
 REGRESSION_STATS = ("corners", "cards", "sot", "fouls")
 MAX_COUNT = 40  # NB grid truncation for enumerations
+OFFSIDE_TEMPO_EXPONENT = 0.18  # measured offside-vs-attack elasticity (StatsBomb)
+
+# Count regressions are fit on CLUB data; international tournaments have
+# systematically different event rates. These are tournament_mean / club_mean
+# measured on 116k club + 314 StatsBomb tournament team-matches. Applied only
+# when pricing tournament fixtures (CountPricer.tournament=True), never in the
+# club backtest. Fouls > 1: tournament play is more cagey/physical.
+COUNT_INTL_DISCOUNT = {"cards": 0.849, "corners": 0.872, "sot": 0.839, "fouls": 1.104}
 
 
 def nb_pmf_grid(mean: float, alpha: float, n: int = MAX_COUNT) -> np.ndarray:
@@ -146,20 +154,31 @@ class CountPricer:
     params: dict          # fit_count_models output
     aggregates: dict      # tournament_aggregates output
     neutral_venue: bool = True
+    tournament: bool = True   # apply club->tournament discounts (False in the club backtest)
+    card_factor: float = 1.0  # referee strictness: (ref cards/game) / tournament avg (3.46)
 
     def mean(self, stat: str, side: str, period: str = "match") -> float:
         lam_team = self.lam_home if side == "home" else self.lam_away
         lam_opp = self.lam_away if side == "home" else self.lam_home
         if stat == "offsides":
-            # No club coverage: tournament base scaled by team attack tempo
+            # No club coverage. Offsides are driven by defensive-line tactics,
+            # NOT attacking strength — measured elasticity vs attacking output is
+            # ~0.18 on StatsBomb (corr 0.08), far below the 0.5 once assumed here,
+            # which overpriced favourites' offsides (e.g. SUI 0.59 vs true ~0.44).
             base = self.aggregates["stats"]["offsides"]["team_match_mean"]
             tempo = lam_team / 1.30  # 1.30 = average tournament goal rate
-            mu = base * tempo ** 0.5
+            mu = base * tempo ** OFFSIDE_TEMPO_EXPONENT
         else:
             c = self.params[stat]["coef"]
             is_home = 0.5 if self.neutral_venue else (1.0 if side == "home" else 0.0)
             mu = np.exp(c["const"] + c["log_lam_team"] * np.log(lam_team)
                         + c["log_lam_opp"] * np.log(lam_opp) + c["is_home"] * is_home)
+            if self.tournament:
+                mu *= COUNT_INTL_DISCOUNT.get(stat, 1.0)
+            if stat == "cards":
+                # Referee strictness is the dominant driver of card counts
+                # (StatsBomb: a strict vs lenient ref swings P(4+ cards) ~0.24->0.66).
+                mu *= self.card_factor
         if period != "match":
             share = self.aggregates["stats"][stat]["h2_share"]
             mu *= share if period == "2h" else 1 - share

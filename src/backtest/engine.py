@@ -124,7 +124,7 @@ def run_backtest() -> pd.DataFrame:
             rho = _rho_linearized(row.lam_home, row.lam_away, row.p_draw_market, base)
             goals = ScorelineModel(row.lam_home, row.lam_away, rho, h2_share)
             counts = CountPricer(row.lam_home, row.lam_away, params, aggregates,
-                                 neutral_venue=False)
+                                 neutral_venue=False, tournament=False)  # club data
             for family, p, outcome in _question_rows(row, goals, counts):
                 records.append((season, family, p, outcome))
 

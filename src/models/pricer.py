@@ -14,6 +14,7 @@ from models.counts import CountPricer
 from models.goals import ScorelineModel
 from models.players import PlayerModel
 from questions.parser import MarketSpec
+from questions.teams import names_match
 
 
 # Backtest-derived weight on the model vs the structural baseline, keyed by
@@ -28,6 +29,13 @@ BLEND_WEIGHTS = {
     ("team_more_count_than", "corners"): 0.97,
     ("h2_more_goals_than_h1", "goals"): 0.67,
 }
+
+# NOTE (2026-06-14): a broad TOURNAMENT_WEIGHT_CAP shrinkage was tried and
+# REVERTED. It was validated only on ~69 live markets, which were confounded
+# with an unlucky favourite-underperformance run. The unbiased 314-match
+# StatsBomb test showed shrinking the head-to-head / SOT families HURTS (they're
+# calibrated), and cards already carry the right weight (0.40). Lesson: validate
+# calibration changes on the large sample, not the recent live run.
 
 
 @dataclass
@@ -52,16 +60,17 @@ class MatchPricer:
         return self.goals.lam_home if side == "home" else self.goals.lam_away
 
     def _player_side(self, player: str) -> str | None:
-        """Resolve a player's side: explicit mapping, else StatsBomb history.
-        Returns None when unknown — callers then use match-average tempo,
-        which is the honest stance for an unmapped squad player."""
-        team = self.player_teams.get(player)
+        """Resolve a player's side: explicit MatchPricer mapping, then the
+        PlayerModel's team (override `team:` or StatsBomb history). Returns None
+        only when the team is genuinely unknown — callers then use match-average
+        tempo. Team names are compared tolerantly so an override `team: Iraq`
+        matches the question-space name without an exact-string requirement."""
+        team = self.player_teams.get(player) or self.players.team_of(player)
         if team is None:
-            resolved = self.players.resolve(player)
-            if resolved is not None:
-                team = self.players._history.loc[resolved, "team"]
-        if team in (self.home_name, self.away_name):
-            return self._side(team)
+            return None
+        for cand, side in ((self.home_name, "home"), (self.away_name, "away")):
+            if team == cand or names_match(cand, team):
+                return side
         return None
 
     def _player_team_lam(self, player: str) -> float:

@@ -103,6 +103,20 @@ class PlayerModel:
             return True
         return self._history.loc[resolved, "apps"] < self.SPARSE_APPS
 
+    def team_of(self, player: str) -> str | None:
+        """The player's team, for match side-mapping: an explicit override
+        `team:` wins, else the StatsBomb history team, else None. Needed for
+        players whose national team is absent from the StatsBomb data (e.g.
+        Iraq, Jordan, New Zealand) — without a team the pricer falls back to the
+        match-average goal rate, which over-rates an underdog's players."""
+        override = self._overrides.get(player) or {}
+        if override.get("team"):
+            return str(override["team"])
+        resolved = self.resolve(player)
+        if resolved is not None:
+            return self._history.loc[resolved, "team"]
+        return None
+
     def rates(self, player: str) -> PlayerRates:
         override = self._overrides.get(player, {})
         resolved = self.resolve(player)

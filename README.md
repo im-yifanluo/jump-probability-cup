@@ -24,8 +24,12 @@ that anchor on it and extend it to markets the bookmakers don't price, win.
 
 ### Layer 1 — market anchors (used directly)
 
-- **1X2 odds** (ESPN public API → DraftKings, de-margined proportionally)
-  price "Will X win the match?" outright.
+- **1X2 odds** — the de-margined average of two independent sharp sources:
+  the bookmaker (ESPN → DraftKings) and the **Polymarket prediction market**
+  (`src/wcdata/polymarket.py`, Gamma API — WC matches trade $1–3M with ~0.3%
+  overround). Blending two agreeing sources reduces single-source error; a
+  >0.10 disagreement is flagged as possible stale odds. Totals come from the
+  bookmaker (Polymarket has no WC totals market).
 - **Anytime-scorer prop odds** price "Will [player] score?" outright when
   researched: the daily routine (`/matchday`) looks up each scorer market's
   prop odds, de-margins them, and writes `scorer_prop_prob` into
@@ -64,6 +68,12 @@ history:
 log E[count] = b0 + b1·log(λ_team) + b2·log(λ_opp) + b3·is_home
 Var[count]   = mean·(1 + α·mean)        (α = moment-estimated dispersion)
 ```
+
+Card markets additionally take a **referee strictness** multiplier
+(`data/referee_overrides.yaml`, researched per match): referee identity is the
+dominant driver of card counts (a strict vs lenient official swings P(4+ cards)
+from ~0.24 to ~0.66), so the card mean scales by the referee's cards/game ÷ the
+3.46 tournament average. Defaults to neutral when the referee is unannounced.
 
 Offsides, penalty rate (0.293/match), red-card rate (0.096), and every
 stat's second-half share come from **314 international tournament matches**
@@ -166,6 +176,24 @@ count models always fitted on strictly earlier seasons):
 **19/19 families beat the always-50% baseline; 16/19 beat the informed
 base-rate baseline; pooled calibration within ±1%.** Report:
 `notebooks/02_backtest.ipynb`, raw results in `data/backtest_results.parquet`.
+
+### Monte Carlo match simulator (`src/models/simulator.py`)
+
+A game-state-aware alternative pricer for derived markets, addressing the one
+structural blind spot of the analytic model: it can't represent that a leading
+favourite sits back and cedes second-half shots/corners to the chaser. The
+simulator plays each match minute-by-minute (~40k sims), tracks the score, and
+generates every derived stat as a *correlated* outcome — so all markets are
+mutually consistent and game state is captured natively. It stays anchored:
+goal rates come from the odds-fitted lambdas, per-stat means and measured
+half-shares from `CountPricer`, and the game-state multiplier is normalized to
+be **mean-preserving** (it only redistributes events, leaving full-match
+marginals matched). Validated to reproduce the analytic model within Monte
+Carlo noise (`tests/test_simulator.py`) plus the game-state corrections. Use
+via `build_sim_pricer()` / `SimMatchPricer`; most valuable for knockout matches
+(2–3× weight) where game state matters most. Honest note: because the analytic
+model was already well-calibrated (per the 314-match StatsBomb validation), the
+simulator's benefit is a modest, correct refinement, not a large accuracy jump.
 
 ### Deep model (optional H200 track, `src/models/deep.py`)
 

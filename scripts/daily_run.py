@@ -27,6 +27,17 @@ RUNS_LOG = ROOT / "data" / "logs" / "runs.log"
 AGENT_HEARTBEAT = ROOT / "data" / "logs" / "agent_last_run"
 sys.path.insert(0, str(ROOT / "src"))
 
+
+def _available_bots() -> list[int]:
+    """Bots with a configured key — every update is submitted to each of them
+    explicitly (no reliance on account-level propagation)."""
+    import os
+    env = os.environ
+    env_file = (ROOT / ".env").read_text() if (ROOT / ".env").exists() else ""
+    bots = [b for b in (1, 2)
+            if env.get(f"SPORTSPREDICT_KEY_{b}") or f"SPORTSPREDICT_KEY_{b}=" in env_file]
+    return bots or [1]
+
 import pandas as pd
 
 from price_match import build_pricer
@@ -78,6 +89,7 @@ def main():
             return
 
     pc = ProbabilityCup(bot=1)
+    bots = _available_bots()
     markets = upcoming_matches(pc, args.hours)
     if markets.empty:
         print(f"No open markets with kickoff in the next {args.hours:.0f}h.")
@@ -123,17 +135,26 @@ def main():
 
     actions = {}
     if all_probs:
-        # NOTE: bot 2's key is a backup credential only — verified 2026-06-13
-        # that predictions are stored per ACCOUNT, so both keys read/write the
-        # same prediction set and mirroring is meaningless.
-        print(f"\n{'[dry run] ' if dry else ''}submitting {len(all_probs)} predictions...")
-        report = pc.submit(all_probs, dry_run=dry)
-        actions = report["action"].value_counts().to_dict()
-        print(actions)
-        errors = report[report["action"] == "error"]
-        if not errors.empty:
-            attention.append(f"{len(errors)} submission errors")
-            print(errors.to_string(index=False))
+        # Submit the SAME computed predictions to every bot explicitly — do not
+        # rely on the platform's account-level storage to propagate them. probs
+        # are computed once (above); each bot just sends the identical dict.
+        print(f"\n{'[dry run] ' if dry else ''}submitting {len(all_probs)} predictions to bots {bots}...")
+        for bot in bots:
+            client = pc if bot == 1 else ProbabilityCup(bot=bot)
+            try:
+                report = client.submit(all_probs, dry_run=dry)
+            except Exception as exc:
+                attention.append(f"bot {bot}: submission failed — {exc}")
+                print(f"  bot {bot}: FAILED — {exc}")
+                continue
+            a = report["action"].value_counts().to_dict()
+            print(f"  bot {bot}: {a}")
+            if bot == 1:
+                actions = a
+            errors = report[report["action"] == "error"]
+            if not errors.empty:
+                attention.append(f"bot {bot}: {len(errors)} submission errors")
+                print(errors.to_string(index=False))
 
     if attention:
         print("\nNEEDS ATTENTION:")

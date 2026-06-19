@@ -23,17 +23,35 @@ Steps:
    current-season shots-on-target per match. Write findings as *inputs* to
    `data/player_overrides.yaml`: `sot_per_match` (club-season rate — the model
    applies the 0.839 international discount automatically), `goal_share`,
-   `involvement_share`, and `expected_minutes` (set < 90 for confirmed
-   rotation/sub risks; the SOT rate scales by minutes/90). Never write
-   probabilities. Also scan for major team news (key injuries, rotation).
+   `involvement_share`, `expected_minutes` (set < 90 for confirmed
+   rotation/sub risks; the SOT rate scales by minutes/90), and `team` (the
+   player's national team as it appears in the match name — REQUIRED for any
+   player whose squad is absent from the StatsBomb data, e.g. Iraq/Jordan/New
+   Zealand/Cape Verde; without it the model prices the player at the
+   match-average team strength, over-rating underdogs and under-rating
+   favourites). Never write probabilities. Also scan for major team news (key injuries, rotation).
 2b. For every "Will <player> score a goal" market on matches kicking off
    today: web-search the player's anytime-goalscorer odds (FanDuel/DraftKings/
    bet365). Convert: implied = 100/(100+american), then divide by ~1.10 prop
    margin. Write the result as `scorer_prop_prob` in that player's
    player_overrides.yaml entry — the pricer uses a prop-market price outright
    when one exists (markets beat models).
+2c. REFEREE (highest-leverage card input — a strict vs lenient ref swings
+   P(4+ cards) ~0.24->0.66): for each match kicking off today, web-search the
+   appointed referee and their career average cards per game. Write to
+   data/referee_overrides.yaml as {match: {referee, cards_per_game, source}}.
+   The card model scales by cards_per_game / 3.46 (tournament avg). Leave
+   unset if the referee isn't announced yet (defaults to neutral).
 3. If any override changed, re-run the step-1 command (it PATCHes only
    changed values).
+3b. VERIFY BOTH BOTS ACTUALLY PERSISTED (critical — a silent bug once left bot 2
+   empty for the first ~15 matches while every pass reported "bot 2: unchanged").
+   Do NOT trust the submit summary. Query each bot directly and compare the count
+   of `market_status == "open"` predictions:
+   `ProbabilityCup(bot=1).api.predictions(lobby_id=...)` vs `bot=2`. They MUST be
+   equal. If bot 2 is short, direct-sync: read bot 1's open predictions
+   ({market_id: stored_prob/100}) and `ProbabilityCup(bot=2).submit(that_dict)`,
+   then re-verify the counts match.
 4. Check calibration: `ProbabilityCup(bot=1).results_df()` — realized mean
    Brier per family vs the ~0.21–0.24 backtest expectation; flag any family
    drifting above 0.27 with enough samples (n≥15).

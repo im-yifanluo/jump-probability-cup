@@ -31,10 +31,33 @@ from probability_cup import ProbabilityCup
 from questions.parser import parse
 from questions.teams import ALL_TEAM_NAMES, match_teams, names_match
 from wcdata.odds_feeds import MatchOdds, fetch_match_odds
+from wcdata.polymarket import fetch_match_1x2
 from wcdata.statsbomb import build_aggregates
 
 MANUAL_ODDS = ROOT / "data" / "manual_odds.yaml"
+REFEREE_OVERRIDES = ROOT / "data" / "referee_overrides.yaml"
 TOURNAMENT_AVG_LAM = 1.30  # structural baseline goal rate per side
+TOURNAMENT_CARDS_PER_MATCH = 3.46  # StatsBomb mean total cards/match (referee baseline)
+
+# NOTE (2026-06-14): a favorite-longshot extremizing of the odds was tried and
+# REMOVED. The bias is real but its benefit in modern de-margined odds is
+# negligible (+0.00005/market out-of-sample), and it hurt on the live sample.
+# We anchor on the de-margined odds as-is — accurate, lean, no overfitting.
+
+
+def _card_factor(match_name: str) -> float:
+    """Referee strictness multiplier for a match's card markets, from
+    data/referee_overrides.yaml ({match: {referee, cards_per_game}}). 1.0 when
+    the referee is unknown — the agent researches and fills it pre-match."""
+    if not REFEREE_OVERRIDES.exists():
+        return 1.0
+    refs = yaml.safe_load(REFEREE_OVERRIDES.read_text()) or {}
+    entry = refs.get(match_name)
+    if not entry or "cards_per_game" not in entry:
+        return 1.0
+    # Cap to [0.6, 1.6]: referee domestic card rates are noisy and run higher
+    # than international tournaments, so don't let one extreme number dominate.
+    return min(1.6, max(0.6, float(entry["cards_per_game"]) / TOURNAMENT_CARDS_PER_MATCH))
 
 
 def get_anchors(match_name: str, kickoff) -> tuple[float, float, float]:
@@ -47,17 +70,31 @@ def get_anchors(match_name: str, kickoff) -> tuple[float, float, float]:
             return m["p_home"], m["p_draw"], m["total_goals"]
 
     odds: MatchOdds = fetch_match_odds(kickoff.strftime("%Y%m%d"), home_full.split()[0])
+    # ESPN/DraftKings 1X2 oriented to the first-listed team
     if names_match(home_full, odds.home_name):
-        p_team = odds.p_home
+        book = (odds.p_home, odds.p_draw, odds.p_away)
     elif names_match(home_full, odds.away_name):
-        p_team = odds.p_away
+        book = (odds.p_away, odds.p_draw, odds.p_home)
     else:
         raise SystemExit(f"Cannot orient ESPN teams {odds.home_name}/{odds.away_name} "
                          f"to {home_full}/{away_full} — extend EXTERNAL_ALIASES")
-    print(f"odds source: {odds.source}  ({odds.home_name} {odds.p_home:.3f} / "
-          f"draw {odds.p_draw:.3f} / {odds.away_name} {odds.p_away:.3f}, "
-          f"total {odds.total_goals:.2f})")
-    return p_team, odds.p_draw, odds.total_goals
+    print(f"odds: {odds.source} ({book[0]:.3f}/{book[1]:.3f}/{book[2]:.3f}, total {odds.total_goals:.2f})")
+
+    # Blend with Polymarket prediction-market 1X2 (independent, sharp). Average
+    # the two de-margined distributions; if they disagree sharply, flag it.
+    p_team, p_draw = book[0], book[1]
+    try:
+        pm = fetch_match_1x2(home_full, away_full)
+    except Exception:
+        pm = None
+    if pm is not None:
+        print(f"odds: Polymarket ({pm.p_home:.3f}/{pm.p_draw:.3f}/{pm.p_away:.3f}, vol ${pm.volume/1e6:.1f}M)")
+        if abs(book[0] - pm.p_home) > 0.10:
+            print(f"  ** sources disagree on home win by {abs(book[0]-pm.p_home):.2f} — check for stale odds **")
+        p_team = (book[0] + pm.p_home) / 2
+        p_draw = (book[1] + pm.p_draw) / 2
+        print(f"odds: BLENDED home {p_team:.3f} / draw {p_draw:.3f}")
+    return p_team, p_draw, odds.total_goals
 
 
 def _scorer_props_from_overrides() -> dict[str, float]:
@@ -86,14 +123,38 @@ def build_pricer(match_name: str, kickoff) -> MatchPricer:
     goals = ScorelineModel.from_market(p_home, p_draw, total, h2_share=h2_goals)
     players = PlayerModel(sb_players)
 
-    counts = CountPricer(goals.lam_home, goals.lam_away, params, aggregates)
+    card_factor = _card_factor(match_name)
+    counts = CountPricer(goals.lam_home, goals.lam_away, params, aggregates,
+                         card_factor=card_factor)
     base_goals = ScorelineModel(TOURNAMENT_AVG_LAM, TOURNAMENT_AVG_LAM, goals.rho, h2_goals)
     baseline = MatchPricer(
         home_full, away_full, base_goals,
-        CountPricer(TOURNAMENT_AVG_LAM, TOURNAMENT_AVG_LAM, params, aggregates),
+        CountPricer(TOURNAMENT_AVG_LAM, TOURNAMENT_AVG_LAM, params, aggregates,
+                    card_factor=card_factor),
         players)
     return MatchPricer(home_full, away_full, goals, counts, players,
                        scorer_props=_scorer_props_from_overrides(), baseline=baseline)
+
+
+def build_sim_pricer(match_name: str, kickoff, n_sims: int = 40000):
+    """Monte Carlo pricer for one match — same odds-anchoring and count setup
+    as build_pricer, but derived markets come from a game-state-aware match
+    simulation (captures leading-team-cedes-possession dynamics)."""
+    from models.simulator import MatchSimulator
+    from models.sim_pricer import SimMatchPricer
+
+    home_full, away_full = match_teams(match_name)
+    p_home, p_draw, total = get_anchors(match_name, kickoff)
+    params = load_count_models()
+    team_halves, sb_players = build_aggregates()
+    aggregates = tournament_aggregates(team_halves)
+    h2_goals = aggregates["stats"]["goals"]["h2_share"]
+    goals = ScorelineModel.from_market(p_home, p_draw, total, h2_share=h2_goals)
+    counts = CountPricer(goals.lam_home, goals.lam_away, params, aggregates,
+                         card_factor=_card_factor(match_name))
+    result = MatchSimulator(goals, counts, n_sims=n_sims).run()
+    return SimMatchPricer(home_full, away_full, result, PlayerModel(sb_players),
+                          counts, goals, scorer_props=_scorer_props_from_overrides())
 
 
 def price_match(match_name: str) -> pd.DataFrame:
