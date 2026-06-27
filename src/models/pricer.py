@@ -122,11 +122,23 @@ class MatchPricer:
             case "first_goal_and_other_scores_2h":
                 return g.p_first_goal_game_and_other_scores_2h(
                     self._side(spec.team), self._side(spec.opponent))
+            case "btts":
+                return g.p_btts()
+            case "match_drawn":
+                return g.p_draw()
+            case "team_first_goal_game":
+                return g.p_first_goal_game(self._side(spec.team))
+            case "team_win_by_ge":
+                return g.p_win_by_ge(self._side(spec.team), spec.threshold)
+            case "team_scores_both_halves":
+                return g.p_team_scores_both_halves(self._side(spec.team))
             # events
             case "penalty_awarded":
                 return c.p_penalty()
             case "penalty_or_red":
                 return c.p_penalty_or_red()
+            case "red_card":
+                return c.p_red()
             # counts
             case "total_count_ge":
                 return c.p_total_count_ge(spec.stat, spec.threshold, spec.period)

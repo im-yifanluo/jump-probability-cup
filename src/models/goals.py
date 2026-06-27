@@ -120,6 +120,15 @@ class ScorelineModel:
         marginal = self.grid.sum(axis=axis)
         return float(marginal[threshold:].sum())
 
+    def p_btts(self) -> float:
+        """Both teams score (>=1 each)."""
+        return float(self.grid[(self._h >= 1) & (self._a >= 1)].sum())
+
+    def p_win_by_ge(self, side: str, margin: int) -> float:
+        """Team wins by a margin of at least `margin` goals."""
+        diff = (self._h - self._a) if side == "home" else (self._a - self._h)
+        return float(self.grid[diff >= margin].sum())
+
     # ----------------------------------------------------------------- #
     # Half-based markets (independent Poisson halves, lam * share)
     # ----------------------------------------------------------------- #
@@ -130,6 +139,11 @@ class ScorelineModel:
 
     def p_team_scores_in_half(self, side: str, period: str) -> float:
         return 1 - exp(-self._half_lambda(side, period))
+
+    def p_team_scores_both_halves(self, side: str) -> float:
+        """Team scores in BOTH halves (independent-half Poisson)."""
+        return ((1 - exp(-self._half_lambda(side, "1h")))
+                * (1 - exp(-self._half_lambda(side, "2h"))))
 
     def p_total_goals_half_ge(self, threshold: int, period: str) -> float:
         lam = self._half_lambda("home", period) + self._half_lambda("away", period)
@@ -165,6 +179,13 @@ class ScorelineModel:
         lam_s = self._half_lambda(side, "2h")
         lam_total = self._half_lambda("home", "2h") + self._half_lambda("away", "2h")
         return lam_s / lam_total * (1 - exp(-lam_total))
+
+    def p_first_goal_game(self, side: str) -> float:
+        """Team scores the game's first goal — Poisson race over the full match:
+        rate share * P(the match has >=1 goal)."""
+        lam_s = self.lam_home if side == "home" else self.lam_away
+        lam_total = self.lam_home + self.lam_away
+        return lam_s / lam_total * (1 - float(self.grid[0, 0]))
 
     def p_first_goal_game_and_other_scores_2h(self, first_side: str, other_side: str) -> float:
         """Combo: first_side (A) scores the game's first goal AND other_side (B)

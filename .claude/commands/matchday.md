@@ -15,6 +15,16 @@ Steps:
    `.venv/bin/python scripts/daily_run.py --hours <horizon> --submit --agent`
    (the `--agent` flag drops a heartbeat so the deterministic crontab fallback
    defers to this run and never overwrites your research-informed values).
+1b. CONFIRMED LINEUPS ARE AUTO-PULLED (scripts/pull_lineups.py): within 100 min
+   of kickoff, daily_run fetches the posted XI from ESPN and writes
+   expected_minutes to data/match_lineups.yaml (starter->90, bench->20), which the
+   pricer reads — so you NO LONGER hand-set expected_minutes for rotation/benching.
+   It prints `lineups: ESPN confirmed XI — N start / M bench`. YOUR JOB: (a) if it
+   prints `UNMATCHED [names]`, those couldn't be matched to the XI (spelling) —
+   check each against the posted lineup and ONLY if truly out set expected_minutes
+   0 by hand; (b) `not_posted` just means lineups aren't out yet (defaults hold —
+   fine); (c) the pull sets MINUTES only, so a confirmed benching still needs its
+   goal_share/involvement_share and scorer_prop_prob reviewed for the scorer family.
 2. For each player in the NEEDS ATTENTION output: first run
    `python3 scripts/update_player_rates.py "<match>"` to pull current club
    SOT/goal rates from API-Football (this fixes both "prior" and
@@ -23,8 +33,9 @@ Steps:
    current-season shots-on-target per match. Write findings as *inputs* to
    `data/player_overrides.yaml`: `sot_per_match` (club-season rate — the model
    applies the 0.839 international discount automatically), `goal_share`,
-   `involvement_share`, `expected_minutes` (set < 90 for confirmed
-   rotation/sub risks; the SOT rate scales by minutes/90), and `team` (the
+   `involvement_share`, `expected_minutes` (NOW auto-set by the lineup pull — only
+   hand-set it for an injury/absence known BEFORE lineups post, e.g. ruled-out=0;
+   the SOT rate scales by minutes/90), and `team` (the
    player's national team as it appears in the match name — REQUIRED for any
    player whose squad is absent from the StatsBomb data, e.g. Iraq/Jordan/New
    Zealand/Cape Verde; without it the model prices the player at the
@@ -46,12 +57,17 @@ Steps:
    changed values).
 3b. VERIFY BOTH BOTS ACTUALLY PERSISTED (critical — a silent bug once left bot 2
    empty for the first ~15 matches while every pass reported "bot 2: unchanged").
-   Do NOT trust the submit summary. Query each bot directly and compare the count
+   Do NOT trust the submit summary. Query each bot directly and compare the COUNT
    of `market_status == "open"` predictions:
-   `ProbabilityCup(bot=1).api.predictions(lobby_id=...)` vs `bot=2`. They MUST be
-   equal. If bot 2 is short, direct-sync: read bot 1's open predictions
-   ({market_id: stored_prob/100}) and `ProbabilityCup(bot=2).submit(that_dict)`,
-   then re-verify the counts match.
+   `ProbabilityCup(bot=1).api.predictions(lobby_id=...)` vs `bot=2`. The COUNTS must
+   be equal (both internally complete).
+   NOTE ON VALUES — A/B IS ACTIVE: when `data/bot2_experiment.yaml` is present, bot 2
+   runs an EXPERIMENT and its VALUES differ from bot 1 on the count-threshold markets
+   ON PURPOSE — that is NOT a sync bug, do not "fix" it. (Only when no experiment file
+   exists should bot 1 and bot 2 be value-identical / 0 mismatches.)
+   If bot 2 is SHORT on count: do NOT copy bot 1 → bot 2 (that would wipe the
+   experiment). Instead re-run the same daily_run command — it reprices bot 2 with
+   its experiment and re-submits — then re-verify the counts match.
 4. Check calibration: `ProbabilityCup(bot=1).results_df()` — realized mean
    Brier per family vs the ~0.21–0.24 backtest expectation; flag any family
    drifting above 0.27 with enough samples (n≥15).

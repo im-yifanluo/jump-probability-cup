@@ -44,7 +44,12 @@ PRIOR_SOT_RATE = 0.72        # tournament forward mean SOT/match
 SOT_SHRINK_APPS = 1.0        # validated shrink strength toward the prior
 INTL_DISCOUNT = 0.839        # club SOT/match -> tournament SOT/match
 SOT_ALPHA = 0.05             # near-Poisson (within-player overdispersion ~0)
-TOURNAMENT_TEAM_SOT = 3.70   # measured tournament team SOT/match
+TOURNAMENT_TEAM_SOT = 4.11   # player-SOT tempo normaliser = team_sot_mean / this.
+# Must track counts.TOURNAMENT_INTENSITY['sot']: when that went 0.90 -> 1.00
+# (2026-06-24), every team_sot_mean rose x1/0.90, so this was raised 3.70 -> 4.11
+# (=3.70/0.90) to keep player-SOT props INVARIANT (verified: Gakpo 0.445 -> 0.445).
+# Otherwise the team/total-SOT threshold recalibration silently inflates the
+# player_sot_ge family (our #1, +125 RBP) by ~11%.
 MAX_TEMPO = 1.6              # cap on the per-match tempo multiplier
 
 
@@ -66,7 +71,13 @@ def _normalize_name(name: str) -> str:
 
 
 class PlayerModel:
-    def __init__(self, statsbomb_players: pd.DataFrame):
+    def __init__(self, statsbomb_players: pd.DataFrame,
+                 match_minutes: dict[str, float] | None = None):
+        # match_minutes: confirmed expected_minutes pulled from the posted XI for
+        # the SINGLE match being priced (scripts/pull_lineups.py). Takes precedence
+        # over the global override's expected_minutes so a stale benching cannot
+        # ride forward into a later fixture.
+        self._match_minutes = match_minutes or {}
         self._history = (
             statsbomb_players.groupby("player")
             .agg(apps=("match_id", "count"), goals=("goals", "sum"),
@@ -139,11 +150,19 @@ class PlayerModel:
 
         sot_rate, sot_source = self._sot_rate(override, history)
 
+        # expected_minutes precedence: confirmed pulled XI > manual override > 90.
+        # The pulled value wins so a stale benched override is auto-corrected the
+        # moment the real lineup is read (the 06-26 Trezeguet failure mode).
+        if player in self._match_minutes:
+            minutes = float(self._match_minutes[player])
+        else:
+            minutes = float(override.get("expected_minutes", 90))
+
         return PlayerRates(
             goal_share=override.get("goal_share", goal_share),
             involvement_share=override.get("involvement_share", involvement),
             sot_per_match=sot_rate,
-            expected_minutes=float(override.get("expected_minutes", 90)),
+            expected_minutes=minutes,
             source=sot_source if not override else "override",
         )
 
@@ -172,14 +191,19 @@ class PlayerModel:
 
     def p_scores(self, player: str, team_lam: float,
                  prop_prob: float | None = None) -> float:
-        """Anytime scorer. If a de-margined prop-market probability is
-        supplied it wins outright (markets beat models)."""
+        """Anytime scorer. A de-margined prop-market probability wins outright
+        (markets beat models). Otherwise the model price scales by
+        expected_minutes/90, so a benched/sub player is reduced automatically from
+        the pulled lineup and a ruled-out player (0 min) -> 0 — no manual
+        goal_share cut needed (that hand-cut is what went stale on 2026-06-26)."""
         if prop_prob is not None:
             return prop_prob
-        return 1 - exp(-self.rates(player).goal_share * team_lam)
+        r = self.rates(player)
+        return 1 - exp(-r.goal_share * team_lam * r.expected_minutes / 90.0)
 
     def p_scores_or_assists(self, player: str, team_lam: float) -> float:
-        return 1 - exp(-self.rates(player).involvement_share * team_lam)
+        r = self.rates(player)
+        return 1 - exp(-r.involvement_share * team_lam * r.expected_minutes / 90.0)
 
     def p_sot_ge(self, player: str, threshold: int, team_sot_mean: float,
                  period: str = "match", h2_share: float = 0.57) -> float:

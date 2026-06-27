@@ -36,6 +36,7 @@ from wcdata.statsbomb import build_aggregates
 
 MANUAL_ODDS = ROOT / "data" / "manual_odds.yaml"
 REFEREE_OVERRIDES = ROOT / "data" / "referee_overrides.yaml"
+MATCH_LINEUPS = ROOT / "data" / "match_lineups.yaml"
 TOURNAMENT_AVG_LAM = 1.30  # structural baseline goal rate per side
 TOURNAMENT_CARDS_PER_MATCH = 3.46  # StatsBomb mean total cards/match (referee baseline)
 
@@ -114,6 +115,16 @@ def _scorer_props_from_overrides() -> dict[str, float]:
             if isinstance(o, dict) and "scorer_prop_prob" in o}
 
 
+def _match_minutes(match_name: str) -> dict[str, float]:
+    """Confirmed expected_minutes for THIS match from data/match_lineups.yaml
+    (written by pull_lineups.py from the posted XI). Empty when no lineup has been
+    pulled — every player then defaults to 90 (everyone starts), the safe prior."""
+    if not MATCH_LINEUPS.exists():
+        return {}
+    data = yaml.safe_load(MATCH_LINEUPS.read_text()) or {}
+    return (data.get(match_name) or {}).get("minutes") or {}
+
+
 def build_pricer(match_name: str, kickoff) -> MatchPricer:
     home_full, away_full = match_teams(match_name)
     p_home, p_draw, total = get_anchors(match_name, kickoff)
@@ -127,7 +138,7 @@ def build_pricer(match_name: str, kickoff) -> MatchPricer:
     h2_goals = aggregates["stats"]["goals"]["h2_share"]
 
     goals = ScorelineModel.from_market(p_home, p_draw, total, h2_share=h2_goals)
-    players = PlayerModel(sb_players)
+    players = PlayerModel(sb_players, match_minutes=_match_minutes(match_name))
 
     card_factor = _card_factor(match_name)
     counts = CountPricer(goals.lam_home, goals.lam_away, params, aggregates,

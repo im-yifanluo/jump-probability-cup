@@ -42,20 +42,36 @@ OFFSIDE_TEMPO_EXPONENT = 0.18  # measured offside-vs-attack elasticity (StatsBom
 # club backtest. Fouls > 1: tournament play is more cagey/physical.
 COUNT_INTL_DISCOUNT = {"cards": 0.849, "corners": 0.872, "sot": 0.839, "fouls": 1.104}
 
-# Tournament-intensity multiplier on count MEANS — a WC-2026-specific low-event
-# correction (2026-06-19). The realized 2026 group stage runs materially below
-# the historical StatsBomb level across cards/SOT/offsides/corners: our threshold
-# predictions (and the crowd's) sat ~7-8pts above the realized hit rate in every
-# probability bucket. Validated OUT-OF-SAMPLE on 237 settled markets via
-# chronological split (train-early->test-late +15.1 RBP; reverse +26.9) and a
-# card-cap+intensity grid (optimum 0.88, +61.5 on 76 count-threshold markets).
-# Set conservatively at 0.90 (vs the 0.88 optimum) to hedge a knockout-stage
-# reversion; re-estimate with scripts/parse_history_rbp.py as more data settles.
-# Uniform, so it only moves THRESHOLD markets (X+ count) — head-to-head
-# "more-than X" comparisons are unchanged (asymmetry cancels). NOT applied in the
-# club backtest (this is a live-tournament calibration, deliberately below the
-# StatsBomb-calibrated base).
-TOURNAMENT_INTENSITY = 0.90
+# Per-stat WC-2026 calibration multipliers on count MEANS, applied only when
+# pricing tournament fixtures (CountPricer.tournament=True), never in the club
+# backtest. REPLACES a former UNIFORM 0.90 "low-event" multiplier (2026-06-19)
+# that was a blunt instrument: it suppressed every stat equally, but WC-2026
+# needs OPPOSITE corrections per stat. Re-fit 2026-06-24 on 383 settled markets
+# (objective: minimise our Brier vs realized outcomes = calibration, the
+# RBP-optimal target) with chronological OOS validation — each value below
+# improves RBP on BOTH halves of the tournament — and cross-checked against
+# observed WC-2026 rates (goals 3.12/game vs 2.56 in 2022; fouls 24.4 vs 27.7;
+# yellows ~2.17/game):
+#   cards   0.78  WC-2026 is a low-card tournament; the StatsBomb-based card model
+#                 over-predicted by ~30pts (we 0.62 vs 0.31 realized). The former
+#                 uniform 0.90 was nowhere near enough.  (settled cards -57 -> -5 RBP)
+#   sot     1.00  removes the erroneous suppression — the early period (pre-0.90)
+#                 had SOT well-calibrated; the 0.90 broke it, esp. total-SOT
+#                 (-54 RBP).  (settled sot +153 -> +186 RBP)
+#   corners 1.05  corners run high in WC-2026 (we under-predicted); modest boost.
+#                 (settled corners +29 -> +54 RBP)
+#   offsides 0.90 UNCHANGED — 2nd-biggest edge via fading and the realized rate is
+#                 too unstable across the split to re-fit without overfitting.
+#   fouls   0.90  unchanged; only appears in head-to-head markets where the level
+#                 cancels (so this value is inert).
+# Each value is uniform WITHIN a stat, so it moves only THRESHOLD markets; head-to-
+# head "more-than X" comparisons are unchanged (asymmetry cancels). Anything not
+# listed falls back to 0.90. Re-estimate via scripts/parse_history_rbp.py + the
+# calibration as KO-stage data settles (KO event rates may differ from the group
+# stage). A between-team SOT correlation term for TOTAL-SOT is a flagged follow-up.
+TOURNAMENT_INTENSITY = {"cards": 0.78, "sot": 1.00, "corners": 1.05,
+                        "offsides": 0.90, "fouls": 0.90}
+_DEFAULT_INTENSITY = 0.90
 
 
 def nb_pmf_grid(mean: float, alpha: float, n: int = MAX_COUNT) -> np.ndarray:
@@ -195,7 +211,7 @@ class CountPricer:
                 # (StatsBomb: a strict vs lenient ref swings P(4+ cards) ~0.24->0.66).
                 mu *= self.card_factor
         if self.tournament:
-            mu *= TOURNAMENT_INTENSITY  # WC-2026 low-event correction (validated OOS)
+            mu *= TOURNAMENT_INTENSITY.get(stat, _DEFAULT_INTENSITY)  # WC-2026 per-stat calibration (OOS-validated)
         if period != "match":
             share = self.aggregates["stats"][stat]["h2_share"]
             mu *= share if period == "2h" else 1 - share
@@ -233,3 +249,6 @@ class CountPricer:
 
     def p_penalty_or_red(self) -> float:
         return self.aggregates["p_penalty_or_red"]
+
+    def p_red(self) -> float:
+        return self.aggregates["p_red"]

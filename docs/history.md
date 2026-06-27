@@ -2142,3 +2142,4035 @@ OUTCOME
 RBP
 8.51
 Beat crowd
+### United States vs Australia
+
+RBP +60.07
+
+Q1
+RESULT: NO
+Will United States commit more fouls than Australia?
+YOU
+44%
+CROWD
+44%
+OUTCOME
+0%
+RBP
+2.58
+Beat crowd
+Q2
+RESULT: NO
+Will Australia be caught offside 2 or more times?
+YOU
+35%
+CROWD
+45%
+OUTCOME
+0%
+RBP
+10.74
+Beat crowd
+Q3
+RESULT: NO
+Will United States score more goals than Australia in the second half?
+YOU
+48%
+CROWD
+52%
+OUTCOME
+0%
+RBP
+7.05
+Beat crowd
+Q4
+RESULT: NO
+Will United States have more shots on target than Australia in the second half?
+YOU
+58%
+CROWD
+63%
+OUTCOME
+0%
+RBP
+7.81
+Beat crowd
+Q5
+RESULT: NO
+Will Australia finish with more corner kicks than United States?
+YOU
+23%
+CROWD
+34%
+OUTCOME
+0%
+RBP
+8.75
+Beat crowd
+Q6
+RESULT: NO
+Will both teams score AND the match have 3 or more total goals?
+YOU
+32%
+CROWD
+43%
+OUTCOME
+0%
+RBP
+11.48
+Beat crowd
+Q7
+RESULT: YES
+Will United States win the match?
+YOU
+59%
+CROWD
+62%
+OUTCOME
+100%
+RBP
+0
+Below crowd
+Q8
+RESULT: YES
+Will there be 4 or more total cards shown?
+YOU
+42%
+CROWD
+45%
+OUTCOME
+100%
+RBP
+-0.7
+Below crowd
+Q9
+RESULT: NO
+Will Folarin Balogun have at least 1 shot on target?
+YOU
+57%
+CROWD
+65%
+OUTCOME
+0%
+RBP
+12.36
+Beat crowd
+
+### Scotland vs Morocco
+
+RBP +62.56
+
+Q1
+RESULT: NO
+Will Morocco be caught offside 2 or more times?
+YOU
+41%
+CROWD
+49%
+OUTCOME
+0%
+RBP
+9.78
+Beat crowd
+Q2
+RESULT: NO
+Will Morocco commit more fouls than Scotland?
+YOU
+44%
+CROWD
+44%
+OUTCOME
+0%
+RBP
+2.47
+Beat crowd
+Q3
+RESULT: NO
+Will Morocco receive at least 1 card in the second half?
+YOU
+64%
+CROWD
+58%
+OUTCOME
+0%
+RBP
+-5.66
+Below crowd
+Q4
+RESULT: NO
+Will both teams score AND the match have 3 or more total goals?
+YOU
+31%
+CROWD
+36%
+OUTCOME
+0%
+RBP
+5.85
+Beat crowd
+Q5
+RESULT: NO
+Will Scotland have more shots on target than Morocco in the second half?
+YOU
+21%
+CROWD
+32%
+OUTCOME
+0%
+RBP
+7.74
+Beat crowd
+Q6
+RESULT: NO
+Will Scotland be caught offside 2 or more times?
+YOU
+35%
+CROWD
+41%
+OUTCOME
+0%
+RBP
+7.2
+Beat crowd
+Q7
+RESULT: NO
+Will Scotland win the match?
+YOU
+16%
+CROWD
+23%
+OUTCOME
+0%
+RBP
+5.42
+Beat crowd
+Q8
+RESULT: NO
+Will Scotland have 3 or more shots on target?
+YOU
+33%
+CROWD
+50%
+OUTCOME
+0%
+RBP
+17.3
+Beat crowd
+Q9
+RESULT: NO
+Will Scott McTominay have at least 1 shot on target?
+YOU
+34%
+CROWD
+48%
+OUTCOME
+0%
+RBP
+14.07
+Beat crowd
+Q10
+RESULT: NO
+Will Morocco score in the second half?
+YOU
+62%
+CROWD
+59%
+OUTCOME
+0%
+RBP
+-1.61
+Below crowd
+
+### Brazil vs Haiti
+
+RBP +3
+
+Q1
+RESULT: NO
+Will Brazil commit more fouls than Haiti?
+YOU
+41%
+CROWD
+35%
+OUTCOME
+0%
+RBP
+-2
+Below crowd
+Q2
+RESULT: YES
+Will Haiti be caught offside 2 or more times?
+YOU
+34%
+CROWD
+40%
+OUTCOME
+100%
+RBP
+-5.12
+Below crowd
+Q3
+RESULT: YES
+Will Haiti have at least 1 shot on target in the second half?
+YOU
+64%
+CROWD
+54%
+OUTCOME
+100%
+RBP
+12.08
+Beat crowd
+Q4
+RESULT: YES
+Will Haiti have 2 or more shots on target in the second half?
+YOU
+28%
+CROWD
+32%
+OUTCOME
+100%
+RBP
+-3.03
+Below crowd
+Q5
+RESULT: YES
+Will Haiti receive more cards than Brazil?
+YOU
+53%
+CROWD
+55%
+OUTCOME
+100%
+RBP
+-0.04
+Below crowd
+Q6
+RESULT: YES
+Will Brazil win the match?
+YOU
+87%
+CROWD
+86%
+OUTCOME
+100%
+RBP
+1.65
+Beat crowd
+Q7
+RESULT: NO
+Will Brazil score in the second half?
+YOU
+86%
+CROWD
+78%
+OUTCOME
+0%
+RBP
+-11.91
+Below crowd
+Q8
+RESULT: YES
+Will Haiti have 3 or more corner kicks?
+YOU
+40%
+CROWD
+41%
+OUTCOME
+100%
+RBP
+2.62
+Beat crowd
+Q9
+RESULT: YES
+Will Brazil score 3 or more total goals?
+YOU
+63%
+CROWD
+59%
+OUTCOME
+100%
+RBP
+5.63
+Beat crowd
+Q10
+RESULT: NO
+Will Duckens Nazon have at least 1 shot on target?
+YOU
+31%
+CROWD
+30%
+OUTCOME
+0%
+RBP
+3.1
+Beat crowd
+
+### Türkiye vs Paraguay
+
+RBP -12.92
+
+Q1
+RESULT: YES
+Will Paraguay receive more cards than Türkiye?
+YOU
+42%
+CROWD
+52%
+OUTCOME
+100%
+RBP
+-8.85
+Below crowd
+Q2
+RESULT: YES
+Will Türkiye be caught offside 2 or more times?
+YOU
+40%
+CROWD
+51%
+OUTCOME
+100%
+RBP
+-10.02
+Below crowd
+Q3
+RESULT: YES
+In the second half, will Türkiye have more corner kicks than Paraguay?
+YOU
+48%
+CROWD
+57%
+OUTCOME
+100%
+RBP
+-7.2
+Below crowd
+Q4
+RESULT: YES
+Will Paraguay commit more fouls than Türkiye?
+YOU
+48%
+CROWD
+58%
+OUTCOME
+100%
+RBP
+-7.69
+Below crowd
+Q5
+RESULT: YES
+Will Türkiye have more shots on target than Paraguay in the second half?
+YOU
+49%
+CROWD
+59%
+OUTCOME
+100%
+RBP
+-7.15
+Below crowd
+Q6
+RESULT: YES
+Will a penalty kick be awarded OR a red card be shown?
+YOU
+37%
+CROWD
+39%
+OUTCOME
+100%
+RBP
+-0.54
+Below crowd
+Q7
+RESULT: NO
+Will Türkiye win the match?
+YOU
+47%
+CROWD
+54%
+OUTCOME
+0%
+RBP
+8.95
+Beat crowd
+Q8
+RESULT: YES
+Will the match have 2 or fewer total goals?
+YOU
+55%
+CROWD
+50%
+OUTCOME
+100%
+RBP
+6.26
+Beat crowd
+Q9
+RESULT: NO
+Will Orkun Kökçü have at least 1 shot on target?
+YOU
+40%
+CROWD
+41%
+OUTCOME
+0%
+RBP
+3.87
+Beat crowd
+Q10
+RESULT: NO
+Will Julio Enciso have at least 1 shot on target?
+YOU
+40%
+CROWD
+48%
+OUTCOME
+0%
+RBP
+9.46
+Beat crowd
+
+## Version 3
+
+### Netherlands vs Sweden
+
+RBP -9.06
+
+Q1
+RESULT: YES
+Will Netherlands be caught offside 2 or more times?
+YOU
+43%
+CROWD
+52%
+OUTCOME
+100%
+RBP
+-6.73
+Below crowd
+Q2
+RESULT: YES
+Will both teams have at least 1 shot on target in the second half?
+YOU
+72%
+CROWD
+73%
+OUTCOME
+100%
+RBP
+1.62
+Beat crowd
+Q3
+RESULT: YES
+Will both teams score AND the match have 3 or more total goals?
+YOU
+47%
+CROWD
+47%
+OUTCOME
+100%
+RBP
+2.55
+Beat crowd
+Q4
+RESULT: YES
+Will Netherlands score more goals than Sweden in the second half?
+YOU
+48%
+CROWD
+49%
+OUTCOME
+100%
+RBP
+0.89
+Beat crowd
+Q5
+RESULT: YES
+Will Sweden receive more cards than Netherlands?
+YOU
+42%
+CROWD
+47%
+OUTCOME
+100%
+RBP
+-3.64
+Below crowd
+Q6
+RESULT: NO
+Will Viktor Gyökeres have at least 1 shot on target in the second half?
+YOU
+44%
+CROWD
+50%
+OUTCOME
+0%
+RBP
+8.92
+Beat crowd
+Q7
+RESULT: YES
+Will Netherlands win the match?
+YOU
+56%
+CROWD
+59%
+OUTCOME
+100%
+RBP
+-0.2
+Below crowd
+Q8
+RESULT: NO
+At halftime, will the match be tied?
+YOU
+41%
+CROWD
+43%
+OUTCOME
+0%
+RBP
+3.2
+Beat crowd
+Q9
+RESULT: YES
+Will there be 8 or more total shots on target?
+YOU
+42%
+CROWD
+58%
+OUTCOME
+100%
+RBP
+-13.35
+Below crowd
+Q10
+RESULT: YES
+Will Cody Gakpo have at least 1 shot on target?
+YOU
+55%
+CROWD
+61%
+OUTCOME
+100%
+RBP
+-2.33
+Below crowd
+
+### Germany vs Ivory Coast
+
+RBP +52.99
+
+Q1
+RESULT: YES
+Will Ivory Coast commit more fouls than Germany?
+YOU
+48%
+CROWD
+57%
+OUTCOME
+100%
+RBP
+-6.18
+Below crowd
+Q2
+RESULT: YES
+At halftime, will both teams have at least 1 shot on target?
+YOU
+69%
+CROWD
+65%
+OUTCOME
+100%
+RBP
+5.3
+Beat crowd
+Q3
+RESULT: YES
+Will the second half have more goals than the first half?
+YOU
+54%
+CROWD
+52%
+OUTCOME
+100%
+RBP
+4.32
+Beat crowd
+Q4
+RESULT: NO
+Will Germany be caught offside 2 or more times?
+YOU
+46%
+CROWD
+49%
+OUTCOME
+0%
+RBP
+5.48
+Beat crowd
+Q5
+RESULT: NO
+Will Ivory Coast have more shots on target than Germany in the second half?
+YOU
+20%
+CROWD
+27%
+OUTCOME
+0%
+RBP
+5.7
+Beat crowd
+Q6
+RESULT: NO
+Will Ivory Coast be caught offside 2 or more times?
+YOU
+40%
+CROWD
+44%
+OUTCOME
+0%
+RBP
+5.93
+Beat crowd
+Q7
+RESULT: NO
+Will Ivory Coast receive more cards than Germany?
+YOU
+43%
+CROWD
+54%
+OUTCOME
+0%
+RBP
+12.26
+Beat crowd
+Q8
+RESULT: YES
+Will Germany win the match?
+YOU
+67%
+CROWD
+69%
+OUTCOME
+100%
+RBP
+0.69
+Beat crowd
+Q9
+RESULT: NO
+Will there be 4 or more total cards shown?
+YOU
+34%
+CROWD
+46%
+OUTCOME
+0%
+RBP
+11.97
+Beat crowd
+Q10
+RESULT: YES
+Will Germany score in the second half?
+YOU
+82%
+CROWD
+69%
+OUTCOME
+100%
+RBP
+7.52
+Beat crowd
+
+### Ecuador vs Curacao
+
+RBP +10.45
+
+Q1
+RESULT: NO
+At halftime, will both teams have at least 1 shot on target?
+YOU
+42%
+CROWD
+56%
+OUTCOME
+0%
+RBP
+16.5
+Beat crowd
+Q2
+RESULT: NO
+Will Ecuador commit more fouls than Curaçao?
+YOU
+42%
+CROWD
+44%
+OUTCOME
+0%
+RBP
+4.51
+Beat crowd
+Q3
+RESULT: NO
+Will the second half have more total goals than the first half?
+YOU
+51%
+CROWD
+50%
+OUTCOME
+0%
+RBP
+1.27
+Beat crowd
+Q4
+RESULT: NO
+Will Ecuador score the first goal of the game and Curaçao score in the second half?
+YOU
+19%
+CROWD
+27%
+OUTCOME
+0%
+RBP
+6.93
+Beat crowd
+Q5
+RESULT: NO
+Will a penalty kick be awarded OR a red card be shown in the match?
+YOU
+37%
+CROWD
+39%
+OUTCOME
+0%
+RBP
+3.36
+Beat crowd
+Q6
+RESULT: NO
+Will Ecuador win the match?
+YOU
+83%
+CROWD
+80%
+OUTCOME
+0%
+RBP
+-2.54
+Below crowd
+Q7
+RESULT: NO
+Will the match have 3 or more total goals?
+YOU
+60%
+CROWD
+57%
+OUTCOME
+0%
+RBP
+-1.36
+Below crowd
+Q8
+RESULT: YES
+Will Ecuador have 5 or more corner kicks?
+YOU
+67%
+CROWD
+63%
+OUTCOME
+100%
+RBP
+6
+Beat crowd
+Q9
+RESULT: YES
+Will Leandro Bacuna have at least 1 shot on target?
+YOU
+16%
+CROWD
+35%
+OUTCOME
+100%
+RBP
+-24.21
+Below crowd
+
+### Tunisia vs Japan
+
+RBP +24.13
+
+Q1
+RESULT: YES
+Will Japan commit more fouls than Tunisia?
+YOU
+44%
+CROWD
+39%
+OUTCOME
+100%
+RBP
+7.24
+Beat crowd
+Q2
+RESULT: NO
+In the second half, will Tunisia have more shots on target than Japan?
+YOU
+16%
+CROWD
+28%
+OUTCOME
+0%
+RBP
+7.59
+Beat crowd
+Q3
+RESULT: NO
+Will Japan be caught offside 2 or more times?
+YOU
+42%
+CROWD
+47%
+OUTCOME
+0%
+RBP
+7.31
+Beat crowd
+Q4
+RESULT: NO
+Will a penalty kick be awarded OR a red card be shown?
+YOU
+37%
+CROWD
+37%
+OUTCOME
+0%
+RBP
+1.71
+Beat crowd
+Q5
+RESULT: NO
+Will Tunisia win the match?
+YOU
+12%
+CROWD
+17%
+OUTCOME
+0%
+RBP
+3.23
+Beat crowd
+Q6
+RESULT: NO
+Will the match have 2 or fewer total goals?
+YOU
+54%
+CROWD
+50%
+OUTCOME
+0%
+RBP
+-1.86
+Below crowd
+Q7
+RESULT: YES
+Will there be 5 or more total corner kicks in the second half?
+YOU
+36%
+CROWD
+51%
+OUTCOME
+100%
+RBP
+-15.18
+Below crowd
+Q8
+RESULT: YES
+Will Japan score in the second half?
+YOU
+67%
+CROWD
+64%
+OUTCOME
+100%
+RBP
+3.34
+Beat crowd
+Q9
+RESULT: NO
+Will Ellyes Skhiri have at least 1 shot on target?
+YOU
+10%
+CROWD
+29%
+OUTCOME
+0%
+RBP
+10.74
+Beat crowd
+
+### Belgium vs IR Iran
+
+RBP +16.88
+
+Q1
+RESULT: YES
+Will Iran commit more fouls than Belgium?
+YOU
+50%
+CROWD
+58%
+OUTCOME
+100%
+RBP
+-5.26
+Below crowd
+Q2
+RESULT: NO
+Will there be 2 or more total cards shown in the second half?
+YOU
+62%
+CROWD
+56%
+OUTCOME
+0%
+RBP
+-4.75
+Below crowd
+Q3
+RESULT: NO
+Will both teams score AND the match have 3 or more total goals?
+YOU
+34%
+CROWD
+38%
+OUTCOME
+0%
+RBP
+4.89
+Beat crowd
+Q4
+RESULT: YES
+Will Belgium have more shots on target than Iran in the second half?
+YOU
+67%
+CROWD
+66%
+OUTCOME
+100%
+RBP
+2.53
+Beat crowd
+Q5
+RESULT: YES
+Will there be 4 or more total shots on target in the second half?
+YOU
+48%
+CROWD
+63%
+OUTCOME
+100%
+RBP
+-11.16
+Below crowd
+Q6
+RESULT: NO
+Will Belgium win the match?
+YOU
+69%
+CROWD
+69%
+OUTCOME
+0%
+RBP
+1.22
+Beat crowd
+Q7
+RESULT: NO
+At halftime, will Belgium be winning?
+YOU
+47%
+CROWD
+50%
+OUTCOME
+0%
+RBP
+5.32
+Beat crowd
+Q8
+RESULT: YES
+Will Youri Tielemans have at least 1 shot on target?
+YOU
+40%
+CROWD
+43%
+OUTCOME
+100%
+RBP
+-0.86
+Below crowd
+Q9
+RESULT: NO
+Will Mehdi Taremi score or assist a goal (excluding own goals)?
+YOU
+11%
+CROWD
+31%
+OUTCOME
+0%
+RBP
+10.18
+Beat crowd
+Q10
+RESULT: NO
+Will there be 9 or more total corner kicks?
+YOU
+38%
+CROWD
+52%
+OUTCOME
+0%
+RBP
+14.77
+Beat crowd
+
+### Uruguay vs Cabo Verde
+
+RBP +19.09
+
+Q1
+RESULT: YES
+Will Uruguay be caught offside 2 or more times?
+YOU
+42%
+CROWD
+52%
+OUTCOME
+100%
+RBP
+-8.68
+Below crowd
+Q2
+RESULT: NO
+Will both teams have at least 1 shot on target in the second half?
+YOU
+52%
+CROWD
+60%
+OUTCOME
+0%
+RBP
+11.98
+Beat crowd
+Q3
+RESULT: NO
+Will Cape Verde receive more cards than Uruguay?
+YOU
+50%
+CROWD
+49%
+OUTCOME
+0%
+RBP
+0.92
+Beat crowd
+Q4
+RESULT: NO
+Will a penalty kick be awarded in the match?
+YOU
+29%
+CROWD
+30%
+OUTCOME
+0%
+RBP
+2.37
+Beat crowd
+Q5
+RESULT: YES
+Will Uruguay commit more fouls than Cape Verde?
+YOU
+43%
+CROWD
+47%
+OUTCOME
+100%
+RBP
+-2.02
+Below crowd
+Q6
+RESULT: YES
+Will Cape Verde have 2 or more shots on target in the second half?
+YOU
+23%
+CROWD
+35%
+OUTCOME
+100%
+RBP
+-14.45
+Below crowd
+Q7
+RESULT: NO
+Will Uruguay win the match?
+YOU
+68%
+CROWD
+69%
+OUTCOME
+0%
+RBP
+3.18
+Beat crowd
+Q8
+RESULT: YES
+Will Cape Verde score in the second half?
+YOU
+28%
+CROWD
+29%
+OUTCOME
+100%
+RBP
+0.63
+Beat crowd
+Q9
+RESULT: NO
+Will Darwin Núñez score or assist a goal (excluding own goals)?
+YOU
+45%
+CROWD
+38%
+OUTCOME
+0%
+RBP
+-2.16
+Below crowd
+Q10
+RESULT: NO
+Will Uruguay have 6 or more shots on target?
+YOU
+21%
+CROWD
+53%
+OUTCOME
+0%
+RBP
+27.31
+Beat crowd
+
+### New Zealand vs Egypt
+
+RBP +1.92
+
+Q1
+RESULT: NO
+Will Egypt be caught offside 2 or more times?
+YOU
+41%
+CROWD
+49%
+OUTCOME
+0%
+RBP
+9.82
+Beat crowd
+Q2
+RESULT: YES
+Will New Zealand commit more fouls than Egypt?
+YOU
+49%
+CROWD
+51%
+OUTCOME
+100%
+RBP
+0.45
+Beat crowd
+Q3
+RESULT: NO
+In the second half, will New Zealand have more shots on target than Egypt?
+YOU
+21%
+CROWD
+33%
+OUTCOME
+0%
+RBP
+8.9
+Beat crowd
+Q4
+RESULT: YES
+Will the second half have more goals than the first half?
+YOU
+49%
+CROWD
+49%
+OUTCOME
+100%
+RBP
+1.47
+Beat crowd
+Q5
+RESULT: NO
+Will Egypt finish with more corner kicks than New Zealand?
+YOU
+65%
+CROWD
+62%
+OUTCOME
+0%
+RBP
+-1.76
+Below crowd
+Q6
+RESULT: NO
+Will New Zealand win the match?
+YOU
+17%
+CROWD
+23%
+OUTCOME
+0%
+RBP
+4.81
+Beat crowd
+Q7
+RESULT: NO
+Will the match have 2 or fewer total goals?
+YOU
+56%
+CROWD
+52%
+OUTCOME
+0%
+RBP
+-2.65
+Below crowd
+Q8
+RESULT: NO
+Will there be 4 or more total cards shown?
+YOU
+41%
+CROWD
+43%
+OUTCOME
+0%
+RBP
+4.1
+Beat crowd
+Q9
+RESULT: NO
+Will Ben Waine have at least 1 shot on target?
+YOU
+2%
+CROWD
+32%
+OUTCOME
+0%
+RBP
+13.85
+Beat crowd
+Q10
+RESULT: YES
+Will Mahmoud Trezeguet score or assist a goal (excluding own goals)?
+YOU
+4%
+CROWD
+28%
+OUTCOME
+100%
+RBP
+-37.08
+Below crowd
+
+### Argentina vs Austria
+
+RBP +15.28
+
+Q1
+RESULT: NO
+Will Austria be caught offside 2 or more times?
+YOU
+35%
+CROWD
+48%
+OUTCOME
+0%
+RBP
+13.54
+Beat crowd
+Q2
+RESULT: NO
+Will Austria have more shots on target than Argentina in the second half?
+YOU
+17%
+CROWD
+27%
+OUTCOME
+0%
+RBP
+6.77
+Beat crowd
+Q3
+RESULT: NO
+Will the second half have more goals than the first half?
+YOU
+49%
+CROWD
+50%
+OUTCOME
+0%
+RBP
+3.52
+Beat crowd
+Q4
+RESULT: YES
+Will Austria finish with more corner kicks than Argentina?
+YOU
+19%
+CROWD
+31%
+OUTCOME
+100%
+RBP
+-15.04
+Below crowd
+Q5
+RESULT: YES
+Will Argentina win the match?
+YOU
+67%
+CROWD
+70%
+OUTCOME
+100%
+RBP
+0.25
+Beat crowd
+Q6
+RESULT: YES
+Will the match have 2 or fewer total goals?
+YOU
+52%
+CROWD
+44%
+OUTCOME
+100%
+RBP
+10.36
+Beat crowd
+Q7
+RESULT: YES
+Will there be 4 or more total cards shown?
+YOU
+41%
+CROWD
+45%
+OUTCOME
+100%
+RBP
+-2.25
+Below crowd
+Q8
+RESULT: NO
+Will Argentina have 6 or more shots on target?
+YOU
+25%
+CROWD
+53%
+OUTCOME
+0%
+RBP
+26
+Beat crowd
+Q9
+RESULT: YES
+Will Argentina score in the second half?
+YOU
+69%
+CROWD
+67%
+OUTCOME
+100%
+RBP
+2.39
+Beat crowd
+Q10
+RESULT: YES
+Will Marcel Sabitzer have at least 1 shot on target?
+YOU
+19%
+CROWD
+43%
+OUTCOME
+100%
+RBP
+-30.25
+Below crowd
+
+### France vs Iraq
+
+RBP +37.2
+
+Q1
+RESULT: NO
+At halftime, will Iraq have more corner kicks than France?
+YOU
+11%
+CROWD
+21%
+OUTCOME
+0%
+RBP
+5.55
+Beat crowd
+Q2
+RESULT: YES
+Will France commit more fouls than Iraq?
+YOU
+42%
+CROWD
+34%
+OUTCOME
+100%
+RBP
+11.31
+Beat crowd
+Q3
+RESULT: NO
+Will Iraq receive at least 1 card in the second half?
+YOU
+67%
+CROWD
+62%
+OUTCOME
+0%
+RBP
+-4.03
+Below crowd
+Q4
+RESULT: NO
+Will both teams score AND the match have 3 or more total goals?
+YOU
+35%
+CROWD
+32%
+OUTCOME
+0%
+RBP
+0.55
+Beat crowd
+Q5
+RESULT: NO
+Will Iraq have 2 or more shots on target in the second half?
+YOU
+23%
+CROWD
+34%
+OUTCOME
+0%
+RBP
+9.44
+Beat crowd
+Q6
+RESULT: YES
+Will France win the match?
+YOU
+89%
+CROWD
+86%
+OUTCOME
+100%
+RBP
+2.33
+Beat crowd
+Q7
+RESULT: NO
+Will Iraq score in the second half?
+YOU
+27%
+CROWD
+27%
+OUTCOME
+0%
+RBP
+1.4
+Beat crowd
+Q8
+RESULT: NO
+Will Iraq have 4 or more shots on target?
+YOU
+8%
+CROWD
+25%
+OUTCOME
+0%
+RBP
+8.41
+Beat crowd
+Q9
+RESULT: YES
+Will France score in the first half?
+YOU
+73%
+CROWD
+72%
+OUTCOME
+100%
+RBP
+2.23
+Beat crowd
+
+### Jordan vs Algeria
+
+RBP -9.29
+
+Q1
+RESULT: YES
+Will Jordan commit more fouls than Algeria?
+YOU
+49%
+CROWD
+54%
+OUTCOME
+100%
+RBP
+-3
+Below crowd
+Q2
+RESULT: YES
+Will there be 4 or more total shots on target in the second half?
+YOU
+47%
+CROWD
+60%
+OUTCOME
+100%
+RBP
+-9.69
+Below crowd
+Q3
+RESULT: YES
+Will Jordan score the first goal of the game and Algeria score in the second half?
+YOU
+17%
+CROWD
+23%
+OUTCOME
+100%
+RBP
+-7.68
+Below crowd
+Q4
+RESULT: NO
+Will Algeria be caught offside 2 or more times?
+YOU
+42%
+CROWD
+51%
+OUTCOME
+0%
+RBP
+10.7
+Beat crowd
+Q5
+RESULT: NO
+Will a penalty kick be awarded OR a red card be shown?
+YOU
+37%
+CROWD
+38%
+OUTCOME
+0%
+RBP
+3.36
+Beat crowd
+Q6
+RESULT: NO
+Will Riyad Mahrez have at least 1 shot on target in the second half?
+YOU
+34%
+CROWD
+43%
+OUTCOME
+0%
+RBP
+9.67
+Beat crowd
+Q7
+RESULT: YES
+Will Jordan score at least 1 goal?
+YOU
+54%
+CROWD
+52%
+OUTCOME
+100%
+RBP
+3.73
+Beat crowd
+Q8
+RESULT: NO
+At halftime, will the match be tied?
+YOU
+43%
+CROWD
+42%
+OUTCOME
+0%
+RBP
+0.88
+Beat crowd
+Q9
+RESULT: YES
+Will the match have 3 or more total goals?
+YOU
+49%
+CROWD
+48%
+OUTCOME
+100%
+RBP
+2.41
+Beat crowd
+Q10
+RESULT: YES
+Will Mousa Al-Taamari have at least 1 shot on target?
+YOU
+29%
+CROWD
+47%
+OUTCOME
+100%
+RBP
+-19.66
+Below crowd
+
+### Colombia vs Congo DR
+
+RBP +12.31
+
+Q1
+RESULT: NO
+Will Colombia commit more fouls than DR Congo?
+YOU
+44%
+CROWD
+41%
+OUTCOME
+0%
+RBP
+-0.52
+Below crowd
+Q2
+RESULT: YES
+Will Colombia have more shots on target than DR Congo in the second half?
+YOU
+62%
+CROWD
+66%
+OUTCOME
+100%
+RBP
+-0.56
+Below crowd
+Q3
+RESULT: YES
+Will Colombia score more goals than DR Congo in the second half?
+YOU
+51%
+CROWD
+55%
+OUTCOME
+100%
+RBP
+-1.45
+Below crowd
+Q4
+RESULT: NO
+Will a penalty kick be awarded OR a red card be shown in the match?
+YOU
+37%
+CROWD
+36%
+OUTCOME
+0%
+RBP
+1.69
+Beat crowd
+Q5
+RESULT: YES
+Will Colombia win the match?
+YOU
+63%
+CROWD
+66%
+OUTCOME
+100%
+RBP
+-0.59
+Below crowd
+Q6
+RESULT: NO
+At halftime, will Colombia be winning?
+YOU
+42%
+CROWD
+49%
+OUTCOME
+0%
+RBP
+8.24
+Beat crowd
+Q7
+RESULT: YES
+Will the match have 2 or fewer total goals?
+YOU
+57%
+CROWD
+51%
+OUTCOME
+100%
+RBP
+7.17
+Beat crowd
+Q8
+RESULT: YES
+Will Colombia have 5 or more corner kicks?
+YOU
+50%
+CROWD
+58%
+OUTCOME
+100%
+RBP
+-5.36
+Below crowd
+Q9
+RESULT: NO
+Will Luis Díaz score or assist a goal (excluding own goals)?
+YOU
+62%
+CROWD
+50%
+OUTCOME
+0%
+RBP
+-10.26
+Below crowd
+Q10
+RESULT: NO
+Will Cédric Bakambu have at least 1 shot on target?
+YOU
+26%
+CROWD
+43%
+OUTCOME
+0%
+RBP
+13.95
+Beat crowd
+
+## Version 4
+
+### Switzerland vs Canada
+
+RBP +63.42
+
+Q1
+RESULT: NO
+Will Canada commit more fouls than Switzerland?
+YOU
+47%
+CROWD
+53%
+OUTCOME
+0%
+RBP
+7.98
+Beat crowd
+Q2
+RESULT: NO
+Will Switzerland be caught offside 2 or more times?
+YOU
+39%
+CROWD
+50%
+OUTCOME
+0%
+RBP
+12.25
+Beat crowd
+Q3
+RESULT: NO
+Will there be 2 or more total cards shown in the second half?
+YOU
+54%
+CROWD
+54%
+OUTCOME
+0%
+RBP
+3.17
+Beat crowd
+Q4
+RESULT: YES
+Will both teams score AND the match have 3 or more total goals?
+YOU
+36%
+CROWD
+41%
+OUTCOME
+100%
+RBP
+-3.65
+Below crowd
+Q5
+RESULT: NO
+Will a penalty kick be awarded in the match?
+YOU
+29%
+CROWD
+29%
+OUTCOME
+0%
+RBP
+1.88
+Beat crowd
+Q6
+RESULT: NO
+Will Switzerland have more shots on target than Canada in the second half?
+YOU
+43%
+CROWD
+51%
+OUTCOME
+0%
+RBP
+9.82
+Beat crowd
+Q7
+RESULT: YES
+Will Switzerland win the match?
+YOU
+38%
+CROWD
+45%
+OUTCOME
+100%
+RBP
+-5.9
+Below crowd
+Q8
+RESULT: YES
+Will the second half have 2 or more total goals?
+YOU
+42%
+CROWD
+43%
+OUTCOME
+100%
+RBP
+1.08
+Beat crowd
+Q9
+RESULT: NO
+Will Granit Xhaka have at least 1 shot on target?
+YOU
+23%
+CROWD
+40%
+OUTCOME
+0%
+RBP
+14.34
+Beat crowd
+Q10
+RESULT: NO
+Will Jonathan David have at least 1 shot on target?
+YOU
+39%
+CROWD
+59%
+OUTCOME
+0%
+RBP
+22.44
+Beat crowd
+
+### Bosnia-Herzegovina vs Qatar
+
+RBP +32.29
+
+Q1
+RESULT: YES
+Will Qatar be caught offside 2 or more times?
+YOU
+36%
+CROWD
+43%
+OUTCOME
+100%
+RBP
+-5.43
+Below crowd
+Q2
+RESULT: NO
+In the second half, will Bosnia and Herzegovina have more corner kicks than Qatar?
+YOU
+63%
+CROWD
+61%
+OUTCOME
+0%
+RBP
+-0.52
+Below crowd
+Q3
+RESULT: YES
+Will Bosnia and Herzegovina score more goals than Qatar in the second half?
+YOU
+56%
+CROWD
+54%
+OUTCOME
+100%
+RBP
+4.22
+Beat crowd
+Q4
+RESULT: NO
+Will Qatar have more shots on target than Bosnia and Herzegovina in the second half?
+YOU
+17%
+CROWD
+29%
+OUTCOME
+0%
+RBP
+8.49
+Beat crowd
+Q5
+RESULT: NO
+Will a penalty kick be awarded OR a red card be shown in the match?
+YOU
+37%
+CROWD
+38%
+OUTCOME
+0%
+RBP
+2.64
+Beat crowd
+Q6
+RESULT: YES
+Will Qatar commit more fouls than Bosnia and Herzegovina?
+YOU
+49%
+CROWD
+50%
+OUTCOME
+100%
+RBP
+1.9
+Beat crowd
+Q7
+RESULT: NO
+Will Bosnia and Herzegovina receive more cards than Qatar?
+YOU
+30%
+CROWD
+41%
+OUTCOME
+0%
+RBP
+9.48
+Beat crowd
+Q8
+RESULT: YES
+Will Bosnia and Herzegovina win the match?
+YOU
+68%
+CROWD
+64%
+OUTCOME
+100%
+RBP
+5.18
+Beat crowd
+Q9
+RESULT: NO
+Will the match have 2 or fewer total goals?
+YOU
+44%
+CROWD
+46%
+OUTCOME
+0%
+RBP
+4.01
+Beat crowd
+Q10
+RESULT: NO
+Will Edin Džeko have at least 1 shot on target?
+YOU
+60%
+CROWD
+59%
+OUTCOME
+0%
+RBP
+2.33
+Beat crowd
+
+### Morocco vs Haiti
+
+RBP -9.06
+
+Q1
+RESULT: YES
+Will Haiti commit more fouls than Morocco?
+YOU
+51%
+CROWD
+61%
+OUTCOME
+100%
+RBP
+-6.27
+Below crowd
+Q2
+RESULT: NO
+At halftime, will Haiti have more corner kicks than Morocco?
+YOU
+13%
+CROWD
+25%
+OUTCOME
+0%
+RBP
+6.95
+Beat crowd
+Q3
+RESULT: YES
+Will Haiti receive more cards than Morocco?
+YOU
+51%
+CROWD
+55%
+OUTCOME
+100%
+RBP
+-2.26
+Below crowd
+Q4
+RESULT: YES
+Will Morocco have more shots on target than Haiti in the second half?
+YOU
+81%
+CROWD
+72%
+OUTCOME
+100%
+RBP
+6.44
+Beat crowd
+Q5
+RESULT: YES
+Will there be 4 or more total shots on target in the second half?
+YOU
+62%
+CROWD
+62%
+OUTCOME
+100%
+RBP
+2.16
+Beat crowd
+Q6
+RESULT: NO
+Will a penalty kick be awarded OR a red card be shown?
+YOU
+37%
+CROWD
+35%
+OUTCOME
+0%
+RBP
+0.65
+Beat crowd
+Q7
+RESULT: YES
+Will Morocco win the match?
+YOU
+83%
+CROWD
+80%
+OUTCOME
+100%
+RBP
+2.78
+Beat crowd
+Q8
+RESULT: YES
+Will Morocco score in the first half?
+YOU
+65%
+CROWD
+66%
+OUTCOME
+100%
+RBP
+0.83
+Beat crowd
+Q9
+RESULT: YES
+Will Duckens Nazon have at least 1 shot on target?
+YOU
+12%
+CROWD
+28%
+OUTCOME
+100%
+RBP
+-22.42
+Below crowd
+Q10
+RESULT: NO
+Will Haiti score in the second half?
+YOU
+27%
+CROWD
+28%
+OUTCOME
+0%
+RBP
+2.08
+Beat crowd
+
+### Scotland vs Brazil
+
+RBP +4.41
+
+Q1
+RESULT: NO
+Will Brazil have more shots on target than Scotland in the second half?
+YOU
+73%
+CROWD
+71%
+OUTCOME
+0%
+RBP
+-0.44
+Below crowd
+Q2
+RESULT: NO
+Will Scotland be caught offside 2 or more times?
+YOU
+34%
+CROWD
+42%
+OUTCOME
+0%
+RBP
+8.34
+Beat crowd
+Q3
+RESULT: NO
+Will Scotland score the first goal of the game and Brazil score in the second half?
+YOU
+14%
+CROWD
+20%
+OUTCOME
+0%
+RBP
+4.23
+Beat crowd
+Q4
+RESULT: NO
+Will Brazil finish with more corner kicks than Scotland?
+YOU
+79%
+CROWD
+72%
+OUTCOME
+0%
+RBP
+-9.47
+Below crowd
+Q5
+RESULT: NO
+Will Scotland score at least 1 goal?
+YOU
+45%
+CROWD
+44%
+OUTCOME
+0%
+RBP
+1.9
+Beat crowd
+Q6
+RESULT: YES
+Will the match have 3 or more total goals?
+YOU
+53%
+CROWD
+54%
+OUTCOME
+100%
+RBP
+1.14
+Beat crowd
+Q7
+RESULT: YES
+Will Brazil score in the second half?
+YOU
+73%
+CROWD
+69%
+OUTCOME
+100%
+RBP
+3.83
+Beat crowd
+Q8
+RESULT: NO
+Will there be 4 or more total cards shown?
+YOU
+32%
+CROWD
+44%
+OUTCOME
+0%
+RBP
+11.45
+Beat crowd
+Q9
+RESULT: YES
+Will Scott McTominay have at least 1 shot on target?
+YOU
+30%
+CROWD
+43%
+OUTCOME
+100%
+RBP
+-13.62
+Below crowd
+Q10
+RESULT: YES
+Will Brazil score in the first half?
+YOU
+58%
+CROWD
+64%
+OUTCOME
+100%
+RBP
+-2.95
+Below crowd
+
+### Czechia vs Mexico
+
+RBP +62.37
+
+Q1
+RESULT: NO
+Will Czechia commit more fouls than Mexico?
+YOU
+48%
+CROWD
+56%
+OUTCOME
+0%
+RBP
+10.03
+Beat crowd
+Q2
+RESULT: NO
+Will Mexico be caught offside 2 or more times?
+YOU
+41%
+CROWD
+50%
+OUTCOME
+0%
+RBP
+10.07
+Beat crowd
+Q3
+RESULT: NO
+Will Czechia have more shots on target than Mexico in the second half?
+YOU
+24%
+CROWD
+38%
+OUTCOME
+0%
+RBP
+10.99
+Beat crowd
+Q4
+RESULT: NO
+Will Mexico finish with more corner kicks than Czechia?
+YOU
+62%
+CROWD
+54%
+OUTCOME
+0%
+RBP
+-6.92
+Below crowd
+Q5
+RESULT: NO
+Will both teams score AND the match have 3 or more total goals?
+YOU
+36%
+CROWD
+37%
+OUTCOME
+0%
+RBP
+2.82
+Beat crowd
+Q6
+RESULT: NO
+Will Czechia win the match?
+YOU
+20%
+CROWD
+27%
+OUTCOME
+0%
+RBP
+5.34
+Beat crowd
+Q7
+RESULT: NO
+Will Czechia score in the second half?
+YOU
+41%
+CROWD
+44%
+OUTCOME
+0%
+RBP
+4.41
+Beat crowd
+Q8
+RESULT: NO
+Will there be 4 or more total cards shown?
+YOU
+31%
+CROWD
+47%
+OUTCOME
+0%
+RBP
+15.3
+Beat crowd
+Q9
+RESULT: NO
+Will Patrik Schick have at least 1 shot on target?
+YOU
+40%
+CROWD
+47%
+OUTCOME
+0%
+RBP
+10.33
+Beat crowd
+
+### South Africa vs Korea Republic
+
+RBP +30.24
+
+Q1
+RESULT: NO
+Will South Korea be caught offside 2 or more times?
+YOU
+41%
+CROWD
+52%
+OUTCOME
+0%
+RBP
+12.79
+Beat crowd
+Q2
+RESULT: YES
+Will South Korea receive at least 1 card in the second half?
+YOU
+59%
+CROWD
+55%
+OUTCOME
+100%
+RBP
+5.43
+Beat crowd
+Q3
+RESULT: NO
+Will both teams score AND the match have 3 or more total goals?
+YOU
+31%
+CROWD
+35%
+OUTCOME
+0%
+RBP
+4.76
+Beat crowd
+Q4
+RESULT: YES
+Will South Korea have more shots on target than South Africa in the second half?
+YOU
+59%
+CROWD
+60%
+OUTCOME
+100%
+RBP
+1.9
+Beat crowd
+Q5
+RESULT: NO
+Will South Africa commit more fouls than South Korea?
+YOU
+49%
+CROWD
+57%
+OUTCOME
+0%
+RBP
+10.15
+Beat crowd
+Q6
+RESULT: YES
+Will South Africa win the match?
+YOU
+17%
+CROWD
+22%
+OUTCOME
+100%
+RBP
+-5.59
+Below crowd
+Q7
+RESULT: YES
+At halftime, will the match be tied?
+YOU
+47%
+CROWD
+43%
+OUTCOME
+100%
+RBP
+5.68
+Beat crowd
+Q8
+RESULT: YES
+Will South Africa have 3 or more shots on target?
+YOU
+40%
+CROWD
+52%
+OUTCOME
+100%
+RBP
+-10.65
+Below crowd
+Q9
+RESULT: YES
+Will Oswin Appollis have at least 1 shot on target?
+YOU
+32%
+CROWD
+40%
+OUTCOME
+100%
+RBP
+-7.5
+Below crowd
+Q10
+RESULT: NO
+Will Son Heung-min have at least 1 shot on target?
+YOU
+47%
+CROWD
+56%
+OUTCOME
+0%
+RBP
+13.28
+Beat crowd
+
+### Curacao vs Ivory Coast
+
+RBP +37.76
+
+Q1
+RESULT: YES
+Will Curaçao be caught offside 2 or more times?
+YOU
+34%
+CROWD
+41%
+OUTCOME
+100%
+RBP
+-5.76
+Below crowd
+Q2
+RESULT: NO
+Will Ivory Coast commit more fouls than Curaçao?
+YOU
+43%
+CROWD
+42%
+OUTCOME
+0%
+RBP
+0.99
+Beat crowd
+Q3
+RESULT: YES
+Will Ivory Coast score the first goal of the second half?
+YOU
+71%
+CROWD
+60%
+OUTCOME
+100%
+RBP
+10.8
+Beat crowd
+Q4
+RESULT: NO
+Will the second half have more goals than the first half?
+YOU
+52%
+CROWD
+50%
+OUTCOME
+0%
+RBP
+0.37
+Beat crowd
+Q5
+RESULT: NO
+Will Curaçao have more shots on target than Ivory Coast in the second half?
+YOU
+9%
+CROWD
+23%
+OUTCOME
+0%
+RBP
+7.07
+Beat crowd
+Q6
+RESULT: YES
+Will Curaçao receive more cards than Ivory Coast?
+YOU
+49%
+CROWD
+52%
+OUTCOME
+100%
+RBP
+-0.47
+Below crowd
+Q7
+RESULT: NO
+Will Curaçao score at least 1 goal?
+YOU
+48%
+CROWD
+42%
+OUTCOME
+0%
+RBP
+-2.61
+Below crowd
+Q8
+RESULT: YES
+Will Ivory Coast have 5 or more corner kicks?
+YOU
+76%
+CROWD
+64%
+OUTCOME
+100%
+RBP
+9.92
+Beat crowd
+Q9
+RESULT: NO
+Will Leandro Bacuna have at least 1 shot on target?
+YOU
+19%
+CROWD
+33%
+OUTCOME
+0%
+RBP
+9.68
+Beat crowd
+Q10
+RESULT: NO
+Will Ibrahim Sangaré have at least 1 shot on target?
+YOU
+33%
+CROWD
+39%
+OUTCOME
+0%
+RBP
+7.77
+Beat crowd
+
+### Ecuador vs Germany
+
+RBP +20.67
+
+Q1
+RESULT: YES
+At halftime, will both teams have at least 1 shot on target?
+YOU
+61%
+CROWD
+67%
+OUTCOME
+100%
+RBP
+-1.26
+Below crowd
+Q2
+RESULT: YES
+Will Ecuador commit more fouls than Germany?
+YOU
+48%
+CROWD
+57%
+OUTCOME
+100%
+RBP
+-6.8
+Below crowd
+Q3
+RESULT: YES
+In the second half, will Ecuador have more corner kicks than Germany?
+YOU
+27%
+CROWD
+35%
+OUTCOME
+100%
+RBP
+-8.67
+Below crowd
+Q4
+RESULT: NO
+Will Germany score more goals than Ecuador in the second half?
+YOU
+50%
+CROWD
+54%
+OUTCOME
+0%
+RBP
+6.66
+Beat crowd
+Q5
+RESULT: NO
+Will Germany have more shots on target than Ecuador in the second half?
+YOU
+60%
+CROWD
+62%
+OUTCOME
+0%
+RBP
+5.37
+Beat crowd
+Q6
+RESULT: NO
+Will a penalty kick be awarded OR a red card be shown?
+YOU
+37%
+CROWD
+34%
+OUTCOME
+0%
+RBP
+-0.19
+Below crowd
+Q7
+RESULT: NO
+Will Ecuador be caught offside 2 or more times?
+YOU
+37%
+CROWD
+45%
+OUTCOME
+0%
+RBP
+8.74
+Beat crowd
+Q8
+RESULT: YES
+Will both teams score AND the match have 3 or more total goals?
+YOU
+44%
+CROWD
+41%
+OUTCOME
+100%
+RBP
+5.38
+Beat crowd
+Q9
+RESULT: YES
+Will Ecuador score at least 1 goal?
+YOU
+63%
+CROWD
+56%
+OUTCOME
+100%
+RBP
+8.69
+Beat crowd
+Q10
+RESULT: NO
+Will the match have 2 or fewer total goals?
+YOU
+43%
+CROWD
+43%
+OUTCOME
+0%
+RBP
+2.74
+Beat crowd
+
+### Tunisia vs Netherlands
+
+RBP +8.96
+
+Q1
+RESULT: YES
+Will Tunisia commit more fouls than Netherlands?
+YOU
+51%
+CROWD
+58%
+OUTCOME
+100%
+RBP
+-4.55
+Below crowd
+Q2
+RESULT: YES
+Will both teams have at least 1 shot on target in the second half?
+YOU
+60%
+CROWD
+59%
+OUTCOME
+100%
+RBP
+4.2
+Beat crowd
+Q3
+RESULT: YES
+Will both teams score AND the match have 3 or more total goals?
+YOU
+33%
+CROWD
+32%
+OUTCOME
+100%
+RBP
+3.29
+Beat crowd
+Q4
+RESULT: NO
+Will Netherlands receive more cards than Tunisia?
+YOU
+25%
+CROWD
+34%
+OUTCOME
+0%
+RBP
+7.44
+Beat crowd
+Q5
+RESULT: YES
+Will Tunisia score at least 1 goal?
+YOU
+39%
+CROWD
+38%
+OUTCOME
+100%
+RBP
+3.26
+Beat crowd
+Q6
+RESULT: NO
+At halftime, will the match be tied?
+YOU
+30%
+CROWD
+31%
+OUTCOME
+0%
+RBP
+1.99
+Beat crowd
+Q7
+RESULT: YES
+Will Tunisia score in the second half?
+YOU
+26%
+CROWD
+28%
+OUTCOME
+100%
+RBP
+-1.74
+Below crowd
+Q8
+RESULT: NO
+Will Ellyes Skhiri have at least 1 shot on target?
+YOU
+8%
+CROWD
+26%
+OUTCOME
+0%
+RBP
+8.75
+Beat crowd
+Q9
+RESULT: YES
+Will there be 8 or more total shots on target?
+YOU
+56%
+CROWD
+60%
+OUTCOME
+100%
+RBP
+-0.72
+Below crowd
+Q10
+RESULT: NO
+Will Cody Gakpo score or assist a goal (excluding own goals)?
+YOU
+68%
+CROWD
+55%
+OUTCOME
+0%
+RBP
+-12.96
+Below crowd
+
+### Japan vs Sweden
+
+RBP +13.26
+
+Q1
+RESULT: YES
+Will Sweden be caught offside 2 or more times?
+YOU
+39%
+CROWD
+51%
+OUTCOME
+100%
+RBP
+-10.79
+Below crowd
+Q2
+RESULT: NO
+In the second half, will Japan have more shots on target than Sweden?
+YOU
+47%
+CROWD
+51%
+OUTCOME
+0%
+RBP
+5.89
+Beat crowd
+Q3
+RESULT: NO
+Will Sweden score more goals than Japan in the second half?
+YOU
+27%
+CROWD
+33%
+OUTCOME
+0%
+RBP
+5.63
+Beat crowd
+Q4
+RESULT: NO
+Will a penalty kick be awarded OR a red card be shown?
+YOU
+37%
+CROWD
+34%
+OUTCOME
+0%
+RBP
+-0.51
+Below crowd
+Q5
+RESULT: NO
+Will Japan win the match?
+YOU
+44%
+CROWD
+52%
+OUTCOME
+0%
+RBP
+10.52
+Beat crowd
+Q6
+RESULT: YES
+Will the match have 2 or fewer total goals?
+YOU
+49%
+CROWD
+45%
+OUTCOME
+100%
+RBP
+6.6
+Beat crowd
+Q7
+RESULT: YES
+Will Sweden have 5 or more corner kicks?
+YOU
+39%
+CROWD
+46%
+OUTCOME
+100%
+RBP
+-5.27
+Below crowd
+Q8
+RESULT: NO
+Will Viktor Gyökeres score a goal (excluding own goals)?
+YOU
+35%
+CROWD
+34%
+OUTCOME
+0%
+RBP
+1.19
+Beat crowd
+
+### Paraguay vs Australia
+
+RBP +58.92
+
+Q1
+RESULT: NO
+Will Australia be caught offside 2 or more times?
+YOU
+36%
+CROWD
+44%
+OUTCOME
+0%
+RBP
+8.61
+Beat crowd
+Q2
+RESULT: NO
+Will Australia commit more fouls than Paraguay?
+YOU
+48%
+CROWD
+46%
+OUTCOME
+0%
+RBP
+-0.17
+Below crowd
+Q3
+RESULT: NO
+Will Paraguay be caught offside 2 or more times?
+YOU
+38%
+CROWD
+47%
+OUTCOME
+0%
+RBP
+9.34
+Beat crowd
+Q4
+RESULT: NO
+Will Australia have more shots on target than Paraguay in the second half?
+YOU
+32%
+CROWD
+44%
+OUTCOME
+0%
+RBP
+11.33
+Beat crowd
+Q5
+RESULT: NO
+Will the second half have more total goals than the first half?
+YOU
+46%
+CROWD
+45%
+OUTCOME
+0%
+RBP
+1.2
+Beat crowd
+Q6
+RESULT: NO
+Will Paraguay win the match?
+YOU
+37%
+CROWD
+37%
+OUTCOME
+0%
+RBP
+2
+Beat crowd
+Q7
+RESULT: NO
+Will the second half have 2 or more total goals?
+YOU
+32%
+CROWD
+37%
+OUTCOME
+0%
+RBP
+5.23
+Beat crowd
+Q8
+RESULT: NO
+Will there be 4 or more total cards shown?
+YOU
+34%
+CROWD
+47%
+OUTCOME
+0%
+RBP
+12.64
+Beat crowd
+Q9
+RESULT: NO
+Will Julio Enciso have at least 1 shot on target?
+YOU
+41%
+CROWD
+48%
+OUTCOME
+0%
+RBP
+8.73
+Beat crowd
+
+### Turkey vs United States
+
+RBP +22.55
+
+Q1
+RESULT: NO
+Will United States commit more fouls than Türkiye?
+YOU
+45%
+CROWD
+47%
+OUTCOME
+0%
+RBP
+3.61
+Beat crowd
+Q2
+RESULT: YES
+Will Türkiye be caught offside 2 or more times?
+YOU
+39%
+CROWD
+50%
+OUTCOME
+100%
+RBP
+-10.14
+Below crowd
+Q3
+RESULT: NO
+Will the second half have more total goals than the first half?
+YOU
+51%
+CROWD
+48%
+OUTCOME
+0%
+RBP
+-1.33
+Below crowd
+Q4
+RESULT: NO
+Will Türkiye score the first goal of the game and United States score in the second half?
+YOU
+24%
+CROWD
+28%
+OUTCOME
+0%
+RBP
+4.34
+Beat crowd
+Q5
+RESULT: NO
+Will a penalty kick be awarded OR a red card be shown in the match?
+YOU
+37%
+CROWD
+34%
+OUTCOME
+0%
+RBP
+-0.42
+Below crowd
+Q6
+RESULT: YES
+Will Türkiye win the match?
+YOU
+25%
+CROWD
+31%
+OUTCOME
+100%
+RBP
+-6.85
+Below crowd
+Q7
+RESULT: YES
+Will the match have 3 or more total goals?
+YOU
+59%
+CROWD
+53%
+OUTCOME
+100%
+RBP
+6.64
+Beat crowd
+Q8
+RESULT: NO
+Will Türkiye have 5 or more corner kicks?
+YOU
+38%
+CROWD
+52%
+OUTCOME
+0%
+RBP
+15.31
+Beat crowd
+Q9
+RESULT: YES
+Will Orkun Kökçü score or assist a goal (excluding own goals)?
+YOU
+27%
+CROWD
+28%
+OUTCOME
+100%
+RBP
+1.08
+Beat crowd
+Q10
+RESULT: NO
+Will Folarin Balogun score a goal (excluding own goals)?
+YOU
+10%
+CROWD
+28%
+OUTCOME
+0%
+RBP
+10.3
+Beat crowd
+
+### Norway vs France
+
+RBP +11.66
+
+Q1
+RESULT: NO
+Will Norway commit more fouls than France?
+YOU
+49%
+CROWD
+57%
+OUTCOME
+0%
+RBP
+9.97
+Beat crowd
+Q2
+RESULT: YES
+In the second half, will Norway have more corner kicks than France?
+YOU
+23%
+CROWD
+36%
+OUTCOME
+100%
+RBP
+-15.64
+Below crowd
+Q3
+RESULT: NO
+Will France have more shots on target than Norway in the second half?
+YOU
+67%
+CROWD
+62%
+OUTCOME
+0%
+RBP
+-3.86
+Below crowd
+Q4
+RESULT: YES
+Will a penalty kick be awarded OR a red card be shown in the match?
+YOU
+37%
+CROWD
+34%
+OUTCOME
+100%
+RBP
+6.48
+Beat crowd
+Q5
+RESULT: YES
+Will both teams score AND the match have 3 or more total goals?
+YOU
+47%
+CROWD
+49%
+OUTCOME
+100%
+RBP
+1.1
+Beat crowd
+Q6
+RESULT: NO
+Will Norway win the match?
+YOU
+14%
+CROWD
+22%
+OUTCOME
+0%
+RBP
+4.53
+Beat crowd
+Q7
+RESULT: YES
+Will France score in the second half?
+YOU
+76%
+CROWD
+68%
+OUTCOME
+100%
+RBP
+6.01
+Beat crowd
+Q8
+RESULT: YES
+Will there be 8 or more total shots on target?
+YOU
+58%
+CROWD
+63%
+OUTCOME
+100%
+RBP
+-0.82
+Below crowd
+Q9
+RESULT: YES
+Will Norway score at least 1 goal?
+YOU
+62%
+CROWD
+61%
+OUTCOME
+100%
+RBP
+3.19
+Beat crowd
+Q10
+RESULT: YES
+Will France score in the first half?
+YOU
+61%
+CROWD
+62%
+OUTCOME
+100%
+RBP
+0.71
+Beat crowd
+
+### Senegal vs Iraq
+
+RBP +20.74
+
+Q1
+RESULT: NO
+At halftime, will Iraq have more corner kicks than Senegal?
+YOU
+17%
+CROWD
+27%
+OUTCOME
+0%
+RBP
+6.38
+Beat crowd
+Q2
+RESULT: NO
+Will Iraq be caught offside 2 or more times?
+YOU
+35%
+CROWD
+41%
+OUTCOME
+0%
+RBP
+6.55
+Beat crowd
+Q3
+RESULT: YES
+Will Iraq receive more cards than Senegal?
+YOU
+47%
+CROWD
+51%
+OUTCOME
+100%
+RBP
+-2.1
+Below crowd
+Q4
+RESULT: NO
+Will both teams score AND the match have 3 or more total goals?
+YOU
+40%
+CROWD
+37%
+OUTCOME
+0%
+RBP
+-0.07
+Below crowd
+Q5
+RESULT: YES
+Will Iraq commit more fouls than Senegal?
+YOU
+50%
+CROWD
+56%
+OUTCOME
+100%
+RBP
+-3.95
+Below crowd
+Q6
+RESULT: YES
+Will there be 4 or more total shots on target in the second half?
+YOU
+66%
+CROWD
+60%
+OUTCOME
+100%
+RBP
+6.26
+Beat crowd
+Q7
+RESULT: NO
+Will Sadio Mané have at least 1 shot on target in the second half?
+YOU
+53%
+CROWD
+46%
+OUTCOME
+0%
+RBP
+-3.71
+Below crowd
+Q8
+RESULT: YES
+Will Senegal have more shots on target than Iraq in the second half?
+YOU
+76%
+CROWD
+68%
+OUTCOME
+100%
+RBP
+6.48
+Beat crowd
+Q9
+RESULT: YES
+Will Senegal win the match?
+YOU
+78%
+CROWD
+73%
+OUTCOME
+100%
+RBP
+4.15
+Beat crowd
+Q10
+RESULT: NO
+Will Mohanad Ali score or assist a goal (excluding own goals)?
+YOU
+23%
+CROWD
+20%
+OUTCOME
+0%
+RBP
+0.76
+Beat crowd
+
+### Cabo Verde vs Saudi Arabia
+
+RBP -6.21
+
+Q1
+RESULT: NO
+Will Cape Verde commit more fouls than Saudi Arabia?
+YOU
+47%
+CROWD
+45%
+OUTCOME
+0%
+RBP
+0.51
+Beat crowd
+Q2
+RESULT: YES
+Will both teams have at least 1 shot on target in the second half?
+YOU
+70%
+CROWD
+66%
+OUTCOME
+100%
+RBP
+5.09
+Beat crowd
+Q3
+RESULT: YES
+Will Saudi Arabia receive more cards than Cape Verde?
+YOU
+37%
+CROWD
+46%
+OUTCOME
+100%
+RBP
+-9.34
+Below crowd
+Q4
+RESULT: NO
+Will a penalty kick be awarded in the match?
+YOU
+29%
+CROWD
+28%
+OUTCOME
+0%
+RBP
+1.14
+Beat crowd
+Q5
+RESULT: YES
+Will Cape Verde be caught offside 2 or more times?
+YOU
+39%
+CROWD
+47%
+OUTCOME
+100%
+RBP
+-6.29
+Below crowd
+Q6
+RESULT: NO
+Will Saudi Arabia have more shots on target than Cape Verde in the second half?
+YOU
+41%
+CROWD
+44%
+OUTCOME
+0%
+RBP
+4.69
+Beat crowd
+Q7
+RESULT: NO
+Will Cape Verde win the match?
+YOU
+34%
+CROWD
+39%
+OUTCOME
+0%
+RBP
+5.93
+Beat crowd
+Q8
+RESULT: NO
+Will Cape Verde score in the second half?
+YOU
+51%
+CROWD
+49%
+OUTCOME
+0%
+RBP
+-0.13
+Below crowd
+Q9
+RESULT: NO
+Will Ryan Mendes score or assist a goal (excluding own goals)?
+YOU
+46%
+CROWD
+30%
+OUTCOME
+0%
+RBP
+-10.34
+Below crowd
+Q10
+RESULT: NO
+Will Salem Al-Dawsari score a goal (excluding own goals)?
+YOU
+24%
+CROWD
+25%
+OUTCOME
+0%
+RBP
+2.54
+Beat crowd
+
+### Uruguay vs Spain
+
+RBP +25.08
+
+Q1
+RESULT: NO
+Will Uruguay commit more fouls than Spain?
+YOU
+49%
+CROWD
+58%
+OUTCOME
+0%
+RBP
+12.01
+Beat crowd
+Q2
+RESULT: YES
+In the second half, will Uruguay have more shots on target than Spain?
+YOU
+22%
+CROWD
+29%
+OUTCOME
+100%
+RBP
+-8.8
+Below crowd
+Q3
+RESULT: NO
+Will Dani Olmo have at least 1 shot on target in the second half?
+YOU
+11%
+CROWD
+35%
+OUTCOME
+0%
+RBP
+14.6
+Beat crowd
+Q4
+RESULT: NO
+Will Uruguay score at least 1 goal?
+YOU
+57%
+CROWD
+54%
+OUTCOME
+0%
+RBP
+-1.76
+Below crowd
+Q5
+RESULT: NO
+At halftime, will the match be tied?
+YOU
+45%
+CROWD
+41%
+OUTCOME
+0%
+RBP
+-1.77
+Below crowd
+Q6
+RESULT: YES
+Will the match have 2 or fewer total goals?
+YOU
+53%
+CROWD
+47%
+OUTCOME
+100%
+RBP
+8.51
+Beat crowd
+Q7
+RESULT: NO
+Will the second half have 2 or more total goals?
+YOU
+45%
+CROWD
+44%
+OUTCOME
+0%
+RBP
+1.64
+Beat crowd
+Q8
+RESULT: NO
+Will there be 9 or more total corner kicks in the match?
+YOU
+50%
+CROWD
+56%
+OUTCOME
+0%
+RBP
+9.05
+Beat crowd
+Q9
+RESULT: YES
+Will there be 4 or more total cards shown?
+YOU
+31%
+CROWD
+46%
+OUTCOME
+100%
+RBP
+-16.03
+Below crowd
+Q10
+RESULT: NO
+Will Darwin Núñez have at least 1 shot on target?
+YOU
+42%
+CROWD
+47%
+OUTCOME
+0%
+RBP
+7.64
+Beat crowd
+
+### New Zealand vs Belgium
+
+RBP +31.17
+
+Q1
+RESULT: NO
+At halftime, will both teams have at least 1 shot on target?
+YOU
+63%
+CROWD
+60%
+OUTCOME
+0%
+RBP
+-0.81
+Below crowd
+Q2
+RESULT: YES
+Will New Zealand commit more fouls than Belgium?
+YOU
+50%
+CROWD
+57%
+OUTCOME
+100%
+RBP
+-4.83
+Below crowd
+Q3
+RESULT: NO
+Will Belgium receive at least 1 card in the second half?
+YOU
+55%
+CROWD
+51%
+OUTCOME
+0%
+RBP
+-1.56
+Below crowd
+Q4
+RESULT: YES
+Will both teams score AND the match have 3 or more total goals?
+YOU
+50%
+CROWD
+40%
+OUTCOME
+100%
+RBP
+13.12
+Beat crowd
+Q5
+RESULT: YES
+Will New Zealand have 2 or more shots on target in the second half?
+YOU
+44%
+CROWD
+43%
+OUTCOME
+100%
+RBP
+3.66
+Beat crowd
+Q6
+RESULT: YES
+Will New Zealand receive more cards than Belgium?
+YOU
+46%
+CROWD
+50%
+OUTCOME
+100%
+RBP
+-2.44
+Below crowd
+Q7
+RESULT: YES
+Will New Zealand score at least 1 goal?
+YOU
+58%
+CROWD
+48%
+OUTCOME
+100%
+RBP
+11.82
+Beat crowd
+Q8
+RESULT: YES
+Will Belgium score in the second half?
+YOU
+84%
+CROWD
+71%
+OUTCOME
+100%
+RBP
+7.72
+Beat crowd
+Q9
+RESULT: YES
+Will Belgium have 4 or more shots on target?
+YOU
+89%
+CROWD
+73%
+OUTCOME
+100%
+RBP
+8.56
+Beat crowd
+Q10
+RESULT: NO
+Will Youri Tielemans have at least 1 shot on target?
+YOU
+50%
+CROWD
+43%
+OUTCOME
+0%
+RBP
+-4.07
+Below crowd
+
+### Egypt vs IR Iran
+
+RBP -93.75
+
+Q1
+RESULT: YES
+Will Iran be caught offside 2 or more times?
+YOU
+37%
+CROWD
+47%
+OUTCOME
+100%
+RBP
+-9.63
+Below crowd
+Q2
+RESULT: NO
+Will Iran have more shots on target than Egypt in the second half?
+YOU
+35%
+CROWD
+40%
+OUTCOME
+0%
+RBP
+5.3
+Beat crowd
+Q3
+RESULT: NO
+Will Iran finish with more corner kicks than Egypt?
+YOU
+40%
+CROWD
+42%
+OUTCOME
+0%
+RBP
+3.27
+Beat crowd
+Q4
+RESULT: NO
+Will Egypt win the match?
+YOU
+36%
+CROWD
+43%
+OUTCOME
+0%
+RBP
+8.03
+Beat crowd
+Q5
+RESULT: YES
+Will the match have 2 or fewer total goals?
+YOU
+67%
+CROWD
+58%
+OUTCOME
+100%
+RBP
+8.4
+Beat crowd
+Q6
+RESULT: NO
+Will the second half have 2 or more total goals?
+YOU
+35%
+CROWD
+37%
+OUTCOME
+0%
+RBP
+3.31
+Beat crowd
+Q7
+RESULT: YES
+Will there be 4 or more total cards shown?
+YOU
+33%
+CROWD
+45%
+OUTCOME
+100%
+RBP
+-12.21
+Below crowd
+Q8
+RESULT: YES
+Will Egypt have 3 or more shots on target?
+YOU
+56%
+CROWD
+66%
+OUTCOME
+100%
+RBP
+-5.56
+Below crowd
+Q9
+RESULT: YES
+Will Mahmoud Trezeguet have at least 1 shot on target?
+YOU
+5%
+CROWD
+42%
+OUTCOME
+100%
+RBP
+-54.15
+Below crowd
+Q10
+RESULT: YES
+Will Mehdi Taremi have at least 1 shot on target?
+YOU
+17%
+CROWD
+49%
+OUTCOME
+100%
+RBP
+-40.51
+Below crowd

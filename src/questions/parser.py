@@ -53,7 +53,12 @@ def _rule(pattern: str):
 
 # --- match outcome / state ---------------------------------------------------
 
-@_rule(r"^Will (?P<team>.+?) win the match\?$")
+@_rule(r"^Will (?P<team>.+?) win by (?P<n>\d+) or more goals\?$")
+def _(m, teams):
+    return MarketSpec("team_win_by_ge", team=m["team"], stat="goals", threshold=int(m["n"]))
+
+
+@_rule(r"^Will (?P<team>.+?) win(?: the match)?\?$")
 def _(m, teams):
     return MarketSpec("team_win", team=m["team"])
 
@@ -68,11 +73,31 @@ def _(m, teams):
     return MarketSpec("ht_team_winning", team=m["team"], period=H1)
 
 
+@_rule(r"^Will (?P<team>.+?) be ahead at halftime\?$")
+def _(m, teams):
+    return MarketSpec("ht_team_winning", team=m["team"], period=H1)
+
+
 # --- goals ---------------------------------------------------------------------
 
 @_rule(r"^Will both teams score AND the match have (?P<n>\d+) or more total goals\?$")
 def _(m, teams):
     return MarketSpec("btts_and_total_ge", stat="goals", threshold=int(m["n"]))
+
+
+@_rule(r"^Will both teams score\?$")
+def _(m, teams):
+    return MarketSpec("btts", stat="goals")
+
+
+@_rule(r"^Will the match end in a tie\?$")
+def _(m, teams):
+    return MarketSpec("match_drawn", stat="goals")
+
+
+@_rule(r"^Will (?P<team>.+?) score in both halves\?$")
+def _(m, teams):
+    return MarketSpec("team_scores_both_halves", team=m["team"], stat="goals")
 
 
 @_rule(r"^Will the match have (?P<n>\d+) or (?P<dir>more|fewer) total goals\?$")
@@ -86,12 +111,17 @@ def _(m, teams):
     return MarketSpec("total_goals", stat="goals", threshold=int(m["n"]), period=H2)
 
 
-@_rule(r"^Will the second half have more (?:total )?goals than the first half\?$")
+@_rule(r"^Will the first half (?:have|produce) (?P<n>\d+) or more (?:total )?goals\?$")
+def _(m, teams):
+    return MarketSpec("total_goals", stat="goals", threshold=int(m["n"]), period=H1)
+
+
+@_rule(r"^Will the second half (?:have|produce) more (?:total )?goals than the first half\?$")
 def _(m, teams):
     return MarketSpec("h2_more_goals_than_h1", stat="goals")
 
 
-@_rule(r"^Will (?P<team>.+?) score (?:(?P<n1>\d+) or more total goals|at least (?P<n2>\d+) goals?)\?$")
+@_rule(r"^Will (?P<team>.+?) score (?:(?P<n1>\d+) or more(?: total)? goals|at least (?P<n2>\d+) goals?)\?$")
 def _(m, teams):
     return MarketSpec("team_goals_ge", team=m["team"], stat="goals",
                       threshold=int(m["n1"] or m["n2"]))
@@ -103,6 +133,11 @@ def _(m, teams):
     # otherwise swallow this combo template.
     return MarketSpec("first_goal_and_other_scores_2h", team=m["team"],
                       opponent=m["opp"], stat="goals")
+
+
+@_rule(r"^Will (?P<team>.+?) score the first goal of the (?:game|match)\?$")
+def _(m, teams):
+    return MarketSpec("team_first_goal_game", team=m["team"], stat="goals")
 
 
 @_rule(r"^Will (?P<team>.+?) score in the (?P<half>first|second) half\?$")
@@ -124,7 +159,7 @@ def _(m, teams):
 
 # --- penalties / red cards -------------------------------------------------------
 
-@_rule(r"^Will a penalty kick be awarded in the match\?$")
+@_rule(r"^Will a penalty kick be awarded(?: in the match)?\?$")
 def _(m, teams):
     return MarketSpec("penalty_awarded")
 
@@ -134,12 +169,23 @@ def _(m, teams):
     return MarketSpec("penalty_or_red")
 
 
+@_rule(r"^Will a red card be shown(?: in the match)?\?$")
+def _(m, teams):
+    return MarketSpec("red_card")
+
+
 # --- total counts (both teams combined) -------------------------------------------
 
 @_rule(r"^Will there be (?P<n>\d+) or more total cards shown(?P<h2> in the second half)?\?$")
 def _(m, teams):
     return MarketSpec("total_count_ge", stat="cards", threshold=int(m["n"]),
                       period=H2 if m["h2"] else MATCH)
+
+
+@_rule(r"^Will a card be shown in the (?P<half>first|second) half\?$")
+def _(m, teams):
+    return MarketSpec("total_count_ge", stat="cards", threshold=1,
+                      period=H1 if m["half"] == "first" else H2)
 
 
 @_rule(r"^Will there be (?P<n>\d+) or more total corner kicks(?: in the (?P<period>second half|match))?\?$")
@@ -154,12 +200,23 @@ def _(m, teams):
                       period=H2 if m["h2"] else MATCH)
 
 
+@_rule(r"^Will there be (?P<n>\d+) or more (?:total )?offside(?: calls|s)?\?$")
+def _(m, teams):
+    return MarketSpec("total_count_ge", stat="offsides", threshold=int(m["n"]))
+
+
 # --- "both teams" thresholds (must precede the per-team/player SOT rule) ----------
 
 @_rule(r"^(?:At halftime, will|Will) both teams have at least (?P<n>\d+) shots? on target(?P<h2> in the second half)?\?$")
 def _(m, teams):
     return MarketSpec("both_teams_count_ge", stat="sot", threshold=int(m["n"]),
                       period=H2 if m["h2"] else H1)
+
+
+@_rule(r"^Will both teams receive at least (?:one|(?P<n>\d+)) cards?\?$")
+def _(m, teams):
+    return MarketSpec("both_teams_count_ge", stat="cards",
+                      threshold=int(m["n"]) if m["n"] else 1, period=MATCH)
 
 
 # --- per-team counts ----------------------------------------------------------------
@@ -244,11 +301,30 @@ def _(m, teams):
     return MarketSpec("player_scores_or_assists", player=m["player"])
 
 
+# Knockout-round markets re-phrase the group-stage templates with a regulation /
+# extra-time qualifier ("... in regulation (90 minutes + stoppage time)", "...,
+# excluding extra time", "Will regulation (90 minutes + stoppage time) end ..."),
+# because KO ties can go to extra time. Our models price 90-minute regulation, so
+# the qualifier is a semantic no-op — strip it to the base group-stage question.
+_REG_SUFFIX = re.compile(
+    r"\s+(?:in|during|of)\s+regulation\s*\(90 minutes\s*(?:\+|plus)\s*stoppage time\)", re.I)
+_REG_SUBJECT = re.compile(
+    r"\bregulation\s*\(90 minutes\s*(?:\+|plus)\s*stoppage time\)", re.I)
+_EXCL_ET = re.compile(r",?\s+excluding extra time", re.I)
+
+
+def _normalize(q: str) -> str:
+    q = _REG_SUFFIX.sub("", q)              # "...total goals in regulation (...)?" -> "...total goals?"
+    q = _EXCL_ET.sub("", q)
+    q = _REG_SUBJECT.sub("the match", q)    # "Will regulation (...) end in a tie?" -> "...the match..."
+    return re.sub(r"\s{2,}", " ", q).replace(" ?", "?").strip()
+
+
 def parse(question: str, teams: frozenset[str] | set[str] = frozenset()) -> MarketSpec:
     """Question text -> MarketSpec. `teams` is the set of full team names in
     the event (used to disambiguate team-vs-player templates).
     Raises UnparsedQuestion if no template matches."""
-    q = question.strip()
+    q = _normalize(question.strip())
     for pattern, builder in _RULES:
         m = pattern.match(q)
         if m:

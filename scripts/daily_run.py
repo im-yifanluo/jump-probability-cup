@@ -18,6 +18,7 @@ Usage:
 """
 
 import argparse
+import contextlib
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -25,7 +26,41 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 RUNS_LOG = ROOT / "data" / "logs" / "runs.log"
 AGENT_HEARTBEAT = ROOT / "data" / "logs" / "agent_last_run"
+EXPERIMENT_PATH = ROOT / "data" / "bot2_experiment.yaml"
+LINEUP_PULL_WINDOW = timedelta(minutes=100)  # pull the confirmed XI within this of kickoff
 sys.path.insert(0, str(ROOT / "src"))
+
+
+def _load_experiment(bots: list[int]) -> dict | None:
+    """Bot-2 experimental strategy (a live A/B vs bot-1's stable v4), from
+    data/bot2_experiment.yaml. Returns None — so bot 2 MIRRORS bot 1 — if the file
+    is absent/empty or bot 2 isn't configured. The agent rewrites this file at the
+    06:00 experimental run; every later pass automatically keeps bot 2 on it."""
+    if 2 not in bots or not EXPERIMENT_PATH.exists():
+        return None
+    import yaml
+    exp = yaml.safe_load(EXPERIMENT_PATH.read_text()) or {}
+    return exp if (exp.get("tournament_intensity") or exp.get("tournament_team_sot")) else None
+
+
+@contextlib.contextmanager
+def _experimental(exp: dict):
+    """Temporarily swap the live model constants for the experiment's around a
+    second pricing pass. CountPricer.mean() and PlayerModel.p_sot_ge read these
+    module globals at call time, so the SAME pricer reprices under the override —
+    bot 1 and bot 2 thus share identical odds, isolating the strategy as the only
+    difference. Always restored, even on error."""
+    import models.counts as mc
+    import models.players as mp
+    saved = (mc.TOURNAMENT_INTENSITY, mp.TOURNAMENT_TEAM_SOT)
+    try:
+        if exp.get("tournament_intensity"):
+            mc.TOURNAMENT_INTENSITY = exp["tournament_intensity"]
+        if exp.get("tournament_team_sot"):
+            mp.TOURNAMENT_TEAM_SOT = float(exp["tournament_team_sot"])
+        yield
+    finally:
+        mc.TOURNAMENT_INTENSITY, mp.TOURNAMENT_TEAM_SOT = saved
 
 
 def _available_bots() -> list[int]:
@@ -64,6 +99,62 @@ def _agent_ran_within(minutes: float) -> float | None:
     return age if age <= minutes else None
 
 
+def _pull_confirmed_lineups(match_name, kickoff, specs, attention) -> None:
+    """For an imminent kickoff, pull the posted XI from ESPN and write confirmed
+    expected_minutes (data/match_lineups.yaml) BEFORE pricing — replacing hand-typed
+    benchings. Fail-safe: writes nothing unless a real XI is posted, so an early or
+    missing lineup keeps the all-90 default; unmatched players are flagged, never
+    silently benched."""
+    players = {sp.player for _, _, sp in specs if sp.player}
+    if not players:
+        return
+    try:
+        from pull_lineups import pull_lineup, write_lineup
+        res = pull_lineup(match_name, kickoff, players=players)
+    except Exception as exc:
+        attention.append(f"{match_name}: lineup pull error — {exc}")
+        print(f"  lineups: ERROR — {exc}")
+        return
+    if res["status"] != "pulled":
+        print(f"  lineups: {res['status']} — not posted yet, all-90 default kept")
+        return
+    write_lineup(match_name, kickoff, res)
+    starters = sum(1 for m in res["minutes"].values() if m >= 90)
+    bench = sum(1 for m in res["minutes"].values() if m < 90)
+    print(f"  lineups: ESPN confirmed XI — {starters} of our players start, {bench} benched"
+          + (f"; UNMATCHED {res['unmatched']}" if res["unmatched"] else ""))
+    if res["unmatched"]:
+        attention.append(f"{match_name}: lineup could not match {res['unmatched']} "
+                         "— verify against the posted XI (left at default 90)")
+
+
+def _flag_stale_overrides(match_name, specs, attention) -> None:
+    """Safety net for the staleness class: flag any player drawing a VOLATILE value
+    (expected_minutes != 90 or scorer_prop_prob) from the GLOBAL override file rather
+    than a per-match confirmation. Minutes are auto-corrected by the pull; a global
+    scorer_prop is per-OPPONENT and must be re-checked each match (the 06-26
+    Al-Dawsari +3000-vs-Spain class). Makes the residual cases loud, not silent."""
+    import yaml
+    ov_path = ROOT / "data" / "player_overrides.yaml"
+    ml_path = ROOT / "data" / "match_lineups.yaml"
+    if not ov_path.exists():
+        return
+    overrides = yaml.safe_load(ov_path.read_text()) or {}
+    entry = (yaml.safe_load(ml_path.read_text()) or {}).get(match_name, {}) if ml_path.exists() else {}
+    pulled_min = entry.get("minutes") or {}
+    for p in sorted({sp.player for _, _, sp in specs if sp.player}):
+        o = overrides.get(p)
+        if not isinstance(o, dict):
+            continue
+        em = o.get("expected_minutes")
+        if em is not None and em != 90 and p not in pulled_min:
+            attention.append(f"{match_name}: STALE-RISK {p} expected_minutes={em} from a GLOBAL "
+                             "override (past game), NOT confirmed by today's pull — verify the XI")
+        if "scorer_prop_prob" in o:
+            attention.append(f"{match_name}: STALE-RISK {p} scorer_prop_prob={o['scorer_prop_prob']} "
+                             "is per-OPPONENT — confirm it is for THIS match's odds")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--hours", type=float, default=48, help="kickoff horizon")
@@ -95,10 +186,31 @@ def main():
         print(f"No open markets with kickoff in the next {args.hours:.0f}h.")
         return
 
-    attention, all_probs = [], {}
+    experiment = _load_experiment(bots)
+    if experiment:
+        print(f"** bot 2 on EXPERIMENT '{experiment['name']}' (A/B vs bot-1 v4): {experiment.get('description','')} **")
+    attention, probs = [], {b: {} for b in bots}
+    now = datetime.now(timezone.utc)
     for match_name, group in markets.groupby("match_name", sort=False):
         kickoff = group["kickoff"].iloc[0]
         print(f"\n=== {match_name}  (kickoff {kickoff:%Y-%m-%d %H:%M UTC}) ===")
+
+        specs = []
+        for _, market in group.iterrows():
+            try:
+                specs.append((market["market_id"], market["question"],
+                              parse(market["question"], teams=ALL_TEAM_NAMES)))
+            except Exception as exc:
+                attention.append(f"{match_name}: CANNOT PARSE {market['question']!r} ({exc})")
+                print(f"  SKIP   {market['question'][:70]}  <- parse {exc.__class__.__name__}")
+
+        # Confirmed lineups (replaces hand-typed benchings): within the pull window
+        # of kickoff, fetch the posted XI -> expected_minutes BEFORE building the
+        # pricer, which then reads data/match_lineups.yaml for this match.
+        if kickoff - now <= LINEUP_PULL_WINDOW:
+            _pull_confirmed_lineups(match_name, kickoff, specs, attention)
+        _flag_stale_overrides(match_name, specs, attention)
+
         try:
             pricer = build_pricer(match_name, kickoff)
         except Exception as exc:
@@ -106,24 +218,19 @@ def main():
             print(f"  SKIPPED: {exc}")
             continue
 
-        for _, market in group.iterrows():
-            # One unpriceable market must never sink the whole unattended run:
-            # skip it, submit the rest, and surface it in the attention report.
+        # bot 1 = stable v4: price, print, and flag low-confidence player rates.
+        # One unpriceable market must never sink the whole unattended run.
+        for mid, q, spec in specs:
             try:
-                spec = parse(market["question"], teams=ALL_TEAM_NAMES)
                 p = pricer.price(spec)
             except Exception as exc:
-                attention.append(f"{match_name}: CANNOT PRICE {market['question']!r} "
-                                 f"({exc.__class__.__name__}: {exc})")
-                print(f"  SKIP   {market['question'][:70]}  <- {exc.__class__.__name__}")
+                attention.append(f"{match_name}: CANNOT PRICE {q!r} ({exc.__class__.__name__}: {exc})")
+                print(f"  SKIP   {q[:70]}  <- {exc.__class__.__name__}")
                 continue
-            all_probs[market["market_id"]] = p
+            probs[1][mid] = p
             flag = ""
             if spec.player:
                 src = pricer.players.rates(spec.player).source
-                # Flag low-confidence player-rate sources so the agent researches
-                # current form: no data ("prior") or sparse/possibly-stale
-                # StatsBomb history (a role can change between tournaments).
                 if src == "prior":
                     flag = "  <- prior only: research this player"
                     attention.append(f"{match_name}: {spec.player} priced on prior (no data)")
@@ -131,18 +238,36 @@ def main():
                     flag = "  <- sparse/old data: verify current form"
                     attention.append(f"{match_name}: {spec.player} on sparse StatsBomb history "
                                      f"— fetch current club form (update_player_rates) or research")
-            print(f"  {p:5.3f}  {market['question'][:70]}{flag}")
+            print(f"  {p:5.3f}  {q[:70]}{flag}")
+
+        # bot 2 = experiment: reprice the SAME markets/odds under the override
+        # constants; if no experiment, it mirrors bot 1 exactly (current behaviour).
+        if 2 in bots:
+            if experiment:
+                with _experimental(experiment):
+                    for mid, q, spec in specs:
+                        if mid in probs[1]:
+                            try:
+                                probs[2][mid] = pricer.price(spec)
+                            except Exception:
+                                probs[2][mid] = probs[1][mid]
+            else:
+                probs[2] = dict(probs[1])
 
     actions = {}
-    if all_probs:
-        # Submit the SAME computed predictions to every bot explicitly — do not
-        # rely on the platform's account-level storage to propagate them. probs
-        # are computed once (above); each bot just sends the identical dict.
-        print(f"\n{'[dry run] ' if dry else ''}submitting {len(all_probs)} predictions to bots {bots}...")
-        for bot in bots:
+    if any(probs.values()):
+        # Submit each bot its OWN dict explicitly (bot 1 stable, bot 2 experiment) —
+        # never rely on account-level propagation. ORDER MATTERS: bot 2 (experiment)
+        # FIRST, bot 1 (stable v4) LAST — so if any cross-contamination ever occurred,
+        # the stable version is the final write and wins on both. (Computation order is
+        # unchanged: bot 1 is priced first, above.)
+        submit_order = ([2] if 2 in bots else []) + ([1] if 1 in bots else [])
+        for bot in submit_order:
+            tag = f" [EXPERIMENT: {experiment['name']}]" if (bot == 2 and experiment) else " [stable v4]"
+            print(f"\n{'[dry run] ' if dry else ''}submitting {len(probs[bot])} predictions to bot {bot}{tag}...")
             client = pc if bot == 1 else ProbabilityCup(bot=bot)
             try:
-                report = client.submit(all_probs, dry_run=dry)
+                report = client.submit(probs[bot], dry_run=dry)
             except Exception as exc:
                 attention.append(f"bot {bot}: submission failed — {exc}")
                 print(f"  bot {bot}: FAILED — {exc}")
