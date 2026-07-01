@@ -120,6 +120,12 @@ class ScorelineModel:
         marginal = self.grid.sum(axis=axis)
         return float(marginal[threshold:].sum())
 
+    def p_team_clean_sheet(self, side: str) -> float:
+        opponent = "away" if side == "home" else "home"
+        axis = 1 if opponent == "home" else 0
+        marginal = self.grid.sum(axis=axis)
+        return float(marginal[0])
+
     def p_btts(self) -> float:
         """Both teams score (>=1 each)."""
         return float(self.grid[(self._h >= 1) & (self._a >= 1)].sum())

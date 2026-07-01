@@ -72,12 +72,14 @@ def _normalize_name(name: str) -> str:
 
 class PlayerModel:
     def __init__(self, statsbomb_players: pd.DataFrame,
-                 match_minutes: dict[str, float] | None = None):
+                 match_minutes: dict[str, float] | None = None,
+                 use_global_expected_minutes: bool = True):
         # match_minutes: confirmed expected_minutes pulled from the posted XI for
         # the SINGLE match being priced (scripts/pull_lineups.py). Takes precedence
         # over the global override's expected_minutes so a stale benching cannot
         # ride forward into a later fixture.
         self._match_minutes = match_minutes or {}
+        self._use_global_expected_minutes = use_global_expected_minutes
         self._history = (
             statsbomb_players.groupby("player")
             .agg(apps=("match_id", "count"), goals=("goals", "sum"),
@@ -101,7 +103,27 @@ class PlayerModel:
         spelling/order variants. None when the player has no tournament history."""
         if player in self._history.index:
             return player
-        return self._name_index.get(_normalize_name(player))
+        normalized = _normalize_name(player)
+        exact = self._name_index.get(normalized)
+        if exact is not None:
+            return exact
+        query_tokens = set(normalized.split())
+        if not query_tokens:
+            return None
+        candidates = []
+        for key, name in self._name_index.items():
+            if query_tokens.issubset(set(key.split())):
+                candidates.append(name)
+        if len(candidates) == 1:
+            return candidates[0]
+        if candidates:
+            # Prefer the shortest unambiguous-looking expansion, e.g.
+            # "Kylian Mbappe" -> "Kylian Mbappe Lottin".
+            candidates = sorted(candidates, key=lambda n: (len(_normalize_name(n).split()), n))
+            shortest = len(_normalize_name(candidates[0]).split())
+            if len(candidates) == 1 or len(_normalize_name(candidates[1]).split()) > shortest:
+                return candidates[0]
+        return None
 
     def is_sparse(self, player: str) -> bool:
         """True if the player has no override and only thin StatsBomb history,
@@ -150,13 +172,15 @@ class PlayerModel:
 
         sot_rate, sot_source = self._sot_rate(override, history)
 
-        # expected_minutes precedence: confirmed pulled XI > manual override > 90.
-        # The pulled value wins so a stale benched override is auto-corrected the
-        # moment the real lineup is read (the 06-26 Trezeguet failure mode).
+        # expected_minutes precedence: confirmed pulled XI > optional manual
+        # override > 90. Manual workflows disable the global override so a past
+        # fixture benching cannot silently carry into a future match.
         if player in self._match_minutes:
             minutes = float(self._match_minutes[player])
-        else:
+        elif self._use_global_expected_minutes:
             minutes = float(override.get("expected_minutes", 90))
+        else:
+            minutes = 90.0
 
         return PlayerRates(
             goal_share=override.get("goal_share", goal_share),

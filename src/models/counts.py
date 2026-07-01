@@ -46,12 +46,13 @@ COUNT_INTL_DISCOUNT = {"cards": 0.849, "corners": 0.872, "sot": 0.839, "fouls": 
 # pricing tournament fixtures (CountPricer.tournament=True), never in the club
 # backtest. REPLACES a former UNIFORM 0.90 "low-event" multiplier (2026-06-19)
 # that was a blunt instrument: it suppressed every stat equally, but WC-2026
-# needs OPPOSITE corrections per stat. Re-fit 2026-06-24 on 383 settled markets
-# (objective: minimise our Brier vs realized outcomes = calibration, the
-# RBP-optimal target) with chronological OOS validation — each value below
-# improves RBP on BOTH halves of the tournament — and cross-checked against
-# observed WC-2026 rates (goals 3.12/game vs 2.56 in 2022; fouls 24.4 vs 27.7;
-# yellows ~2.17/game):
+# needs OPPOSITE corrections per stat. These are conservative production values
+# cross-checked against observed WC-2026 rates (goals 3.12/game vs 2.56 in 2022;
+# fouls 24.4 vs 27.7; yellows ~2.17/game) and the read-only replay in
+# data/logs/count_intensity_replay.md. That replay supports replacing uniform
+# 0.90, but the more aggressive challenger is not promoted wholesale because it
+# worsens the strongest manually trusted SOT families even while improving total
+# thresholds.
 #   cards   0.78  WC-2026 is a low-card tournament; the StatsBomb-based card model
 #                 over-predicted by ~30pts (we 0.62 vs 0.31 realized). The former
 #                 uniform 0.90 was nowhere near enough.  (settled cards -57 -> -5 RBP)

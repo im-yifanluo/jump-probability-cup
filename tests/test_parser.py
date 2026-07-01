@@ -11,7 +11,10 @@ sys.path.insert(0, str(ROOT / "src"))
 from questions.parser import MarketSpec, parse
 from questions.teams import ALL_TEAM_NAMES, match_teams
 
-SNAPSHOT = json.loads((ROOT / "data" / "snapshot.json").read_text())
+SNAPSHOT_PATH = ROOT / "data" / "snapshot.json"
+if not SNAPSHOT_PATH.exists():
+    SNAPSHOT_PATH = ROOT / "data_reference" / "snapshot.json"
+SNAPSHOT = json.loads(SNAPSHOT_PATH.read_text())
 
 
 def test_all_snapshot_markets_parse():
@@ -49,6 +52,34 @@ def test_known_specs():
     assert parse("At halftime, will Czechia have more corner kicks than South Korea?", teams
                  ) == MarketSpec("team_more_count_than", team="Czechia",
                                  opponent="South Korea", stat="corners", period="1h")
+    assert parse(
+        "Will an own goal be scored in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec("own_goal", stat="goals")
+    assert parse(
+        "Will a goal be scored from outside the penalty area in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec("outside_box_goal", stat="goals")
+    assert parse(
+        "Will a header goal be scored in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec("header_goal", stat="goals")
+    assert parse(
+        "Will any player score 2 or more goals in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec("any_player_goals_ge", stat="goals", threshold=2)
+    assert parse(
+        "Will DR Congo score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec("team_goals_ge", team="DR Congo", stat="goals", threshold=1)
+    assert parse(
+        "Will Cyle Larin score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec("player_scores", player="Cyle Larin")
+    assert parse(
+        "Will a substitute score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec("substitute_scores", stat="goals")
 
 
 def test_family_coverage_summary():

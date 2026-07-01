@@ -1,3 +1,5 @@
 .env
 data/
+data_reference/
 __pycache__/
+.DS_Store

@@ -30,8 +30,29 @@ class PolymarketOdds:
 
 
 def _soccer_events(session: requests.Session) -> list[dict]:
-    return session.get(GAMMA, params={"closed": "false", "tag_slug": "soccer", "limit": 200},
-                       timeout=20).json()
+    """Current open soccer events from the generic tag plus FIFA WC series.
+
+    Gamma's generic `tag_slug=soccer` feed can omit current match-specific World
+    Cup markets that are exposed under `series_slug=soccer-fifwc`, so use both
+    and de-duplicate by event id/slug.
+    """
+
+    queries = [
+        {"closed": "false", "tag_slug": "soccer", "limit": 100},
+        {"closed": "false", "series_slug": "soccer-fifwc", "limit": 100, "offset": 0},
+        {"closed": "false", "series_slug": "soccer-fifwc", "limit": 100, "offset": 100},
+    ]
+    events: list[dict] = []
+    seen: set[str] = set()
+    for params in queries:
+        data = session.get(GAMMA, params=params, timeout=20).json()
+        for event in data:
+            key = str(event.get("id") or event.get("slug") or event.get("title"))
+            if key in seen:
+                continue
+            seen.add(key)
+            events.append(event)
+    return events
 
 
 def _outcome_yes_price(market: dict) -> float | None:

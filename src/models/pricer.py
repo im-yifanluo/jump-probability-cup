@@ -13,6 +13,7 @@ from dataclasses import dataclass, field
 from models.counts import CountPricer
 from models.goals import ScorelineModel
 from models.players import PlayerModel
+from models.specials import SpecialPricer
 from questions.parser import MarketSpec
 from questions.teams import names_match
 
@@ -50,22 +51,22 @@ class MatchPricer:
     baseline: "MatchPricer | None" = None  # same models at tournament-average lambdas
 
     def _side(self, team: str) -> str:
-        if team == self.home_name:
+        if team == self.home_name or names_match(team, self.home_name):
             return "home"
-        if team == self.away_name:
+        if team == self.away_name or names_match(team, self.away_name):
             return "away"
         raise KeyError(f"{team!r} is not in {self.home_name} vs {self.away_name}")
 
     def _team_lam(self, side: str) -> float:
         return self.goals.lam_home if side == "home" else self.goals.lam_away
 
-    def _player_side(self, player: str) -> str | None:
+    def _player_side(self, player: str, team_hint: str | None = None) -> str | None:
         """Resolve a player's side: explicit MatchPricer mapping, then the
         PlayerModel's team (override `team:` or StatsBomb history). Returns None
         only when the team is genuinely unknown — callers then use match-average
         tempo. Team names are compared tolerantly so an override `team: Iraq`
         matches the question-space name without an exact-string requirement."""
-        team = self.player_teams.get(player) or self.players.team_of(player)
+        team = team_hint or self.player_teams.get(player) or self.players.team_of(player)
         if team is None:
             return None
         for cand, side in ((self.home_name, "home"), (self.away_name, "away")):
@@ -73,8 +74,8 @@ class MatchPricer:
                 return side
         return None
 
-    def _player_team_lam(self, player: str) -> float:
-        side = self._player_side(player)
+    def _player_team_lam(self, player: str, team_hint: str | None = None) -> float:
+        side = self._player_side(player, team_hint)
         if side is None:
             return (self.goals.lam_home + self.goals.lam_away) / 2
         return self._team_lam(side)
@@ -98,6 +99,8 @@ class MatchPricer:
             # outcome / state
             case "team_win":
                 return g.p_team_win(self._side(spec.team))
+            case "team_advance":
+                return SpecialPricer(g, c).p_advance(self._side(spec.team))
             case "ht_tied":
                 return g.p_ht_tied()
             case "ht_team_winning":
@@ -113,6 +116,8 @@ class MatchPricer:
                 return g.p_btts_and_total_ge(spec.threshold)
             case "team_goals_ge":
                 return g.p_team_goals_ge(self._side(spec.team), spec.threshold)
+            case "team_clean_sheet":
+                return g.p_team_clean_sheet(self._side(spec.team))
             case "team_scores_in_half":
                 return g.p_team_scores_in_half(self._side(spec.team), spec.period)
             case "team_more_goals_2h":
@@ -139,9 +144,41 @@ class MatchPricer:
                 return c.p_penalty_or_red()
             case "red_card":
                 return c.p_red()
+            # timed/special events
+            case "goal_before_hydration":
+                return SpecialPricer(g, c).p_goal_before_hydration()
+            case "goal_after_second_hydration":
+                return SpecialPricer(g, c).p_goal_after_second_hydration()
+            case "goal_in_stoppage":
+                return SpecialPricer(g, c).p_goal_in_stoppage(spec.period)
+            case "offside_before_hydration":
+                return SpecialPricer(g, c).p_offside_before_hydration()
+            case "card_after_second_hydration":
+                return SpecialPricer(g, c).p_card_after_second_hydration(
+                    include_extra_time=bool(spec.params.get("include_extra_time"))
+                )
+            case "substitution_before_halftime":
+                return SpecialPricer(g, c).p_substitution_before_halftime()
+            case "substitute_scores":
+                return SpecialPricer(g, c).p_substitute_scores()
+            case "own_goal":
+                return SpecialPricer(g, c).p_own_goal()
+            case "outside_box_goal":
+                return SpecialPricer(g, c).p_outside_box_goal()
+            case "header_goal":
+                return SpecialPricer(g, c).p_header_goal()
+            case "any_player_goals_ge":
+                return SpecialPricer(g, c).p_any_player_goals_ge(spec.threshold)
+            case "any_player_sot_ge":
+                return SpecialPricer(g, c).p_any_player_sot_ge(spec.threshold)
             # counts
             case "total_count_ge":
+                if spec.stat == "shots":
+                    return SpecialPricer(g, c).p_total_shots_ge(spec.threshold)
                 return c.p_total_count_ge(spec.stat, spec.threshold, spec.period)
+            case "total_count_before_hydration":
+                if spec.stat == "corners":
+                    return SpecialPricer(g, c).p_corners_before_hydration_ge(spec.threshold)
             case "team_count_ge":
                 return c.p_team_count_ge(
                     spec.stat, self._side(spec.team), spec.threshold, spec.period)
@@ -152,13 +189,15 @@ class MatchPricer:
             # player props
             case "player_scores":
                 return self.players.p_scores(
-                    spec.player, self._player_team_lam(spec.player),
+                    spec.player, self._player_team_lam(
+                        spec.player, spec.params.get("player_team")),
                     prop_prob=self.scorer_props.get(spec.player))
             case "player_scores_or_assists":
                 return self.players.p_scores_or_assists(
-                    spec.player, self._player_team_lam(spec.player))
+                    spec.player, self._player_team_lam(
+                        spec.player, spec.params.get("player_team")))
             case "player_sot_ge":
-                side = self._player_side(spec.player)
+                side = self._player_side(spec.player, spec.params.get("player_team"))
                 team_sot = (c.mean("sot", side, "match") if side is not None else
                             (c.mean("sot", "home", "match") + c.mean("sot", "away", "match")) / 2)
                 h2 = c.aggregates["stats"]["sot"]["h2_share"]

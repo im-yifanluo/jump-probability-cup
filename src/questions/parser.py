@@ -17,7 +17,9 @@ questions, which read the state/counts after 45 minutes), "2h" (second half).
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
+
+from questions.teams import EXTERNAL_ALIASES
 
 MATCH, H1, H2 = "match", "1h", "2h"
 
@@ -44,6 +46,48 @@ class UnparsedQuestion(ValueError):
 _RULES: list[tuple[re.Pattern, callable]] = []
 
 
+def _norm_team_subject(name: str) -> str:
+    import unicodedata
+
+    folded = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode()
+    normalized = re.sub(r"[^a-z0-9 ]+", " ", folded.lower()).strip()
+    return re.sub(r"^the\s+", "", normalized)
+
+
+def _team_subject(name: str, teams) -> str | None:
+    normalized = _norm_team_subject(name)
+    for team in teams:
+        aliases = {team, *EXTERNAL_ALIASES.get(team, set())}
+        if normalized in {_norm_team_subject(alias) for alias in aliases}:
+            return team
+    return None
+
+
+_PLAYER_TEAM_SUFFIX = re.compile(r"\s*\((?P<team>[^)]*)\)\s*$")
+
+
+def _player_name_and_team(name: str, teams) -> tuple[str, str | None]:
+    """Return the clean player name plus an explicit team hint when the
+    question writes player props as "Name (Team)".
+
+    The hint is deliberately conservative: only a parenthetical suffix is used,
+    and it must resolve through the same team alias table as normal team
+    subjects. This prevents the player model from falling back to match-average
+    strength for prior-only players whose team is supplied in the market text.
+    """
+    m = _PLAYER_TEAM_SUFFIX.search(name)
+    clean = _PLAYER_TEAM_SUFFIX.sub("", name).strip()
+    return clean, _team_subject(m["team"], teams) if m else None
+
+
+def _player_name(name: str) -> str:
+    return _player_name_and_team(name, frozenset())[0]
+
+
+def _player_params(team: str | None) -> dict:
+    return {"player_team": team} if team else {}
+
+
 def _rule(pattern: str):
     def register(builder):
         _RULES.append((re.compile(pattern), builder))
@@ -52,6 +96,10 @@ def _rule(pattern: str):
 
 
 # --- match outcome / state ---------------------------------------------------
+
+@_rule(r"^Will (?P<team>.+?) advance to the Round of 16\?$")
+def _(m, teams):
+    return MarketSpec("team_advance", team=m["team"])
 
 @_rule(r"^Will (?P<team>.+?) win by (?P<n>\d+) or more goals\?$")
 def _(m, teams):
@@ -100,6 +148,11 @@ def _(m, teams):
     return MarketSpec("team_scores_both_halves", team=m["team"], stat="goals")
 
 
+@_rule(r"^Will (?P<team>.+?) keep a clean sheet\?$")
+def _(m, teams):
+    return MarketSpec("team_clean_sheet", team=m["team"], stat="goals")
+
+
 @_rule(r"^Will the match have (?P<n>\d+) or (?P<dir>more|fewer) total goals\?$")
 def _(m, teams):
     return MarketSpec("total_goals", stat="goals", threshold=int(m["n"]),
@@ -119,6 +172,11 @@ def _(m, teams):
 @_rule(r"^Will the second half (?:have|produce) more (?:total )?goals than the first half\?$")
 def _(m, teams):
     return MarketSpec("h2_more_goals_than_h1", stat="goals")
+
+
+@_rule(r"^Will any player score (?:(?P<n1>\d+) or more|at least (?P<n2>\d+)) goals?(?: \(excluding own goals\))?\?$")
+def _(m, teams):
+    return MarketSpec("any_player_goals_ge", stat="goals", threshold=int(m["n1"] or m["n2"]))
 
 
 @_rule(r"^Will (?P<team>.+?) score (?:(?P<n1>\d+) or more(?: total)? goals|at least (?P<n2>\d+) goals?)\?$")
@@ -174,7 +232,91 @@ def _(m, teams):
     return MarketSpec("red_card")
 
 
+# --- timed / special event markets -------------------------------------------
+
+@_rule(r"^Will a goal be scored before the first hydration break\?$")
+def _(m, teams):
+    return MarketSpec("goal_before_hydration", stat="goals", params={"minute_cut": 30})
+
+
+@_rule(r"^Will a goal be scored after the second hydration break\?$")
+def _(m, teams):
+    return MarketSpec("goal_after_second_hydration", stat="goals", params={"minute_cut": 75})
+
+
+@_rule(r"^Will a goal be scored in (?P<half>first|second)-half stoppage(?: \(added\))? time\?$")
+def _(m, teams):
+    return MarketSpec(
+        "goal_in_stoppage",
+        stat="goals",
+        period=H1 if m["half"] == "first" else H2,
+    )
+
+
+@_rule(r"^Will either team be ruled offside before the first hydration break\?$")
+def _(m, teams):
+    return MarketSpec("offside_before_hydration", stat="offsides", params={"minute_cut": 30})
+
+
+@_rule(r"^Will a card be shown after the second hydration break, including any extra time\?$")
+def _(m, teams):
+    return MarketSpec(
+        "card_after_second_hydration",
+        stat="cards",
+        params={"minute_cut": 75, "include_extra_time": True},
+    )
+
+
+@_rule(r"^Will a substitute score a goal(?: \(excluding own goals\))?\?$")
+def _(m, teams):
+    return MarketSpec("substitute_scores", stat="goals")
+
+
+@_rule(r"^Will an own goal be scored\?$")
+def _(m, teams):
+    return MarketSpec("own_goal", stat="goals")
+
+
+@_rule(r"^Will a goal be scored from outside the penalty area\?$")
+def _(m, teams):
+    return MarketSpec("outside_box_goal", stat="goals")
+
+
+@_rule(r"^Will a header goal be scored\?$")
+def _(m, teams):
+    return MarketSpec("header_goal", stat="goals")
+
+
+@_rule(r"^Will a substitution be made before halftime\?$")
+def _(m, teams):
+    return MarketSpec("substitution_before_halftime")
+
+
+@_rule(r"^Will any player score more than (?P<n>\d+) goal(?:s)?(?: \(excluding own goals\))?\?$")
+def _(m, teams):
+    return MarketSpec("any_player_goals_ge", stat="goals", threshold=int(m["n"]) + 1)
+
+
+@_rule(r"^Will any player record (?P<n>\d+) or more shots? on target\?$")
+def _(m, teams):
+    return MarketSpec("any_player_sot_ge", stat="sot", threshold=int(m["n"]))
+
+
 # --- total counts (both teams combined) -------------------------------------------
+
+@_rule(r"^Will there be (?P<n>\d+) or more total shots \(on and off target\)\?$")
+def _(m, teams):
+    return MarketSpec("total_count_ge", stat="shots", threshold=int(m["n"]))
+
+
+@_rule(r"^Will (?P<n>\d+) or more corner kicks be taken before the first hydration break\?$")
+def _(m, teams):
+    return MarketSpec(
+        "total_count_before_hydration",
+        stat="corners",
+        threshold=int(m["n"]),
+        params={"minute_cut": 30},
+    )
 
 @_rule(r"^Will there be (?P<n>\d+) or more total cards shown(?P<h2> in the second half)?\?$")
 def _(m, teams):
@@ -243,11 +385,14 @@ def _(m, teams):
     # Ambiguous template: subject is a team or a player — decide by membership.
     period = H2 if m["h2"] else MATCH
     threshold = int(m["n1"] or m["n2"])
-    if m["name"] in teams:
-        return MarketSpec("team_count_ge", team=m["name"], stat="sot",
+    team = _team_subject(m["name"], teams)
+    if team:
+        return MarketSpec("team_count_ge", team=team, stat="sot",
                           threshold=threshold, period=period)
-    return MarketSpec("player_sot_ge", player=m["name"], stat="sot",
-                      threshold=threshold, period=period)
+    player, player_team = _player_name_and_team(m["name"], teams)
+    return MarketSpec("player_sot_ge", player=player, stat="sot",
+                      threshold=threshold, period=period,
+                      params=_player_params(player_team))
 
 
 # --- head-to-head count comparisons (ties resolve to No) ----------------------------
@@ -293,12 +438,19 @@ def _(m, teams):
 
 @_rule(r"^Will (?P<player>.+?) score a goal \(excluding own goals\)\?$")
 def _(m, teams):
-    return MarketSpec("player_scores", player=m["player"])
+    team = _team_subject(m["player"], teams)
+    if team:
+        return MarketSpec("team_goals_ge", team=team, stat="goals", threshold=1)
+    player, player_team = _player_name_and_team(m["player"], teams)
+    return MarketSpec("player_scores", player=player,
+                      params=_player_params(player_team))
 
 
 @_rule(r"^Will (?P<player>.+?) score or assist a goal \(excluding own goals\)\?$")
 def _(m, teams):
-    return MarketSpec("player_scores_or_assists", player=m["player"])
+    player, player_team = _player_name_and_team(m["player"], teams)
+    return MarketSpec("player_scores_or_assists", player=player,
+                      params=_player_params(player_team))
 
 
 # Knockout-round markets re-phrase the group-stage templates with a regulation /
@@ -328,5 +480,10 @@ def parse(question: str, teams: frozenset[str] | set[str] = frozenset()) -> Mark
     for pattern, builder in _RULES:
         m = pattern.match(q)
         if m:
-            return builder(m, teams)
+            spec = builder(m, teams)
+            team = _team_subject(spec.team, teams) if spec.team else None
+            opponent = _team_subject(spec.opponent, teams) if spec.opponent else None
+            if team or opponent:
+                return replace(spec, team=team or spec.team, opponent=opponent or spec.opponent)
+            return spec
     raise UnparsedQuestion(question)

@@ -40,22 +40,24 @@ MATCH_LINEUPS = ROOT / "data" / "match_lineups.yaml"
 TOURNAMENT_AVG_LAM = 1.30  # structural baseline goal rate per side
 TOURNAMENT_CARDS_PER_MATCH = 3.46  # StatsBomb mean total cards/match (referee baseline)
 
-# NOTE (2026-06-14): a favorite-longshot extremizing of the odds was tried and
-# REMOVED. The bias is real but its benefit in modern de-margined odds is
-# negligible (+0.00005/market out-of-sample), and it hurt on the live sample.
-# We anchor on the de-margined odds as-is — accurate, lean, no overfitting.
+# NOTE (2026-06-29): favorite-longshot-aware power de-vig is tracked in
+# data/logs/odds_conversion_backtest.md. It improves historical 1X2 closing
+# odds, but total-goals odds do not clear the same bootstrap gate, so the live
+# score-grid still uses proportional de-margin.
 
 
-def _card_factor(match_name: str) -> float:
-    """Referee strictness multiplier for a match's card markets, from
-    data/referee_overrides.yaml ({match: {referee, cards_per_game}}). 1.0 when
-    the referee is unknown — the agent researches and fills it pre-match."""
+def referee_context(match_name: str) -> dict:
+    """Referee/card-factor context for one match.
+
+    The card factor is asymmetric and RBP-validated: lenient referees can reduce
+    card means, but strict referees are capped at 1.0 and never inflate them.
+    """
     if not REFEREE_OVERRIDES.exists():
-        return 1.0
+        return {"status": "no_file", "card_factor": 1.0}
     refs = yaml.safe_load(REFEREE_OVERRIDES.read_text()) or {}
     entry = refs.get(match_name)
     if not entry or "cards_per_game" not in entry:
-        return 1.0
+        return {"status": "no_override", "card_factor": 1.0}
     # ASYMMETRIC CAP at 1.0 (2026-06-19, RBP-validated). A referee multiplier
     # ABOVE 1.0 (strict ref) consistently OVER-predicted cards and was our single
     # worst RBP leak — card markets flipped +15.5 -> -12.4/market once aggressive
@@ -64,7 +66,19 @@ def _card_factor(match_name: str) -> float:
     # safe) but never let a strict ref inflate them. The base card model is
     # already StatsBomb-calibrated; a properly-calibrated upward model could
     # return later. (The remaining low-event level is handled by TOURNAMENT_INTENSITY.)
-    return min(1.0, max(0.6, float(entry["cards_per_game"]) / TOURNAMENT_CARDS_PER_MATCH))
+    factor = min(1.0, max(0.6, float(entry["cards_per_game"]) / TOURNAMENT_CARDS_PER_MATCH))
+    return {
+        "status": "override",
+        "referee": entry.get("referee", "unknown"),
+        "cards_per_game": float(entry["cards_per_game"]),
+        "card_factor": factor,
+        "source": entry.get("source", ""),
+    }
+
+
+def _card_factor(match_name: str) -> float:
+    """Referee strictness multiplier for a match's card markets."""
+    return float(referee_context(match_name)["card_factor"])
 
 
 def get_anchors(match_name: str, kickoff) -> tuple[float, float, float]:
@@ -125,7 +139,13 @@ def _match_minutes(match_name: str) -> dict[str, float]:
     return (data.get(match_name) or {}).get("minutes") or {}
 
 
-def build_pricer(match_name: str, kickoff) -> MatchPricer:
+def build_pricer(
+    match_name: str,
+    kickoff,
+    *,
+    include_global_scorer_props: bool = True,
+    include_global_expected_minutes: bool = True,
+) -> MatchPricer:
     home_full, away_full = match_teams(match_name)
     p_home, p_draw, total = get_anchors(match_name, kickoff)
 
@@ -138,7 +158,11 @@ def build_pricer(match_name: str, kickoff) -> MatchPricer:
     h2_goals = aggregates["stats"]["goals"]["h2_share"]
 
     goals = ScorelineModel.from_market(p_home, p_draw, total, h2_share=h2_goals)
-    players = PlayerModel(sb_players, match_minutes=_match_minutes(match_name))
+    players = PlayerModel(
+        sb_players,
+        match_minutes=_match_minutes(match_name),
+        use_global_expected_minutes=include_global_expected_minutes,
+    )
 
     card_factor = _card_factor(match_name)
     counts = CountPricer(goals.lam_home, goals.lam_away, params, aggregates,
@@ -149,8 +173,9 @@ def build_pricer(match_name: str, kickoff) -> MatchPricer:
         CountPricer(TOURNAMENT_AVG_LAM, TOURNAMENT_AVG_LAM, params, aggregates,
                     card_factor=card_factor),
         players)
+    scorer_props = _scorer_props_from_overrides() if include_global_scorer_props else {}
     return MatchPricer(home_full, away_full, goals, counts, players,
-                       scorer_props=_scorer_props_from_overrides(), baseline=baseline)
+                       scorer_props=scorer_props, baseline=baseline)
 
 
 def build_sim_pricer(match_name: str, kickoff, n_sims: int = 40000):

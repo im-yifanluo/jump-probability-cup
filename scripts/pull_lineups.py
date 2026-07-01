@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import argparse
 import sys
+import time
 import unicodedata
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -45,6 +46,35 @@ MATCH_LINEUPS = ROOT / "data" / "match_lineups.yaml"
 STARTER_MINUTES = 90
 BENCH_MINUTES = 20
 MIN_STARTERS = 11   # a posted XI; below this the lineup isn't really out yet
+REQUEST_TIMEOUT_SECONDS = 20
+REQUEST_ATTEMPTS = 3
+RETRY_BASE_SLEEP_SECONDS = 0.5
+
+
+class SourceFetchError(RuntimeError):
+    """Raised when ESPN can be reached only unreliably, after bounded retries."""
+
+
+def _get_json_with_retries(session: requests.Session, url: str, *, params: dict) -> dict:
+    last_exc: BaseException | None = None
+    for attempt in range(1, REQUEST_ATTEMPTS + 1):
+        try:
+            response = session.get(url, params=params, timeout=REQUEST_TIMEOUT_SECONDS)
+            raise_for_status = getattr(response, "raise_for_status", None)
+            if raise_for_status:
+                raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as exc:
+            last_exc = exc
+            if attempt == REQUEST_ATTEMPTS:
+                break
+            time.sleep(RETRY_BASE_SLEEP_SECONDS * (2 ** (attempt - 1)))
+        except ValueError as exc:
+            raise SourceFetchError(f"ESPN returned invalid JSON for {url} params={params}: {exc}") from exc
+    raise SourceFetchError(
+        f"ESPN request failed after {REQUEST_ATTEMPTS} attempts for {url} "
+        f"params={params}: {type(last_exc).__name__}: {last_exc}"
+    ) from last_exc
 
 
 def _fold(name: str) -> str:
@@ -52,6 +82,19 @@ def _fold(name: str) -> str:
     _normalize_name which sorts) — so the last token is the surname."""
     return (unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode()
             .lower().replace("-", " "))
+
+
+def _squash_repeats(value: str) -> str:
+    """Collapse repeated letters for conservative ESPN/name spelling variants.
+
+    This catches cases like Al-Taamari vs Al-Tamari after exact matching has
+    failed. It is only used as a fallback over already-oriented match rosters.
+    """
+    out = []
+    for ch in value:
+        if not out or out[-1] != ch:
+            out.append(ch)
+    return "".join(out)
 
 
 def _find_event_summary(match_name: str, kickoff, session: requests.Session) -> dict:
@@ -63,7 +106,7 @@ def _find_event_summary(match_name: str, kickoff, session: requests.Session) -> 
     prev = (kickoff - timedelta(days=1)).strftime("%Y%m%d")
     event = None
     for d in (day, prev):  # ESPN buckets by US local date; late-UTC sits on prev day
-        board = session.get(SCOREBOARD, params={"dates": d}, timeout=20).json()
+        board = _get_json_with_retries(session, SCOREBOARD, params={"dates": d})
         event = next((e for e in board.get("events", []) if hint in e["name"].lower()), None)
         if event:
             break
@@ -73,7 +116,7 @@ def _find_event_summary(match_name: str, kickoff, session: requests.Session) -> 
     if not (any(names_match(home_full, t) for t in espn_teams)
             and any(names_match(away_full, t) for t in espn_teams)):
         raise LookupError(f"ESPN teams {espn_teams} don't orient to {match_name!r}")
-    return session.get(SUMMARY, params={"event": event["id"]}, timeout=20).json()
+    return _get_json_with_retries(session, SUMMARY, params={"event": event["id"]})
 
 
 def verify_rosters(summary: dict) -> list | None:
@@ -111,11 +154,24 @@ def _match(name: str, full: dict, surname: dict):
     rec = full.get(_normalize_name(name))
     if rec:
         return rec
+    squashed = _squash_repeats(_normalize_name(name))
+    squashed_hits = [rec for key, rec in full.items() if _squash_repeats(key) == squashed]
+    if len(squashed_hits) == 1:
+        return squashed_hits[0]
     toks = _fold(name).split()
     if toks:
         cands = surname.get(toks[-1], [])
         if len(cands) == 1:
             return cands[0]
+        squashed_surname = _squash_repeats(toks[-1])
+        squashed_cands = [
+            rec
+            for key, values in surname.items()
+            if _squash_repeats(key) == squashed_surname
+            for rec in values
+        ]
+        if len(squashed_cands) == 1:
+            return squashed_cands[0]
     return None
 
 
@@ -153,12 +209,18 @@ def _market_players(match_name: str) -> set[str]:
 
 def pull_lineup(match_name: str, kickoff, players=None,
                 session: requests.Session | None = None) -> dict:
-    """Pull + verify + derive (no write). status in {pulled, not_posted, no_event}."""
+    """Pull + verify + derive (no write).
+
+    status in {pulled, not_posted, no_event, source_error}.
+    """
     s = session or requests.Session()
     if players is None:
         players = _market_players(match_name)
     try:
         summary = _find_event_summary(match_name, kickoff, s)
+    except SourceFetchError as exc:
+        return {"status": "source_error", "error": str(exc),
+                "minutes": {}, "unmatched": sorted(players), "detail": []}
     except LookupError as exc:
         return {"status": "no_event", "error": str(exc),
                 "minutes": {}, "unmatched": sorted(players), "detail": []}

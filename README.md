@@ -1,311 +1,437 @@
-# Jump Trading Probability Cup — Prediction System
+# Jump Probability Cup Manual Research System
 
-Competing on SportsPredict's **Probability Cup** (2026 World Cup, Jun 11 – Jul 19 2026)
-via the Model API. Full API reference: `docs/API-Documentation.pdf`. Canonical strategy
-write-up: `docs/strategy_v4.md`. Operating memory (decisions, fixes, current state) lives
-in the agent memory index (decisions, fixes, current state).
+This repository prices SportsPredict Probability Cup markets for the 2026 World
+Cup. It contains bot tooling, but the current research workflow is for the
+manual leaderboard entry.
 
----
+Manual-entry rule: do not read stored bot predictions, do not submit through the
+API, and do not use bot values as inputs. The API key in `.env` is for read-only
+GET calls needed to discover markets and settled results.
 
-## 0. The three entries
+## Contest Mechanics
 
-We hold **three independent leaderboard entries** on the same markets. Each is scored on its
-own (RBP, §1); the standing is driven by whichever ranks best.
+SportsPredict Probability Cup markets are binary yes/no questions. Entries are
+integer probabilities from 1 to 99, submitted before the market close time,
+which is usually kickoff. The latest value before close is scored.
 
-| Entry | Run by | What it is | Key |
-|---|---|---|---|
-| **bot 1** | the automated pipeline | **stable v4** — the calibrated production model; the current leader. Unvalidated changes are kept off it. | `SPORTSPREDICT_KEY_1` |
-| **bot 2** | the automated pipeline | **live A/B experiment** — prices the same odds as bot 1 with one candidate tweak (`data/bot2_experiment.yaml`), to test changes before they reach bot 1. | `SPORTSPREDICT_KEY_2` |
-| **manual** | a human/agent, by hand on the app | the third slot. There is no third API key — it is hand‑entered on the SportsPredict app, and currently carries bot 1's values. | none |
+Scoring is Brier:
 
-The pipeline (§5) produces and submits bot 1 and bot 2 and prints bot 1's daily chart; the
-manual entry is filled in by hand. Predictions can be revised until a match's kickoff (the
-deadline); the last value counts.
+```text
+Brier = (p - outcome)^2
+RBP = (crowd_brier - user_brier) * 100
+```
 
-**Observations relevant to running several entries** (facts, not instructions):
-- Scoring is a **proper scoring rule** (§2): calibrated probabilities minimize expected Brier,
-  with no shading. bot 1 is built to exactly that.
-- Three entries carrying the *same* numbers rank near‑identically (fully correlated).
-  Decorrelating them is the only thing that turns three entries into three distinct shots — and
-  every step away from the calibrated value lowers expected score in exchange for variance
-  (proper scoring again).
-- Our edge analysis (`docs/strategy_v4.md`, agent memory) finds we **beat the crowd on soft
-  count markets** (offsides, corners, head‑to‑head "ties‑lose" comparisons) and **lose to it on
-  goals / 1X2 / totals**, where the betting market + Polymarket are sharper — so the bots anchor
-  to the market there.
-- The largest self‑inflicted losses on record came from pushing **low‑base‑rate props above the
-  crowd** on a hunch (benched players, longshot "X scores").
+Stage weighting applies: group stage 1x, knockout 2x, final 3x. Weighting
+changes the value of a market, not the optimal probability. Since Brier is a
+strictly proper scoring rule, the target is the best calibrated probability.
+Intentional extremizing or catch-up shading is rejected unless the objective is
+explicitly changed away from expected RBP.
 
-Everything below describes the system that produces bot 1 / bot 2, so any number can be
-reproduced or reasoned about.
+Primary rule source: `docs/API-Documentation.pdf`.
 
----
+## Entries
 
-## 1. The game in one paragraph
+| entry | how it is run | current rule |
+| --- | --- | --- |
+| bot 1 | API submission pipeline | Do not touch for manual work. |
+| bot 2 | API submission pipeline / experiment | Do not touch for manual work. |
+| manual | human entry on the website | Use this repo's manual strategy and logs. |
 
-~72 matches, each with ~10 binary yes/no markets (~720+ total). You submit a probability as an
-integer **1–99** per market before kickoff. Scoring is **Brier**: `(p − o)²`, lower is better
-(`o` = outcome 0/1). What ranks you is **Relative Brier Points**:
-`RBP = (crowd_brier − your_brier) × 100` — you win by beating the **crowd average**. Stage
-weighting: **group 1×, knockout 2×, final 3×** (so accuracy matters more now that the
-knockouts are here). Predictions can be revised until kickoff; the last value counts.
+The manual workflow may call SportsPredict read-only endpoints:
 
-## 2. Why calibration, not boldness
+- `GET /events`
+- `GET /lobbies`
+- `GET /matches`
+- `GET /markets`
+- `GET /results`
 
-Because RBP is **linear in your own Brier** (the crowd term is fixed and identical for every
-competitor), maximizing expected RBP = minimizing your own expected Brier = **reporting your
-true, calibrated probability.** Brier is *strictly proper*: any shading away from your honest
-estimate raises expected Brier. So there is **no extremizing, no game‑theoretic shading** — we
-researched and backtested this explicitly and retracted an "extremize" idea as invalid. Rank
-across competitors is decided purely by Brier‑vs‑outcome (the crowd‑variance term cancels).
-The whole system is built to produce the most calibrated number, then submit it unshaded.
+It must not call or rely on `/predictions`.
 
-## 3. Where our edge is (and isn't)
+## What To Read First
 
-From ground‑truth RBP analysis across the tournament:
-- **Edge (soft markets):** niche counts the crowd guesses at — **offsides** (best), **corners**,
-  **head‑to‑head count comparisons** ("more corners/SOT/fouls than…", which **resolve "No" on a
-  tie** → even matchups price ~40%, a systematic crowd error we collect on), and certain
-  combos. This is where deviating from the crowd pays.
-- **No edge (sharp markets):** **goals / 1X2 / totals** — the betting market + Polymarket are
-  sharper than us; fighting them loses. We **anchor** to them.
-- **Calibration corrections (WC‑2026):** the count means carry per‑stat tournament multipliers
-  (`TOURNAMENT_INTENSITY` in `counts.py`: cards 0.78 — WC‑2026 is low‑card; sot 1.00; corners
-  1.05; offsides 0.90), OOS‑validated. See `docs/strategy_v4.md`.
+| file | purpose |
+| --- | --- |
+| `docs/manual_strategy.md` | Current manual-entry operating policy. |
+| `docs/strategies.md` | Strategy catalog: promoted, limited, guardrail, proxy, rejected. |
+| `docs/full_research_program.md` | Full no-shortcuts research plan, method backlog, and deferred low-value tasks. |
+| `docs/methodology_sources.md` | Literature, source hierarchy, and promotion gates. |
+| `data/logs/strategy_evidence_matrix.md` | Current status of every strategy rule. |
+| `data/logs/brier_decomposition_audit.md` | Reliability/resolution diagnostic for calibration warnings. |
+| `data/logs/evidence_freshness_audit.md` | Whether evidence artifacts are internally consistent. |
+| `data/logs/manual_research_queue.md` | Ranked live worklist for player, card, current-source, and special rows. |
+| `data/logs/match_lock_readiness_audit.md` | Match-level lock checklist built from row-level evidence coverage. |
+| `data/logs/manual_predictions.md` | Append-only manual pricing log. |
+| `data/logs/goal_completion_audit.md` | Requirement-by-requirement status for the full manual research goal. |
 
----
+## Manual Pipeline
 
-## 4. Methodology — how every probability is produced
-
-Three layers, in strict order of trust. Guiding result (literature + our backtest):
-**bookmaker closing odds are the best‑calibrated public forecast** — anchor on them and extend
-to the markets bookmakers don't price.
-
-### Layer 1 — market anchors (used directly)
-- **1X2 odds** — de‑margined average of two independent sharp sources: bookmaker (ESPN →
-  DraftKings, `src/wcdata/odds_feeds.py`) and **Polymarket** (`src/wcdata/polymarket.py`). A
-  >0.10 disagreement is flagged as possible stale odds. Totals from the bookmaker.
-- **Anytime‑scorer prop odds** price "Will [player] score?" outright when researched: the daily
-  routine looks up the prop, de‑margins it (÷ ~1.10 margin), writes `scorer_prop_prob` into
-  `data/player_overrides.yaml`; the pricer prefers it over the model. **These are
-  per‑OPPONENT** — re‑research them each match (a stale one was a real miss; see §7).
-
-### Layer 2 — odds‑anchored Dixon‑Coles goal engine (`src/models/goals.py`)
-We do **not** estimate team strength; we solve for `(λ_home, λ_away, ρ)` that reproduce the
-market's `p_home`, `p_draw`, and total. Every goal‑derived market is then priced by enumerating
-the scoreline grid, so all answers are mutually consistent (P(win)+P(draw)+P(loss)=1, etc.).
-Half markets use per‑half Poisson `λ·share` with the **tournament‑measured** 2nd‑half goal share
-(~0.60). Families: win, draw, BTTS, total goals, team scores in half, win‑by‑N, score‑in‑both‑
-halves, first goal of game/half, halftime tied/leading, 2nd‑half‑more‑than‑1st, and combos.
-
-### Layer 3 — count models for markets without odds (`src/models/counts.py`)
-Corners, cards, SOT, fouls: **negative‑binomial regressions on ~116k club matches** with the
-*odds‑implied* goal rates as features, so they transfer to any fixture:
-`log E[count] = b0 + b1·log(λ_team) + b2·log(λ_opp) + b3·is_home`. Plus per‑stat WC‑2026
-calibration (§3) and a **referee strictness** multiplier for cards
-(`data/referee_overrides.yaml` — a strict vs lenient ref swings P(4+ cards) ~0.24→0.66).
-Offsides, penalty (0.293/match), red‑card (0.096), and every stat's 2nd‑half share come from
-**314 StatsBomb tournament matches**. Head‑to‑head comparisons enumerate both teams' NB
-distributions with **ties → "No"** (the ~40% even‑matchup edge).
-
-### Player props (`src/models/players.py`)
-- **Scorer / score‑or‑assist:** `1 − exp(−share · λ_team · expected_minutes/90)`. The
-  `expected_minutes/90` factor (added 2026‑06‑27) means a benched player is reduced and a
-  ruled‑out player → 0 **automatically from the pulled lineup** — no manual cut. A researched
-  `scorer_prop_prob` still wins outright when present.
-- **Shots on target:** per‑match rate × team tempo × `expected_minutes/90`, P(≥k) Poisson,
-  rates shrunk to the 0.72 tournament‑forward prior, club rates × 0.839 international discount.
-  Validated leave‑one‑tournament‑out (Brier 0.176).
-
-### Composite questions, blending, validation
-One `MatchPricer` per fixture holds one ScorelineModel + CountPricer + PlayerModel off the
-**same** market‑fitted λs; `MatchPricer._price_raw` (`src/models/pricer.py`) is the one
-auditable `family → method` routing table. Conjunctions are **exact joint enumeration** on the
-shared grid (never products of marginals). Each family is then shrunk toward a structural
-baseline by a **backtest‑derived weight** (`BLEND_WEIGHTS`; e.g. cards keep only 40% of the
-model deviation). Walk‑forward backtest (2017/18→2025/26, ~41k matches/family):
-**19/19 families beat always‑50%, 16/19 beat the base‑rate baseline, calibration within ±1%.**
-
----
-
-## 5. The daily process — what actually runs
-
-The pipeline auto‑prices and submits **bot 1 and bot 2**; it also **prints bot 1's chart for the
-manual entry**. Predictions are built fresh and revised through the day as information arrives.
-
-### The runs (dynamic, self‑scheduling)
-- **~07:48 — MORNING run** (`.claude/commands/morning_run.md`, the anchor): evaluate last
-  night's results + the bot1‑vs‑bot2 A/B; set bot 2's experiment; **flag** any bot‑1 promotion
-  (never auto‑apply); submit both bots at a 48 h horizon; **print today's bot‑1 chart for the
-  manual entry**; then **schedule that day's final passes** by running `scripts/schedule_day.py`,
-  which reads the day's real kickoffs and creates a one‑shot job ~**50 min before each wave**.
-- **Final passes** (`.claude/commands/matchday.md`, 5 h horizon), one per kickoff wave, ~50 min
-  out: this is where the edge is added — **confirmed lineups** (auto‑pulled, see below),
-  scorer odds, referees → update the override files → re‑price → submit both bots.
-- **~last wave — NIGHT run** (`.claude/commands/night_run.md`, 26 h horizon): the final pass for
-  the night's games **plus** prices all of **tomorrow** and **prints tomorrow's bot‑1 chart** so
-  the manual entry can be pre‑filled.
-
-Why dynamic: kickoff times move day to day, so fixed times mistime them. The morning run lays
-the day's passes against the *actual* schedule, ~50 min before each wave (after lineups post,
-with time to reprice). **Caveat:** these are in‑session crons — they do **not** survive closing the app; they fire only
-while the session is open, and otherwise each run is invoked by sending its prompt.
-
-### Confirmed lineups — pulled, not hand‑typed (`scripts/pull_lineups.py`)
-Within 100 min of kickoff, `daily_run` pulls the **posted starting XI from ESPN's free
-`summary` feed** (the same call we use for odds) and writes `expected_minutes` to
-`data/match_lineups.yaml` (starter→90, bench→20). The pricer reads it, **scoped to that match**,
-so a benching can't leak into a later fixture. Robust by construction: it writes **nothing**
-unless a real XI is posted (2 teams, ≥11 starters) and the teams orient to our match, and a
-player it can't confidently name‑match is **flagged, never force‑benched**. This replaced
-hand‑parsed web lineups (which caused a stale‑benched miss). `expected_minutes/90` then flows
-into **both** the SOT and scorer families.
-
-### The override files (per‑match research inputs — never raw probabilities)
-- `data/player_overrides.yaml` — **stable** player rates (`sot_per_match`, `goal_share`,
-  `involvement_share`, `team`) **and** researched `scorer_prop_prob`. `expected_minutes` is now
-  set by the pull; only hand‑set it for an injury known *before* lineups post.
-- `data/referee_overrides.yaml` — `{match: {referee, cards_per_game}}` for the card markets.
-- `data/manual_odds.yaml` — fallback 1X2/total when ESPN lacks a fixture (created on demand).
-- `data/bot2_experiment.yaml` — bot 2's active A/B tweak.
-- `data/match_lineups.yaml` — per‑match confirmed minutes (written by the pull; created on demand).
-
-### Staleness guard
-`daily_run` flags (in NEEDS ATTENTION) any player drawing a volatile value
-(`expected_minutes≠90` or `scorer_prop_prob`) from the **global** file that wasn't confirmed for
-*this* match — the safety net for the per‑opponent/per‑game staleness class.
-
-### Submission order (contamination safety)
-Both bots are priced off identical odds; **bot 2 (experiment) is submitted first, bot 1 (stable)
-last**, so if anything ever cross‑contaminated, the stable version is the final write on both.
-
----
-
-## 6. Making & submitting predictions (commands)
+One-command audited refresh:
 
 ```bash
-cd "/home/yifan/World Cup Predictions/jump-probability-cup"
-source .venv/bin/activate   # interpreter: .venv/bin/python
-
-# Price + submit both bots for everything kicking off within N hours
-.venv/bin/python scripts/daily_run.py --hours 48 --submit --agent     # add --dry-run to preview
-#   --agent drops a heartbeat so the crontab fallback defers to this run
-#   within 100 min of a kickoff it auto-pulls the confirmed XI first
-
-# Price ONE fixture and see the full table (no submit)
-.venv/bin/python scripts/price_match.py "URU vs ESP"
-
-# Pull/inspect a confirmed lineup on demand
-.venv/bin/python scripts/pull_lineups.py "URU vs ESP" --dry-run
-
-# Plan today's final-pass schedule (what the morning run lays down)
-.venv/bin/python scripts/schedule_day.py
-
-# Read settled Brier (per bot)
-.venv/bin/python -c "import sys; sys.path.insert(0,'src'); from probability_cup import ProbabilityCup; print(ProbabilityCup(bot=1).results_df()[['question','brier_score']])"
+python3 scripts/manual_research_refresh.py --profile full --local-date YYYY-MM-DD --espn-date YYYYMMDD --max-seconds 28800 --command-timeout-seconds 900
 ```
 
-**Manual entry:** there is no third API key — it is hand‑entered on the SportsPredict app before
-each kickoff (kickoff = the deadline). The day's model values are available from the bot‑1 chart
-the morning/night runs print, from `daily_run --dry-run` / `price_match.py`, and each bot's live
-stored predictions can be read via the API (§9).
+The refresh runner is an orchestrator over the existing read-only scripts. It
+does not read `/predictions`, does not call submission code, and writes an
+audit log to `data/logs/manual_research_refresh.md`. The log is checkpointed
+after every command, so an interrupted long refresh still leaves a partial
+record of PASS/FAIL/SKIPPED/TIMEOUT results. Use `--dry-run` to inspect the
+exact command plan without executing anything. Profiles:
 
----
+| profile | purpose |
+| --- | --- |
+| `live` | open-board pricing, field diagnostic, player/special source checks, and readiness reports |
+| `evidence` | historical/proxy backtests plus readiness reports |
+| `readiness` | cheap downstream coverage, lock, packet, strategy, and freshness checks |
+| `full` | live + evidence + readiness |
 
-## 7. Project structure
+Freshness-sensitive dependencies are handled inside the runner. In particular,
+`polymarket_direct_snapshot_score.py` is part of the evidence profile, and the
+readiness phase rebuilds `manual_calibration_watchlist.py` plus
+`card_field_component_audit.py` after their upstream open-board, referee, and
+execution-leverage inputs. This ordering is required for
+`evidence_freshness_audit.py` to be a meaningful gate.
 
+The `--max-seconds 28800` option is the eight-hour guardrail for the full
+research refresh. It skips commands that have not started after the wall-clock
+budget is reached, then records that in the markdown log.
+`--command-timeout-seconds` is a per-script guardrail for hung live/API/source
+checks; a timed-out command is recorded as `TIMEOUT` and makes the runner exit
+nonzero. A successful runner exit does not mean a match is final;
+`match_lock_readiness_audit.py` and
+`manual_submission_packet_audit.py` remain authoritative for lock status.
+
+The full manual pricing command is:
+
+```bash
+uv run --with pandas --with numpy --with scipy --with pyarrow --with pyyaml --with requests --with statsmodels \
+  python scripts/full_manual_pricing.py --local-date YYYY-MM-DD
 ```
+
+Field averages are not visible before the prediction lock in the current
+SportsPredict UI. Do not wait for them, do not fabricate them, and do not pass
+a `--field-csv` for pre-lock manual entries. The field-capture commands below
+remain diagnostic only unless the UI behavior changes:
+
+```bash
+uv run --with pandas --with numpy --with scipy --with pyarrow --with pyyaml --with requests --with statsmodels \
+  python scripts/live_market_risk_audit.py --all-open --write --field-template
+
+uv run --with pandas --with numpy --with scipy --with pyarrow --with pyyaml --with requests --with statsmodels \
+  python scripts/manual_field_capture_audit.py --write
+```
+
+`manual_field_capture_audit.py` is intentionally strict, but pre-lock
+`INCOMPLETE` is expected because field values are unavailable before lock.
+For manual entries, use the no-field/current-source values from
+`full_manual_pricing.py`; the readiness audits label affected card/count rows
+as `FIELD_UNAVAILABLE_PRELOCK` rather than as missing actionable inputs.
+
+With researched exact player prop anchors:
+
+```bash
+uv run --with pandas --with numpy --with scipy --with pyarrow --with pyyaml --with requests --with statsmodels \
+  python scripts/player_prop_diagnostics.py --sports-predict --all-open --write --anchor-template --player-prop-csv data/player_prop_anchors_template.csv
+
+python3 scripts/current_player_stats_audit.py --start-date 2026-06-11 --end-date YYYY-MM-DD --sports-predict --write
+
+uv run --with requests \
+  python scripts/current_player_stats_replay.py --start-date 2026-06-11 --end-date YYYY-MM-DD --sports-predict --write
+
+uv run --with pandas --with numpy --with scipy --with pyarrow --with pyyaml --with requests --with statsmodels \
+  python scripts/lineup_source_audit.py --sports-predict --all-open --write
+
+uv run --with pandas --with numpy --with scipy --with pyarrow --with pyyaml --with requests --with statsmodels \
+  python scripts/full_manual_pricing.py --local-date YYYY-MM-DD --player-prop-csv data/player_prop_anchors_template.csv
+```
+
+`player_prop_diagnostics.py` reports `player_prop_anchor_status`. Treat
+`INCOMPLETE` as an explicit research queue: high-priority player rows still
+need exact current prop odds, lineup/role confirmation, or structured player
+research before lock. It also reports `current_prop_anchor_status`, which is separate from the
+manual CSV: this tells you how many exact same-match Polymarket player-prop
+anchors cleared the live volume/semantic gates. A blank manual CSV can
+therefore coexist with usable automatic current anchors, but those anchors do
+not clear lineup recheck risk. `current_player_stats_audit.py` reports
+`current_player_stats_status` from ESPN public summary roster stats for open
+player props. It is a cross-check and research source, not a replacement for
+exact prop odds or confirmed lineups.
+`current_player_stats_replay.py` is the promotion gate for that source. The
+2026-06-29 replay is point-positive but not bootstrap-robust, so current-player
+stats remain a disagreement flag instead of an automatic probability override.
+`lineup_source_audit.py` reports `lineup_source_status` from ESPN confirmed-XI
+availability for every open player-prop match. `PENDING_NOT_IN_WINDOW` is
+normal before the final pre-match window; `LINEUP_NOT_POSTED_IN_PULL_WINDOW`,
+`LINEUP_SOURCE_ISSUES`, or posted-lineup unmatched players block player-prop
+lock unless exact prop odds or structured role/player research supersedes them.
+
+For special count-threshold rows such as total shots and early corners:
+
+```bash
+uv run --with pandas --with numpy --with scipy --with pyarrow --with pyyaml --with requests --with statsmodels \
+  python scripts/special_market_live_audit.py --all-open --write --count-source-template
+
+uv run --with requests \
+  python scripts/current_tournament_stats_audit.py --start-date 2026-06-11 --end-date YYYY-MM-DD --sports-predict --write --update-special-count-csv
+
+uv run --with requests \
+  python scripts/special_count_source_discovery.py --write
+
+python3 scripts/special_count_source_audit.py --write
+```
+
+`special_count_source_audit.py` reports `special_count_source_status`.
+`INCOMPLETE` means the proxy-only count-threshold rows still lack enough
+independent current count-volume evidence and should remain unresolved in the
+research queue. The audit joins `special_count_source_discovery.md` and reports
+when public-market discovery found no usable exact source; ordinary goal totals,
+first-half corner totals, and other near misses must not be copied in as
+shots/hydration evidence. `current_tournament_stats_audit.py` reports
+`current_tournament_stats_status` from ESPN public box scores and may fill one
+current-source slot for full-match count thresholds; it is a source check, not
+an automatic probability transform. `special_count_source_discovery.py` reports
+`special_count_source_discovery_status` and searches public Polymarket markets
+for exact count sources. Only `EXACT_USABLE` rows may fill a current source
+slot; first-half corner totals and ordinary goal totals are logged as near
+misses or non-sources.
+
+Before treating generated entries as locked:
+
+```bash
+python3 scripts/manual_evidence_coverage.py --all-open --write
+python3 scripts/match_lock_readiness_audit.py --write
+python3 scripts/manual_submission_packet_audit.py --write
+```
+
+If targeted research finds no usable exact source, record that negative result
+in `data/manual_research_resolutions.csv` instead of leaving the row as
+untouched work. The packet audit then moves that row from the nightly
+`NOW_*` queue to `NEAR_LOCK_RESEARCHED_SOURCE_RECHECK`: keep the provisional
+model/current-source value, but recheck lineups and exact sources before lock.
+
+`manual_submission_packet_audit.py` reports `submission_packet_status`.
+`NOT_LOCKED_REQUIRED_INPUTS` means the sheet is still provisional because hard
+player or special-count gates remain unresolved. Field-unavailable rows are
+low-confidence no-field rows, not missing inputs. `READY_TO_SUBMIT` is the only
+fully clean packet state; `READY_WITH_LOW_CONFIDENCE_ROWS` means the packet is
+usable when deadline pressure forces entry, but proxy/guardrail/no-field rows
+remain explicitly labelled. The packet also reports actionability counts:
+`NOW_PROP_ROLE_RESEARCH_THEN_LINEUP_RECHECK` and `NOW_COUNT_SOURCE_RESEARCH`
+are the nightly/morning research queue, `NEAR_LOCK_*` rows are the pre-match
+lineup/current-source recheck queue, and `NO_FIELD_ACTION_PRELOCK` is
+unavoidable no-field risk that should not consume research time.
+
+Before treating any match as final for manual entry, run:
+
+```bash
+python3 scripts/manual_evidence_coverage.py --all-open --write
+python3 scripts/match_lock_readiness_audit.py --write
+```
+
+`match_lock_readiness_audit.py` reports `match_lock_decision`. A match is not
+fully cleanly locked while it still has `PLAYER_RESEARCH_REQUIRED`,
+`SPECIAL_COUNT_RESEARCH_REQUIRED`, or near-lock recheck rows. Rows labelled
+`FIELD_UNAVAILABLE_PRELOCK` are unavoidable no-field risk, not a reason to wait
+for a value the UI will not expose before lock.
+
+Fallback when the full model stack is unavailable:
+
+```bash
+python3 scripts/manual_odds_anchor.py --date YYYYMMDD --sports-predict
+```
+
+The fallback is intentionally narrow. It can price goal/win/totals from public
+odds and current open markets. It must not invent player, count, referee, card,
+or special-market probabilities.
+
+## Evidence Refresh
+
+Before trusting the strategy matrix, run the freshness audit:
+
+```bash
+python3 scripts/evidence_freshness_audit.py --write
+```
+
+Important reports:
+
+```bash
+uv run --with requests python scripts/backtest_integrity_audit.py --sports-predict --write
+uv run --with requests python scripts/manual_policy_backtest.py --sports-predict --write
+uv run --with requests python scripts/brier_decomposition_audit.py --sports-predict --write
+uv run --with requests python scripts/goal_policy_backtest.py --sports-predict --write
+uv run --with requests python scripts/count_policy_backtest.py --sports-predict --write
+uv run --with requests python scripts/player_policy_backtest.py --sports-predict --write
+uv run --with numpy python scripts/odds_conversion_backtest.py --write
+uv run --with numpy python scripts/player_minutes_uncertainty_audit.py --write
+uv run --with pandas --with numpy --with scipy --with statsmodels --with pyarrow python scripts/count_total_dependence_audit.py --write
+uv run --with pandas --with numpy --with scipy --with statsmodels --with pyarrow --with requests python scripts/count_total_dependence_policy_replay.py --sports-predict --write
+python3 scripts/player_sot_rate_audit.py --write
+python3 scripts/player_goal_involvement_rate_audit.py --write
+python3 scripts/referee_card_adjustment_audit.py --write
+python3 scripts/special_count_threshold_audit.py --write
+uv run --with requests python scripts/current_tournament_stats_audit.py --start-date 2026-06-11 --end-date YYYY-MM-DD --sports-predict --write --update-special-count-csv
+python3 scripts/current_player_stats_audit.py --start-date 2026-06-11 --end-date YYYY-MM-DD --sports-predict --write
+uv run --with requests python scripts/current_player_stats_replay.py --start-date 2026-06-11 --end-date YYYY-MM-DD --sports-predict --write
+uv run --with pandas --with numpy --with scipy --with pyarrow --with pyyaml --with requests --with statsmodels python scripts/lineup_source_audit.py --sports-predict --all-open --write
+uv run --with requests python scripts/special_count_source_discovery.py --write
+python3 scripts/question_family_coverage_audit.py --write
+python3 scripts/strategy_evidence_matrix.py --write
+python3 scripts/promotion_strength_audit.py --write
+python3 scripts/evidence_freshness_audit.py --write
+python3 scripts/automation_inventory_audit.py --write
+python3 scripts/match_lock_readiness_audit.py --write
+python3 scripts/manual_submission_packet_audit.py --write
+python3 scripts/manual_workflow_readiness_audit.py --local-date YYYY-MM-DD --write
+python3 scripts/goal_completion_audit.py --write
+```
+
+Latest recorded full-suite verification:
+
+```text
+uv run --with pandas --with numpy --with scipy --with pyarrow --with pyyaml --with requests --with statsmodels --with pytest python -m pytest
+339 passed in 63.55s
+```
+
+Lightweight focused verification for the newest source/family-coverage gates:
+
+```text
+uv run --with pandas --with numpy --with scipy --with pyarrow --with pyyaml --with requests --with statsmodels python -m pytest tests/test_automation_inventory_audit.py tests/test_brier_decomposition_audit.py tests/test_current_tournament_stats_audit.py tests/test_current_player_stats_audit.py tests/test_lineup_source_audit.py tests/test_manual_submission_packet_audit.py tests/test_manual_workflow_readiness_audit.py tests/test_match_lock_readiness_audit.py tests/test_special_count_source_audit.py tests/test_special_count_source_discovery.py tests/test_question_family_coverage_audit.py tests/test_evidence_freshness_audit.py tests/test_polymarket_direct_coverage_audit.py tests/test_polymarket_direct_snapshot_score.py tests/test_polymarket_direct_anchor_risk_audit.py tests/test_player_prop_diagnostics.py
+76 passed in 1.86s
+```
+
+Latest focused field/readiness verification run in this session:
+
+```text
+uv run --with pandas --with numpy --with scipy --with pyarrow --with pyyaml --with requests --with statsmodels --with pytest python -m pytest tests/test_live_market_risk_audit.py tests/test_manual_evidence_coverage.py tests/test_manual_research_queue.py tests/test_manual_field_capture_audit.py tests/test_manual_submission_packet_audit.py tests/test_match_lock_readiness_audit.py tests/test_manual_execution_leverage.py tests/test_manual_workflow_readiness_audit.py tests/test_referee_research_audit.py tests/test_strategy_evidence_matrix.py tests/test_promotion_strength_audit.py tests/test_evidence_freshness_audit.py tests/test_player_prop_boundary_audit.py tests/test_player_no_field_policy_backtest.py tests/test_manual_policy.py
+89 passed in 7.65s
+```
+
+## Current Strategy Summary
+
+The canonical detailed version is `docs/strategies.md`. Short version:
+
+- Use raw odds-anchored model values for ordinary goal/outcome markets unless
+  the source audit flags stale or misoriented feeds.
+- Field averages are not visible before lock, so live manual entries use the
+  no-field/current-source value; the validated field policy remains historical
+  evidence and a diagnostic branch, not a pre-lock input.
+- Use raw/neutral card-count model values unless verified referee/current
+  source evidence gives a clear correction.
+- Use raw model for strong team/head-to-head SOT count markets.
+- Treat direct-total NB count-threshold dependence as proxy-positive research
+  only; the settled Cup replay did not promote it, so do not replace
+  the historical field-policy evidence, exact current anchors, or the current
+  independent total-count shape.
+- Use player-prop policy only inside tested support; unresolved player rows
+  need exact prop odds, confirmed lineup, or structured research.
+- Treat player-minutes distributions as proxy-positive research only; keep
+  exact prop odds and confirmed lineups above that candidate.
+- Treat referee card-rate adjustment as proxy-positive research only; it still
+  requires verified current officials and independent card-rate research.
+- Use StatsBomb special-market priors only as proxy evidence with guardrails.
+- Treat total-shots and early-corner special-threshold adaptation as
+  proxy-positive research only; do not transform live entries without current
+  count-volume or official replay evidence.
+- Do not use global calibration multipliers, adaptive category pooling, or
+  catch-up extremizing.
+- Do not change bookmaker overround conversion yet. Multiplicative de-margin
+  remains live; power/Shin/odds-ratio/additive are monitored but not promoted.
+
+## Live Execution Workflow
+
+Night run:
+
+1. Refresh open markets.
+2. Generate next-day manual sheet.
+3. Refresh odds, Polymarket anchors, player-role diagnostics, special audits,
+   card/referee queue, no-field risk labels, and research queue.
+4. Post recommendations and unresolved rows in the main chat.
+5. Append to `data/logs/manual_predictions.md`.
+
+Morning run:
+
+1. Re-run the manual sheet for today's markets.
+2. Compare against the night sheet.
+3. Check odds movement, new exact anchors, player-prop odds,
+   referee assignments, and lineup news.
+4. Confirm field values are still unavailable before lock; do not fabricate them.
+5. Post changes only where evidence changed.
+
+Pre-match run:
+
+1. Re-run shortly before kickoff.
+2. Confirm lineups and player roles.
+3. Check final current prop/odds anchors.
+4. Confirm field values are still unavailable before lock and keep
+   `FIELD_UNAVAILABLE_PRELOCK` rows as low-confidence no-field entries.
+5. Post any changes before market close.
+
+## Live Research Priorities
+
+Highest value:
+
+- Current exact player prop odds.
+- Confirmed lineups and minutes/role risk.
+- Exact Polymarket anchors with semantic and volume gates.
+- Referee assignment and card rate for card-heavy rows.
+- Weak special/count-threshold rows where current context can break a proxy tie.
+
+Lower value:
+
+- New global calibration transforms.
+- Broad model blending.
+- Extremizing or variance strategies.
+- Unvalidated special-market shrinkage.
+- Referee/card transforms without verified officials.
+
+## Project Structure
+
+```text
 src/
-  sp_api.py            transport: REST endpoint wrappers (auth, retry/backoff)
-  probability_cup.py   domain: snapshot caching, DataFrames, upsert submit() — import ONLY this
-  questions/
-    parser.py          question text -> MarketSpec(family, team, player, stat, threshold, period)
-                       + _normalize() strips the KO "in regulation (90 min + stoppage time)" suffix
-    teams.py           FIFA code <-> full name bridge (match names use codes, questions use names)
-  wcdata/
-    odds_feeds.py      ESPN/DraftKings 1X2 + totals + (the same summary feed carries lineups)
-    polymarket.py      Polymarket prediction-market 1X2 (second sharp source)
-    statsbomb.py       314 tournament matches -> half shares, offsides, penalty/red, player rates
-    football_data_uk.py / internationals.py / api_football.py   club data, Elo, current-form rates
-  models/
-    goals.py           odds-fitted Dixon-Coles scoreline grid (all goal markets)
-    counts.py          NB count regressions + TOURNAMENT_INTENSITY + referee factor
-    players.py         scorer / score-or-assist / SOT (all scale by expected_minutes/90)
-    pricer.py          MatchPricer._price_raw — the family -> model routing table + BLEND_WEIGHTS
-    simulator.py / sim_pricer.py   game-state Monte Carlo pricer (knockout refinement)
-    deep.py / ensemble.py          optional H200 GRU track (earns weight only if it beats stats)
+  backtest/             history parsing and Brier/RBP helpers
+  manual/               manual policy, anchors, Polymarket direct matching
+  models/               goals, counts, players, specials, simulation
+  questions/            question parser and team normalization
+  wcdata/               odds, Polymarket, StatsBomb, API-Football data access
 scripts/
-  daily_run.py         the production loop: price + (auto lineup pull) + guard + submit BOTH bots
-  pull_lineups.py      ESPN confirmed XI -> expected_minutes (data/match_lineups.yaml)
-  schedule_day.py      compute the day's final-pass times (~50 min before each wave)
-  price_match.py       price one fixture; build_pricer() is the shared entry point
-  submit.py            CSV -> upsert predictions (manual path)
-  initialize.py / download_data.py / run_backtest.py    one-time setup + model fitting
-  update_player_rates.py  current-season SOT/goal rates from API-Football
-  verify_submissions.py / check_automation.py            health checks
-  analyze_rbp.py / parse_history_rbp.py / calibration_report.py   performance analysis
-.claude/commands/      morning_run.md, matchday.md, night_run.md  (the agent routines)
+  full_manual_pricing.py            full read-only manual sheet
+  manual_research_queue.py          ranked live worklist
+  live_market_risk_audit.py         open-board risk and diagnostic field template
+  manual_field_capture_audit.py     diagnostic validation for field averages if UI changes
+  current_tournament_stats_audit.py ESPN current-tournament count source audit
+  current_player_stats_audit.py     ESPN current-tournament player source audit
+  current_player_stats_replay.py    leakage-safe replay gate for player source promotion
+  lineup_source_audit.py            ESPN confirmed-XI availability for player props
+  manual_submission_packet_audit.py row-level lock status for generated sheets
+  special_count_source_discovery.py public exact-source discovery for special counts
+  special_count_source_audit.py     validates special count current-source checks
+  question_family_coverage_audit.py maps observed/parser families to strategy owners
+  manual_policy_backtest.py         combined manual policy replay
+  brier_decomposition_audit.py      calibration reliability/resolution diagnostic
+  odds_conversion_backtest.py       multiplicative/additive/power/Shin/odds-ratio/OO-EPC/FL-GLM replay
+  elo_history_residual_audit.py     national-team Elo-history proxy audit
+  strategy_evidence_matrix.py       promotion/rejection matrix
+  evidence_freshness_audit.py       consistency checks across logs
+  automation_inventory_audit.py     active/paused Codex automation inventory
+  match_lock_readiness_audit.py     match-level lock checklist
+  manual_workflow_readiness_audit.py manual-entry health check
+  goal_completion_audit.py          full objective completion/readiness audit
+  manual_research_refresh.py        audited one-command refresh runner
 data/
-  player_overrides.yaml, referee_overrides.yaml, manual_odds.yaml, bot2_experiment.yaml,
-  match_lineups.yaml   the per-match research/knob files (some created on demand)
-  count_models.json, family_blend.json, snapshot.json, *.parquet   fitted models + datasets
-  logs/                runs.log, submissions.csv, matchday_reports.md, experiment_log.md, agent_last_run
-docs/                  strategy_v4.md (canonical strategy), history.md (RBP history), API PDF
-tests/                 parser coverage, simulator, pull_lineups regression
+  logs/                            generated reports and manual prediction log
+  field_averages_template.csv      field-average input template
+  player_prop_anchors_template.csv player prop anchor input template
+docs/
+  manual_strategy.md
+  strategies.md
+  full_research_program.md
+  methodology_sources.md
+  API-Documentation.pdf
 ```
 
-Two‑layer API design: notebooks/models import **only** `probability_cup.ProbabilityCup`, never
-raw HTTP.
+## Environment
 
----
-
-## 8. Current state & recent hardening (2026‑06‑27)
-
-- **bot 1** = stable v4 (the leader). **bot 2** = live A/B (`aggressive-count-multipliers`:
-  cards 0.72 / sot 1.05 / corners 1.15 vs v4's conservative values) — **no settled verdict yet**.
-  Settled Brier runs ~0.21–0.24 (healthy).
-- **Lineup puller** (new): confirmed XIs auto‑pulled from ESPN → `expected_minutes`; fixed a
-  stale‑benched miss class.
-- **Model fix** (new): scorer/score‑or‑assist scale by `expected_minutes/90` (benched→reduced,
-  ruled‑out→0); starter prices unchanged.
-- **Staleness guard** (new): flags volatile global overrides not reconfirmed per match.
-- **Parser KO‑normalization** (new): the knockouts re‑phrased markets as "… in regulation
-  (90 minutes + stoppage time)". `_normalize()` strips it; live coverage **52% → 84%, 100% of
-  the high‑frequency families.** Unparseable markets **raise loudly and are skipped, never
-  mis‑submitted.**
-
-### Known gap — the Tier‑B market backlog (≈16% of live markets, mostly later/Sunday games)
-These genuinely‑new families are **not yet priced** (each needs a real model, not a parser rule);
-they currently submit **nothing** (flagged in NEEDS ATTENTION; the bots skip them). They are,
-with the approach each would need:
-- **Timing markets** (goal/card/offside/corner before the 1st hydration break <30′, after the
-  2nd >75′, stoppage‑time goals) — needs StatsBomb minute‑bucket extraction (the data has the
-  timestamps). *Biggest chunk; the planned next build.*
-- **Advance to Round of 16** — group qualification; needs a standings simulator or "to qualify" odds.
-- **Any player 2+ goals / 2+ SOT** — squad‑level distribution.
-- **Substitute scores** — sub‑goal‑share from StatsBomb.
-- **Total shots (on+off target)** — a shots model (we only model SOT).
-
----
-
-## 9. Live‑API quirks & cheat sheet
-
-- **`opening_time` is the kickoff = prediction deadline**; `closing_time` is ~2.5 h later.
-- `GET /predictions` returns `probability` as a **percentage** (40), not 0–1.
-- Match names use FIFA codes (`URU vs ESP`); questions use full names (`Uruguay`) — bridged by
-  `src/questions/teams.py`.
-- 60 req/min; the client backs off on 429. `409` on submit = already predicted → PATCH instead.
-
-```
-Base https://api.sportspredict.com/api/v1   header: Authorization: Bearer sp_live_...
-GET /events -> GET /lobbies?event_id= -> POST /lobbies/{id}/join -> GET /matches?event_id=
--> GET /markets?lobby_id=&match_id= -> POST /predictions/batch (<=50) -> PATCH /predictions/{id}
--> GET /results (settled, per-prediction brier_score)
-
-# Inspect what a bot has stored (swap the key per entry):
-curl -s "https://api.sportspredict.com/api/v1/predictions" -H "Authorization: Bearer $SPORTSPREDICT_KEY_1" | python3 -m json.tool
-```
-
-### Tests
-`.venv/bin/python -m pytest tests/` — parser, simulator, and the `pull_lineups` regression guard.
-(The snapshot "all‑parse" assertion is intentionally red on the Tier‑B backlog above.)
+This checkout currently has no `pyproject.toml`, lockfile, or `.venv`.
+Reproducibility currently relies on explicit `uv run --with ...` command lines,
+now wrapped by `scripts/manual_research_refresh.py` for repeatable audited
+runs. A pinned project environment remains a future hardening task.
