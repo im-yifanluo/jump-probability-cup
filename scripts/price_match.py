@@ -74,7 +74,20 @@ def get_anchors(match_name: str, kickoff) -> tuple[float, float, float]:
         manual = yaml.safe_load(MANUAL_ODDS.read_text()) or {}
         if match_name in manual:
             m = manual[match_name]
-            return m["p_home"], m["p_draw"], m["total_goals"]
+            # Manual odds are an intentional OVERRIDE of the live line (kept first
+            # so we can pin a known-better price), but SELF-EXPIRING + LOUD so a
+            # forgotten entry can't silently ride forward over good live odds:
+            # honour it only when its kickoff_date matches (or is absent), and
+            # always announce it.
+            tag = m.get("kickoff_date")
+            ko_date = kickoff.strftime("%Y-%m-%d") if hasattr(kickoff, "strftime") else None
+            if tag is not None and tag != ko_date:
+                print(f"  ** manual_odds for {match_name} EXPIRED (tagged {tag}, this "
+                      f"kickoff {ko_date}) — ignoring it, using live odds **")
+            else:
+                print(f"  ** USING MANUAL ODDS OVERRIDE for {match_name}: "
+                      f"home {m['p_home']} / draw {m['p_draw']} / total {m['total_goals']} **")
+                return m["p_home"], m["p_draw"], m["total_goals"]
 
     odds: MatchOdds = fetch_match_odds(kickoff.strftime("%Y%m%d"), home_full.split()[0])
     # ESPN/DraftKings 1X2 oriented to the first-listed team
@@ -104,15 +117,36 @@ def get_anchors(match_name: str, kickoff) -> tuple[float, float, float]:
     return p_team, p_draw, odds.total_goals
 
 
-def _scorer_props_from_overrides() -> dict[str, float]:
-    """De-margined anytime-scorer prop probabilities researched into the
-    overrides YAML (key: scorer_prop_prob). Markets beat models — when one
-    exists, MatchPricer uses it outright for that player's scorer market."""
+def _scorer_props_from_overrides(match_name: str | None = None) -> dict[str, float]:
+    """De-margined anytime-scorer props from the overrides (key scorer_prop_prob).
+    Markets beat models, so when one exists MatchPricer uses it outright.
+
+    A prop is OPPONENT-SPECIFIC (a de-margined price for one fixture), so it must
+    be SCOPED to the match it was researched for via `scorer_prop_match`, or it
+    rides into the team's next game and goes stale (the 06-29 Gyökeres/Balogun
+    class). With a match_name given:
+      tagged & matches this match -> used
+      tagged & a DIFFERENT match  -> EXPIRED, skipped (loud), reverts to the model
+      untagged                    -> used but LOUDLY flagged (please scope it)
+    match_name=None keeps the legacy all-props behaviour for callers without it."""
     if not OVERRIDES_PATH.exists():
         return {}
     overrides = yaml.safe_load(OVERRIDES_PATH.read_text()) or {}
-    return {name: o["scorer_prop_prob"] for name, o in overrides.items()
-            if isinstance(o, dict) and "scorer_prop_prob" in o}
+    props = {}
+    for name, o in overrides.items():
+        if not (isinstance(o, dict) and "scorer_prop_prob" in o):
+            continue
+        tag = o.get("scorer_prop_match")
+        if match_name is None or tag == match_name:
+            props[name] = o["scorer_prop_prob"]
+        elif tag is None:
+            props[name] = o["scorer_prop_prob"]
+            print(f"  ** scorer_prop for {name} is UNSCOPED (no scorer_prop_match) — it "
+                  f"applies to ANY match; add scorer_prop_match: {match_name!r} to scope it **")
+        else:
+            print(f"  ** scorer_prop for {name} EXPIRED (researched for {tag!r}, not "
+                  f"{match_name!r}) — ignoring it, using the model **")
+    return props
 
 
 def _match_minutes(match_name: str) -> dict[str, float]:
@@ -150,7 +184,7 @@ def build_pricer(match_name: str, kickoff) -> MatchPricer:
                     card_factor=card_factor),
         players)
     return MatchPricer(home_full, away_full, goals, counts, players,
-                       scorer_props=_scorer_props_from_overrides(), baseline=baseline)
+                       scorer_props=_scorer_props_from_overrides(match_name), baseline=baseline)
 
 
 def build_sim_pricer(match_name: str, kickoff, n_sims: int = 40000):

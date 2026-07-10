@@ -40,7 +40,10 @@ def _load_experiment(bots: list[int]) -> dict | None:
         return None
     import yaml
     exp = yaml.safe_load(EXPERIMENT_PATH.read_text()) or {}
-    return exp if (exp.get("tournament_intensity") or exp.get("tournament_team_sot")) else None
+    _keys = ("tournament_intensity", "tournament_team_sot", "total_sot_scale",
+             "total_offsides_scale", "total_shots_scale", "total_cards_scale",
+             "favorite_sot_boost", "timing_scale")
+    return exp if any(exp.get(k) for k in _keys) else None
 
 
 @contextlib.contextmanager
@@ -52,15 +55,31 @@ def _experimental(exp: dict):
     difference. Always restored, even on error."""
     import models.counts as mc
     import models.players as mp
-    saved = (mc.TOURNAMENT_INTENSITY, mp.TOURNAMENT_TEAM_SOT)
+    saved = (mc.TOURNAMENT_INTENSITY, mp.TOURNAMENT_TEAM_SOT, mc.TOTAL_SOT_SCALE,
+             mc.TOTAL_OFFSIDES_SCALE, mc.TOTAL_SHOTS_SCALE, mc.TOTAL_CARDS_SCALE,
+             mc.FAVORITE_SOT_BOOST, mc.TIMING_SCALE)
     try:
         if exp.get("tournament_intensity"):
             mc.TOURNAMENT_INTENSITY = exp["tournament_intensity"]
         if exp.get("tournament_team_sot"):
             mp.TOURNAMENT_TEAM_SOT = float(exp["tournament_team_sot"])
+        if exp.get("total_sot_scale"):
+            mc.TOTAL_SOT_SCALE = float(exp["total_sot_scale"])
+        if exp.get("total_offsides_scale"):
+            mc.TOTAL_OFFSIDES_SCALE = float(exp["total_offsides_scale"])
+        if exp.get("total_shots_scale"):
+            mc.TOTAL_SHOTS_SCALE = float(exp["total_shots_scale"])
+        if exp.get("total_cards_scale"):
+            mc.TOTAL_CARDS_SCALE = float(exp["total_cards_scale"])
+        if exp.get("favorite_sot_boost"):
+            mc.FAVORITE_SOT_BOOST = float(exp["favorite_sot_boost"])
+        if exp.get("timing_scale"):
+            mc.TIMING_SCALE = float(exp["timing_scale"])
         yield
     finally:
-        mc.TOURNAMENT_INTENSITY, mp.TOURNAMENT_TEAM_SOT = saved
+        (mc.TOURNAMENT_INTENSITY, mp.TOURNAMENT_TEAM_SOT, mc.TOTAL_SOT_SCALE,
+         mc.TOTAL_OFFSIDES_SCALE, mc.TOTAL_SHOTS_SCALE, mc.TOTAL_CARDS_SCALE,
+         mc.FAVORITE_SOT_BOOST, mc.TIMING_SCALE) = saved
 
 
 def _available_bots() -> list[int]:
@@ -238,6 +257,12 @@ def main():
                     flag = "  <- sparse/old data: verify current form"
                     attention.append(f"{match_name}: {spec.player} on sparse StatsBomb history "
                                      f"— fetch current club form (update_player_rates) or research")
+                elif (spec.family in ("player_scores", "player_scores_or_assists")
+                      and pricer.players.unrepresentative_scorer(spec.player)):
+                    flag = "  <- zero-goal history (Larin class): likely UNDER-rates a real scorer"
+                    attention.append(f"{match_name}: {spec.player} has 0 goals in enough StatsBomb "
+                                     f"apps — goal_share floored to the prior; research his real "
+                                     f"scoring rate or set a market scorer_prop_prob (+ scorer_prop_match)")
             print(f"  {p:5.3f}  {q[:70]}{flag}")
 
         # bot 2 = experiment: reprice the SAME markets/odds under the override
@@ -292,6 +317,17 @@ def main():
     if args.agent and not dry:
         AGENT_HEARTBEAT.parent.mkdir(parents=True, exist_ok=True)
         AGENT_HEARTBEAT.write_text(datetime.now(timezone.utc).isoformat())
+
+    # No-miss backlog: scan EVERY market (full snapshot, not just this run's
+    # horizon) so any unpriceable template is always recorded — nothing overlooked.
+    try:
+        from scan_backlog import scan_and_update
+        bl = scan_and_update(pc.markets_df())
+        if bl["open_backlog"]:
+            print(f"\nBACKLOG: {bl['unparseable_markets']} unpriced markets across "
+                  f"{bl['open_backlog']} open templates -> data/logs/unparsed_backlog.md")
+    except Exception as exc:
+        attention.append(f"backlog scan failed — {exc}")
 
     _log_run(args.hours, dry, markets, actions, attention)
 

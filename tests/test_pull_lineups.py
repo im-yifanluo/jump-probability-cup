@@ -50,11 +50,17 @@ def test_derive_minutes_starter_bench_and_safe_unmatched():
 
 
 def test_pulled_minutes_override_stale_global():
-    """A confirmed pull beats a stale global benching — the core of the fix."""
+    """A confirmed pull beats a stale global benching — the core of the fix.
+    Injects the stale override so the test is self-contained (not coupled to
+    whatever the live overrides file happens to hold today)."""
     _, sb = build_aggregates()
-    assert PlayerModel(sb).rates("Folarin Balogun").expected_minutes == 20  # stale global
+    stale = {"goal_share": 0.3, "expected_minutes": 20}  # a stale global benching
+    m = PlayerModel(sb)
+    m._overrides = {**m._overrides, "Folarin Balogun": stale}
+    assert m.rates("Folarin Balogun").expected_minutes == 20
     pulled = PlayerModel(sb, match_minutes={"Folarin Balogun": 90})
-    assert pulled.rates("Folarin Balogun").expected_minutes == 90
+    pulled._overrides = {**pulled._overrides, "Folarin Balogun": stale}
+    assert pulled.rates("Folarin Balogun").expected_minutes == 90  # the pull wins
 
 
 def test_default_minutes_backward_compatible():

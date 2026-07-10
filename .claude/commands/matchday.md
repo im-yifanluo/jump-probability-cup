@@ -11,6 +11,19 @@ Arguments (optional): $ARGUMENTS — pass a horizon in hours (default 48 for a
 morning pass, use 14 for an afternoon final pass).
 
 Steps:
+0. STRATEGY REVIEW (fires before EVERY match wave — Yifan 2026-07-02). Re-run
+   `scripts/parse_history_rbp.py` (if history.md changed) and
+   `scripts/backtest_engine.py ab` — the bot2-vs-bot1 replay on settled
+   divergents. For each ACTIVE bot-2 probe (data/bot2_experiment.yaml):
+   - if its own-family settles show a CLEAR win over bot 1 (≥8-10 settles,
+     consistent direction), PROMOTE it to bot 1's constants (standing
+     authorization 2026-07-02: validated probes move to bot 1 without further
+     per-change approval), run pytest, and move bot 2 to the next notch;
+   - if it is clearly LOSING, retire it (bot 2 back to bot 1's level);
+   - small samples → leave running, note the tally in the report.
+   Also check `scripts/family_calibration.py` for NEW drift on families that
+   appear in the imminent wave — flag in the report; only act through a probe
+   or the engine, never an unvalidated mid-run tweak.
 1. `cd "/home/yifan/World Cup Predictions/jump-probability-cup"` and run
    `.venv/bin/python scripts/daily_run.py --hours <horizon> --submit --agent`
    (the `--agent` flag drops a heartbeat so the deterministic crontab fallback
@@ -46,7 +59,11 @@ Steps:
    bet365). Convert: implied = 100/(100+american), then divide by ~1.10 prop
    margin. Write the result as `scorer_prop_prob` in that player's
    player_overrides.yaml entry — the pricer uses a prop-market price outright
-   when one exists (markets beat models).
+   when one exists (markets beat models). ALWAYS also write
+   `scorer_prop_match: "<this match name>"` alongside it — a prop is an
+   OPPONENT-SPECIFIC price, and the tag scopes it to this fixture so it can't
+   ride into the team's next game (untagged props are used but printed as a loud
+   warning; a tag for a different match auto-expires to the model).
 2c. REFEREE (highest-leverage card input — a strict vs lenient ref swings
    P(4+ cards) ~0.24->0.66): for each match kicking off today, web-search the
    appointed referee and their career average cards per game. Write to
@@ -68,9 +85,12 @@ Steps:
    If bot 2 is SHORT on count: do NOT copy bot 1 → bot 2 (that would wipe the
    experiment). Instead re-run the same daily_run command — it reprices bot 2 with
    its experiment and re-submits — then re-verify the counts match.
-4. Check calibration: `ProbabilityCup(bot=1).results_df()` — realized mean
-   Brier per family vs the ~0.21–0.24 backtest expectation; flag any family
-   drifting above 0.27 with enough samples (n≥15).
+4. Check calibration: run `.venv/bin/python scripts/family_calibration.py` —
+   PER-FAMILY predicted-vs-realized gap + Brier over all settled markets (the new
+   R32 families are starred). Flag any family with `<-- DRIFT` (|gap|>0.15, n≥8)
+   OR Brier above ~0.27 with n≥15; for a flagged NEW family, consider shrinking it
+   toward its base rate or pulling it. Read the gap AND the Brier together — a wide
+   gap on a low-base-rate family with a low Brier (e.g. player_scores) is fine.
 5. Report: matches covered, creates/updates/skips, attention items resolved
    and unresolved, settled-Brier summary, anything anomalous (odds source
    fallbacks, API budget below 20 — check `ApiFootball().remaining_today()`).
@@ -81,5 +101,7 @@ Steps:
    run to data/logs/runs.log and every submission to data/logs/submissions.csv.)
 
 Constraints: respect the API-Football budget (leave 20 requests spare); the
-pipeline never submits past kickoff; do not modify model code or blend
-weights in this routine — flag findings for the user instead.
+pipeline never submits past kickoff. Model-constant changes are allowed ONLY
+through step 0's promotion rule (validated bot-2 probes with clear own-family
+settle evidence — standing authorization 2026-07-02) — never an unvalidated
+mid-run tweak; anything short of the promotion bar gets flagged, not applied.

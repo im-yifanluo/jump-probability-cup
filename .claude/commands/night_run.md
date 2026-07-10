@@ -8,6 +8,9 @@ stable v4; bot 2 = experiment.** Standing authorization (Yifan 2026-06-12). Full
 checklist: `matchday.md`.
 
 Steps:
+0. **STRATEGY REVIEW first** (matchday.md step 0 — fires before EVERY wave): score the
+   active bot-2 probes on their own-family settles (`backtest_engine.py ab`); promote
+   clear winners to bot 1 per the 2026-07-02 standing authorization; retire clear losers.
 1. **FINAL PASS for tonight's imminent late games** — confirmed lineups + scorer odds +
    referees (matchday.md steps 2/2b/2c): ruled-out → expected_minutes 0 (+ kill scorer keys);
    benched-then-restored → revert; market-anchor scorer props.

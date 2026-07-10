@@ -69,9 +69,125 @@ COUNT_INTL_DISCOUNT = {"cards": 0.849, "corners": 0.872, "sot": 0.839, "fouls": 
 # listed falls back to 0.90. Re-estimate via scripts/parse_history_rbp.py + the
 # calibration as KO-stage data settles (KO event rates may differ from the group
 # stage). A between-team SOT correlation term for TOTAL-SOT is a flagged follow-up.
+# sot stays 1.00 here. TEAM-level SOT (team_count_ge, both_teams, head-to-head, and player ">=1"
+# via the normaliser) is well-calibrated (settled gaps ~-0.05). The under-prediction is TOTAL-
+# SPECIFIC, so it is corrected by TOTAL_SOT_SCALE below — NOT by lifting the per-team mean.
+# (2026-06-29: a flat sot=1.40 was tried and REVERTED — it fixed total SOT but OVER-corrected team
+# SOT, leave-out Brier 0.203->0.230 on 31 settled team-SOT markets. The decoupled form keeps team
+# SOT at calibrated v4 and boosts only the total.)
 TOURNAMENT_INTENSITY = {"cards": 0.78, "sot": 1.00, "corners": 1.05,
                         "offsides": 0.90, "fouls": 0.90}
+# TOTAL-SOT level correction — applied ONLY to the convolved total (p_total_count_ge for sot) and
+# the total-derived squad "2+ SOT" (total_sot_pmf), never to team/player SOT. The platform realises
+# ~1.4x StatsBomb's total SOT (settled total_count_ge/sot pred 0.54 vs hit 0.83, n=18; implied scale
+# 1.49, CI 1.24-1.78 — 1.40 is the conservative end). Validated live (BRA/JPN "8+ total SOT" HIT:
+# v4 0.31->Brier 0.476 vs boosted 0.65->0.122) and by leave-out sim (total-SOT Brier 0.245->0.142).
+TOTAL_SOT_SCALE = 1.50  # 2026-07-02 PROMOTED 1.40->1.50: the bot-2 1.60 probe went 4/5 vs 1.40
+                        # (net dBrier -0.39); implied scale 1.49 (CI 1.24-1.78) -> point estimate.
+# TOTAL-only offsides/shots level corrections — same total-specific pattern as SOT.
+# DEFAULT 1.0 (bot 1 = v4, unchanged). The R32 our-data backtest shows total offsides
+# (-28 RBP, pred 0.41 vs crowd 0.49, ~1.20x under) and total shots (-14 RBP, ~1.22x under)
+# under-predicted, but on THIN samples (n=4 / n=1) that cannot be checked against StatsBomb
+# (platform counting convention). So this is a BOT-2 EXPERIMENT ONLY until more settle —
+# set via data/bot2_experiment.yaml (total_offsides_scale / total_shots_scale). Do NOT lift
+# bot 1 off 1.0 without an OOS-validated win (same discipline as [[strategy-v4-doc]]).
+TOTAL_OFFSIDES_SCALE = 1.10  # 2026-07-02 PROMOTED 1.0->1.10: total offsides -52 RBP cumulative
+                             # (bias -0.32, n=7, direction consistent across ENG/COD + ESP/AUT);
+                             # probe won at both notches on 2/3 settles. Mild level lift only.
+TOTAL_SHOTS_SCALE = 1.0      # blanket shots probe is NET NEGATIVE (USA/BIH 22+ shots 91% vs NO,
+                             # Brier 0.83) — dominance-concentrated, NOT promoted; bot-2 only.
+# TOTAL-only card level correction — DEFAULT 1.0 (bot 1 unchanged). BOT-2 PROBE: cards are
+# over-predicted even after the 0.78 per-stat intensity — direct calibration (2026-07-01, 724
+# settled) shows mean card pred 0.481 vs realized 0.431 (+0.050), corroborated by the separate
+# manual-branch policy backtest (+116 RBP from a card adjustment) and [[edge-analysis-and-fixes]]
+# (total_count_ge/cards +0.14). A total-only reduction targets that without touching the calibrated
+# card COMPARISONS (memory: card head-to-heads are winning/scale-invariant — never lift the per-team
+# mean). Promote to bot 1 only on an OOS-validated win over its own card settles.
+TOTAL_CARDS_SCALE = 0.85  # 2026-07-02 PROMOTED 1.0->0.85: cards over-predicted, corroborated 5
+                          # ways — direct calib +0.05 (724 mkts), manual-branch backtest +116,
+                          # edge memory +0.14, and 8/13 current-era live A/B wins with no real
+                          # losses (ENG/COD, USA/BIH x2, BEL/SEN x3, ESP/AUT). Total-only.
+# FAVOURITE-SOT boost — DEFAULT 0.0 (bot 1 = v4, OFF). BOT-2 PROBE. The club-fitted SOT
+# elasticity (log_lam_team 0.797) is calibrated for EVEN matches (model 3.36 vs realized 3.33)
+# but too FLAT for heavy favourites: our settled team-SOT predictions in the mid-high buckets
+# under-predict by -0.12 to -0.18 (2026-07-01, n=32), and dominant teams rack up SOT (StatsBomb
+# level 3.33 -> blowout 6.93, though that margin curve is ENDOGENOUS so we stay conservative).
+# Supremacy-gated multiplier on the FAVOURITE's team-SOT mean (cascades to its players' SOT via
+# tempo and to comparisons) — leaves even matches untouched. mu *= 1 + BOOST*min(lam_team/lam_opp-1, 2).
+# Timing-window event scale — DEFAULT 1.0 (bot 1 unchanged). BOT-2 PROBE 2026-07-03:
+# timing_event over-predicts (family calibration: pred 0.428 vs realized 0.263, gap +0.165,
+# n=19, recurring since 06-30). Scales the windowed mean in p_total_in_window only.
+TIMING_SCALE = 1.0
+FAVORITE_SOT_BOOST = 0.06  # 2026-07-02 PROMOTED 0.0->0.06: the favourite-SOT under-prediction is
+                           # bot 1's dominant recent leak — the 3 biggest losses in the last 4 games
+                           # are ALL it (Bellingham 2+SOT -64, ENG 7+SOT -61, Spain 8+SOT -58).
+                           # Validated: settled mid-high team-SOT bias -0.12..-0.18 (n=32), StatsBomb
+                           # elasticity too flat for heavy favourites, and the live A/B won 4/4
+                           # ESP/AUT divergents incl. the direct target (17->25 on a YES) and the
+                           # player cascade (Yamal 39->44 YES). Supremacy-gated: even games untouched.
 _DEFAULT_INTENSITY = 0.90
+
+# Total shots (on+off target): anchor to the StatsBomb realized shots level
+# (25.0/match, NB dispersion 0.044) and tempo-scale by the match's SOT relative to
+# the COUNT MODEL's average-match SOT (6.956 at lam 1.3/1.3) — NOT the StatsBomb SOT
+# (8.3), because the count model runs ~16% below it and would otherwise under-price.
+TOURNAMENT_SHOTS_MEAN = 25.0
+COUNT_AVG_SOT = 6.956
+SHOTS_ALPHA = 0.044
+
+# Squad-aggregate conditionals (StatsBomb 314 matches): P(any player brace |
+# total goals G) and P(any player 2+ SOT | total SOT S). Integrated over the
+# match's total-goals / total-SOT distribution so the price tracks tempo.
+_Q_BRACE = (0.0, 0.0, 0.165, 0.203, 0.394, 0.368, 0.667)   # index = G; G>=6 -> last
+_R_ANY2SOT_S = (1.0, 3.0, 5.0, 7.0, 9.0, 11.0)
+_R_ANY2SOT_P = (0.05, 0.167, 0.353, 0.587, 0.924, 1.0)
+
+
+def q_brace(total_goals: int) -> float:
+    return _Q_BRACE[min(int(total_goals), len(_Q_BRACE) - 1)]
+
+
+def r_any_2sot(total_sot: float) -> float:
+    return float(np.interp(total_sot, _R_ANY2SOT_S, _R_ANY2SOT_P))
+
+
+# Substitute scores: P(>=1 substitute goal | total goals G), from StatsBomb
+# regulation goals on the 250 matches under the 5-SUB rule only (WC2022, Euro2020,
+# Euro2024, Copa2024, AFCON2023). The 3-sub WC-2018 was DROPPED: it had the lowest
+# sub-scoring rate of any tournament (0.172 vs the 5-sub mean 0.296) and biased the
+# pooled table low at the modal G=2/3 cells. Tail (G>=4) isotonic-smoothed for
+# monotonicity (thin samples). Marginal over the goal pmf = 0.296. Provenance +
+# reproduction: scripts/derive_sub_scores.py (2026-06-28).
+_SUB_GOAL = (0.0, 0.070, 0.264, 0.333, 0.565, 0.565, 0.900)   # index = G; G>=6 -> last
+SUB_BEFORE_HT_RATE = 0.197
+# P(>=1 team makes a substitution AT the halftime break) — StatsBomb 5-sub-era
+# (wc2022/euro2024/copa2024/afcon2023, n=199): HT subs are recorded at period 2,
+# minute 45. Coach-behaviour-driven and roughly match-independent -> flat base rate
+# (derive: scripts/validate_first_goal_drift.py sibling one-off, 2026-07-10).
+SUB_AT_HT_RATE = 0.497
+
+
+def p_sub_goal(total_goals: int) -> float:
+    return _SUB_GOAL[min(int(total_goals), len(_SUB_GOAL) - 1)]
+
+
+# 'Goal by method' families: P(>=1 [type] goal | total regulation goals G), from
+# StatsBomb (314 matches): own goals = Own Goal Against events; header = Shot(Goal,
+# body_part=Head); outside-box = Shot(Goal) whose location is outside the 18-yd box
+# ([102,120]x[18,62] on the 120x80 pitch). Each is integrated over the goal pmf at
+# price time (the substitute-scores pattern). PAV-monotone in G (more goals -> >= chance
+# of any one type), marginals preserved (own 0.124 / header 0.331 / outside 0.242).
+# LOTO-validated: conditioning on G beats the flat base rate OOS for all three
+# (Brier own 0.109<0.111, header 0.196<0.222, outside 0.170<0.184). See
+# scripts/derive_goal_methods.py (2026-06-30).
+_OWN_GOAL = (0.0, 0.074, 0.074, 0.176, 0.176, 0.211, 0.400)        # index = G; G>=6 -> last
+_HEADER_GOAL = (0.0, 0.224, 0.275, 0.377, 0.485, 0.706, 0.706)
+_OUTSIDE_GOAL = (0.0, 0.069, 0.231, 0.333, 0.333, 0.474, 0.533)
+
+
+def p_goal_method(table: tuple, total_goals: int) -> float:
+    """P(>=1 goal of this method | total regulation goals) from a conditional table."""
+    return table[min(int(total_goals), len(table) - 1)]
 
 
 def nb_pmf_grid(mean: float, alpha: float, n: int = MAX_COUNT) -> np.ndarray:
@@ -163,11 +279,24 @@ def tournament_aggregates(team_halves: pd.DataFrame) -> dict:
     match_flags = team_halves.groupby("match_id").agg(
         penalty=("penalty_awarded", "max"), reds=("reds", "sum"))
     pen_or_red = (match_flags["penalty"] | (match_flags["reds"] > 0)).mean()
+
+    # Timing-market shares: fraction of each stat's events in each within-match
+    # window (from StatsBomb minute timestamps). Missing columns (older cache)
+    # degrade to {} so the timing pricer can fall back / stay flagged.
+    from wcdata.statsbomb import TIMING_STATS, TIMING_WINDOWS
+    timing = {}
+    for s in TIMING_STATS:
+        if s in team_halves and all(f"{s}_{w}" in team_halves for w in TIMING_WINDOWS):
+            tot = team_halves[s].sum()
+            if tot:
+                timing[s] = {w: float(team_halves[f"{s}_{w}"].sum() / tot)
+                             for w in TIMING_WINDOWS}
     return {
         "stats": per_stat,
         "p_penalty": float(match_flags["penalty"].mean()),
         "p_red": float((match_flags["reds"] > 0).mean()),
         "p_penalty_or_red": float(pen_or_red),
+        "timing": timing,
         "matches": int(team_halves["match_id"].nunique()),
     }
 
@@ -212,6 +341,10 @@ class CountPricer:
                 mu *= self.card_factor
         if self.tournament:
             mu *= TOURNAMENT_INTENSITY.get(stat, _DEFAULT_INTENSITY)  # WC-2026 per-stat calibration (OOS-validated)
+        if stat == "sot" and FAVORITE_SOT_BOOST and lam_team > lam_opp:
+            # Steepen SOT for the FAVOURITE only (supremacy-gated) — the flat elasticity
+            # under-prices dominant teams' shot volume. Off by default (bot 1); bot-2 probe.
+            mu *= 1.0 + FAVORITE_SOT_BOOST * min(lam_team / lam_opp - 1.0, 2.0)
         if period != "match":
             share = self.aggregates["stats"][stat]["h2_share"]
             mu *= share if period == "2h" else 1 - share
@@ -230,10 +363,25 @@ class CountPricer:
     def p_total_count_ge(self, stat: str, threshold: int, period: str) -> float:
         # Exact: convolve the two teams' NB distributions (a sum of NBs with
         # unequal means is not NB; an alpha shortcut misprices uneven matches).
-        home = nb_pmf_grid(self.mean(stat, "home", period), self.alpha(stat))
-        away = nb_pmf_grid(self.mean(stat, "away", period), self.alpha(stat))
+        # TOTAL SOT carries a total-only level correction (TOTAL_SOT_SCALE) that
+        # never touches the per-team SOT markets — see the constant's note.
+        scale = {"sot": TOTAL_SOT_SCALE, "offsides": TOTAL_OFFSIDES_SCALE,
+                 "cards": TOTAL_CARDS_SCALE}.get(stat, 1.0)
+        home = nb_pmf_grid(self.mean(stat, "home", period) * scale, self.alpha(stat))
+        away = nb_pmf_grid(self.mean(stat, "away", period) * scale, self.alpha(stat))
         total = np.convolve(home, away)
         return float(total[threshold:].sum())
+
+    def p_card_each_half(self) -> float:
+        """P(>=1 card shown in EACH half of regulation) — independent halves, the
+        card sibling of goals.p_goal_each_half. Each half is the convolved two-team
+        NB tail at >=1, using cards' StatsBomb h2_share (via mean(..,period)) and
+        the TOTAL_CARDS_SCALE level, exactly as p_total_count_ge (KO, 2026-07-07)."""
+        def half_ge1(period: str) -> float:
+            h = nb_pmf_grid(self.mean("cards", "home", period) * TOTAL_CARDS_SCALE, self.alpha("cards"))
+            a = nb_pmf_grid(self.mean("cards", "away", period) * TOTAL_CARDS_SCALE, self.alpha("cards"))
+            return float(np.convolve(h, a)[1:].sum())
+        return half_ge1("1h") * half_ge1("2h")
 
     def p_both_teams_ge(self, stat: str, threshold: int, period: str) -> float:
         return (p_ge(self.mean(stat, "home", period), self.alpha(stat), threshold)
@@ -252,3 +400,80 @@ class CountPricer:
 
     def p_red(self) -> float:
         return self.aggregates["p_red"]
+
+    def p_total_in_window(self, stat: str, window: str, threshold: int = 1) -> float:
+        """P(>=threshold of `stat` by both teams within a within-match time window)
+        = match rate x the empirical window share (aggregates['timing']), Poisson
+        for the small windowed count. Raises if no timing share exists for the stat."""
+        if window == "stoppage":
+            # A card in EITHER half's stoppage time = the union of the two disjoint
+            # stoppage windows; disjoint => their shares (hence windowed means) add.
+            t = self.aggregates.get("timing", {}).get(stat, {})
+            share = (t.get("h1stop") or 0.0) + (t.get("h2stop") or 0.0)
+        elif window == "h1_after30":
+            # First half AFTER the ~30' hydration break = the whole-first-half share
+            # minus the before-30 window (the two partition the first half). Derived
+            # from the stored before30 share + the stat's h2 split, so no separate
+            # StatsBomb window is needed.
+            from models.goals import H2_GOAL_SHARE
+            before30 = self.aggregates.get("timing", {}).get(stat, {}).get("before30", 0.0)
+            h2 = self.aggregates.get("stats", {}).get(stat, {}).get("h2_share") or H2_GOAL_SHARE
+            share = max((1 - h2) - before30, 0.0)
+        else:
+            share = self.aggregates.get("timing", {}).get(stat, {}).get(window)
+        if not share:
+            raise ValueError(f"no timing share for {stat}/{window}")
+        if stat == "goals":
+            wmean = (self.lam_home + self.lam_away) * share
+        else:
+            wmean = (self.mean(stat, "home", "match") + self.mean(stat, "away", "match")) * share
+        return float(1 - stats.poisson.cdf(threshold - 1, wmean * TIMING_SCALE))
+
+    def total_sot_pmf(self) -> np.ndarray:
+        # Total-only SOT correction (TOTAL_SOT_SCALE): this pmf feeds the squad
+        # "2+ SOT" market (p_any_player_2sot), which is total-derived, not per-team.
+        home = nb_pmf_grid(self.mean("sot", "home", "match") * TOTAL_SOT_SCALE, self.alpha("sot"))
+        away = nb_pmf_grid(self.mean("sot", "away", "match") * TOTAL_SOT_SCALE, self.alpha("sot"))
+        return np.convolve(home, away)
+
+    def p_any_player_2sot(self) -> float:
+        """P(>=1 player records 2+ SOT) = sum over the total-SOT pmf of the
+        empirical P(any 2+ SOT | total SOT)."""
+        return float(sum(p * r_any_2sot(s) for s, p in enumerate(self.total_sot_pmf())))
+
+    # P(total regulation substitutions >= k), 5-sub-era StatsBomb (199 matches,
+    # mean 8.82; scripts run 2026-07-06). Near-mechanical: teams use their windows.
+    SUBS_TAIL = {6: 0.97, 7: 0.92, 8: 0.84, 9: 0.72, 10: 0.41, 11: 0.01}
+
+    def p_total_subs_ge(self, threshold: int) -> float:
+        if threshold <= 5:
+            return 0.99
+        return float(self.SUBS_TAIL.get(threshold, 0.005))
+
+    # P(>=1 player OF ONE TEAM records 2+ SOT | that team's SOT total) — StatsBomb
+    # 628 team-matches (derived 2026-07-05; near-deterministic rising curve). The
+    # team-scoped sibling of r_any_2sot (which conditions on the MATCH total).
+    _TEAM_ANY2SOT = (0.0, 0.0, 0.12, 0.31, 0.56, 0.64, 0.84, 0.98, 0.99)
+
+    def p_team_any_player_2sot(self, side: str) -> float:
+        """P(any single player of `side` records 2+ SOT) = team-SOT pmf x the
+        empirical conditional. Uses the team's OWN mean (per-team market — no
+        TOTAL-level scale, same discipline as team_count_ge)."""
+        pmf = nb_pmf_grid(self.mean("sot", side, "match"), self.alpha("sot"))
+        t = self._TEAM_ANY2SOT
+        return float(sum(p * (t[min(s, len(t) - 1)]) for s, p in enumerate(pmf)))
+
+    def total_cards_pmf(self) -> np.ndarray:
+        """Convolved total-cards pmf at the TOTAL level (card_factor + intensity
+        via mean(), then TOTAL_CARDS_SCALE like p_total_count_ge) — feeds the
+        cross-stat 'more cards than goals' market."""
+        home = nb_pmf_grid(self.mean("cards", "home", "match") * TOTAL_CARDS_SCALE, self.alpha("cards"))
+        away = nb_pmf_grid(self.mean("cards", "away", "match") * TOTAL_CARDS_SCALE, self.alpha("cards"))
+        return np.convolve(home, away)
+
+    def p_total_shots_ge(self, threshold: int) -> float:
+        """Total shots (on+off target): anchored to the realized shots level and
+        tempo-scaled by this match's SOT vs the count model's average SOT."""
+        match_sot = self.mean("sot", "home", "match") + self.mean("sot", "away", "match")
+        mean = TOURNAMENT_SHOTS_MEAN * match_sot / COUNT_AVG_SOT * TOTAL_SHOTS_SCALE
+        return p_ge(mean, SHOTS_ALPHA, threshold)

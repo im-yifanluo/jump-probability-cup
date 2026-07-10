@@ -45,12 +45,29 @@ SOT_SHRINK_APPS = 1.0        # validated shrink strength toward the prior
 INTL_DISCOUNT = 0.839        # club SOT/match -> tournament SOT/match
 SOT_ALPHA = 0.05             # near-Poisson (within-player overdispersion ~0)
 TOURNAMENT_TEAM_SOT = 4.11   # player-SOT tempo normaliser = team_sot_mean / this.
-# Must track counts.TOURNAMENT_INTENSITY['sot']: when that went 0.90 -> 1.00
-# (2026-06-24), every team_sot_mean rose x1/0.90, so this was raised 3.70 -> 4.11
-# (=3.70/0.90) to keep player-SOT props INVARIANT (verified: Gakpo 0.445 -> 0.445).
-# Otherwise the team/total-SOT threshold recalibration silently inflates the
-# player_sot_ge family (our #1, +125 RBP) by ~11%.
+# Must track counts.TOURNAMENT_INTENSITY['sot'] = 4.11 x sot_intensity. sot intensity is back to
+# 1.00 (the 06-29 flat 1.40 was REVERTED — it over-corrected TEAM/player SOT; the total-SOT fix now
+# lives in counts.TOTAL_SOT_SCALE, total-only), so this is 4.11 = 4.11 x 1.00. player ">=1 SOT" is
+# thus exactly v4 again (the total-SOT correction does not touch it).
 MAX_TEMPO = 1.6              # cap on the per-match tempo multiplier
+# For the near-binary ">=1 SOT" threshold, team tempo barely moves whether a genuine
+# shooter gets a shot ON TARGET (a starter shoots regardless of team strength). The
+# linear tempo curve is too steep for this case: StatsBomb (314 matches, 234 shooter-
+# matches) shows the model UNDER-rates underdog shooters (pred 0.23-0.44 vs realized
+# 0.38-0.54) and OVER-rates favourites (0.71 vs 0.50). Compressing the tempo swing
+# toward 1.0 lowers held-out Brier 0.275->0.255 at beta 0.5. Applies to >=1 SOT for a
+# real shooter (rate>=SHOOTER_RATE) ONLY; 2+ SOT (volume) keeps the full tempo model,
+# and calibrated low-rate defenders (realized 0.10) are left untouched. See
+# scripts/backtest_sot1_tempo.py.
+SOT1_TEMPO_BETA = 0.5        # 0=tempo-independent, 1=full tempo (old). 0.5 = conservative
+SHOOTER_RATE = 0.5           # only compress for genuine shooters
+
+# "Plays the entire match (regulation)" — starter full-90 share by position group,
+# 5-sub-era tournaments only (wc2022/euro2024/copa2024/afcon2023, 199 matches,
+# regulation-period subs only; scripts/derive_r16_families.py). Attackers are
+# subbed most. Position comes from the player's override `position:` key; the
+# conservative default for an unknown outfielder is MID.
+FULL90_RATE = {"GK": 0.95, "DEF": 0.79, "MID": 0.575, "FWD": 0.282}
 
 
 @dataclass
@@ -101,7 +118,22 @@ class PlayerModel:
         spelling/order variants. None when the player has no tournament history."""
         if player in self._history.index:
             return player
-        return self._name_index.get(_normalize_name(player))
+        key = _normalize_name(player)
+        if key in self._name_index:
+            return self._name_index[key]
+        # Iberian/Portuguese full-legal-name fallback: the question's common name
+        # ("Bernardo Silva", "Cristiano Ronaldo") is a strict token-subset of one
+        # StatsBomb full name ("Bernardo Mota Veiga de Carvalho e Silva"). Accept
+        # ONLY when exactly one history name contains every query token (unique)
+        # and the query has >=2 tokens — otherwise stay on the prior rather than
+        # risk a wrong match. Without this, elite scorers silently floor to 0.12.
+        qtokens = set(key.split())
+        if len(qtokens) >= 2:
+            hits = [full for norm, full in self._name_index.items()
+                    if qtokens <= set(norm.split())]
+            if len(hits) == 1:
+                return hits[0]
+        return None
 
     def is_sparse(self, player: str) -> bool:
         """True if the player has no override and only thin StatsBomb history,
@@ -113,6 +145,20 @@ class PlayerModel:
         if resolved is None:
             return True
         return self._history.loc[resolved, "apps"] < self.SPARSE_APPS
+
+    def unrepresentative_scorer(self, player: str) -> bool:
+        """is_sparse's blind spot: a player with ENOUGH apps to look trustworthy
+        but ZERO goals in that history, so his goal_share collapses to the prior
+        floor and a genuine scorer is silently under-rated (Cyle Larin: 8 apps,
+        0 goals -> floored). Exempt only when goal_share is hand-set (then we
+        trust the override). A research FLAG, not an auto-correction."""
+        if "goal_share" in (self._overrides.get(player) or {}):
+            return False
+        resolved = self.resolve(player)
+        if resolved is None:
+            return False
+        h = self._history.loc[resolved]
+        return h["apps"] >= self.SPARSE_APPS and h["goals"] == 0
 
     def team_of(self, player: str) -> str | None:
         """The player's team, for match side-mapping: an explicit override
@@ -211,8 +257,23 @@ class PlayerModel:
         rate = r.sot_per_match
         # Match tempo: how much this team is expected to shoot vs the
         # tournament average (capped so a heavy favourite can't explode it).
-        rate *= min(team_sot_mean / TOURNAMENT_TEAM_SOT, MAX_TEMPO)
+        tempo = min(team_sot_mean / TOURNAMENT_TEAM_SOT, MAX_TEMPO)
+        # ">=1 SOT" saturates in tempo for a genuine shooter — compress the swing
+        # toward 1.0 (calibration, not boldness; see SOT1_TEMPO_BETA above).
+        if threshold == 1 and rate >= SHOOTER_RATE:
+            tempo = 1.0 + SOT1_TEMPO_BETA * (tempo - 1.0)
+        rate *= tempo
         rate *= r.expected_minutes / 90.0          # minutes on the pitch
         if period == "2h":
             rate *= h2_share
         return p_ge(rate, SOT_ALPHA, threshold)
+
+    def p_plays_full(self, player: str) -> float:
+        """P(player plays the ENTIRE match in regulation). Position-group base
+        rate (FULL90_RATE, 5-sub era); a player who is not starting (confirmed
+        or expected minutes < 90) cannot play the full match."""
+        r = self.rates(player)
+        if r.expected_minutes < 89:
+            return 0.02
+        pos = str((self._overrides.get(player) or {}).get("position", "MID")).upper()
+        return FULL90_RATE.get(pos, FULL90_RATE["MID"])

@@ -18,10 +18,12 @@ Steps:
    candidate). Two hard constraints: CAREFUL real edge only (never random); keep bot 2
    COMPETITIVE / low-downside now (reserve high-variance gambles for a future top-10 push).
    `tournament_team_sot` = 4.11 × new_sot to hold player-SOT invariant.
-4. **PROMOTION:** if a bot-2 strategy has RELIABLY beaten v4 (OOS, enough settled markets, sound
-   mechanism) AND Yifan has EXPLICITLY approved promoting it, apply it to bot 1's live constants
-   (`src/models/counts.py` / `players.py`), run `pytest`, update `strategy_v4.md`. Otherwise FLAG
-   the candidate for Yifan and leave bot 1 on v4. **bot 1 changes ONLY on Yifan's OK.**
+4. **PROMOTION (STANDING AUTHORIZATION, Yifan 2026-07-02 — supersedes the old explicit-OK rule):**
+   a bot-2 probe that clearly wins ~8-10 of its OWN-family settles (scored via
+   `backtest_engine.py ab`, consistent direction) PROMOTES to bot 1's live constants without
+   further per-change approval — apply, run `pytest`, move bot 2 to the next notch, log. Clear
+   losers retire (bot 2 back to bot 1's level). Small samples keep running. High-confidence
+   BUG fixes also go straight to bot 1. Everything else stays a bot-2 probe.
 5. **SUBMIT both bots:** `daily_run.py --hours 48 --submit --agent` (bot 2 first, bot 1 LAST —
    contamination safety). VERIFY both bots' open COUNTS equal; bot 2 differs only on count
    markets (expected — do not "fix").
@@ -33,9 +35,11 @@ Steps:
    stale/duplicate jobs). THEN for each `SCHEDULE` line create a ONE-SHOT cron (`recurring:false`)
    at its exact `cron=` expression, with a prompt PREFIXED `[AUTO-DAY]`:
    - `kind=final` → read `matchday.md` + `daily_run.py --hours 5 --submit --agent` (confirmed
-     lineups/odds/refs for the imminent wave, both bots).
-   - `kind=night` → read `night_run.md` (final pass + `daily_run.py --hours 26` + OUTPUT
-     tomorrow's bot-1 predictions to chat).
+     lineups/odds/refs for the imminent wave, both bots). The prompt MUST say to execute
+     matchday.md INCLUDING step 0 (the pre-match STRATEGY REVIEW — probe scoring + standing
+     promotions, Yifan 2026-07-02).
+   - `kind=night` → read `night_run.md` (strategy review + final pass + `daily_run.py --hours 26`
+     + OUTPUT tomorrow's bot-1 predictions to chat).
    They fire ~50 min before each kickoff so lineups are out and there is time to reprice
    unhurried; `daily_run` never submits past kickoff, so a late fire only loses freshness, it can
    never post a stale price. Do NOT schedule tomorrow's passes here — tomorrow's morning run does.

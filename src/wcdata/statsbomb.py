@@ -26,14 +26,40 @@ PLAYER_CACHE = ROOT / "data" / "statsbomb_players.parquet"
 # for half-based markets; regulation only mirrors our market definitions).
 HALVES = (1, 2)
 
+# Within-match time windows for the timing markets, from the StatsBomb match
+# `minute` (period distinguishes first/second-half added time). Hydration breaks
+# are the standard ~30' and ~75' marks. We measure the empirical share of each
+# event type in each window so a market's windowed rate = match rate x share.
+TIMING_WINDOWS = ("before30", "after75", "h1stop", "h2stop")
+TIMING_STATS = ("goals", "cards", "corners", "offsides")
+
+
+def _event_windows(minute, period) -> list[str]:
+    """Which timing windows a StatsBomb event falls in (before the 1st hydration
+    break <30'; after the 2nd >=75'; first/second-half stoppage >=45'/>=90')."""
+    if minute is None:
+        return []
+    if period == 1:
+        return (["before30"] if minute < 30 else []) + (["h1stop"] if minute >= 45 else [])
+    if period == 2:
+        return (["after75"] if minute >= 75 else []) + (["h2stop"] if minute >= 90 else [])
+    return []
+
 
 def _team_half_rows(tournament: str, match_id: int, events: list[dict]) -> list[dict]:
     teams = sorted({e["team"]["name"] for e in events if "team" in e})
-    counters = {(t, h): {"goals": 0, "corners": 0, "cards": 0, "reds": 0,
-                         "offsides": 0, "sot": 0, "fouls": 0}
-                for t in teams for h in HALVES}
+    base = {"goals": 0, "corners": 0, "cards": 0, "reds": 0,
+            "offsides": 0, "sot": 0, "fouls": 0}
+    base.update({f"{s}_{w}": 0 for s in TIMING_STATS for w in TIMING_WINDOWS})
+    counters = {(t, h): dict(base) for t in teams for h in HALVES}
     penalty_awarded = False
     first_scorer, first_scorer_2h = None, None
+
+    def bump(c, stat, wins):
+        """Increment the stat AND its per-window timing counters."""
+        c[stat] += 1
+        for w in wins:
+            c[f"{stat}_{w}"] += 1
 
     for e in events:
         period = e.get("period")
@@ -41,6 +67,7 @@ def _team_half_rows(tournament: str, match_id: int, events: list[dict]) -> list[
             continue
         team, etype = e["team"]["name"], e["type"]["name"]
         c = counters[(team, period)]
+        wins = _event_windows(e.get("minute"), period)
 
         if etype == "Shot":
             shot = e.get("shot", {})
@@ -48,7 +75,7 @@ def _team_half_rows(tournament: str, match_id: int, events: list[dict]) -> list[
             if outcome in ("Goal", "Saved", "Saved To Post"):
                 c["sot"] += 1
             if outcome == "Goal":
-                c["goals"] += 1
+                bump(c, "goals", wins)
                 if first_scorer is None:
                     first_scorer = team
                 if period == 2 and first_scorer_2h is None:
@@ -56,7 +83,7 @@ def _team_half_rows(tournament: str, match_id: int, events: list[dict]) -> list[
             if shot.get("type", {}).get("name") == "Penalty":
                 penalty_awarded = True
         elif etype == "Own Goal For":
-            c["goals"] += 1
+            bump(c, "goals", wins)
             if first_scorer is None:
                 first_scorer = team
             if period == 2 and first_scorer_2h is None:
@@ -64,16 +91,16 @@ def _team_half_rows(tournament: str, match_id: int, events: list[dict]) -> list[
         elif etype == "Pass":
             pass_data = e.get("pass", {})
             if pass_data.get("type", {}).get("name") == "Corner":
-                c["corners"] += 1
+                bump(c, "corners", wins)
             # Most offsides are recorded as a pass outcome against the
             # passing team; the standalone "Offside" event is the rare rest.
             if pass_data.get("outcome", {}).get("name") == "Pass Offside":
-                c["offsides"] += 1
+                bump(c, "offsides", wins)
         elif etype == "Foul Committed":
             c["fouls"] += 1
             card = e.get("foul_committed", {}).get("card", {}).get("name")
             if card:
-                c["cards"] += 1
+                bump(c, "cards", wins)
                 if card in ("Red Card", "Second Yellow"):
                     c["reds"] += 1
             if e.get("foul_committed", {}).get("penalty"):
@@ -81,11 +108,11 @@ def _team_half_rows(tournament: str, match_id: int, events: list[dict]) -> list[
         elif etype == "Bad Behaviour":
             card = e.get("bad_behaviour", {}).get("card", {}).get("name")
             if card:
-                c["cards"] += 1
+                bump(c, "cards", wins)
                 if card in ("Red Card", "Second Yellow"):
                     c["reds"] += 1
         elif etype == "Offside":
-            c["offsides"] += 1
+            bump(c, "offsides", wins)
         elif etype == "Foul Won":
             if e.get("foul_won", {}).get("penalty"):
                 penalty_awarded = True

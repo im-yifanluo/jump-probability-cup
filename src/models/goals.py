@@ -21,6 +21,9 @@ from scipy.optimize import least_squares
 
 MAX_GOALS = 12  # grid truncation; P(>12 goals) is negligible
 H2_GOAL_SHARE = 0.54  # measured on club data (see backtest validation)
+ET_FRACTION = 1.0 / 3.0  # 30' extra time vs 90' regulation, at the same Poisson rate
+PENS_TILT = 0.25         # a penalty shootout retains only ~this share of the regulation
+                         # strength edge — empirically shootouts are near coin-flips
 
 
 def poisson_pmf(lam: float, n: int = MAX_GOALS) -> np.ndarray:
@@ -128,6 +131,139 @@ class ScorelineModel:
         """Team wins by a margin of at least `margin` goals."""
         diff = (self._h - self._a) if side == "home" else (self._a - self._h)
         return float(self.grid[diff >= margin].sum())
+
+    def p_clean_sheet(self, side: str) -> float:
+        """Team `side` keeps a clean sheet = the opponent scores 0."""
+        return float(self.grid[:, 0].sum() if side == "home" else self.grid[0, :].sum())
+
+    def total_goals_pmf(self) -> np.ndarray:
+        """P(total goals = k) over the scoreline grid."""
+        return np.bincount((self._h + self._a).ravel(), weights=self.grid.ravel())
+
+    def p_advance(self, side: str) -> float:
+        """Team `side` wins a knockout tie: win in regulation, OR a regulation
+        draw (p_draw) then win the tie-break.
+
+        The tie-break is modelled EXPLICITLY rather than as one proportional-to-
+        odds share: 30' of extra time as independent Poissons at ET_FRACTION of
+        each side's 90' rate, and if extra time is still level, penalties as a
+        near-coin-flip (the regulation strength share is shrunk toward 0.5 by
+        PENS_TILT, since shootouts are empirically close to 50/50). This lifts the
+        underdog's advance odds in lopsided ties, where the old proportional model
+        over-favoured the stronger team. Conserves exactly:
+        p_advance(home) + p_advance(away) == 1 (proof: ET outcomes partition, and
+        the two sides' pens_share sum to 1 because their strength shares do)."""
+        pw = self.p_team_win(side)
+        po = self.p_team_win("away" if side == "home" else "home")
+        s = pw / (pw + po) if (pw + po) > 0 else 0.5   # regulation strength share
+        lam_s = (self.lam_home if side == "home" else self.lam_away) * ET_FRACTION
+        lam_o = (self.lam_away if side == "home" else self.lam_home) * ET_FRACTION
+        et_s, et_o = poisson_pmf(lam_s), poisson_pmf(lam_o)
+        pw_et = float(sum(et_s[i] * et_o[:i].sum() for i in range(1, len(et_s))))
+        pdraw_et = float(np.sum(et_s * et_o))
+        pens_share = 0.5 + PENS_TILT * (s - 0.5)
+        cond = pw_et + pdraw_et * pens_share
+        return pw + self.p_draw() * cond
+
+    def p_shootout(self) -> float:
+        """P(the tie is decided by a penalty shootout) = P(regulation draw) x
+        P(extra time still level) — the same ET Poissons as p_advance
+        (ET_FRACTION of each side's 90' rate), so the two families are
+        mutually consistent."""
+        et_h = poisson_pmf(self.lam_home * ET_FRACTION)
+        et_a = poisson_pmf(self.lam_away * ET_FRACTION)
+        return self.p_draw() * float(np.sum(et_h * et_a))
+
+    def p_total_goals_exact(self, n: int) -> float:
+        """P(exactly n total goals in regulation), straight off the pmf."""
+        pmf = self.total_goals_pmf()
+        return float(pmf[n]) if 0 <= n < len(pmf) else 0.0
+
+    def p_goal_each_half(self) -> float:
+        """P(>=1 goal in EACH half, either team) — independent Poisson halves
+        at the h2_share split (the same machinery as the half markets)."""
+        return (self.p_total_goals_half_ge(1, "1h")
+                * self.p_total_goals_half_ge(1, "2h"))
+
+    def p_same_goals_halves(self) -> float:
+        """P(both halves produce the SAME number of total goals) — independent
+        Poisson halves at the h2_share split (QF template, 2026-07-06)."""
+        lam_tot = self.lam_home + self.lam_away
+        h2 = self.h2_share
+        pmf1 = poisson_pmf(lam_tot * (1 - h2))
+        pmf2 = poisson_pmf(lam_tot * h2)
+        n = min(len(pmf1), len(pmf2))
+        return float(np.sum(pmf1[:n] * pmf2[:n]))
+
+    def p_first_goal_by_other(self, excl_lambda_sum: float) -> float:
+        """P(the match's first goal is scored by a player OUTSIDE a named set) =
+        P(>=1 goal) x (1 - the set's share of total scoring intensity). Competing
+        Poisson: given a goal occurs, its scorer is player X with prob λ_X/λ_total;
+        own goals fall outside any named set (KO template, 2026-07-07)."""
+        lam_tot = self.lam_home + self.lam_away
+        if lam_tot <= 0:
+            return 0.0
+        p_goal = 1 - float(self.grid[0, 0])
+        share = min(max(excl_lambda_sum, 0.0) / lam_tot, 1.0)
+        return float(p_goal * (1 - share))
+
+    def p_total_goals_odd(self) -> float:
+        """P(the total number of regulation goals is ODD) — parity sum over the
+        total-goals pmf (KO template, 2026-07-07)."""
+        return float(self.total_goals_pmf()[1::2].sum())
+
+    def p_margin_exact(self, margin: int) -> float:
+        """P(the regulation result is decided by exactly `margin` goals) — the
+        absolute goal difference equals `margin` (a draw is margin 0, so
+        margin==1 is "decided by exactly one goal"). Straight off the grid."""
+        diff = np.abs(self._h - self._a)
+        return float(self.grid[diff == margin].sum())
+
+    def p_first_goal_in_2h(self) -> float:
+        """P(the match's first goal falls in the second half) = P(no 1H goal) x
+        P(>=1 2H goal), independent Poisson halves at the h2_share split."""
+        lam_tot = self.lam_home + self.lam_away
+        h2 = self.h2_share
+        return float(exp(-lam_tot * (1 - h2)) * (1 - exp(-lam_tot * h2)))
+
+    def _p_win_half(self, side: str, period: str) -> float:
+        """P(`side` outscores the opponent within a single half) — independent
+        Poisson half rates at the h2_share split."""
+        ls = self._half_lambda(side, period)
+        lo = self._half_lambda("away" if side == "home" else "home", period)
+        ps, po = poisson_pmf(ls), poisson_pmf(lo)
+        return float(sum(ps[i] * po[:i].sum() for i in range(1, len(ps))))
+
+    def p_either_wins_both_halves(self) -> float:
+        """P(one team wins BOTH halves on the scoreboard) — a team outscores the
+        opponent in the 1st half AND in the 2nd half. Independent halves, summed
+        over the two mutually-exclusive teams (both can't win the same half)."""
+        return (self._p_win_half("home", "1h") * self._p_win_half("home", "2h")
+                + self._p_win_half("away", "1h") * self._p_win_half("away", "2h"))
+
+    # StatsBomb decomposition for "hold a lead at any point" (regulation), from
+    # scripts/derive_r16_families.py over 314 matches / 628 team-matches:
+    #   P(led | won) = 1.000 (exact — you must lead to win)
+    #   P(led | drew & scored first) = 1.000 (exact — the first scorer led 1-0)
+    #   P(led | drew & did not score first) = 0.073
+    #   P(led | lost) = 0.132 (comeback losses)
+    _LED_DREW_NOFIRST = 0.073
+    _LED_LOST = 0.132
+
+    def p_hold_lead(self, side: str) -> float:
+        """P(`side` holds a lead at any point in regulation): exact result
+        decomposition, with P(scored first | draw) = strength share x
+        P(>=1 goal | draw) from the score grid (0-0 draws can't have a leader)."""
+        other = "away" if side == "home" else "home"
+        p_win, p_loss, p_draw = self.p_team_win(side), self.p_team_win(other), self.p_draw()
+        lam_s = self.lam_home if side == "home" else self.lam_away
+        share = lam_s / (self.lam_home + self.lam_away)
+        p00 = float(self.grid[0, 0])
+        p_first_given_draw = share * max(0.0, 1.0 - p00 / p_draw) if p_draw > 0 else 0.0
+        return (p_win
+                + p_draw * (p_first_given_draw * 1.0
+                            + (1 - p_first_given_draw) * self._LED_DREW_NOFIRST)
+                + p_loss * self._LED_LOST)
 
     # ----------------------------------------------------------------- #
     # Half-based markets (independent Poisson halves, lam * share)

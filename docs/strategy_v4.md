@@ -107,12 +107,18 @@ low-card** — the *opposite* of the cagey-tournament assumption:
 **v4 change #1 — replace the uniform 0.90 with per-stat multipliers** (`src/models/counts.py`):
 
 ```
-TOURNAMENT_INTENSITY = {cards 0.78, sot 1.00, corners 1.05, offsides 0.90, fouls 0.90}
+TOURNAMENT_INTENSITY = {cards 0.78, sot 1.40, corners 1.05, offsides 0.90, fouls 0.90}
 ```
 
 - **cards 0.78** — low-card tournament; the StatsBomb card model was way too high.
-- **sot 1.00** — removes the erroneous suppression; SOT was *calibrated* before the 0.90
-  broke it (esp. total-SOT, which the 0.90 crushed).
+- **sot 1.00 (team/player), TOTAL_SOT_SCALE 1.40 (total only)** — the under-prediction is
+  TOTAL-SPECIFIC, so the fix is DECOUPLED (2026-06-29). TEAM SOT (team_count_ge/both_teams/h2h)
+  and player ">=1 SOT" are well-calibrated (settled gaps ~-0.05) and stay at v4 (intensity 1.00).
+  Only the convolved TOTAL (`counts.TOTAL_SOT_SCALE`, also feeding the squad "2+ SOT") is boosted
+  1.40x: settled total_count_ge/sot pred 0.54 vs hit 0.83 (n=18; StatsBomb total ~7.4/match but the
+  platform realises ~1.4x). A flat sot=1.40 was tried first and REVERTED — it over-corrected TEAM
+  SOT (leave-out Brier 0.203->0.230 on 31 team-SOT settles) while only the total needed it.
+  Confirmed live: BRA/JPN "8+ total SOT" HIT, v4 Brier 0.476 vs the boost 0.122.
 - **corners 1.05** — corners run high; mild boost.
 - **offsides 0.90** — UNCHANGED. It's our 2nd-biggest edge and too unstable to re-fit.
 
@@ -186,9 +192,11 @@ Per pass:
 
 ## 6. Honest limitations / what to watch
 
-- The per-stat multipliers are **group-stage-fit**. Knockout games run cagier — re-fit via
-  `scripts/parse_history_rbp.py` + the calibration once KO data settles (values kept
-  conservative for this reason: sot=1.00 only undoes damage, doesn't over-boost).
+- The per-stat multipliers were **group-stage-fit and deliberately conservative**, but KO data
+  proved SOT needed a real boost: total/team SOT was under-predicted at sot=1.00, so it was
+  re-fit to **1.40** (06-29) on settled + live evidence. bot 2 now probes 1.60 (the realized 0.83
+  hit rate hints even 1.40 may slightly under-correct). Other stats still conservative; re-fit
+  via `scripts/parse_history_rbp.py` + `scripts/family_calibration.py` as more KO data settles.
 - **We don't beat the market on goals/1X2** — that's efficient. Our edge is the ~8/10
   thin markets per match the crowd guesses at. Most of our headline RBP is the crowd's
   shared variance term; our *rank* depends on the thinner directional edge, which the v4

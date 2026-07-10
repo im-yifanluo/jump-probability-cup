@@ -49,8 +49,11 @@ def test_sim_matches_analytic_within_noise():
     analytic, sim, _ = _pricers(0.50, 0.27, 2.7)
     families = [
         "Will Home win the match?",
-        "Will there be 4 or more total cards shown?",
-        "Will there be 8 or more total shots on target?",
+        # NB: TOTAL count markets (SOT, cards, offsides) are intentionally EXCLUDED —
+        # the analytic pricer applies total-only platform-level corrections
+        # (counts.TOTAL_SOT_SCALE / TOTAL_CARDS_SCALE / TOTAL_OFFSIDES_SCALE, promoted
+        # 2026-07-02) which the Monte-Carlo sim (a non-production cross-check) does not
+        # model, so the two legitimately diverge on those totals.
         "At halftime, will the match be tied?",
         "Will both teams score AND the match have 3 or more total goals?",
     ]
