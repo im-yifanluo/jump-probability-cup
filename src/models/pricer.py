@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from models.counts import CountPricer
+from models.counts import CountPricer, p_ge
 from models.goals import ScorelineModel
 from models.players import PlayerModel
 from models.specials import SpecialPricer
@@ -80,6 +80,25 @@ class MatchPricer:
             return (self.goals.lam_home + self.goals.lam_away) / 2
         return self._team_lam(side)
 
+    def _player_goal_share_for_first_scorer(self, player: str) -> float:
+        rates = self.players.rates(player)
+        minutes_factor = max(0.0, min(1.0, rates.expected_minutes / 90.0))
+        return max(0.0, min(0.95, rates.goal_share * minutes_factor))
+
+    def _p_first_goal_other_than_players(self, excluded_players: list[str]) -> float:
+        p_any_goal = 1 - float(self.goals.grid[0, 0])
+        lam_total = self.goals.lam_home + self.goals.lam_away
+        excluded_first = 0.0
+        for player in excluded_players:
+            share = self._player_goal_share_for_first_scorer(player)
+            side = self._player_side(player)
+            if side is None:
+                player_lam = share * ((self.goals.lam_home + self.goals.lam_away) / 2)
+                excluded_first += p_any_goal * player_lam / lam_total if lam_total > 0 else 0.0
+            else:
+                excluded_first += self.goals.p_first_goal_game(side) * share
+        return max(0.0, min(1.0, p_any_goal - excluded_first))
+
     # ------------------------------------------------------------------ #
 
     def price(self, spec: MarketSpec) -> float:
@@ -101,8 +120,17 @@ class MatchPricer:
                 return g.p_team_win(self._side(spec.team))
             case "team_advance":
                 return SpecialPricer(g, c).p_advance(self._side(spec.team))
+            case "penalty_shootout":
+                return SpecialPricer(g, c).p_penalty_shootout()
+            case "match_goes_to_extra_time":
+                return g.p_draw()
             case "ht_tied":
                 return g.p_ht_tied()
+            case "ht_score_exact":
+                return g.p_ht_score_exact(
+                    int(spec.params.get("home_goals", 0)),
+                    int(spec.params.get("away_goals", 0)),
+                )
             case "ht_team_winning":
                 return g.p_ht_winning(self._side(spec.team))
             # goals
@@ -110,8 +138,20 @@ class MatchPricer:
                 if spec.period == "match":
                     return g.p_total_goals(spec.threshold, spec.direction)
                 return g.p_total_goals_half_ge(spec.threshold, spec.period)
+            case "total_goals_parity":
+                pmf = g.total_goals_pmf()
+                wanted = 1 if spec.params.get("parity") == "odd" else 0
+                return float(sum(p for goals, p in enumerate(pmf) if goals % 2 == wanted))
             case "h2_more_goals_than_h1":
                 return g.p_h2_more_goals_than_h1()
+            case "halves_same_goals":
+                return g.p_halves_same_goals()
+            case "goal_each_half":
+                return g.p_goal_each_half()
+            case "either_team_wins_both_halves":
+                return g.p_either_team_wins_both_halves()
+            case "match_decided_by_exactly_one_goal":
+                return g.p_match_decided_by_exactly_one_goal()
             case "btts_and_total_ge":
                 return g.p_btts_and_total_ge(spec.threshold)
             case "team_goals_ge":
@@ -124,6 +164,8 @@ class MatchPricer:
                 return g.p_team_more_goals_2h(self._side(spec.team))
             case "team_first_goal_2h":
                 return g.p_first_goal_2h(self._side(spec.team))
+            case "first_goal_game_2h":
+                return g.p_first_goal_game_2h()
             case "first_goal_and_other_scores_2h":
                 return g.p_first_goal_game_and_other_scores_2h(
                     self._side(spec.team), self._side(spec.opponent))
@@ -133,6 +175,8 @@ class MatchPricer:
                 return g.p_draw()
             case "team_first_goal_game":
                 return g.p_first_goal_game(self._side(spec.team))
+            case "team_leads_any_time":
+                return g.p_team_leads_any_time(self._side(spec.team))
             case "team_win_by_ge":
                 return g.p_win_by_ge(self._side(spec.team), spec.threshold)
             case "team_scores_both_halves":
@@ -147,6 +191,8 @@ class MatchPricer:
             # timed/special events
             case "goal_before_hydration":
                 return SpecialPricer(g, c).p_goal_before_hydration()
+            case "goal_after_first_hydration_1h":
+                return SpecialPricer(g, c).p_goal_after_first_hydration_1h()
             case "goal_after_second_hydration":
                 return SpecialPricer(g, c).p_goal_after_second_hydration()
             case "goal_in_stoppage":
@@ -156,6 +202,14 @@ class MatchPricer:
             case "card_after_second_hydration":
                 return SpecialPricer(g, c).p_card_after_second_hydration(
                     include_extra_time=bool(spec.params.get("include_extra_time"))
+                )
+            case "card_in_stoppage_any_half":
+                return SpecialPricer(g, c).p_card_in_stoppage_any_half()
+            case "first_card_before_first_goal":
+                return SpecialPricer(g, c).p_first_card_before_first_goal()
+            case "first_goal_other_than_players":
+                return self._p_first_goal_other_than_players(
+                    list(spec.params.get("excluded_players", []))
                 )
             case "substitution_before_halftime":
                 return SpecialPricer(g, c).p_substitution_before_halftime()
@@ -175,10 +229,18 @@ class MatchPricer:
             case "total_count_ge":
                 if spec.stat == "shots":
                     return SpecialPricer(g, c).p_total_shots_ge(spec.threshold)
+                if spec.stat == "substitutions":
+                    return SpecialPricer(g, c).p_total_substitutions_ge(spec.threshold)
                 return c.p_total_count_ge(spec.stat, spec.threshold, spec.period)
+            case "total_count_each_half_ge":
+                return c.p_total_count_each_half_ge(spec.stat, spec.threshold)
             case "total_count_before_hydration":
                 if spec.stat == "corners":
                     return SpecialPricer(g, c).p_corners_before_hydration_ge(spec.threshold)
+            case "total_cards_more_than_goals":
+                cards = c.total_count_pmf("cards", spec.period)
+                goals = g.total_goals_pmf()
+                return float(sum(cards[i] * goals[:min(i, len(goals))].sum() for i in range(1, len(cards))))
             case "team_count_ge":
                 return c.p_team_count_ge(
                     spec.stat, self._side(spec.team), spec.threshold, spec.period)
@@ -186,6 +248,9 @@ class MatchPricer:
                 return c.p_both_teams_ge(spec.stat, spec.threshold, spec.period)
             case "team_more_count_than":
                 return c.p_more_than(spec.stat, self._side(spec.team), spec.period)
+            case "team_more_corners_and_total_shots":
+                side = self._side(spec.team)
+                return c.p_more_than("corners", side, spec.period) * c.p_more_than("sot", side, spec.period)
             # player props
             case "player_scores":
                 return self.players.p_scores(
@@ -196,6 +261,28 @@ class MatchPricer:
                 return self.players.p_scores_or_assists(
                     spec.player, self._player_team_lam(
                         spec.player, spec.params.get("player_team")))
+            case "player_full_match":
+                minutes = max(0.0, min(90.0, self.players.rates(spec.player).expected_minutes))
+                if minutes < 60:
+                    return 0.03
+                if minutes < 80:
+                    return 0.12 + (minutes - 60) / 20 * 0.18
+                return min(0.68, 0.30 + (minutes - 80) / 10 * 0.30)
+            case "player_saves_ge":
+                side = self._player_side(spec.player, spec.params.get("player_team"))
+                if side == "home":
+                    opponent = "away"
+                elif side == "away":
+                    opponent = "home"
+                else:
+                    opponent = None
+                if opponent is None:
+                    opp_sot = (c.mean("sot", "home", "match") + c.mean("sot", "away", "match")) / 2
+                    opp_goals = (g.lam_home + g.lam_away) / 2
+                else:
+                    opp_sot = c.mean("sot", opponent, "match")
+                    opp_goals = self._team_lam(opponent)
+                return p_ge(max(0.05, opp_sot - opp_goals), 0.0, spec.threshold)
             case "player_sot_ge":
                 side = self._player_side(spec.player, spec.params.get("player_team"))
                 team_sot = (c.mean("sot", side, "match") if side is not None else

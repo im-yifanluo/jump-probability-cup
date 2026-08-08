@@ -223,6 +223,8 @@ def special_outcome(row: dict, question: str) -> bool:
     spec = parse(question, teams=ALL_TEAM_NAMES)
     if spec.family == "goal_before_hydration":
         return bool(row["goal_before_30"])
+    if spec.family == "goal_after_first_hydration_1h":
+        return bool(row["goal_after_30_1h"])
     if spec.family == "goal_after_second_hydration":
         return bool(row["goal_after_75"])
     if spec.family == "goal_in_stoppage":
@@ -231,6 +233,10 @@ def special_outcome(row: dict, question: str) -> bool:
         return bool(row["offside_before_30"])
     if spec.family == "card_after_second_hydration":
         return bool(row["card_after_75"])
+    if spec.family == "card_in_stoppage_any_half":
+        return bool(row["card_stoppage"])
+    if spec.family == "first_card_before_first_goal":
+        return bool(row["first_card_before_first_goal"])
     if spec.family == "substitute_scores":
         return bool(row["substitute_goal"])
     if spec.family == "own_goal":
@@ -249,6 +255,8 @@ def special_outcome(row: dict, question: str) -> bool:
         return bool(row["substitution_before_halftime"])
     if spec.family == "total_count_ge" and spec.stat == "shots":
         return int(row["shots"]) >= int(spec.threshold or 0)
+    if spec.family == "total_count_ge" and spec.stat == "substitutions":
+        return int(row["substitutions"]) >= int(spec.threshold or 0)
     if spec.family == "total_count_before_hydration" and spec.stat == "corners":
         return int(row["corners_before_30"]) >= int(spec.threshold or 0)
     raise ValueError(f"unsupported special proxy question: {question}")

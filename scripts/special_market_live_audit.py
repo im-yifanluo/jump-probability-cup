@@ -62,6 +62,8 @@ class SpecialEvidence:
 def special_evidence_key(spec: MarketSpec) -> str | None:
     if spec.family == "goal_before_hydration":
         return "goal_before_30"
+    if spec.family == "goal_after_first_hydration_1h":
+        return "goal_after_30_1h"
     if spec.family == "goal_after_second_hydration":
         return "goal_after_75"
     if spec.family == "goal_in_stoppage":
@@ -70,6 +72,10 @@ def special_evidence_key(spec: MarketSpec) -> str | None:
         return "offside_before_30"
     if spec.family == "card_after_second_hydration":
         return "card_after_75"
+    if spec.family == "card_in_stoppage_any_half":
+        return "card_stoppage"
+    if spec.family == "first_card_before_first_goal":
+        return "first_card_before_first_goal"
     if spec.family == "substitution_before_halftime":
         return "substitution_before_halftime"
     if spec.family == "substitute_scores":
@@ -88,6 +94,8 @@ def special_evidence_key(spec: MarketSpec) -> str | None:
         return "any_player_2_sot"
     if spec.family == "total_count_ge" and spec.stat == "shots" and spec.threshold:
         return f"total_shots_ge_{spec.threshold}"
+    if spec.family == "total_count_ge" and spec.stat == "substitutions" and spec.threshold:
+        return f"total_substitutions_ge_{spec.threshold}"
     if spec.family == "total_count_before_hydration" and spec.stat == "corners" and spec.threshold:
         return f"early_corners_ge_{spec.threshold}"
     return None

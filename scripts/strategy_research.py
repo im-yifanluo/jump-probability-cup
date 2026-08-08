@@ -128,17 +128,20 @@ def live_category(row) -> str:
         "ht_team_winning",
         "team_first_goal_game",
         "team_first_goal_2h",
+        "team_leads_any_time",
         "team_more_goals_2h",
         "team_scores_in_half",
         "team_goals_ge",
         "total_goals",
         "btts",
         "btts_and_total_ge",
+        "goal_each_half",
+        "penalty_shootout",
     }:
         return "goal_markets"
     if family == "team_more_count_than":
         return "count_h2h"
-    if family in {"team_count_ge", "total_count_ge", "both_teams_count_ge"}:
+    if family in {"team_count_ge", "total_count_ge", "both_teams_count_ge", "total_cards_more_than_goals"}:
         return "count_thresholds"
     return "other"
 

@@ -36,11 +36,13 @@ def baselines():
         n_matches=10,
         rates={
             "goal_before_30": 0.40,
+            "goal_after_30_1h": 0.35,
             "goal_after_75": 0.30,
             "goal_1h_stoppage": 0.10,
             "goal_2h_stoppage": 0.20,
             "offside_before_30": 0.50,
             "card_after_75": 0.45,
+            "card_stoppage": 0.36,
             "substitution_before_halftime": 0.15,
             "substitute_goal": 0.25,
             "own_goal": 0.12,
@@ -72,9 +74,29 @@ def baselines():
 def test_knockout_question_templates_parse():
     specs = {
         "Will Japan advance to the Round of 16?": ("team_advance", "Japan", None),
+        "Will Japan advance to the quarterfinals?": ("team_advance", "Japan", None),
+        "Will exactly 1 goal be scored in regulation (90 minutes + stoppage time)?": ("total_goals", None, "goals"),
+        "Will the match be decided by a penalty shootout?": ("penalty_shootout", None, "goals"),
+        "Will the match go to extra time?": ("match_goes_to_extra_time", None, "goals"),
+        "Will the match be 0-0 at halftime?": ("ht_score_exact", None, "goals"),
+        "Will Japan hold a lead at any point in the match (excluding a penalty shootout)?": ("team_leads_any_time", "Japan", "goals"),
+        "Will Belgium hold a lead at any point in regulation (90 minutes + stoppage time, excluding penalty shootout)?": ("team_leads_any_time", "Belgium", "goals"),
+        "Will there be more total cards than total goals in regulation (90 minutes + stoppage time)?": ("total_cards_more_than_goals", None, "cards"),
+        "Will Christian Pulisic (United States) play the entire match in regulation (90 minutes + stoppage time)?": ("player_full_match", None, "minutes"),
+        "Will at least one goal be scored in each half in regulation (90 minutes + stoppage time)?": ("goal_each_half", None, "goals"),
+        "Will either team win both halves in regulation (90 minutes + stoppage time)?": ("either_team_wins_both_halves", None, "goals"),
+        "Will the match be decided by exactly one goal in regulation (90 minutes + stoppage time)?": ("match_decided_by_exactly_one_goal", None, "goals"),
+        "Will at least one card be shown in each half of regulation (90 minutes + stoppage time)?": ("total_count_each_half_ge", None, "cards"),
+        "Will there be 4 or more total cards in regulation (90 minutes + stoppage time)?": ("total_count_ge", None, "cards"),
+        "Will both halves have the same number of goals in regulation (90 minutes + stoppage time)?": ("halves_same_goals", None, "goals"),
+        "Will the first goal of the match be scored in the second half of regulation (90 minutes + stoppage time)?": ("first_goal_game_2h", None, "goals"),
         "Will a goal be scored before the first hydration break?": ("goal_before_hydration", None, "goals"),
+        "Will a goal be scored in the first half after the first hydration break?": ("goal_after_first_hydration_1h", None, "goals"),
+        "Will a goal be scored after the second hydration break but before the end of regulation?": ("goal_after_second_hydration", None, "goals"),
         "Will either team be ruled offside before the first hydration break?": ("offside_before_hydration", None, "offsides"),
         "Will a card be shown after the second hydration break, including any extra time?": ("card_after_second_hydration", None, "cards"),
+        "Will a card be shown during first- or second-half stoppage time in regulation?": ("card_in_stoppage_any_half", None, "cards"),
+        "Will the first card of the match be shown before the first goal is scored?": ("first_card_before_first_goal", None, "cards"),
         "Will a substitute score a goal in regulation (90 minutes + stoppage time)?": ("substitute_scores", None, "goals"),
         "Will an own goal be scored in regulation (90 minutes + stoppage time)?": ("own_goal", None, "goals"),
         "Will a goal be scored from outside the penalty area in regulation (90 minutes + stoppage time)?": ("outside_box_goal", None, "goals"),
@@ -85,9 +107,12 @@ def test_knockout_question_templates_parse():
         "Will any player score at least 1 goal in regulation (90 minutes + stoppage time)?": ("any_player_goals_ge", None, "goals"),
         "Will any player record 2 or more shots on target in regulation (90 minutes + stoppage time)?": ("any_player_sot_ge", None, "sot"),
         "Will there be 22 or more total shots (on and off target) in regulation (90 minutes + stoppage time)?": ("total_count_ge", None, "shots"),
+        "Will there be 9 or more total substitutions (both teams combined) in regulation (90 minutes + stoppage time)?": ("total_count_ge", None, "substitutions"),
         "Will 2 or more corner kicks be taken before the first hydration break?": ("total_count_before_hydration", None, "corners"),
         "Will a substitution be made before halftime?": ("substitution_before_halftime", None, None),
+        "Will either team make a substitution at halftime?": ("substitution_before_halftime", None, None),
         "Will a goal be scored in first-half stoppage (added) time?": ("goal_in_stoppage", None, "goals"),
+        "Will England have more corner kicks AND more total shots than Norway in regulation (90 minutes + stoppage time)?": ("team_more_corners_and_total_shots", "England", "corners_shots"),
         "Will Argentina keep a clean sheet in regulation (90 minutes + stoppage time)?": ("team_clean_sheet", "Argentina", "goals"),
         "Will the United States have 6 or more shots on target in regulation (90 minutes + stoppage time)?": ("team_count_ge", "United States", "sot"),
     }
@@ -115,7 +140,9 @@ def test_special_pricer_scales_timing_props_with_match_volume():
     )
     pricer = SpecialPricer(goals, counts, baselines())
     assert round(pricer.p_goal_before_hydration(), 3) == 0.400
+    assert round(pricer.p_goal_after_first_hydration_1h(), 3) == 0.350
     assert round(pricer.p_offside_before_hydration(), 3) == 0.500
+    assert round(pricer.p_card_in_stoppage_any_half(), 3) == 0.360
     assert round(pricer.p_substitution_before_halftime(), 3) == 0.150
     assert round(pricer.p_own_goal(), 3) == 0.120
     assert round(pricer.p_outside_box_goal(), 3) == 0.240
@@ -154,6 +181,14 @@ def test_player_side_uses_parenthetical_team_hint_when_history_is_missing():
     assert pricer._player_side("Erling Haaland", "Norway") == "away"
     assert pricer._player_side("Amad Diallo", "Ivory Coast") == "home"
     assert pricer._player_side("Ermedin Demirović") is None
+
+
+def test_exact_halftime_score_routes_to_scoreline_model():
+    goals = ScorelineModel(1.8, 0.77)
+    pricer = MatchPricer("France", "Morocco", goals, None, DummyPlayers())
+    spec = parse("Will the match be 0-0 at halftime?", teams={"France", "Morocco"})
+
+    assert pricer.price(spec) == goals.p_ht_score_exact(0, 0)
 
 
 def test_special_backtest_uncertainty_tiers_mark_near_coinflip_edges_weak():
@@ -215,11 +250,14 @@ def test_tournament_heterogeneity_rows_flag_rate_spread():
         {"tournament": "b", "goal_before_30": False, "shots": 19, "corners_before_30": 0},
     ]
     for key in [
+        "goal_after_30_1h",
         "goal_after_75",
         "goal_1h_stoppage",
         "goal_2h_stoppage",
         "offside_before_30",
         "card_after_75",
+        "card_stoppage",
+        "first_card_before_first_goal",
         "substitution_before_halftime",
         "substitute_goal",
         "own_goal",
@@ -231,6 +269,8 @@ def test_tournament_heterogeneity_rows_flag_rate_spread():
     ]:
         for row in rows:
             row[key] = False
+    for row in rows:
+        row["substitutions"] = 8
 
     out = {row["key"]: row for row in tournament_heterogeneity_rows(rows)}
 

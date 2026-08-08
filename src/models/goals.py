@@ -106,10 +106,24 @@ class ScorelineModel:
     def p_team_win(self, side: str) -> float:
         return self.p_home_win() if side == "home" else self.p_away_win()
 
+    def p_match_decided_by_exactly_one_goal(self) -> float:
+        return float(self.grid[np.abs(self._h - self._a) == 1].sum())
+
     def p_total_goals(self, threshold: int, direction: str = ">=") -> float:
         totals = self._h + self._a
-        mask = totals >= threshold if direction == ">=" else totals <= threshold
+        if direction == ">=":
+            mask = totals >= threshold
+        elif direction == "<=":
+            mask = totals <= threshold
+        elif direction == "==":
+            mask = totals == threshold
+        else:
+            raise ValueError(f"unsupported total-goals direction: {direction!r}")
         return float(self.grid[mask].sum())
+
+    def total_goals_pmf(self) -> np.ndarray:
+        totals = self._h + self._a
+        return np.array([float(self.grid[totals == k].sum()) for k in range(2 * MAX_GOALS + 1)])
 
     def p_btts_and_total_ge(self, threshold: int) -> float:
         mask = (self._h >= 1) & (self._a >= 1) & (self._h + self._a >= threshold)
@@ -155,10 +169,25 @@ class ScorelineModel:
         lam = self._half_lambda("home", period) + self._half_lambda("away", period)
         return float(poisson_pmf(lam)[threshold:].sum())
 
+    def p_goal_each_half(self) -> float:
+        h1 = self._half_lambda("home", "1h") + self._half_lambda("away", "1h")
+        h2 = self._half_lambda("home", "2h") + self._half_lambda("away", "2h")
+        return float((1 - exp(-h1)) * (1 - exp(-h2)))
+
+    def p_either_team_wins_both_halves(self) -> float:
+        home = self.p_ht_winning("home") * self.p_team_more_goals_2h("home")
+        away = self.p_ht_winning("away") * self.p_team_more_goals_2h("away")
+        return float(home + away)
+
     def p_h2_more_goals_than_h1(self) -> float:
         h1 = poisson_pmf(self._half_lambda("home", "1h") + self._half_lambda("away", "1h"))
         h2 = poisson_pmf(self._half_lambda("home", "2h") + self._half_lambda("away", "2h"))
         return float(sum(h2[i] * h1[:i].sum() for i in range(1, len(h2))))
+
+    def p_halves_same_goals(self) -> float:
+        h1 = poisson_pmf(self._half_lambda("home", "1h") + self._half_lambda("away", "1h"))
+        h2 = poisson_pmf(self._half_lambda("home", "2h") + self._half_lambda("away", "2h"))
+        return float(np.sum(h1 * h2))
 
     def p_team_more_goals_2h(self, side: str) -> float:
         us = poisson_pmf(self._half_lambda(side, "2h"))
@@ -170,6 +199,13 @@ class ScorelineModel:
         h = poisson_pmf(self._half_lambda("home", "1h"))
         a = poisson_pmf(self._half_lambda("away", "1h"))
         return float(np.sum(h * a))
+
+    def p_ht_score_exact(self, home_goals: int, away_goals: int) -> float:
+        h = poisson_pmf(self._half_lambda("home", "1h"))
+        a = poisson_pmf(self._half_lambda("away", "1h"))
+        if home_goals >= len(h) or away_goals >= len(a):
+            return 0.0
+        return float(h[home_goals] * a[away_goals])
 
     def p_ht_winning(self, side: str) -> float:
         us = poisson_pmf(self._half_lambda(side, "1h"))
@@ -185,6 +221,11 @@ class ScorelineModel:
         lam_s = self._half_lambda(side, "2h")
         lam_total = self._half_lambda("home", "2h") + self._half_lambda("away", "2h")
         return lam_s / lam_total * (1 - exp(-lam_total))
+
+    def p_first_goal_game_2h(self) -> float:
+        lam_1h = self._half_lambda("home", "1h") + self._half_lambda("away", "1h")
+        lam_2h = self._half_lambda("home", "2h") + self._half_lambda("away", "2h")
+        return float(exp(-lam_1h) * (1 - exp(-lam_2h)))
 
     def p_first_goal_game(self, side: str) -> float:
         """Team scores the game's first goal — Poisson race over the full match:
@@ -215,3 +256,29 @@ class ScorelineModel:
                         - (1 - exp(-a2)) * exp(-b2))
         term_2h = exp(-(a1 + b1)) * p_first_a_2h
         return term_1h + term_2h
+
+    @staticmethod
+    def _ever_leads_given_final(us_goals: int, other_goals: int) -> float:
+        """Probability this side led at some point, conditional on final goals.
+
+        Conditional on final counts, goal orderings are exchangeable under the
+        independent Poisson race. If the side finishes ahead, it must have led.
+        Otherwise the reflection-principle/ballot result gives
+        P(ever leads) = us_goals / (other_goals + 1).
+        """
+        if us_goals <= 0:
+            return 0.0
+        if us_goals > other_goals:
+            return 1.0
+        return us_goals / (other_goals + 1)
+
+    def p_team_leads_any_time(self, side: str) -> float:
+        total = 0.0
+        for home_goals in range(MAX_GOALS + 1):
+            for away_goals in range(MAX_GOALS + 1):
+                if side == "home":
+                    conditional = self._ever_leads_given_final(home_goals, away_goals)
+                else:
+                    conditional = self._ever_leads_given_final(away_goals, home_goals)
+                total += float(self.grid[home_goals, away_goals]) * conditional
+        return float(total)

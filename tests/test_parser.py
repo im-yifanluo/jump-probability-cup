@@ -45,6 +45,104 @@ def test_known_specs():
         "team_win", team="South Korea")
     assert parse("Will the match have 2 or fewer total goals?", teams) == MarketSpec(
         "total_goals", stat="goals", threshold=2, direction="<=")
+    assert parse("Will the match be 0-0 at halftime?", teams) == MarketSpec(
+        "ht_score_exact",
+        stat="goals",
+        period="1h",
+        params={"home_goals": 0, "away_goals": 0},
+    )
+    assert parse("Will exactly 1 goal be scored in regulation (90 minutes + stoppage time)?", teams) == MarketSpec(
+        "total_goals", stat="goals", threshold=1, direction="==")
+    assert parse("Will the match finish with exactly 2 total goals in regulation (90 minutes + stoppage time)?", teams) == MarketSpec(
+        "total_goals", stat="goals", threshold=2, direction="==")
+    assert parse(
+        "Will the total number of goals in regulation (90 minutes + stoppage time) be an odd number?",
+        teams,
+    ) == MarketSpec("total_goals_parity", stat="goals", params={"parity": "odd"})
+    assert parse("Will Morocco advance to the quarterfinals?", teams) == MarketSpec(
+        "team_advance", team="Morocco")
+    assert parse("Will the match be decided by a penalty shootout?", teams) == MarketSpec(
+        "penalty_shootout", stat="goals")
+    assert parse(
+        "Will Paraguay hold a lead at any point in the match (excluding a penalty shootout)?",
+        teams,
+    ) == MarketSpec("team_leads_any_time", team="Paraguay", stat="goals")
+    assert parse(
+        "Will Belgium hold a lead at any point in regulation (90 minutes + stoppage time, excluding penalty shootout)?",
+        teams,
+    ) == MarketSpec("team_leads_any_time", team="Belgium", stat="goals")
+    assert parse(
+        "Will there be more total cards than total goals in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec("total_cards_more_than_goals", stat="cards")
+    assert parse(
+        "Will there be 4 or more total cards in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec("total_count_ge", stat="cards", threshold=4)
+    assert parse(
+        "Will Christian Pulisic (United States) play the entire match in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec(
+        "player_full_match",
+        player="Christian Pulisic",
+        stat="minutes",
+        threshold=90,
+        params={"player_team": "United States"},
+    )
+    assert parse(
+        "Will at least one goal be scored in each half in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec("goal_each_half", stat="goals")
+    assert parse(
+        "Will either team win both halves in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec("either_team_wins_both_halves", stat="goals")
+    assert parse(
+        "Will the match be decided by exactly one goal in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec("match_decided_by_exactly_one_goal", stat="goals", threshold=1)
+    assert parse(
+        "Will at least one card be shown in each half of regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec("total_count_each_half_ge", stat="cards", threshold=1)
+    assert parse(
+        "Will a card be shown during first- or second-half stoppage time in regulation?",
+        teams,
+    ) == MarketSpec("card_in_stoppage_any_half", stat="cards")
+    assert parse(
+        "Will both halves have the same number of goals in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec("halves_same_goals", stat="goals")
+    assert parse("Will the match go to extra time?", teams) == MarketSpec(
+        "match_goes_to_extra_time", stat="goals")
+    assert parse(
+        "Will the first card of the match be shown before the first goal is scored?",
+        teams,
+    ) == MarketSpec("first_card_before_first_goal", stat="cards")
+    assert parse(
+        "Will the first goal of the match be scored in the second half of regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec("first_goal_game_2h", stat="goals", period="2h")
+    assert parse(
+        "Will a goal be scored after the second hydration break but before the end of regulation?",
+        teams,
+    ) == MarketSpec("goal_after_second_hydration", stat="goals", params={"minute_cut": 75})
+    assert parse(
+        "Will Diogo Costa (Portugal) make 4 or more saves in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec(
+        "player_saves_ge",
+        player="Diogo Costa",
+        stat="saves",
+        threshold=4,
+        params={"player_team": "Portugal"},
+    )
+    assert parse(
+        "Will there be 9 or more total substitutions (both teams combined) in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec("total_count_ge", stat="substitutions", threshold=9)
+    assert parse("Will either team make a substitution at halftime?", teams) == MarketSpec(
+        "substitution_before_halftime")
     assert parse("Will Haiti have at least 1 shot on target in the second half?", teams
                  ).family == "team_count_ge"
     assert parse("Will Son Heung-min have at least 1 shot on target?", teams
@@ -52,6 +150,15 @@ def test_known_specs():
     assert parse("At halftime, will Czechia have more corner kicks than South Korea?", teams
                  ) == MarketSpec("team_more_count_than", team="Czechia",
                                  opponent="South Korea", stat="corners", period="1h")
+    assert parse(
+        "Will England have more corner kicks AND more total shots than Norway in regulation (90 minutes + stoppage time)?",
+        teams,
+    ) == MarketSpec(
+        "team_more_corners_and_total_shots",
+        team="England",
+        opponent="Norway",
+        stat="corners_shots",
+    )
     assert parse(
         "Will an own goal be scored in regulation (90 minutes + stoppage time)?",
         teams,
@@ -80,6 +187,13 @@ def test_known_specs():
         "Will a substitute score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
         teams,
     ) == MarketSpec("substitute_scores", stat="goals")
+    first_other = parse(
+        "Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?",
+        teams,
+    )
+    assert first_other.family == "first_goal_other_than_players"
+    assert first_other.stat == "goals"
+    assert first_other.params == {"excluded_players": ["Lionel Messi", "Mohamed Salah"]}
 
 
 def test_family_coverage_summary():

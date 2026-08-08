@@ -77,11 +77,14 @@ class SpecialBaselines:
             n_matches=314,
             rates={
                 "goal_before_30": 0.4395,
+                "goal_after_30_1h": 0.3567,
                 "goal_after_75": 0.4522,
                 "goal_1h_stoppage": 0.0701,
                 "goal_2h_stoppage": 0.2070,
                 "offside_before_30": 0.6274,
                 "card_after_75": 0.6561,
+                "card_stoppage": 0.3631,
+                "first_card_before_first_goal": 0.5350,
                 "substitution_before_halftime": 0.1783,
                 "substitute_goal": 0.2707,
                 "own_goal": 0.1242,
@@ -99,6 +102,7 @@ class SpecialBaselines:
                 "cards": 3.462,
                 "corners": 8.793,
                 "corners_before_30": 2.596,
+                "substitutions": 7.400,
             },
             shots_per_sot=3.161,
             total_shots_alpha=0.022,
@@ -152,6 +156,7 @@ def load_special_baselines() -> SpecialBaselines:
         sot: list[float] = []
         offsides: list[float] = []
         cards: list[float] = []
+        stoppage_cards: list[float] = []
         corners: list[float] = []
         player_goals: dict[str, int] = {}
         player_sot: dict[str, int] = {}
@@ -213,12 +218,16 @@ def load_special_baselines() -> SpecialBaselines:
                 card = event.get("foul_committed", {}).get("card", {}).get("name")
                 if card and period in (1, 2):
                     cards.append(minute)
+                    if (period == 1 and minute >= 45) or (period == 2 and minute >= 90):
+                        stoppage_cards.append(minute)
                 elif card and period in (3, 4):
                     et_cards += 1
             elif typ == "Bad Behaviour":
                 card = event.get("bad_behaviour", {}).get("card", {}).get("name")
                 if card and period in (1, 2):
                     cards.append(minute)
+                    if (period == 1 and minute >= 45) or (period == 2 and minute >= 90):
+                        stoppage_cards.append(minute)
                 elif card and period in (3, 4):
                     et_cards += 1
 
@@ -234,12 +243,18 @@ def load_special_baselines() -> SpecialBaselines:
                 "cards": len(cards),
                 "corners": len(corners),
                 "corners_before_30": sum(1 for minute in corners if minute < 30),
+                "substitutions": len(substitutions),
                 "goal_before_30": any(period == 1 and minute < 30 for minute, period, _, _ in goals),
+                "goal_after_30_1h": any(period == 1 and minute >= 30 for minute, period, _, _ in goals),
                 "goal_after_75": any(period == 2 and minute >= 75 for minute, period, _, _ in goals),
                 "goal_1h_stoppage": any(period == 1 and minute >= 45 for minute, period, _, _ in goals),
                 "goal_2h_stoppage": any(period == 2 and minute >= 90 for minute, period, _, _ in goals),
                 "offside_before_30": any(minute < 30 for minute in offsides),
                 "card_after_75": any(minute >= 75 for minute in cards),
+                "card_stoppage": bool(stoppage_cards),
+                "first_card_before_first_goal": bool(cards) and (
+                    not goals or min(cards) < min(minute for minute, _, _, _ in goals)
+                ),
                 "substitution_before_halftime": any(minute < 45 for minute in substitutions),
                 "substitute_goal": any(is_sub for _, _, _, is_sub in goals),
                 "own_goal": bool(own_goals),
@@ -262,11 +277,14 @@ def load_special_baselines() -> SpecialBaselines:
         name: mean(name)
         for name in (
             "goal_before_30",
+            "goal_after_30_1h",
             "goal_after_75",
             "goal_1h_stoppage",
             "goal_2h_stoppage",
             "offside_before_30",
             "card_after_75",
+            "card_stoppage",
+            "first_card_before_first_goal",
             "substitution_before_halftime",
             "substitute_goal",
             "own_goal",
@@ -277,7 +295,7 @@ def load_special_baselines() -> SpecialBaselines:
             "any_player_2_sot",
         )
     }
-    means = {name: mean(name) for name in ("goals", "shots", "sot", "offsides", "cards", "corners", "corners_before_30")}
+    means = {name: mean(name) for name in ("goals", "shots", "sot", "offsides", "cards", "corners", "corners_before_30", "substitutions")}
     reg_goal_rate = means["goals"] / 90
     reg_card_rate = means["cards"] / 90
     et_goal_rate = et_goals / max(et_match_count * 30, 1)
@@ -327,6 +345,9 @@ class SpecialPricer:
     def p_goal_before_hydration(self) -> float:
         return self._scaled_event("goal_before_30", "goals", self._total_goal_mean())
 
+    def p_goal_after_first_hydration_1h(self) -> float:
+        return self._scaled_event("goal_after_30_1h", "goals", self._total_goal_mean())
+
     def p_goal_after_second_hydration(self) -> float:
         return self._scaled_event("goal_after_75", "goals", self._total_goal_mean())
 
@@ -345,6 +366,17 @@ class SpecialPricer:
         et_mean = self._count_mean("cards") * (30 / 90) * self.baselines.extra_time_card_factor
         p_extra_time_card = 1 - exp(-max(et_mean, 0.0))
         return float(p_reg + (1 - p_reg) * self.goals.p_draw() * p_extra_time_card)
+
+    def p_card_in_stoppage_any_half(self) -> float:
+        return self._scaled_event("card_stoppage", "cards", self._count_mean("cards"))
+
+    def p_first_card_before_first_goal(self) -> float:
+        card_mean = max(self._count_mean("cards"), 0.0)
+        goal_mean = max(self._total_goal_mean(), 0.0)
+        total = card_mean + goal_mean
+        if total <= 0:
+            return 0.0
+        return float(card_mean / total * (1 - exp(-total)))
 
     def p_substitution_before_halftime(self) -> float:
         assert self.baselines is not None
@@ -384,6 +416,10 @@ class SpecialPricer:
         mean = self._count_mean("corners") * self.baselines.early_corner_share
         return _nb_ge(mean, self.baselines.early_corners_alpha, threshold)
 
+    def p_total_substitutions_ge(self, threshold: int) -> float:
+        assert self.baselines is not None
+        return _nb_ge(self.baselines.means["substitutions"], 0.0, threshold)
+
     def p_advance(self, side: str) -> float:
         """Probability a team advances from a knockout tie.
 
@@ -409,3 +445,15 @@ class SpecialPricer:
         p_et_draw = sum(home[i] * away[i] for i in range(len(home)))
         p_pens = min(0.58, max(0.42, 0.5 + 0.08 * strength))
         return float(p_reg_win + p_reg_draw * (p_et_win + p_et_draw * p_pens))
+
+    def p_penalty_shootout(self) -> float:
+        """Probability the knockout match reaches a penalty shootout."""
+        assert self.baselines is not None
+        p_reg_draw = self.goals.p_draw()
+        factor = max(0.25, min(1.75, self.baselines.extra_time_goal_factor))
+        lam_home_et = self.goals.lam_home * (30 / 90) * factor
+        lam_away_et = self.goals.lam_away * (30 / 90) * factor
+        home = _poisson_grid(lam_home_et)
+        away = _poisson_grid(lam_away_et)
+        p_et_draw = sum(home[i] * away[i] for i in range(len(home)))
+        return float(p_reg_draw * p_et_draw)

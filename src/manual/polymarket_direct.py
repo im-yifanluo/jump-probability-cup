@@ -37,6 +37,7 @@ DIRECT_OVERRIDE_FAMILIES = {
 PLAYER_PROP_FAMILIES = {
     "player_scores",
     "player_scores_or_assists",
+    "player_saves_ge",
     "player_sot_ge",
 }
 
@@ -373,6 +374,9 @@ def _expected_player_prop_text(spec: MarketSpec) -> str | None:
         return "1+ goals"
     if spec.family == "player_scores_or_assists":
         return "1+ goals + assists"
+    if spec.family == "player_saves_ge":
+        threshold = spec.threshold or 1
+        return f"{threshold}+ saves"
     if spec.family == "player_sot_ge":
         threshold = spec.threshold or 1
         return f"{threshold}+ shots on target"

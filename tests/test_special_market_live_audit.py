@@ -30,6 +30,12 @@ def test_special_evidence_key_maps_live_question_families():
     )
     assert (
         special_evidence_key(
+            parse("Will a goal be scored in the first half after the first hydration break?", teams=teams)
+        )
+        == "goal_after_30_1h"
+    )
+    assert (
+        special_evidence_key(
             parse(
                 "Will there be 22 or more total shots (on and off target) in regulation (90 minutes + stoppage time)?",
                 teams=teams,
@@ -40,6 +46,12 @@ def test_special_evidence_key_maps_live_question_families():
     assert (
         special_evidence_key(parse("Will 2 or more corner kicks be taken before the first hydration break?", teams=teams))
         == "early_corners_ge_2"
+    )
+    assert (
+        special_evidence_key(
+            parse("Will a card be shown during first- or second-half stoppage time in regulation?", teams=teams)
+        )
+        == "card_stoppage"
     )
     assert (
         special_evidence_key(

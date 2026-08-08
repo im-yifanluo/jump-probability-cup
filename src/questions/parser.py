@@ -84,6 +84,14 @@ def _player_name(name: str) -> str:
     return _player_name_and_team(name, frozenset())[0]
 
 
+def _player_name_list(names: str) -> list[str]:
+    return [
+        _player_name(part)
+        for part in re.split(r"\s*,\s*|\s+and\s+", names.strip())
+        if part.strip()
+    ]
+
+
 def _player_params(team: str | None) -> dict:
     return {"player_team": team} if team else {}
 
@@ -97,7 +105,7 @@ def _rule(pattern: str):
 
 # --- match outcome / state ---------------------------------------------------
 
-@_rule(r"^Will (?P<team>.+?) advance to the Round of 16\?$")
+@_rule(r"^Will (?P<team>.+?) advance to the (?P<round>Round of 16|quarter[- ]?finals?|semi[- ]?finals?|final)\?$")
 def _(m, teams):
     return MarketSpec("team_advance", team=m["team"])
 
@@ -114,6 +122,16 @@ def _(m, teams):
 @_rule(r"^(?:At halftime, will the match be tied|Will the match be tied at halftime)\?$")
 def _(m, teams):
     return MarketSpec("ht_tied", period=H1)
+
+
+@_rule(r"^Will the match be (?P<home_goals>\d+)-(?P<away_goals>\d+) at halftime\?$")
+def _(m, teams):
+    return MarketSpec(
+        "ht_score_exact",
+        stat="goals",
+        period=H1,
+        params={"home_goals": int(m["home_goals"]), "away_goals": int(m["away_goals"])},
+    )
 
 
 @_rule(r"^At halftime, will (?P<team>.+?) be winning\?$")
@@ -143,6 +161,11 @@ def _(m, teams):
     return MarketSpec("match_drawn", stat="goals")
 
 
+@_rule(r"^Will the match go to extra time\?$")
+def _(m, teams):
+    return MarketSpec("match_goes_to_extra_time", stat="goals")
+
+
 @_rule(r"^Will (?P<team>.+?) score in both halves\?$")
 def _(m, teams):
     return MarketSpec("team_scores_both_halves", team=m["team"], stat="goals")
@@ -159,6 +182,21 @@ def _(m, teams):
                       direction=">=" if m["dir"] == "more" else "<=")
 
 
+@_rule(r"^Will exactly (?P<n>\d+) goals? be scored\?$")
+def _(m, teams):
+    return MarketSpec("total_goals", stat="goals", threshold=int(m["n"]), direction="==")
+
+
+@_rule(r"^Will the match finish with exactly (?P<n>\d+) total goals\?$")
+def _(m, teams):
+    return MarketSpec("total_goals", stat="goals", threshold=int(m["n"]), direction="==")
+
+
+@_rule(r"^Will the total number of goals be an (?P<parity>odd|even) number\?$")
+def _(m, teams):
+    return MarketSpec("total_goals_parity", stat="goals", params={"parity": m["parity"]})
+
+
 @_rule(r"^Will the second half have (?P<n>\d+) or more total goals\?$")
 def _(m, teams):
     return MarketSpec("total_goals", stat="goals", threshold=int(m["n"]), period=H2)
@@ -172,6 +210,26 @@ def _(m, teams):
 @_rule(r"^Will the second half (?:have|produce) more (?:total )?goals than the first half\?$")
 def _(m, teams):
     return MarketSpec("h2_more_goals_than_h1", stat="goals")
+
+
+@_rule(r"^Will both halves have the same number of goals\?$")
+def _(m, teams):
+    return MarketSpec("halves_same_goals", stat="goals")
+
+
+@_rule(r"^Will at least one goal be scored in each half\?$")
+def _(m, teams):
+    return MarketSpec("goal_each_half", stat="goals")
+
+
+@_rule(r"^Will either team win both halves\?$")
+def _(m, teams):
+    return MarketSpec("either_team_wins_both_halves", stat="goals")
+
+
+@_rule(r"^Will the match be decided by exactly one goal\?$")
+def _(m, teams):
+    return MarketSpec("match_decided_by_exactly_one_goal", stat="goals", threshold=1)
 
 
 @_rule(r"^Will any player score (?:(?P<n1>\d+) or more|at least (?P<n2>\d+)) goals?(?: \(excluding own goals\))?\?$")
@@ -196,6 +254,16 @@ def _(m, teams):
 @_rule(r"^Will (?P<team>.+?) score the first goal of the (?:game|match)\?$")
 def _(m, teams):
     return MarketSpec("team_first_goal_game", team=m["team"], stat="goals")
+
+
+@_rule(r"^Will the first goal of the match be scored in the second half\?$")
+def _(m, teams):
+    return MarketSpec("first_goal_game_2h", stat="goals", period=H2)
+
+
+@_rule(r"^Will (?P<team>.+?) hold a lead at any point(?: in the match)?(?: \(excluding a penalty shootout\))?\?$")
+def _(m, teams):
+    return MarketSpec("team_leads_any_time", team=m["team"], stat="goals")
 
 
 @_rule(r"^Will (?P<team>.+?) score in the (?P<half>first|second) half\?$")
@@ -227,6 +295,11 @@ def _(m, teams):
     return MarketSpec("penalty_or_red")
 
 
+@_rule(r"^Will the match be decided by a penalty shootout\?$")
+def _(m, teams):
+    return MarketSpec("penalty_shootout", stat="goals")
+
+
 @_rule(r"^Will a red card be shown(?: in the match)?\?$")
 def _(m, teams):
     return MarketSpec("red_card")
@@ -239,7 +312,17 @@ def _(m, teams):
     return MarketSpec("goal_before_hydration", stat="goals", params={"minute_cut": 30})
 
 
-@_rule(r"^Will a goal be scored after the second hydration break\?$")
+@_rule(r"^Will a goal be scored in the first half after the first hydration break\?$")
+def _(m, teams):
+    return MarketSpec(
+        "goal_after_first_hydration_1h",
+        stat="goals",
+        period=H1,
+        params={"minute_cut": 30},
+    )
+
+
+@_rule(r"^Will a goal be scored after the second hydration break(?: but before (?:the )?end of regulation)?\?$")
 def _(m, teams):
     return MarketSpec("goal_after_second_hydration", stat="goals", params={"minute_cut": 75})
 
@@ -267,6 +350,25 @@ def _(m, teams):
     )
 
 
+@_rule(r"^Will a card be shown during first- or second-half stoppage time(?: in regulation)?\?$")
+def _(m, teams):
+    return MarketSpec("card_in_stoppage_any_half", stat="cards")
+
+
+@_rule(r"^Will the first card of the match be shown before the first goal is scored\?$")
+def _(m, teams):
+    return MarketSpec("first_card_before_first_goal", stat="cards")
+
+
+@_rule(r"^Will the first goal of the (?:match|game) be scored by a player other than (?P<players>.+?)\?$")
+def _(m, teams):
+    return MarketSpec(
+        "first_goal_other_than_players",
+        stat="goals",
+        params={"excluded_players": _player_name_list(m["players"])},
+    )
+
+
 @_rule(r"^Will a substitute score a goal(?: \(excluding own goals\))?\?$")
 def _(m, teams):
     return MarketSpec("substitute_scores", stat="goals")
@@ -287,7 +389,7 @@ def _(m, teams):
     return MarketSpec("header_goal", stat="goals")
 
 
-@_rule(r"^Will a substitution be made before halftime\?$")
+@_rule(r"^Will (?:a substitution be made before halftime|either team make a substitution at halftime)\?$")
 def _(m, teams):
     return MarketSpec("substitution_before_halftime")
 
@@ -309,6 +411,11 @@ def _(m, teams):
     return MarketSpec("total_count_ge", stat="shots", threshold=int(m["n"]))
 
 
+@_rule(r"^Will there be (?P<n>\d+) or more total substitutions \(both teams combined\)\?$")
+def _(m, teams):
+    return MarketSpec("total_count_ge", stat="substitutions", threshold=int(m["n"]))
+
+
 @_rule(r"^Will (?P<n>\d+) or more corner kicks be taken before the first hydration break\?$")
 def _(m, teams):
     return MarketSpec(
@@ -318,7 +425,7 @@ def _(m, teams):
         params={"minute_cut": 30},
     )
 
-@_rule(r"^Will there be (?P<n>\d+) or more total cards shown(?P<h2> in the second half)?\?$")
+@_rule(r"^Will there be (?P<n>\d+) or more total cards(?: shown)?(?P<h2> in the second half)?\?$")
 def _(m, teams):
     return MarketSpec("total_count_ge", stat="cards", threshold=int(m["n"]),
                       period=H2 if m["h2"] else MATCH)
@@ -328,6 +435,11 @@ def _(m, teams):
 def _(m, teams):
     return MarketSpec("total_count_ge", stat="cards", threshold=1,
                       period=H1 if m["half"] == "first" else H2)
+
+
+@_rule(r"^Will at least one card be shown in each half\?$")
+def _(m, teams):
+    return MarketSpec("total_count_each_half_ge", stat="cards", threshold=1)
 
 
 @_rule(r"^Will there be (?P<n>\d+) or more total corner kicks(?: in the (?P<period>second half|match))?\?$")
@@ -345,6 +457,11 @@ def _(m, teams):
 @_rule(r"^Will there be (?P<n>\d+) or more (?:total )?offside(?: calls|s)?\?$")
 def _(m, teams):
     return MarketSpec("total_count_ge", stat="offsides", threshold=int(m["n"]))
+
+
+@_rule(r"^Will there be more total cards than total goals\?$")
+def _(m, teams):
+    return MarketSpec("total_cards_more_than_goals", stat="cards")
 
 
 # --- "both teams" thresholds (must precede the per-team/player SOT rule) ----------
@@ -396,6 +513,16 @@ def _(m, teams):
 
 
 # --- head-to-head count comparisons (ties resolve to No) ----------------------------
+
+@_rule(r"^Will (?P<team>.+?) have more corner kicks AND more total shots than (?P<opp>.+?)\?$")
+def _(m, teams):
+    return MarketSpec(
+        "team_more_corners_and_total_shots",
+        team=m["team"],
+        opponent=m["opp"],
+        stat="corners_shots",
+    )
+
 
 @_rule(r"^At halftime, will (?P<team>.+?) have more (?P<stat>corner kicks|shots on target) than (?P<opp>.+?)\?$")
 def _(m, teams):
@@ -453,15 +580,39 @@ def _(m, teams):
                       params=_player_params(player_team))
 
 
+@_rule(r"^Will (?P<player>.+?) play the entire match\?$")
+def _(m, teams):
+    player, player_team = _player_name_and_team(m["player"], teams)
+    return MarketSpec(
+        "player_full_match",
+        player=player,
+        stat="minutes",
+        threshold=90,
+        params=_player_params(player_team),
+    )
+
+
+@_rule(r"^Will (?P<player>.+?) make (?P<n>\d+) or more saves\?$")
+def _(m, teams):
+    player, player_team = _player_name_and_team(m["player"], teams)
+    return MarketSpec(
+        "player_saves_ge",
+        player=player,
+        stat="saves",
+        threshold=int(m["n"]),
+        params=_player_params(player_team),
+    )
+
+
 # Knockout-round markets re-phrase the group-stage templates with a regulation /
 # extra-time qualifier ("... in regulation (90 minutes + stoppage time)", "...,
 # excluding extra time", "Will regulation (90 minutes + stoppage time) end ..."),
 # because KO ties can go to extra time. Our models price 90-minute regulation, so
 # the qualifier is a semantic no-op — strip it to the base group-stage question.
 _REG_SUFFIX = re.compile(
-    r"\s+(?:in|during|of)\s+regulation\s*\(90 minutes\s*(?:\+|plus)\s*stoppage time\)", re.I)
+    r"\s+(?:in|during|of)\s+regulation\s*\(90 minutes\s*(?:\+|plus)\s*stoppage time(?:,\s*excluding penalty shootout)?\)", re.I)
 _REG_SUBJECT = re.compile(
-    r"\bregulation\s*\(90 minutes\s*(?:\+|plus)\s*stoppage time\)", re.I)
+    r"\bregulation\s*\(90 minutes\s*(?:\+|plus)\s*stoppage time(?:,\s*excluding penalty shootout)?\)", re.I)
 _EXCL_ET = re.compile(r",?\s+excluding extra time", re.I)
 
 

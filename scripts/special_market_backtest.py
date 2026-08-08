@@ -32,6 +32,7 @@ def _shot_from_outside_penalty_area(event: dict) -> bool:
 
 SCALING_VOLUME = {
     "goal_before_30": "goals",
+    "goal_after_30_1h": "goals",
     "goal_after_75": "goals",
     "goal_1h_stoppage": "goals",
     "goal_2h_stoppage": "goals",
@@ -43,16 +44,21 @@ SCALING_VOLUME = {
     "any_player_brace": "goals",
     "offside_before_30": "offsides",
     "card_after_75": "cards",
+    "card_stoppage": "cards",
+    "first_card_before_first_goal": "cards",
     "any_player_2_sot": "sot",
 }
 
 SPECIAL_FIELDS = [
     "goal_before_30",
+    "goal_after_30_1h",
     "goal_after_75",
     "goal_1h_stoppage",
     "goal_2h_stoppage",
     "offside_before_30",
     "card_after_75",
+    "card_stoppage",
+    "first_card_before_first_goal",
     "substitution_before_halftime",
     "substitute_goal",
     "own_goal",
@@ -66,6 +72,7 @@ SPECIAL_FIELDS = [
 COUNT_THRESHOLD_PRIORS = [
     ("total_shots_ge_20", "shots", 20),
     ("total_shots_ge_22", "shots", 22),
+    ("total_substitutions_ge_9", "substitutions", 9),
     ("early_corners_ge_2", "corners_before_30", 2),
 ]
 
@@ -132,6 +139,7 @@ def rows() -> list[dict]:
                 subs.append(event.get("minute", 0) + event.get("second", 0) / 60)
 
         shots = sot = corners = corners_before_30 = 0
+        stoppage_cards: list[float] = []
         for event in events:
             typ = event.get("type", {}).get("name")
             period = event.get("period")
@@ -172,9 +180,13 @@ def rows() -> list[dict]:
             elif typ == "Foul Committed":
                 if event.get("foul_committed", {}).get("card", {}).get("name"):
                     cards.append(minute)
+                    if (period == 1 and minute >= 45) or (period == 2 and minute >= 90):
+                        stoppage_cards.append(minute)
             elif typ == "Bad Behaviour":
                 if event.get("bad_behaviour", {}).get("card", {}).get("name"):
                     cards.append(minute)
+                    if (period == 1 and minute >= 45) or (period == 2 and minute >= 90):
+                        stoppage_cards.append(minute)
 
         out.append(
             {
@@ -191,12 +203,18 @@ def rows() -> list[dict]:
                 "cards": len(cards),
                 "corners": corners,
                 "corners_before_30": corners_before_30,
+                "substitutions": len(subs),
                 "goal_before_30": any(p == 1 and m < 30 for m, p, _, _ in goals),
+                "goal_after_30_1h": any(p == 1 and m >= 30 for m, p, _, _ in goals),
                 "goal_after_75": any(p == 2 and m >= 75 for m, p, _, _ in goals),
                 "goal_1h_stoppage": any(p == 1 and m >= 45 for m, p, _, _ in goals),
                 "goal_2h_stoppage": any(p == 2 and m >= 90 for m, p, _, _ in goals),
                 "offside_before_30": any(m < 30 for m in offsides),
                 "card_after_75": any(m >= 75 for m in cards),
+                "card_stoppage": bool(stoppage_cards),
+                "first_card_before_first_goal": bool(cards) and (
+                    not goals or min(cards) < min(m for m, _, _, _ in goals)
+                ),
                 "substitution_before_halftime": any(m < 45 for m in subs),
                 "substitute_goal": any(is_sub for _, _, _, is_sub in goals),
                 "own_goal": bool(own_goals),

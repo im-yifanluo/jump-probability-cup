@@ -284,12 +284,18 @@ def reasoning(spec) -> str:
         return "blended ESPN/DraftKings and Polymarket market-implied 1X2 probability"
     if spec.family == "team_advance":
         return "regulation win plus draw-path extra-time/penalty model from odds-implied goal rates"
+    if spec.family == "penalty_shootout":
+        return "regulation draw plus extra-time draw model from odds-implied goal rates"
+    if spec.family == "team_leads_any_time":
+        return "odds-anchored scoreline and goal-order model for whether the team ever leads"
     if spec.family in {
         "goal_before_hydration",
+        "goal_after_first_hydration_1h",
         "goal_after_second_hydration",
         "goal_in_stoppage",
         "offside_before_hydration",
         "card_after_second_hydration",
+        "card_in_stoppage_any_half",
         "substitution_before_halftime",
         "substitute_scores",
         "any_player_goals_ge",
@@ -297,6 +303,8 @@ def reasoning(spec) -> str:
         "total_count_before_hydration",
     } or spec.stat == "shots":
         return "StatsBomb international-tournament timing/special baseline scaled to this match's goal or count volume"
+    if spec.family == "first_goal_other_than_players":
+        return "odds-anchored first-goal race minus named players' estimated first-scorer shares from the player goal-rate model"
     if spec.stat == "goals" or spec.family in {
         "total_goals",
         "btts",
@@ -305,8 +313,11 @@ def reasoning(spec) -> str:
         "team_scores_in_half",
         "team_more_goals_2h",
         "team_first_goal_2h",
+        "first_goal_game_2h",
         "team_scores_both_halves",
         "team_first_goal_game",
+        "either_team_wins_both_halves",
+        "match_decided_by_exactly_one_goal",
         "h2_more_goals_than_h1",
         "ht_team_winning",
         "ht_tied",
@@ -316,9 +327,19 @@ def reasoning(spec) -> str:
         return "StatsBomb international-tournament penalty/red base rate from cached event data"
     if spec.family in {"penalty_awarded", "red_card"}:
         return "StatsBomb international-tournament event base rate from cached event data"
+    if spec.family == "total_cards_more_than_goals":
+        return "card-count model compared against the odds-anchored total-goals distribution"
     if spec.player:
         return "player model using StatsBomb/override rates, team tempo from the count model, and ESPN lineup minutes when posted"
-    if spec.family in {"team_count_ge", "total_count_ge", "both_teams_count_ge", "team_more_count_than"}:
+    if spec.family in {
+        "team_count_ge",
+        "total_count_ge",
+        "both_teams_count_ge",
+        "team_more_corners_and_total_shots",
+        "team_more_count_than",
+        "total_count_each_half_ge",
+        "total_cards_more_than_goals",
+    }:
         return "negative-binomial count model driven by odds-implied goal rates, tournament calibration, and referee override if available"
     return "full manual pricing stack"
 

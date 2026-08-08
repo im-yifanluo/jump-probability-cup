@@ -17,37 +17,51 @@ ODDS_GOAL_FAMILIES = {
     "btts",
     "btts_and_total_ge",
     "first_goal_and_other_scores_2h",
+    "first_goal_game_2h",
+    "goal_each_half",
     "h2_more_goals_than_h1",
     "ht_team_winning",
     "ht_tied",
     "match_drawn",
+    "match_decided_by_exactly_one_goal",
+    "penalty_shootout",
     "team_advance",
     "team_clean_sheet",
     "team_first_goal_2h",
     "team_first_goal_game",
     "team_goals_ge",
+    "team_leads_any_time",
     "team_more_goals_2h",
     "team_scores_both_halves",
     "team_scores_in_half",
     "team_win",
     "team_win_by_ge",
+    "total_goals_parity",
     "total_goals",
+    "either_team_wins_both_halves",
 }
 
 COUNT_FAMILIES = {
     "team_count_ge",
     "total_count_ge",
     "both_teams_count_ge",
+    "team_more_corners_and_total_shots",
     "team_more_count_than",
     "total_count_before_hydration",
+    "total_count_each_half_ge",
+    "total_cards_more_than_goals",
 }
 
 SPECIAL_FAMILIES = {
     "goal_before_hydration",
+    "goal_after_first_hydration_1h",
     "goal_after_second_hydration",
     "goal_in_stoppage",
     "offside_before_hydration",
     "card_after_second_hydration",
+    "card_in_stoppage_any_half",
+    "first_card_before_first_goal",
+    "first_goal_other_than_players",
     "substitution_before_halftime",
     "substitute_scores",
     "any_player_goals_ge",
@@ -109,7 +123,7 @@ def is_count_market(spec: MarketSpec) -> bool:
 
 
 def is_special_market(spec: MarketSpec) -> bool:
-    return spec.family in SPECIAL_FAMILIES or spec.stat == "shots"
+    return spec.family in SPECIAL_FAMILIES or spec.stat in {"shots", "substitutions"}
 
 
 def is_strong_sot_count(spec: MarketSpec) -> bool:
