@@ -1,0 +1,512 @@
+{
+ "scenario": "run_dry",
+ "steps": [
+  {
+   "argv": [
+    "run",
+    "--hours",
+    "48",
+    "--dry-run"
+   ],
+   "calls": [
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "limit": "100"
+     },
+     "path": "/api/v1/events",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/matches",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/lobbies",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "d55a394e-9ba6-4a4a-8112-994724f4b464"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "03995b66-4456-4acf-bc95-cf9f1645be0c"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "c5b16a05-c823-48c9-ac79-8923c44df945"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "c03909dc-6898-4224-851b-0250b179e749"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "f2212dc4-88e2-4170-b629-07a9ac003d2d"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "fd54f839-84ea-41be-9e7d-36858f54277f"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "9b65e63b-e296-4f3a-900f-75ae9a493e16"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "a07006f4-3304-4406-819d-0921767cb4f5"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "b2c86c3b-8060-4173-8321-fb68699210f4"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "0bc25d75-319a-493e-86b2-96f84ea9ad55"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-cod-uzb"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-cod-uzb"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "gamma-api.polymarket.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "closed": "false",
+      "limit": "200",
+      "tag_slug": "soccer"
+     },
+     "path": "/events",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-col-por"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-col-por"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "gamma-api.polymarket.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "closed": "false",
+      "limit": "200",
+      "tag_slug": "soccer"
+     },
+     "path": "/events",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260628"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-jor-arg"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "gamma-api.polymarket.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "closed": "false",
+      "limit": "200",
+      "tag_slug": "soccer"
+     },
+     "path": "/events",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260628"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-rsa-can"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "gamma-api.polymarket.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "closed": "false",
+      "limit": "200",
+      "tag_slug": "soccer"
+     },
+     "path": "/events",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260629"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260628"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260629"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-ger-par"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "gamma-api.polymarket.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "closed": "false",
+      "limit": "200",
+      "tag_slug": "soccer"
+     },
+     "path": "/events",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "limit": "100"
+     },
+     "path": "/api/v1/events",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/lobbies",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+     },
+     "path": "/api/v1/predictions",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+     },
+     "path": "/api/v1/predictions",
+     "status": 200
+    }
+   ],
+   "exception": null,
+   "files": {
+    "data/cache/snapshot.json": "sha256:42ee79c8a4446bf797940f19796d337945e26c52d305b10718aa5513c4d70670",
+    "data/inputs/match_lineups.yaml": "ALG vs AUT:\n  kickoff: '2026-06-28T02:00:00+00:00'\n  minutes:\n    Marcel Sabitzer: 90\n  pulled_at: '2026-06-28T01:10:30+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nARG vs CPV:\n  kickoff: '2026-07-03T22:00:00+00:00'\n  minutes:\n    Julián Álvarez: 20\n    Lautaro Martínez: 90\n    Lionel Messi: 90\n  pulled_at: '2026-07-03T21:12:08+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nARG vs EGY:\n  kickoff: '2026-07-07T16:00:00+00:00'\n  minutes:\n    Julián Álvarez: 90\n    Lionel Messi: 90\n    Mohamed Salah: 90\n    Omar Marmoush: 20\n  pulled_at: '2026-07-07T15:58:28+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nARG vs SUI:\n  kickoff: '2026-07-12T01:00:00+00:00'\n  minutes:\n    Breel Embolo: 90\n    Julián Álvarez: 90\n    Lionel Messi: 90\n  pulled_at: '2026-07-12T00:12:03+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nAUS vs EGY:\n  kickoff: '2026-07-03T18:00:00+00:00'\n  minutes:\n    Mahmoud Trezeguet: 20\n    Nestory Irankunda: 90\n  pulled_at: '2026-07-03T17:10:36+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nBEL vs SEN:\n  kickoff: '2026-07-01T20:00:00+00:00'\n  minutes:\n    Ismaïla Sarr: 90\n    Kevin De Bruyne: 90\n    Leandro Trossard: 90\n    Sadio Mané: 90\n  pulled_at: '2026-07-01T19:12:42+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nBRA vs JPN:\n  kickoff: '2026-06-29T17:00:00+00:00'\n  minutes:\n    Ayase Ueda: 90\n    Matheus Cunha: 90\n  pulled_at: '2026-06-29T16:11:22+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nBRA vs NOR:\n  kickoff: '2026-07-05T20:00:00+00:00'\n  minutes:\n    Erling Haaland: 90\n    Martin Ødegaard: 90\n    Matheus Cunha: 90\n    Vinícius Júnior: 90\n  pulled_at: '2026-07-05T19:10:32+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nCAN vs MAR:\n  kickoff: '2026-07-04T17:00:00+00:00'\n  minutes:\n    Achraf Hakimi: 90\n    Alphonso Davies: 20\n    Brahim Díaz: 90\n    Ismael Saibari: 90\n    Jonathan David: 90\n  pulled_at: '2026-07-04T16:11:22+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nCIV vs NOR:\n  kickoff: '2026-06-30T17:00:00+00:00'\n  minutes:\n    Alexander Sørloth: 90\n    Amad Diallo: 20\n    Erling Haaland: 90\n    Martin Ødegaard: 90\n  pulled_at: '2026-06-30T16:10:51+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nCOD vs UZB:\n  kickoff: '2026-06-27T23:30:00+00:00'\n  minutes:\n    Cédric Bakambu: 90\n    Eldor Shomurodov: 90\n  pulled_at: '2026-06-27T22:42:12+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nCOL vs POR:\n  kickoff: '2026-06-27T23:30:00+00:00'\n  minutes:\n    Luis Díaz: 20\n  pulled_at: '2026-06-27T22:40:00+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - Gonçalo Ramos\nCRO vs GHA:\n  kickoff: '2026-06-27T21:00:00+00:00'\n  minutes:\n    Antoine Semenyo: 90\n    Luka Sučić: 20\n  pulled_at: '2026-06-27T20:10:47+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nENG vs ARG:\n  kickoff: '2026-07-15T19:00:00+00:00'\n  minutes:\n    Harry Kane: 90\n    Jude Bellingham: 90\n    Julián Álvarez: 90\n    Lionel Messi: 90\n  pulled_at: '2026-07-15T18:10:22+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nENG vs COD:\n  kickoff: '2026-07-01T16:00:00+00:00'\n  minutes:\n    Harry Kane: 90\n    Jude Bellingham: 90\n    Yoane Wissa: 90\n  pulled_at: '2026-07-01T15:13:10+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nESP vs ARG:\n  kickoff: '2026-07-19T19:00:00+00:00'\n  minutes:\n    Lamine Yamal: 90\n    Lionel Messi: 90\n  pulled_at: '2026-07-19T18:10:19+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nESP vs AUT:\n  kickoff: '2026-07-02T19:00:00+00:00'\n  minutes:\n    Lamine Yamal: 90\n    Marcel Sabitzer: 90\n    Mikel Oyarzabal: 90\n  pulled_at: '2026-07-02T18:13:22+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nESP vs BEL:\n  kickoff: '2026-07-10T19:00:00+00:00'\n  minutes:\n    Kevin De Bruyne: 90\n    Lamine Yamal: 90\n    Romelu Lukaku: 20\n  pulled_at: '2026-07-10T18:11:01+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nFRA vs ENG:\n  kickoff: '2026-07-18T21:00:00+00:00'\n  minutes:\n    Harry Kane: 20\n    Kylian Mbappé: 90\n    Ousmane Dembélé: 20\n  pulled_at: '2026-07-18T20:46:58+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nFRA vs ESP:\n  kickoff: '2026-07-14T19:00:00+00:00'\n  minutes:\n    Kylian Mbappé: 90\n    Lamine Yamal: 90\n  pulled_at: '2026-07-14T18:11:14+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nFRA vs MAR:\n  kickoff: '2026-07-09T20:00:00+00:00'\n  minutes:\n    Achraf Hakimi: 90\n    Brahim Díaz: 90\n    Kylian Mbappé: 90\n    Ousmane Dembélé: 90\n  pulled_at: '2026-07-09T19:14:25+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nFRA vs SWE:\n  kickoff: '2026-06-30T21:00:00+00:00'\n  minutes:\n    Alexander Isak: 90\n    Kylian Mbappé: 90\n    Ousmane Dembélé: 90\n    Viktor Gyökeres: 90\n  pulled_at: '2026-06-30T20:16:59+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nGER vs PAR:\n  kickoff: '2026-06-29T20:30:00+00:00'\n  minutes:\n    Florian Wirtz: 90\n    Jamal Musiala: 20\n    Julio Enciso: 90\n    Kai Havertz: 90\n  pulled_at: '2026-06-29T19:45:47+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nJOR vs ARG:\n  kickoff: '2026-06-28T02:00:00+00:00'\n  minutes: {}\n  pulled_at: '2026-06-28T01:10:31+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - Mousa Al-Taamari\nMEX vs ECU:\n  kickoff: '2026-07-01T01:00:00+00:00'\n  minutes:\n    Gonzalo Plata: 90\n    Raúl Jiménez: 90\n  pulled_at: '2026-07-01T00:19:33+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nMEX vs ENG:\n  kickoff: '2026-07-06T00:00:00+00:00'\n  minutes:\n    Harry Kane: 90\n    Jude Bellingham: 90\n    Julián Quiñones: 90\n    Raúl Jiménez: 90\n  pulled_at: '2026-07-05T23:14:24+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nNED vs MAR:\n  kickoff: '2026-06-30T01:00:00+00:00'\n  minutes:\n    Brian Brobbey: 90\n    Ismael Saibari: 90\n  pulled_at: '2026-06-30T00:13:42+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nPAN vs ENG:\n  kickoff: '2026-06-27T21:00:00+00:00'\n  minutes:\n    Harry Kane: 90\n    José Fajardo: 20\n  pulled_at: '2026-06-27T20:10:48+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nPAR vs FRA:\n  kickoff: '2026-07-04T21:00:00+00:00'\n  minutes:\n    Julio Enciso: 90\n    Kylian Mbappé: 90\n    Michael Olise: 90\n    Miguel Almirón: 90\n    Ousmane Dembélé: 90\n  pulled_at: '2026-07-04T20:12:17+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nPOR vs CRO:\n  kickoff: '2026-07-02T23:00:00+00:00'\n  minutes:\n    Bernardo Silva: 20\n    Bruno Fernandes: 90\n    Cristiano Ronaldo: 90\n    Luka Modrić: 90\n  pulled_at: '2026-07-02T22:35:10+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nRSA vs CAN:\n  kickoff: '2026-06-28T19:00:00+00:00'\n  minutes:\n    Cyle Larin: 20\n    Iqraam Rayners: 20\n  pulled_at: '2026-06-28T18:18:50+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nSUI vs ALG:\n  kickoff: '2026-07-03T03:00:00+00:00'\n  minutes:\n    Amine Gouiri: 20\n    Breel Embolo: 90\n    Riyad Mahrez: 90\n    Rubén Vargas: 90\n  pulled_at: '2026-07-03T02:12:42+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nSUI vs COL:\n  kickoff: '2026-07-07T20:00:00+00:00'\n  minutes:\n    Breel Embolo: 90\n    Dan Ndoye: 90\n    Jhon Arias: 90\n    Luis Díaz: 90\n  pulled_at: '2026-07-07T19:13:05+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nUSA vs BEL:\n  kickoff: '2026-07-07T00:00:00+00:00'\n  minutes:\n    Christian Pulisic: 90\n    Kevin De Bruyne: 20\n    Leandro Trossard: 90\n    Malik Tillman: 90\n    Romelu Lukaku: 20\n  pulled_at: '2026-07-06T23:13:49+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nUSA vs BIH:\n  kickoff: '2026-07-02T00:00:00+00:00'\n  minutes:\n    Ermedin Demirović: 90\n    Folarin Balogun: 90\n  pulled_at: '2026-07-01T23:21:10+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\n",
+    "data/logs/runs.log": "[2026-06-27T22:40:00+00:00] daily_run hours=48 mode=dry-run\n  matches=7 markets=85 actions={'create': 50, 'update': 20}\n  attention: COL vs POR: lineup could not match ['Gonçalo Ramos'] — verify against the posted XI (left at default 90)\n  attention: COL vs POR: STALE-RISK Luis Díaz scorer_prop_prob=0.3 is per-OPPONENT — confirm it is for THIS match's odds\n  attention: RSA vs CAN: Cyle Larin has 0 goals in enough StatsBomb apps — goal_share floored to the prior; research his real scoring rate or set a market scorer_prop_prob (+ scorer_prop_match)\n  attention: RSA vs CAN: Iqraam Rayners priced on prior (no data)\n  attention: BRA vs JPN: STALE-RISK Matheus Cunha scorer_prop_prob=0.31 is per-OPPONENT — confirm it is for THIS match's odds\n  attention: BRA vs JPN: odds/pricer failed — no ESPN fixture matching 'Brazil' on 20260629\n  attention: GER vs PAR: Florian Wirtz on sparse StatsBomb history — fetch current club form (update_player_rates) or research\n",
+    "data/logs/unparsed_backlog.json": "{\n  \"Will the referee wear a yellow shirt?\": {\n    \"first_seen\": \"2026-06-27T22:40:00+00:00\",\n    \"status\": \"open\",\n    \"type\": \"other\",\n    \"last_seen\": \"2026-06-27T22:40:00+00:00\",\n    \"count\": 1\n  }\n}",
+    "data/logs/unparsed_backlog.md": "# Unparsed-question backlog (auto-maintained by scripts/scan_backlog.py)\n\nUpdated 2026-06-27 22:40 UTC. **1 open template(s) across 1 market instances.** (Full scan of 176 markets; 138 distinct questions parse.)\n\nEach `type` = one model to build (priority = total markets, KO are 2x weight). `other` = a template that matched no known type — review immediately.\n\n## other — 1 template(s), 1 markets  ⚠️ UNKNOWN TYPE — REVIEW\n- [1x · since 2026-06-27] Will the referee wear a yellow shirt?\n"
+   },
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "** bot 2 on EXPERIMENT 'golden-probe' (A/B vs bot-1 v4): synthetic bot-2 experiment that moves every swappable knob (golden tests only) **\n\n=== COD vs UZB  (kickoff 2026-06-27 23:30 UTC) ===\n  lineups: not_posted — not posted yet, all-90 default kept\nodds: ESPN/DraftKings (0.375/0.302/0.323, total 2.54)\n  ** scorer_prop for Dan Ndoye EXPIRED (researched for 'SUI vs COL', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Erling Haaland EXPIRED (researched for 'CIV vs NOR', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Folarin Balogun EXPIRED (researched for 'USA vs BIH', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Harry Kane EXPIRED (researched for 'FRA vs ENG', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Ismael Saibari EXPIRED (researched for 'CAN vs MAR', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Kylian Mbappé EXPIRED (researched for 'FRA vs ENG', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Lautaro Martínez EXPIRED (researched for 'ARG vs CPV', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Leandro Trossard EXPIRED (researched for 'BEL vs SEN', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Lionel Messi EXPIRED (researched for 'ENG vs ARG', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Luis Díaz EXPIRED (researched for 'SUI vs COL', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Matheus Cunha EXPIRED (researched for 'BRA vs JPN', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Mikel Oyarzabal EXPIRED (researched for 'ESP vs AUT', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Mohamed Salah EXPIRED (researched for 'ARG vs EGY', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Ousmane Dembélé EXPIRED (researched for 'FRA vs SWE', not 'COD vs UZB') — ignoring it, using the model **\n  0.467  Will Uzbekistan commit more fouls than DR Congo?\n  0.389  Will Uzbekistan be caught offside 2 or more times?\n  0.721  Will both teams have at least 1 shot on target in the second half?\n  0.390  Will both teams score AND the match have 3 or more total goals?\n  0.369  Will a penalty kick be awarded OR a red card be shown?\n  0.372  Will Uzbekistan have more shots on target than DR Congo in the second \n  0.190  Will Eldor Shomurodov have at least 1 shot on target in the second hal\n  0.375  Will DR Congo win the match?\n  0.252  Will Cédric Bakambu score or assist a goal (excluding own goals)?\n  0.416  Will Uzbekistan have 5 or more corner kicks?\n\n=== COL vs POR  (kickoff 2026-06-27 23:30 UTC) ===\n  lineups: ESPN confirmed XI — 0 of our players start, 1 benched; UNMATCHED ['Gonçalo Ramos']\nodds: ESPN/DraftKings (0.301/0.283/0.415, total 2.67)\nodds: Polymarket (0.287/0.297/0.416, vol $2.4M)\nodds: BLENDED home 0.294 / draw 0.290\n  ** scorer_prop for Dan Ndoye EXPIRED (researched for 'SUI vs COL', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Erling Haaland EXPIRED (researched for 'CIV vs NOR', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Folarin Balogun EXPIRED (researched for 'USA vs BIH', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Harry Kane EXPIRED (researched for 'FRA vs ENG', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Ismael Saibari EXPIRED (researched for 'CAN vs MAR', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Kylian Mbappé EXPIRED (researched for 'FRA vs ENG', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Lautaro Martínez EXPIRED (researched for 'ARG vs CPV', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Leandro Trossard EXPIRED (researched for 'BEL vs SEN', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Lionel Messi EXPIRED (researched for 'ENG vs ARG', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Luis Díaz EXPIRED (researched for 'SUI vs COL', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Matheus Cunha EXPIRED (researched for 'BRA vs JPN', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Mikel Oyarzabal EXPIRED (researched for 'ESP vs AUT', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Mohamed Salah EXPIRED (researched for 'ARG vs EGY', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Ousmane Dembélé EXPIRED (researched for 'FRA vs SWE', not 'COL vs POR') — ignoring it, using the model **\n  0.388  Will Colombia be caught offside 2 or more times?\n  0.341  In the second half, will Colombia have more shots on target than Portu\n  0.369  Will a penalty kick be awarded OR a red card be shown?\n  0.417  Will both teams score AND the match have 3 or more total goals?\n  0.294  Will Colombia win the match?\n  0.416  Will Colombia have 4 or more shots on target?\n  0.530  Will Portugal have 4 or more shots on target?\n  0.487  Will there be 5 or more total corner kicks in the second half?\n  0.032  Will Luis Díaz score a goal (excluding own goals)?\n  0.618  Will Gonçalo Ramos have at least 1 shot on target?\n\n=== ALG vs AUT  (kickoff 2026-06-28 02:00 UTC) ===\n  ** USING MANUAL ODDS OVERRIDE for ALG vs AUT: home 0.23 / draw 0.27 / total 2.6 **\n  ** scorer_prop for Dan Ndoye EXPIRED (researched for 'SUI vs COL', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Erling Haaland EXPIRED (researched for 'CIV vs NOR', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Folarin Balogun EXPIRED (researched for 'USA vs BIH', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Harry Kane EXPIRED (researched for 'FRA vs ENG', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Ismael Saibari EXPIRED (researched for 'CAN vs MAR', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Kylian Mbappé EXPIRED (researched for 'FRA vs ENG', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Lautaro Martínez EXPIRED (researched for 'ARG vs CPV', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Leandro Trossard EXPIRED (researched for 'BEL vs SEN', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Lionel Messi EXPIRED (researched for 'ENG vs ARG', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Luis Díaz EXPIRED (researched for 'SUI vs COL', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Matheus Cunha EXPIRED (researched for 'BRA vs JPN', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Mikel Oyarzabal EXPIRED (researched for 'ESP vs AUT', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Mohamed Salah EXPIRED (researched for 'ARG vs EGY', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Ousmane Dembélé EXPIRED (researched for 'FRA vs SWE', not 'ALG vs AUT') — ignoring it, using the model **\n  0.477  Will Algeria commit more fouls than Austria?\n  0.540  Will Austria have more shots on target than Algeria in the second half\n  0.483  Will Austria score the first goal of the second half?\n  0.425  Will Austria score more goals than Algeria in the second half?\n  0.340  Will Austria receive more cards than Algeria?\n  0.230  Will Algeria win the match?\n  0.508  Will there be 9 or more total corner kicks?\n  0.403  Will Austria have 5 or more shots on target?\n  0.340  Will Marcel Sabitzer have at least 1 shot on target?\n  0.539  Will Algeria have 3 or more shots on target?\n\n=== JOR vs ARG  (kickoff 2026-06-28 02:00 UTC) ===\nodds: ESPN/DraftKings (0.046/0.096/0.858, total 3.62)\nodds: Polymarket (0.208/0.119/0.673, vol $3.1M)\n  ** sources disagree on home win by 0.16 — check for stale odds **\nodds: BLENDED home 0.127 / draw 0.108\n  ** scorer_prop for Dan Ndoye EXPIRED (researched for 'SUI vs COL', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Erling Haaland EXPIRED (researched for 'CIV vs NOR', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Folarin Balogun EXPIRED (researched for 'USA vs BIH', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Harry Kane EXPIRED (researched for 'FRA vs ENG', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Ismael Saibari EXPIRED (researched for 'CAN vs MAR', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Kylian Mbappé EXPIRED (researched for 'FRA vs ENG', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Lautaro Martínez EXPIRED (researched for 'ARG vs CPV', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Leandro Trossard EXPIRED (researched for 'BEL vs SEN', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Lionel Messi EXPIRED (researched for 'ENG vs ARG', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Luis Díaz EXPIRED (researched for 'SUI vs COL', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Matheus Cunha EXPIRED (researched for 'BRA vs JPN', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Mikel Oyarzabal EXPIRED (researched for 'ESP vs AUT', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Mohamed Salah EXPIRED (researched for 'ARG vs EGY', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Ousmane Dembélé EXPIRED (researched for 'FRA vs SWE', not 'JOR vs ARG') — ignoring it, using the model **\n  0.937  Will Argentina have at least 1 corner kick in the first half?\n  0.369  Will Jordan be caught offside 2 or more times?\n  0.490  Will Jordan commit more fouls than Argentina?\n  0.768  Will Argentina have more shots on target than Jordan in the second hal\n  0.369  Will a penalty kick be awarded OR a red card be shown in the match?\n  0.607  Will Jordan score at least 1 goal?\n  0.299  Will the match have 2 or fewer total goals?\n  0.429  Will Jordan score in the second half?\n  0.312  Will Mousa Al-Taamari score or assist a goal (excluding own goals)?\n  0.648  Will Argentina have 6 or more shots on target?\n\n=== RSA vs CAN  (kickoff 2026-06-28 19:00 UTC) ===\nodds: ESPN/DraftKings (0.260/0.293/0.447, total 2.67)\n  ** scorer_prop for Dan Ndoye EXPIRED (researched for 'SUI vs COL', not 'RSA vs CAN') — ignoring it, using the model **\n  ** scorer_prop for Erling Haaland EXPIRED (researched for 'CIV vs NOR', not 'RSA vs CAN') — ignoring it, using the model **\n  ** scorer_prop for Folarin Balogun EXPIRED (researched for 'USA vs BIH', not 'RSA vs CAN') — ignoring it, using the model **\n  ** scorer_prop for Harry Kane EXPIRED (researched for 'FRA vs ENG', not 'RSA vs CAN') — ignoring it, using the model **\n  ** scorer_prop for Ismael Saibari EXPIRED (researched for 'CAN vs MAR', not 'RSA vs CAN') — ignoring it, using the model **\n  ** scorer_prop for Kylian Mbappé EXPIRED (researched for 'FRA vs ENG', not 'RSA vs CAN') — ignoring it, using the model **\n  ** scorer_prop for Lautaro Martínez EXPIRED (researched for 'ARG vs CPV', not 'RSA vs CAN') — ignoring it, using the model **\n  ** scorer_prop for Leandro Trossard EXPIRED (researched for 'BEL vs SEN', not 'RSA vs CAN') — ignoring it, using the model **\n  ** scorer_prop for Lionel Messi EXPIRED (researched for 'ENG vs ARG', not 'RSA vs CAN') — ignoring it, using the model **\n  ** scorer_prop for Luis Díaz EXPIRED (researched for 'SUI vs COL', not 'RSA vs CAN') — ignoring it, using the model **\n  ** scorer_prop for Matheus Cunha EXPIRED (researched for 'BRA vs JPN', not 'RSA vs CAN') — ignoring it, using the model **\n  ** scorer_prop for Mikel Oyarzabal EXPIRED (researched for 'ESP vs AUT', not 'RSA vs CAN') — ignoring it, using the model **\n  ** scorer_prop for Mohamed Salah EXPIRED (researched for 'ARG vs EGY', not 'RSA vs CAN') — ignoring it, using the model **\n  ** scorer_prop for Ousmane Dembélé EXPIRED (researched for 'FRA vs SWE', not 'RSA vs CAN') — ignoring it, using the model **\n  0.556  Will a card be shown after the second hydration break, including any e\n  0.553  Will both teams score in regulation (90 minutes + stoppage time)?\n  0.536  Will either team be ruled offside before the first hydration break?\n  0.330  Will a substitute score a goal in regulation (90 minutes + stoppage ti\n  0.405  Will a goal be scored before the first hydration break?\n  0.515  Will there be 9 or more total corner kicks in regulation (90 minutes +\n  0.293  Will regulation (90 minutes + stoppage time) end in a tie?\n  0.331  Will Canada be ahead at halftime?\n  0.388  Will South Africa advance to the Round of 16?\n  0.293  Will a penalty kick be awarded during regulation (90 minutes + stoppag\n  0.495  Will the second half produce more goals than the first half in regulat\n  0.212  Will any player score more than 1 goal (excluding own goals) in regula\n  0.015  Will Cyle Larin score a goal (excluding own goals) in regulation (90 m  <- zero-goal history (Larin class): likely UNDER-rates a real scorer\n  0.210  Will there be 4 or more total cards shown in regulation (90 minutes + \n  0.139  Will Iqraam Rayners have at least 1 shot on target in regulation (90 m  <- prior only: research this player\n\n=== BRA vs JPN  (kickoff 2026-06-29 17:00 UTC) ===\n  SKIPPED: no ESPN fixture matching 'Brazil' on 20260629\n\n=== GER vs PAR  (kickoff 2026-06-29 20:30 UTC) ===\n  ** manual_odds for GER vs PAR EXPIRED (tagged 2026-06-01, this kickoff 2026-06-29) — ignoring it, using live odds **\nodds: ESPN/DraftKings (0.714/0.190/0.095, total 2.99)\n  ** scorer_prop for Dan Ndoye EXPIRED (researched for 'SUI vs COL', not 'GER vs PAR') — ignoring it, using the model **\n  ** scorer_prop for Erling Haaland EXPIRED (researched for 'CIV vs NOR', not 'GER vs PAR') — ignoring it, using the model **\n  ** scorer_prop for Folarin Balogun EXPIRED (researched for 'USA vs BIH', not 'GER vs PAR') — ignoring it, using the model **\n  ** scorer_prop for Harry Kane EXPIRED (researched for 'FRA vs ENG', not 'GER vs PAR') — ignoring it, using the model **\n  ** scorer_prop for Ismael Saibari EXPIRED (researched for 'CAN vs MAR', not 'GER vs PAR') — ignoring it, using the model **\n  ** scorer_prop for Kylian Mbappé EXPIRED (researched for 'FRA vs ENG', not 'GER vs PAR') — ignoring it, using the model **\n  ** scorer_prop for Lautaro Martínez EXPIRED (researched for 'ARG vs CPV', not 'GER vs PAR') — ignoring it, using the model **\n  ** scorer_prop for Leandro Trossard EXPIRED (researched for 'BEL vs SEN', not 'GER vs PAR') — ignoring it, using the model **\n  ** scorer_prop for Lionel Messi EXPIRED (researched for 'ENG vs ARG', not 'GER vs PAR') — ignoring it, using the model **\n  ** scorer_prop for Luis Díaz EXPIRED (researched for 'SUI vs COL', not 'GER vs PAR') — ignoring it, using the model **\n  ** scorer_prop for Matheus Cunha EXPIRED (researched for 'BRA vs JPN', not 'GER vs PAR') — ignoring it, using the model **\n  ** scorer_prop for Mikel Oyarzabal EXPIRED (researched for 'ESP vs AUT', not 'GER vs PAR') — ignoring it, using the model **\n  ** scorer_prop for Mohamed Salah EXPIRED (researched for 'ARG vs EGY', not 'GER vs PAR') — ignoring it, using the model **\n  ** scorer_prop for Ousmane Dembélé EXPIRED (researched for 'FRA vs SWE', not 'GER vs PAR') — ignoring it, using the model **\n  0.486  Will Kai Havertz (Germany) score a goal (excluding own goals) in regul\n  0.440  Will a goal be scored before the first hydration break?\n  0.714  Will Germany win in regulation (90 minutes + stoppage time)?\n  0.022  Will Jamal Musiala (Germany) have 2 or more shots on target in regulat\n  0.215  Will there be 4 or more total cards shown in regulation (90 minutes + \n  0.713  Will Germany score the first goal of the match?\n  0.375  Will Germany have 7 or more shots on target in regulation (90 minutes \n  0.432  Will Julio Enciso (Paraguay) have 1 or more shots on target in regulat\n  0.471  Will both teams score in regulation (90 minutes + stoppage time)?\n  0.443  Will Germany score in both halves in regulation (90 minutes + stoppage\n  0.412  Will Florian Wirtz (Germany) score or assist a goal (excluding own goa  <- sparse/old data: verify current form\n  0.420  Will Germany have 7 or more corner kicks in regulation (90 minutes + s\n  0.498  Will Germany be ahead at halftime?\n  0.570  Will there be 3 or more offside calls in regulation (90 minutes + stop\n  0.574  Will the match have 3 or more total goals in regulation (90 minutes + \n\n[dry run] submitting 70 predictions to bot 2 [EXPERIMENT: golden-probe]...\n  bot 2: {'create': 60, 'update': 10}\n\n[dry run] submitting 70 predictions to bot 1 [stable v4]...\n  bot 1: {'create': 50, 'update': 20}\n\nNEEDS ATTENTION:\n  - COL vs POR: lineup could not match ['Gonçalo Ramos'] — verify against the posted XI (left at default 90)\n  - COL vs POR: STALE-RISK Luis Díaz scorer_prop_prob=0.3 is per-OPPONENT — confirm it is for THIS match's odds\n  - RSA vs CAN: Cyle Larin has 0 goals in enough StatsBomb apps — goal_share floored to the prior; research his real scoring rate or set a market scorer_prop_prob (+ scorer_prop_match)\n  - RSA vs CAN: Iqraam Rayners priced on prior (no data)\n  - BRA vs JPN: STALE-RISK Matheus Cunha scorer_prop_prob=0.31 is per-OPPONENT — confirm it is for THIS match's odds\n  - BRA vs JPN: odds/pricer failed — no ESPN fixture matching 'Brazil' on 20260629\n  - GER vs PAR: Florian Wirtz on sparse StatsBomb history — fetch current club form (update_player_rates) or research\n\nBACKLOG: 1 unpriced markets across 1 open templates -> data/logs/unparsed_backlog.md\n",
+   "subprocess": []
+  }
+ ]
+}

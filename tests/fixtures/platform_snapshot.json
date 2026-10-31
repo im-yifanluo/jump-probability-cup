@@ -1,0 +1,2401 @@
+{
+ "fetched_at": "2026-06-27T22:40:35.150682+00:00",
+ "event": {
+  "id": "aa5572ec-5930-4d99-b06b-f8966333d172",
+  "title": "Jump Trading Probability Cup",
+  "type": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+  "status": "active",
+  "start_date": "2026-06-10T16:00:00.000Z",
+  "end_date": "2026-07-19T15:59:00.000Z"
+ },
+ "lobby": {
+  "id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+  "name": "SportsPredict",
+  "type": "classic",
+  "is_private": false,
+  "joined": true
+ },
+ "matches": [
+  {
+   "id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7",
+   "name": "COD vs UZB",
+   "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172",
+   "opening_time": "2026-06-27T23:30:00.000Z",
+   "closing_time": "2026-06-28T02:00:00.000Z",
+   "open_market_count": 10
+  },
+  {
+   "id": "d55a394e-9ba6-4a4a-8112-994724f4b464",
+   "name": "COL vs POR",
+   "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172",
+   "opening_time": "2026-06-27T23:30:00.000Z",
+   "closing_time": "2026-06-28T02:00:00.000Z",
+   "open_market_count": 10
+  },
+  {
+   "id": "03995b66-4456-4acf-bc95-cf9f1645be0c",
+   "name": "JOR vs ARG",
+   "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172",
+   "opening_time": "2026-06-28T02:00:00.000Z",
+   "closing_time": "2026-06-28T04:30:00.000Z",
+   "open_market_count": 10
+  },
+  {
+   "id": "c5b16a05-c823-48c9-ac79-8923c44df945",
+   "name": "ALG vs AUT",
+   "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172",
+   "opening_time": "2026-06-28T02:00:00.000Z",
+   "closing_time": "2026-06-28T04:30:00.000Z",
+   "open_market_count": 10
+  },
+  {
+   "id": "c03909dc-6898-4224-851b-0250b179e749",
+   "name": "RSA vs CAN",
+   "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172",
+   "opening_time": "2026-06-28T19:00:00.000Z",
+   "closing_time": "2026-06-28T21:30:00.000Z",
+   "open_market_count": 15
+  },
+  {
+   "id": "f2212dc4-88e2-4170-b629-07a9ac003d2d",
+   "name": "BRA vs JPN",
+   "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172",
+   "opening_time": "2026-06-29T17:00:00.000Z",
+   "closing_time": "2026-06-29T19:30:00.000Z",
+   "open_market_count": 15
+  },
+  {
+   "id": "fd54f839-84ea-41be-9e7d-36858f54277f",
+   "name": "GER vs PAR",
+   "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172",
+   "opening_time": "2026-06-29T20:30:00.000Z",
+   "closing_time": "2026-06-29T23:00:00.000Z",
+   "open_market_count": 15
+  },
+  {
+   "id": "9b65e63b-e296-4f3a-900f-75ae9a493e16",
+   "name": "NED vs MAR",
+   "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172",
+   "opening_time": "2026-06-30T01:00:00.000Z",
+   "closing_time": "2026-06-30T03:30:00.000Z",
+   "open_market_count": 15
+  },
+  {
+   "id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1",
+   "name": "CIV vs NOR",
+   "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172",
+   "opening_time": "2026-06-30T17:00:00.000Z",
+   "closing_time": "2026-06-30T19:30:00.000Z",
+   "open_market_count": 15
+  },
+  {
+   "id": "a07006f4-3304-4406-819d-0921767cb4f5",
+   "name": "FRA vs SWE",
+   "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172",
+   "opening_time": "2026-06-30T21:00:00.000Z",
+   "closing_time": "2026-06-30T23:30:00.000Z",
+   "open_market_count": 15
+  },
+  {
+   "id": "b2c86c3b-8060-4173-8321-fb68699210f4",
+   "name": "USA vs BIH",
+   "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172",
+   "opening_time": "2026-07-02T00:00:00.000Z",
+   "closing_time": "2026-07-02T02:30:00.000Z",
+   "open_market_count": 15
+  },
+  {
+   "id": "0bc25d75-319a-493e-86b2-96f84ea9ad55",
+   "name": "AUS vs EGY",
+   "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172",
+   "opening_time": "2026-07-03T18:00:00.000Z",
+   "closing_time": "2026-07-03T20:30:00.000Z",
+   "open_market_count": 15
+  },
+  {
+   "id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec",
+   "name": "ARG vs CPV",
+   "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172",
+   "opening_time": "2026-07-03T22:00:00.000Z",
+   "closing_time": "2026-07-04T00:30:00.000Z",
+   "open_market_count": 15
+  }
+ ],
+ "markets": [
+  {
+   "id": "12f8261f-89b4-4c59-ab7b-4cea700478a1",
+   "question": "Will Uzbekistan commit more fouls than DR Congo?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7",
+    "name": "COD vs UZB",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "2a93e720-962b-43d9-a6de-c595fdf29a0d",
+   "question": "Will Uzbekistan be caught offside 2 or more times?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7",
+    "name": "COD vs UZB",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "57a0208a-b784-4663-aca6-047aadc0fc4b",
+   "question": "Will both teams have at least 1 shot on target in the second half?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7",
+    "name": "COD vs UZB",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "2392f003-e56a-4289-a3b1-b07e7de291b2",
+   "question": "Will both teams score AND the match have 3 or more total goals?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7",
+    "name": "COD vs UZB",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "3f4a50eb-7a9a-4eba-b913-f3bb14d64ee7",
+   "question": "Will a penalty kick be awarded OR a red card be shown?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7",
+    "name": "COD vs UZB",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "bb825e94-a0a4-4ea9-a7f3-9835ecf3bca8",
+   "question": "Will Uzbekistan have more shots on target than DR Congo in the second half?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7",
+    "name": "COD vs UZB",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "cf17a41d-37e3-4979-82aa-81934ce7b121",
+   "question": "Will Eldor Shomurodov have at least 1 shot on target in the second half?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7",
+    "name": "COD vs UZB",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "41bdce13-bfca-4c36-a0bb-12ad94b54db8",
+   "question": "Will DR Congo win the match?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7",
+    "name": "COD vs UZB",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "f3962b11-d359-4295-8efb-b9a55c574d3b",
+   "question": "Will Cédric Bakambu score or assist a goal (excluding own goals)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7",
+    "name": "COD vs UZB",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "b7328c17-3a9c-49fe-a9a0-1eceed96a03a",
+   "question": "Will Uzbekistan have 5 or more corner kicks?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7",
+    "name": "COD vs UZB",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "9f7c76ed-e5f2-459b-af43-29e03299257b",
+   "question": "Will Colombia be caught offside 2 or more times?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "d55a394e-9ba6-4a4a-8112-994724f4b464",
+    "name": "COL vs POR",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "c48e143a-ce01-4977-9b79-98077a2e04bc",
+   "question": "In the second half, will Colombia have more shots on target than Portugal?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "d55a394e-9ba6-4a4a-8112-994724f4b464",
+    "name": "COL vs POR",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "de87022c-d94b-41cc-84c9-096f933d5929",
+   "question": "Will a penalty kick be awarded OR a red card be shown?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "d55a394e-9ba6-4a4a-8112-994724f4b464",
+    "name": "COL vs POR",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "3b9f27bf-b9ca-4604-9112-ef8e99dfbe36",
+   "question": "Will both teams score AND the match have 3 or more total goals?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "d55a394e-9ba6-4a4a-8112-994724f4b464",
+    "name": "COL vs POR",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "9abcb31a-2213-49d2-a515-43b9cc9a71ab",
+   "question": "Will Colombia win the match?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "d55a394e-9ba6-4a4a-8112-994724f4b464",
+    "name": "COL vs POR",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "eb47fe91-b920-4acf-9c5a-1009ed7cb33a",
+   "question": "Will Colombia have 4 or more shots on target?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "d55a394e-9ba6-4a4a-8112-994724f4b464",
+    "name": "COL vs POR",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "c703d31f-77ab-4190-8666-7b334aa1bec8",
+   "question": "Will Portugal have 4 or more shots on target?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "d55a394e-9ba6-4a4a-8112-994724f4b464",
+    "name": "COL vs POR",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "c5fada39-248b-4118-ae3e-4e6af345fa96",
+   "question": "Will there be 5 or more total corner kicks in the second half?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "d55a394e-9ba6-4a4a-8112-994724f4b464",
+    "name": "COL vs POR",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "7e371206-e93a-437d-9a4a-a5451e44012e",
+   "question": "Will Luis Díaz score a goal (excluding own goals)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "d55a394e-9ba6-4a4a-8112-994724f4b464",
+    "name": "COL vs POR",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "c52cb04a-6fdc-41ce-be3a-e52331e876e4",
+   "question": "Will Gonçalo Ramos have at least 1 shot on target?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "d55a394e-9ba6-4a4a-8112-994724f4b464",
+    "name": "COL vs POR",
+    "opening_time": "2026-06-27T23:30:00.000Z",
+    "closing_time": "2026-06-28T02:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "89a055ad-c0e0-4d32-81d3-a697e201d01e",
+   "question": "Will Argentina have at least 1 corner kick in the first half?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03995b66-4456-4acf-bc95-cf9f1645be0c",
+    "name": "JOR vs ARG",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "9737e196-a037-4bc7-94c7-6afe9ac69463",
+   "question": "Will Jordan be caught offside 2 or more times?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03995b66-4456-4acf-bc95-cf9f1645be0c",
+    "name": "JOR vs ARG",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "e71cc4d9-cfb2-42d6-a795-93c0ca645882",
+   "question": "Will Jordan commit more fouls than Argentina?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03995b66-4456-4acf-bc95-cf9f1645be0c",
+    "name": "JOR vs ARG",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "36d135a4-2db4-4702-a4f3-e020206a4d9f",
+   "question": "Will Argentina have more shots on target than Jordan in the second half?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03995b66-4456-4acf-bc95-cf9f1645be0c",
+    "name": "JOR vs ARG",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "64167c13-32d0-4b61-bd0b-f54a331f3336",
+   "question": "Will a penalty kick be awarded OR a red card be shown in the match?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03995b66-4456-4acf-bc95-cf9f1645be0c",
+    "name": "JOR vs ARG",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "eaf3a69b-22c2-43f1-bde5-80dc167fd331",
+   "question": "Will Jordan score at least 1 goal?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03995b66-4456-4acf-bc95-cf9f1645be0c",
+    "name": "JOR vs ARG",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "3d98c4bc-7429-44d1-ba22-f94b9e89a24f",
+   "question": "Will the match have 2 or fewer total goals?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03995b66-4456-4acf-bc95-cf9f1645be0c",
+    "name": "JOR vs ARG",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "d246bfc5-f14e-4de2-939f-27d25176efec",
+   "question": "Will Jordan score in the second half?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03995b66-4456-4acf-bc95-cf9f1645be0c",
+    "name": "JOR vs ARG",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "265b0dde-79a3-477b-a989-e86a1bf2b530",
+   "question": "Will Mousa Al-Taamari score or assist a goal (excluding own goals)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03995b66-4456-4acf-bc95-cf9f1645be0c",
+    "name": "JOR vs ARG",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "db40a747-94d5-4120-9399-19b8a549c95e",
+   "question": "Will Argentina have 6 or more shots on target?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "03995b66-4456-4acf-bc95-cf9f1645be0c",
+    "name": "JOR vs ARG",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "89051d35-6048-480e-a2f7-925ac9346337",
+   "question": "Will Algeria commit more fouls than Austria?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c5b16a05-c823-48c9-ac79-8923c44df945",
+    "name": "ALG vs AUT",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "4e2fd55d-652b-4fb5-9375-31e382bada1c",
+   "question": "Will Austria have more shots on target than Algeria in the second half?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c5b16a05-c823-48c9-ac79-8923c44df945",
+    "name": "ALG vs AUT",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "e7e494aa-0978-4c61-a66e-91876ab893cb",
+   "question": "Will Austria score the first goal of the second half?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c5b16a05-c823-48c9-ac79-8923c44df945",
+    "name": "ALG vs AUT",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "37f1e3ff-3bb5-41e3-b1d3-cf9bf02eefa0",
+   "question": "Will Austria score more goals than Algeria in the second half?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c5b16a05-c823-48c9-ac79-8923c44df945",
+    "name": "ALG vs AUT",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "11105aab-6512-426a-8398-c59c4b8ba8e4",
+   "question": "Will Austria receive more cards than Algeria?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c5b16a05-c823-48c9-ac79-8923c44df945",
+    "name": "ALG vs AUT",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "3d4d7f4a-ad8a-43f4-a5a6-f777e18c7c76",
+   "question": "Will Algeria win the match?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c5b16a05-c823-48c9-ac79-8923c44df945",
+    "name": "ALG vs AUT",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "65e32b43-e8cc-4a03-9e13-378ab6b950b6",
+   "question": "Will there be 9 or more total corner kicks?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c5b16a05-c823-48c9-ac79-8923c44df945",
+    "name": "ALG vs AUT",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "a42becae-4a32-411a-904a-813bb1a2af6b",
+   "question": "Will Austria have 5 or more shots on target?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c5b16a05-c823-48c9-ac79-8923c44df945",
+    "name": "ALG vs AUT",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "0689d420-b2dc-4ad5-bcf7-4f62a43ae956",
+   "question": "Will Marcel Sabitzer have at least 1 shot on target?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c5b16a05-c823-48c9-ac79-8923c44df945",
+    "name": "ALG vs AUT",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "ddb88604-c5b2-41e4-b54c-3a6251ca225a",
+   "question": "Will Algeria have 3 or more shots on target?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c5b16a05-c823-48c9-ac79-8923c44df945",
+    "name": "ALG vs AUT",
+    "opening_time": "2026-06-28T02:00:00.000Z",
+    "closing_time": "2026-06-28T04:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "a51434a4-c066-44b5-a0bd-e6126281cbd6",
+   "question": "Will a card be shown after the second hydration break, including any extra time?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c03909dc-6898-4224-851b-0250b179e749",
+    "name": "RSA vs CAN",
+    "opening_time": "2026-06-28T19:00:00.000Z",
+    "closing_time": "2026-06-28T21:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "2e4393e0-3948-4f76-8a2d-f2197c6a3e55",
+   "question": "Will both teams score in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c03909dc-6898-4224-851b-0250b179e749",
+    "name": "RSA vs CAN",
+    "opening_time": "2026-06-28T19:00:00.000Z",
+    "closing_time": "2026-06-28T21:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "b4734ea2-4c43-4e7f-8bf3-f57573fcb298",
+   "question": "Will either team be ruled offside before the first hydration break?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c03909dc-6898-4224-851b-0250b179e749",
+    "name": "RSA vs CAN",
+    "opening_time": "2026-06-28T19:00:00.000Z",
+    "closing_time": "2026-06-28T21:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "de21e828-24f0-4378-b95d-c64932778c89",
+   "question": "Will a substitute score a goal in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c03909dc-6898-4224-851b-0250b179e749",
+    "name": "RSA vs CAN",
+    "opening_time": "2026-06-28T19:00:00.000Z",
+    "closing_time": "2026-06-28T21:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "3c1fd51d-483c-45ac-bfeb-403b3a4d5ea0",
+   "question": "Will a goal be scored before the first hydration break?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c03909dc-6898-4224-851b-0250b179e749",
+    "name": "RSA vs CAN",
+    "opening_time": "2026-06-28T19:00:00.000Z",
+    "closing_time": "2026-06-28T21:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "5a6436d4-afe8-4c0f-9647-946022d213cb",
+   "question": "Will there be 9 or more total corner kicks in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c03909dc-6898-4224-851b-0250b179e749",
+    "name": "RSA vs CAN",
+    "opening_time": "2026-06-28T19:00:00.000Z",
+    "closing_time": "2026-06-28T21:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "2df5fdab-7006-4846-ab13-f8794ca1712b",
+   "question": "Will regulation (90 minutes + stoppage time) end in a tie?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c03909dc-6898-4224-851b-0250b179e749",
+    "name": "RSA vs CAN",
+    "opening_time": "2026-06-28T19:00:00.000Z",
+    "closing_time": "2026-06-28T21:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "4fca9b8a-3c1f-41a8-ade6-fecd21f90469",
+   "question": "Will Canada be ahead at halftime?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c03909dc-6898-4224-851b-0250b179e749",
+    "name": "RSA vs CAN",
+    "opening_time": "2026-06-28T19:00:00.000Z",
+    "closing_time": "2026-06-28T21:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "a1700706-dbc0-4e3f-877d-9d27c0842619",
+   "question": "Will South Africa advance to the Round of 16?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c03909dc-6898-4224-851b-0250b179e749",
+    "name": "RSA vs CAN",
+    "opening_time": "2026-06-28T19:00:00.000Z",
+    "closing_time": "2026-06-28T21:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "14da2f89-aab8-4906-9d34-2bb72525beab",
+   "question": "Will a penalty kick be awarded during regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c03909dc-6898-4224-851b-0250b179e749",
+    "name": "RSA vs CAN",
+    "opening_time": "2026-06-28T19:00:00.000Z",
+    "closing_time": "2026-06-28T21:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "51fc6eca-3437-41ba-8383-0c60a2001ed7",
+   "question": "Will the second half produce more goals than the first half in regulation (90 minutes + stoppage time), excluding extra time?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c03909dc-6898-4224-851b-0250b179e749",
+    "name": "RSA vs CAN",
+    "opening_time": "2026-06-28T19:00:00.000Z",
+    "closing_time": "2026-06-28T21:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "be7f5812-cf65-4b9c-87a3-f1b898922f22",
+   "question": "Will any player score more than 1 goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c03909dc-6898-4224-851b-0250b179e749",
+    "name": "RSA vs CAN",
+    "opening_time": "2026-06-28T19:00:00.000Z",
+    "closing_time": "2026-06-28T21:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "d03dc02d-b7c2-4978-9e92-4c29102843d0",
+   "question": "Will Cyle Larin score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c03909dc-6898-4224-851b-0250b179e749",
+    "name": "RSA vs CAN",
+    "opening_time": "2026-06-28T19:00:00.000Z",
+    "closing_time": "2026-06-28T21:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "bbe03969-b5d0-4eac-87b6-e1cab878ff69",
+   "question": "Will there be 4 or more total cards shown in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c03909dc-6898-4224-851b-0250b179e749",
+    "name": "RSA vs CAN",
+    "opening_time": "2026-06-28T19:00:00.000Z",
+    "closing_time": "2026-06-28T21:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "941946fe-a6fb-4d99-a5dc-84763651ce6c",
+   "question": "Will Iqraam Rayners have at least 1 shot on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "c03909dc-6898-4224-851b-0250b179e749",
+    "name": "RSA vs CAN",
+    "opening_time": "2026-06-28T19:00:00.000Z",
+    "closing_time": "2026-06-28T21:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "3e091acb-adfd-492c-b100-c198187f314b",
+   "question": "Will Brazil score 2 or more goals in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "f2212dc4-88e2-4170-b629-07a9ac003d2d",
+    "name": "BRA vs JPN",
+    "opening_time": "2026-06-29T17:00:00.000Z",
+    "closing_time": "2026-06-29T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "067d8bf5-d887-4f25-af85-7b5eb84c3bf8",
+   "question": "Will there be 8 or more total shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "f2212dc4-88e2-4170-b629-07a9ac003d2d",
+    "name": "BRA vs JPN",
+    "opening_time": "2026-06-29T17:00:00.000Z",
+    "closing_time": "2026-06-29T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "733db4af-c080-42a3-b8a2-88006fcf258c",
+   "question": "Will any player record 2 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "f2212dc4-88e2-4170-b629-07a9ac003d2d",
+    "name": "BRA vs JPN",
+    "opening_time": "2026-06-29T17:00:00.000Z",
+    "closing_time": "2026-06-29T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "77497fb4-5218-40c7-b169-42b05986fee4",
+   "question": "Will Japan advance to the Round of 16?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "f2212dc4-88e2-4170-b629-07a9ac003d2d",
+    "name": "BRA vs JPN",
+    "opening_time": "2026-06-29T17:00:00.000Z",
+    "closing_time": "2026-06-29T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "a531db10-7818-4d91-8a98-514422e3730d",
+   "question": "Will there be 9 or more total corner kicks in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "f2212dc4-88e2-4170-b629-07a9ac003d2d",
+    "name": "BRA vs JPN",
+    "opening_time": "2026-06-29T17:00:00.000Z",
+    "closing_time": "2026-06-29T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "d5e59d26-8385-4ce9-8e6f-54002684bcc7",
+   "question": "Will a goal be scored before the first hydration break?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "f2212dc4-88e2-4170-b629-07a9ac003d2d",
+    "name": "BRA vs JPN",
+    "opening_time": "2026-06-29T17:00:00.000Z",
+    "closing_time": "2026-06-29T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "49592da9-150b-4d40-952f-3e94bc26b7b1",
+   "question": "Will there be 4 or more total cards shown in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "f2212dc4-88e2-4170-b629-07a9ac003d2d",
+    "name": "BRA vs JPN",
+    "opening_time": "2026-06-29T17:00:00.000Z",
+    "closing_time": "2026-06-29T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "ed216ed3-aa9b-4e88-b2b9-97c7d3948049",
+   "question": "Will a substitute score a goal in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "f2212dc4-88e2-4170-b629-07a9ac003d2d",
+    "name": "BRA vs JPN",
+    "opening_time": "2026-06-29T17:00:00.000Z",
+    "closing_time": "2026-06-29T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "f0f5a685-09bc-41af-8cbd-052ef2160eec",
+   "question": "Will Matheus Cunha score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "f2212dc4-88e2-4170-b629-07a9ac003d2d",
+    "name": "BRA vs JPN",
+    "opening_time": "2026-06-29T17:00:00.000Z",
+    "closing_time": "2026-06-29T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "4722a4c3-3307-4622-a181-f52104002127",
+   "question": "Will any player score more than 1 goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "f2212dc4-88e2-4170-b629-07a9ac003d2d",
+    "name": "BRA vs JPN",
+    "opening_time": "2026-06-29T17:00:00.000Z",
+    "closing_time": "2026-06-29T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "b20d1c90-f33e-420e-aadf-ddcd1bc4c00b",
+   "question": "Will either team be ruled offside before the first hydration break?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "f2212dc4-88e2-4170-b629-07a9ac003d2d",
+    "name": "BRA vs JPN",
+    "opening_time": "2026-06-29T17:00:00.000Z",
+    "closing_time": "2026-06-29T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "f2bfaced-5b9a-49cf-b2d7-8380e6b28b87",
+   "question": "Will the match have 3 or more total goals in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "f2212dc4-88e2-4170-b629-07a9ac003d2d",
+    "name": "BRA vs JPN",
+    "opening_time": "2026-06-29T17:00:00.000Z",
+    "closing_time": "2026-06-29T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "0953f2d2-5007-4a63-a78d-3fa3528152fe",
+   "question": "Will Brazil score in both halves of regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "f2212dc4-88e2-4170-b629-07a9ac003d2d",
+    "name": "BRA vs JPN",
+    "opening_time": "2026-06-29T17:00:00.000Z",
+    "closing_time": "2026-06-29T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "ac73a683-1d0e-468b-8d45-366ef53f406d",
+   "question": "Will Ayase Ueda have at least 1 shot on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "f2212dc4-88e2-4170-b629-07a9ac003d2d",
+    "name": "BRA vs JPN",
+    "opening_time": "2026-06-29T17:00:00.000Z",
+    "closing_time": "2026-06-29T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "e5e02948-b83e-42b5-9c13-7673296d17a5",
+   "question": "Will regulation (90 minutes + stoppage time) end in a tie?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "f2212dc4-88e2-4170-b629-07a9ac003d2d",
+    "name": "BRA vs JPN",
+    "opening_time": "2026-06-29T17:00:00.000Z",
+    "closing_time": "2026-06-29T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "25f96583-58fb-487e-9306-8ed324b63993",
+   "question": "Will Kai Havertz (Germany) score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "fd54f839-84ea-41be-9e7d-36858f54277f",
+    "name": "GER vs PAR",
+    "opening_time": "2026-06-29T20:30:00.000Z",
+    "closing_time": "2026-06-29T23:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "57eca275-ada9-4480-8763-5213c5fd8ccb",
+   "question": "Will a goal be scored before the first hydration break?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "fd54f839-84ea-41be-9e7d-36858f54277f",
+    "name": "GER vs PAR",
+    "opening_time": "2026-06-29T20:30:00.000Z",
+    "closing_time": "2026-06-29T23:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "4c1fa5fd-25f4-4717-a3cd-8f833a216c7e",
+   "question": "Will Germany win in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "fd54f839-84ea-41be-9e7d-36858f54277f",
+    "name": "GER vs PAR",
+    "opening_time": "2026-06-29T20:30:00.000Z",
+    "closing_time": "2026-06-29T23:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "580ae63c-bf1c-4623-925b-c27e3aa3a404",
+   "question": "Will Jamal Musiala (Germany) have 2 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "fd54f839-84ea-41be-9e7d-36858f54277f",
+    "name": "GER vs PAR",
+    "opening_time": "2026-06-29T20:30:00.000Z",
+    "closing_time": "2026-06-29T23:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "a5b03d3a-b75d-4abc-84d4-0092ecd76843",
+   "question": "Will there be 4 or more total cards shown in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "fd54f839-84ea-41be-9e7d-36858f54277f",
+    "name": "GER vs PAR",
+    "opening_time": "2026-06-29T20:30:00.000Z",
+    "closing_time": "2026-06-29T23:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "905c094f-b239-4767-b8a5-6c2d27bcdf15",
+   "question": "Will Germany score the first goal of the match?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "fd54f839-84ea-41be-9e7d-36858f54277f",
+    "name": "GER vs PAR",
+    "opening_time": "2026-06-29T20:30:00.000Z",
+    "closing_time": "2026-06-29T23:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "24bbf984-b9b7-4dac-86fc-8e291f6e0a29",
+   "question": "Will Germany have 7 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "fd54f839-84ea-41be-9e7d-36858f54277f",
+    "name": "GER vs PAR",
+    "opening_time": "2026-06-29T20:30:00.000Z",
+    "closing_time": "2026-06-29T23:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "662fdf01-fd56-40a1-a033-16ac87c6d0af",
+   "question": "Will Julio Enciso (Paraguay) have 1 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "fd54f839-84ea-41be-9e7d-36858f54277f",
+    "name": "GER vs PAR",
+    "opening_time": "2026-06-29T20:30:00.000Z",
+    "closing_time": "2026-06-29T23:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "bf1e37c9-0358-4297-afe4-1ad6c83e16d9",
+   "question": "Will both teams score in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "fd54f839-84ea-41be-9e7d-36858f54277f",
+    "name": "GER vs PAR",
+    "opening_time": "2026-06-29T20:30:00.000Z",
+    "closing_time": "2026-06-29T23:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "5305eab7-eeda-4552-9dac-f90260e1d995",
+   "question": "Will Germany score in both halves in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "fd54f839-84ea-41be-9e7d-36858f54277f",
+    "name": "GER vs PAR",
+    "opening_time": "2026-06-29T20:30:00.000Z",
+    "closing_time": "2026-06-29T23:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "6a1bf72b-486e-4647-8cb7-6b7c2fc700bd",
+   "question": "Will Florian Wirtz (Germany) score or assist a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "fd54f839-84ea-41be-9e7d-36858f54277f",
+    "name": "GER vs PAR",
+    "opening_time": "2026-06-29T20:30:00.000Z",
+    "closing_time": "2026-06-29T23:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "5cf6d84f-81b4-4ef5-986e-41e5bfd5b1fa",
+   "question": "Will Germany have 7 or more corner kicks in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "fd54f839-84ea-41be-9e7d-36858f54277f",
+    "name": "GER vs PAR",
+    "opening_time": "2026-06-29T20:30:00.000Z",
+    "closing_time": "2026-06-29T23:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "799a756e-89cb-4042-b147-6e8f306f99d9",
+   "question": "Will Germany be ahead at halftime?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "fd54f839-84ea-41be-9e7d-36858f54277f",
+    "name": "GER vs PAR",
+    "opening_time": "2026-06-29T20:30:00.000Z",
+    "closing_time": "2026-06-29T23:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "12fcee07-00f4-4cac-ae9c-0091751fdb71",
+   "question": "Will there be 3 or more offside calls in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "fd54f839-84ea-41be-9e7d-36858f54277f",
+    "name": "GER vs PAR",
+    "opening_time": "2026-06-29T20:30:00.000Z",
+    "closing_time": "2026-06-29T23:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "7e2356bd-031f-4313-9154-73759352d808",
+   "question": "Will the match have 3 or more total goals in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "fd54f839-84ea-41be-9e7d-36858f54277f",
+    "name": "GER vs PAR",
+    "opening_time": "2026-06-29T20:30:00.000Z",
+    "closing_time": "2026-06-29T23:00:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "4ef5859b-4496-4acb-afa5-06cc7b90f31c",
+   "question": "Will Morocco be ahead at halftime?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9b65e63b-e296-4f3a-900f-75ae9a493e16",
+    "name": "NED vs MAR",
+    "opening_time": "2026-06-30T01:00:00.000Z",
+    "closing_time": "2026-06-30T03:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "828c676e-4bf6-4bdb-9517-aef2d6885a5b",
+   "question": "Will a card be shown after the second hydration break, including any extra time?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9b65e63b-e296-4f3a-900f-75ae9a493e16",
+    "name": "NED vs MAR",
+    "opening_time": "2026-06-30T01:00:00.000Z",
+    "closing_time": "2026-06-30T03:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "fa4f3ba6-00e9-4aa9-bab2-62d48abe22db",
+   "question": "Will a goal be scored in first-half stoppage time?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9b65e63b-e296-4f3a-900f-75ae9a493e16",
+    "name": "NED vs MAR",
+    "opening_time": "2026-06-30T01:00:00.000Z",
+    "closing_time": "2026-06-30T03:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "ac83b045-8087-4714-ad35-cf023f8abd95",
+   "question": "Will a goal be scored after the second hydration break?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9b65e63b-e296-4f3a-900f-75ae9a493e16",
+    "name": "NED vs MAR",
+    "opening_time": "2026-06-30T01:00:00.000Z",
+    "closing_time": "2026-06-30T03:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "44864aa9-102e-4d73-b9ab-cd6578e1c5c0",
+   "question": "Will a red card be shown in the match?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9b65e63b-e296-4f3a-900f-75ae9a493e16",
+    "name": "NED vs MAR",
+    "opening_time": "2026-06-30T01:00:00.000Z",
+    "closing_time": "2026-06-30T03:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "4f4353f0-b04f-4bd0-a023-78842bee2082",
+   "question": "Will the second half produce more goals than the first half in regulation (90 minutes + stoppage time), excluding extra time?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9b65e63b-e296-4f3a-900f-75ae9a493e16",
+    "name": "NED vs MAR",
+    "opening_time": "2026-06-30T01:00:00.000Z",
+    "closing_time": "2026-06-30T03:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "514339d2-4bff-4a1a-8179-fe2db31ea0d1",
+   "question": "Will the Netherlands score the first goal of the match?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9b65e63b-e296-4f3a-900f-75ae9a493e16",
+    "name": "NED vs MAR",
+    "opening_time": "2026-06-30T01:00:00.000Z",
+    "closing_time": "2026-06-30T03:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "293056e9-c86b-4321-8785-cb50cc6948c1",
+   "question": "Will Brian Brobbey have 2 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9b65e63b-e296-4f3a-900f-75ae9a493e16",
+    "name": "NED vs MAR",
+    "opening_time": "2026-06-30T01:00:00.000Z",
+    "closing_time": "2026-06-30T03:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "e2475183-83cb-450c-9efc-e5cd5b7cff89",
+   "question": "Will the Netherlands have more corner kicks than Morocco in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9b65e63b-e296-4f3a-900f-75ae9a493e16",
+    "name": "NED vs MAR",
+    "opening_time": "2026-06-30T01:00:00.000Z",
+    "closing_time": "2026-06-30T03:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "77882c82-5e2e-4f62-85c0-1d4ec6e8a57a",
+   "question": "Will the Netherlands win in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9b65e63b-e296-4f3a-900f-75ae9a493e16",
+    "name": "NED vs MAR",
+    "opening_time": "2026-06-30T01:00:00.000Z",
+    "closing_time": "2026-06-30T03:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "59dacfcf-0b10-4410-9d24-2b47338ff14d",
+   "question": "Will Ismael Saibari score or assist a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9b65e63b-e296-4f3a-900f-75ae9a493e16",
+    "name": "NED vs MAR",
+    "opening_time": "2026-06-30T01:00:00.000Z",
+    "closing_time": "2026-06-30T03:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "fdd404ac-e7e5-4d37-88ff-8d46b5ea7cae",
+   "question": "Will both teams score in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9b65e63b-e296-4f3a-900f-75ae9a493e16",
+    "name": "NED vs MAR",
+    "opening_time": "2026-06-30T01:00:00.000Z",
+    "closing_time": "2026-06-30T03:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "05641d62-555b-464a-a9e8-e5d28a2a0ca3",
+   "question": "Will both teams receive at least one card in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9b65e63b-e296-4f3a-900f-75ae9a493e16",
+    "name": "NED vs MAR",
+    "opening_time": "2026-06-30T01:00:00.000Z",
+    "closing_time": "2026-06-30T03:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "f458c7f3-24c5-4dbf-a1df-60d837531c93",
+   "question": "Will the first half produce 2 or more goals?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9b65e63b-e296-4f3a-900f-75ae9a493e16",
+    "name": "NED vs MAR",
+    "opening_time": "2026-06-30T01:00:00.000Z",
+    "closing_time": "2026-06-30T03:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "062c31bc-0238-4013-b35b-8384b379e4fe",
+   "question": "Will a penalty kick be awarded during regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9b65e63b-e296-4f3a-900f-75ae9a493e16",
+    "name": "NED vs MAR",
+    "opening_time": "2026-06-30T01:00:00.000Z",
+    "closing_time": "2026-06-30T03:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "91263748-3e9a-4100-9010-414ac8c1381d",
+   "question": "Will Erling Haaland (Norway) score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1",
+    "name": "CIV vs NOR",
+    "opening_time": "2026-06-30T17:00:00.000Z",
+    "closing_time": "2026-06-30T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "0231307d-2a42-47cd-998b-79498a1d010c",
+   "question": "Will Ivory Coast have more corner kicks than Norway in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1",
+    "name": "CIV vs NOR",
+    "opening_time": "2026-06-30T17:00:00.000Z",
+    "closing_time": "2026-06-30T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "f79c098c-ce29-4a68-8703-d357245b9a81",
+   "question": "Will Norway win in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1",
+    "name": "CIV vs NOR",
+    "opening_time": "2026-06-30T17:00:00.000Z",
+    "closing_time": "2026-06-30T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "5101894f-3d9b-4ca8-9770-fab659e055ec",
+   "question": "Will Martin Ødegaard (Norway) score or assist a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1",
+    "name": "CIV vs NOR",
+    "opening_time": "2026-06-30T17:00:00.000Z",
+    "closing_time": "2026-06-30T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "1ab4c264-7911-45ad-ad79-a528a454eb83",
+   "question": "Will both teams score in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1",
+    "name": "CIV vs NOR",
+    "opening_time": "2026-06-30T17:00:00.000Z",
+    "closing_time": "2026-06-30T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "c0fb5c86-a449-4043-8ba0-98ef6b1a531d",
+   "question": "Will Amad Diallo (Ivory Coast) have 1 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1",
+    "name": "CIV vs NOR",
+    "opening_time": "2026-06-30T17:00:00.000Z",
+    "closing_time": "2026-06-30T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "2318f323-20bc-41ca-8973-10aead65568a",
+   "question": "Will the match have 3 or more total goals in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1",
+    "name": "CIV vs NOR",
+    "opening_time": "2026-06-30T17:00:00.000Z",
+    "closing_time": "2026-06-30T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "6884f21b-23c3-4663-b7b3-0487ec6b64ea",
+   "question": "Will a goal be scored before the first hydration break?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1",
+    "name": "CIV vs NOR",
+    "opening_time": "2026-06-30T17:00:00.000Z",
+    "closing_time": "2026-06-30T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "14b4ad9e-de55-4d15-8e3b-a4dda355438f",
+   "question": "Will Norway have 6 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1",
+    "name": "CIV vs NOR",
+    "opening_time": "2026-06-30T17:00:00.000Z",
+    "closing_time": "2026-06-30T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "3289ea43-973f-4f2a-86a2-39d3fc7750a4",
+   "question": "Will Alexander Sørloth (Norway) have 2 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1",
+    "name": "CIV vs NOR",
+    "opening_time": "2026-06-30T17:00:00.000Z",
+    "closing_time": "2026-06-30T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "b58c9664-1cc6-4f32-97ab-a20235f7d5da",
+   "question": "Will Norway score the first goal of the match?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1",
+    "name": "CIV vs NOR",
+    "opening_time": "2026-06-30T17:00:00.000Z",
+    "closing_time": "2026-06-30T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "654cd80b-9113-4492-8430-a43381e4387f",
+   "question": "Will there be 4 or more offside calls in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1",
+    "name": "CIV vs NOR",
+    "opening_time": "2026-06-30T17:00:00.000Z",
+    "closing_time": "2026-06-30T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "400defa1-95d4-4aa0-bcaa-70c36c520a8a",
+   "question": "Will there be 4 or more total cards shown in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1",
+    "name": "CIV vs NOR",
+    "opening_time": "2026-06-30T17:00:00.000Z",
+    "closing_time": "2026-06-30T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "c0e3f7a7-4731-473b-9eac-0770cc6f8541",
+   "question": "Will a penalty kick be awarded during regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1",
+    "name": "CIV vs NOR",
+    "opening_time": "2026-06-30T17:00:00.000Z",
+    "closing_time": "2026-06-30T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "20d8186a-6616-46bd-bc59-52c125028520",
+   "question": "Will a goal be scored after the second hydration break in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1",
+    "name": "CIV vs NOR",
+    "opening_time": "2026-06-30T17:00:00.000Z",
+    "closing_time": "2026-06-30T19:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "11dcdc50-811d-4f68-a60a-90db4ec7b0de",
+   "question": "Will Ousmane Dembélé (France) score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "a07006f4-3304-4406-819d-0921767cb4f5",
+    "name": "FRA vs SWE",
+    "opening_time": "2026-06-30T21:00:00.000Z",
+    "closing_time": "2026-06-30T23:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "1428fb96-6eb5-4510-a4ce-cce8c31deda2",
+   "question": "Will France be ahead at halftime?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "a07006f4-3304-4406-819d-0921767cb4f5",
+    "name": "FRA vs SWE",
+    "opening_time": "2026-06-30T21:00:00.000Z",
+    "closing_time": "2026-06-30T23:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "deb0412b-45c3-48f7-88d4-df4a95913c3f",
+   "question": "Will Kylian Mbappé (France) have 2 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "a07006f4-3304-4406-819d-0921767cb4f5",
+    "name": "FRA vs SWE",
+    "opening_time": "2026-06-30T21:00:00.000Z",
+    "closing_time": "2026-06-30T23:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "7f647172-e410-45cd-bdb0-d660e2221568",
+   "question": "Will a red card be shown in the match?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "a07006f4-3304-4406-819d-0921767cb4f5",
+    "name": "FRA vs SWE",
+    "opening_time": "2026-06-30T21:00:00.000Z",
+    "closing_time": "2026-06-30T23:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "c0e4cdaf-87d1-44ec-9cb8-2a0fade828cb",
+   "question": "Will Viktor Gyökeres (Sweden) score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "a07006f4-3304-4406-819d-0921767cb4f5",
+    "name": "FRA vs SWE",
+    "opening_time": "2026-06-30T21:00:00.000Z",
+    "closing_time": "2026-06-30T23:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "cadaa5f5-c94d-4ba3-8758-c47da0bef49c",
+   "question": "Will France have 6 or more corner kicks in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "a07006f4-3304-4406-819d-0921767cb4f5",
+    "name": "FRA vs SWE",
+    "opening_time": "2026-06-30T21:00:00.000Z",
+    "closing_time": "2026-06-30T23:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "12f2d03c-6f5a-4176-bdf4-926b41741ddd",
+   "question": "Will France win in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "a07006f4-3304-4406-819d-0921767cb4f5",
+    "name": "FRA vs SWE",
+    "opening_time": "2026-06-30T21:00:00.000Z",
+    "closing_time": "2026-06-30T23:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "abd59093-ba5b-4947-8923-2513ae203251",
+   "question": "Will Alexander Isak (Sweden) have 2 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "a07006f4-3304-4406-819d-0921767cb4f5",
+    "name": "FRA vs SWE",
+    "opening_time": "2026-06-30T21:00:00.000Z",
+    "closing_time": "2026-06-30T23:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "45596cfc-fc5e-4588-a690-71d50e147e1a",
+   "question": "Will the match have 3 or more total goals in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "a07006f4-3304-4406-819d-0921767cb4f5",
+    "name": "FRA vs SWE",
+    "opening_time": "2026-06-30T21:00:00.000Z",
+    "closing_time": "2026-06-30T23:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "9cc9f5d8-6b2f-4a5a-96f1-84ea7b5875a9",
+   "question": "Will France score the first goal of the match?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "a07006f4-3304-4406-819d-0921767cb4f5",
+    "name": "FRA vs SWE",
+    "opening_time": "2026-06-30T21:00:00.000Z",
+    "closing_time": "2026-06-30T23:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "8cf30b49-0133-481c-94fe-507bdf509d93",
+   "question": "Will both teams score in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "a07006f4-3304-4406-819d-0921767cb4f5",
+    "name": "FRA vs SWE",
+    "opening_time": "2026-06-30T21:00:00.000Z",
+    "closing_time": "2026-06-30T23:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "52d5f862-b2c6-4f05-9c41-8d4b150974fc",
+   "question": "Will France have 7 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "a07006f4-3304-4406-819d-0921767cb4f5",
+    "name": "FRA vs SWE",
+    "opening_time": "2026-06-30T21:00:00.000Z",
+    "closing_time": "2026-06-30T23:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "5464f357-04db-4d93-b147-a79e6fe71e6a",
+   "question": "Will there be 5 or more total cards shown in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "a07006f4-3304-4406-819d-0921767cb4f5",
+    "name": "FRA vs SWE",
+    "opening_time": "2026-06-30T21:00:00.000Z",
+    "closing_time": "2026-06-30T23:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "b3bf11ad-9c24-4a88-ba56-f7458050e69b",
+   "question": "Will a goal be scored in first-half stoppage (added) time?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "a07006f4-3304-4406-819d-0921767cb4f5",
+    "name": "FRA vs SWE",
+    "opening_time": "2026-06-30T21:00:00.000Z",
+    "closing_time": "2026-06-30T23:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "fc83868d-6c29-405c-bb17-2cb74c4de18a",
+   "question": "Will there be 4 or more offside calls in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "a07006f4-3304-4406-819d-0921767cb4f5",
+    "name": "FRA vs SWE",
+    "opening_time": "2026-06-30T21:00:00.000Z",
+    "closing_time": "2026-06-30T23:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "61587b7b-05b3-4213-b521-d0162977620b",
+   "question": "Will a goal be scored in second-half stoppage time?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b2c86c3b-8060-4173-8321-fb68699210f4",
+    "name": "USA vs BIH",
+    "opening_time": "2026-07-02T00:00:00.000Z",
+    "closing_time": "2026-07-02T02:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "ced80060-58e1-426a-be44-e4e9c21d2cee",
+   "question": "Will 2 or more corner kicks be taken before the first hydration break?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b2c86c3b-8060-4173-8321-fb68699210f4",
+    "name": "USA vs BIH",
+    "opening_time": "2026-07-02T00:00:00.000Z",
+    "closing_time": "2026-07-02T02:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "860a1474-3bb3-4d06-b9e2-ab291e239dc4",
+   "question": "Will the United States have 6 or more corner kicks in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b2c86c3b-8060-4173-8321-fb68699210f4",
+    "name": "USA vs BIH",
+    "opening_time": "2026-07-02T00:00:00.000Z",
+    "closing_time": "2026-07-02T02:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "d6008186-be02-46a0-8f3c-36a92b90b74f",
+   "question": "Will a substitution be made before halftime?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b2c86c3b-8060-4173-8321-fb68699210f4",
+    "name": "USA vs BIH",
+    "opening_time": "2026-07-02T00:00:00.000Z",
+    "closing_time": "2026-07-02T02:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "619b26a6-2562-4bec-9f98-b7f7f40971b9",
+   "question": "Will there be 5 or more total cards shown in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b2c86c3b-8060-4173-8321-fb68699210f4",
+    "name": "USA vs BIH",
+    "opening_time": "2026-07-02T00:00:00.000Z",
+    "closing_time": "2026-07-02T02:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "001cdb6c-ef79-44f5-aa21-4e5298d099ab",
+   "question": "Will a penalty kick be awarded OR a red card be shown in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b2c86c3b-8060-4173-8321-fb68699210f4",
+    "name": "USA vs BIH",
+    "opening_time": "2026-07-02T00:00:00.000Z",
+    "closing_time": "2026-07-02T02:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "4c29ab08-ca3d-470b-97d0-a2815d0ea076",
+   "question": "Will the United States win by 2 or more goals in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b2c86c3b-8060-4173-8321-fb68699210f4",
+    "name": "USA vs BIH",
+    "opening_time": "2026-07-02T00:00:00.000Z",
+    "closing_time": "2026-07-02T02:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "99dde047-6147-4d00-9e29-8b482e7b81f8",
+   "question": "Will Bosnia and Herzegovina receive more cards than the United States in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b2c86c3b-8060-4173-8321-fb68699210f4",
+    "name": "USA vs BIH",
+    "opening_time": "2026-07-02T00:00:00.000Z",
+    "closing_time": "2026-07-02T02:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "684e0f33-1bb7-42ad-ada3-d56bf1a34610",
+   "question": "Will Folarin Balogun score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b2c86c3b-8060-4173-8321-fb68699210f4",
+    "name": "USA vs BIH",
+    "opening_time": "2026-07-02T00:00:00.000Z",
+    "closing_time": "2026-07-02T02:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "060bce76-0a84-477f-ba6f-c421a1ee53bd",
+   "question": "Will the match have 2 or fewer total goals in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b2c86c3b-8060-4173-8321-fb68699210f4",
+    "name": "USA vs BIH",
+    "opening_time": "2026-07-02T00:00:00.000Z",
+    "closing_time": "2026-07-02T02:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "0841ea27-cfc2-48f2-ab22-c459b89b2bcb",
+   "question": "Will there be 4 or more offside calls in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b2c86c3b-8060-4173-8321-fb68699210f4",
+    "name": "USA vs BIH",
+    "opening_time": "2026-07-02T00:00:00.000Z",
+    "closing_time": "2026-07-02T02:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "cf910072-29cf-45f6-bd67-d04d47115ecd",
+   "question": "Will Ermedin Demirović have at least 1 shot on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b2c86c3b-8060-4173-8321-fb68699210f4",
+    "name": "USA vs BIH",
+    "opening_time": "2026-07-02T00:00:00.000Z",
+    "closing_time": "2026-07-02T02:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "f96b7297-29cc-4caa-bf00-2fe5fa5dff36",
+   "question": "Will a card be shown in the first half?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b2c86c3b-8060-4173-8321-fb68699210f4",
+    "name": "USA vs BIH",
+    "opening_time": "2026-07-02T00:00:00.000Z",
+    "closing_time": "2026-07-02T02:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "4ad0956e-dd6c-40d0-9762-fd8d96bb83e4",
+   "question": "Will there be 22 or more total shots (on and off target) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b2c86c3b-8060-4173-8321-fb68699210f4",
+    "name": "USA vs BIH",
+    "opening_time": "2026-07-02T00:00:00.000Z",
+    "closing_time": "2026-07-02T02:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "c64a7514-26e5-414b-b383-5c99bf06dc3f",
+   "question": "Will the United States have 6 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "b2c86c3b-8060-4173-8321-fb68699210f4",
+    "name": "USA vs BIH",
+    "opening_time": "2026-07-02T00:00:00.000Z",
+    "closing_time": "2026-07-02T02:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "50e7c1e9-5699-4af6-b248-e73b17a48557",
+   "question": "Will Mahmoud Trezeguet (Egypt) score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "0bc25d75-319a-493e-86b2-96f84ea9ad55",
+    "name": "AUS vs EGY",
+    "opening_time": "2026-07-03T18:00:00.000Z",
+    "closing_time": "2026-07-03T20:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "726d8675-40e8-4010-9d08-42a890f4f4b3",
+   "question": "Will the match be tied at halftime?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "0bc25d75-319a-493e-86b2-96f84ea9ad55",
+    "name": "AUS vs EGY",
+    "opening_time": "2026-07-03T18:00:00.000Z",
+    "closing_time": "2026-07-03T20:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "9ef7ba30-7ed3-4619-b22d-790d0e89c672",
+   "question": "Will the match have 2 or fewer total goals in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "0bc25d75-319a-493e-86b2-96f84ea9ad55",
+    "name": "AUS vs EGY",
+    "opening_time": "2026-07-03T18:00:00.000Z",
+    "closing_time": "2026-07-03T20:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "56dcefe8-b830-4e66-a23c-eba7c3525aee",
+   "question": "Will Nestory Irankunda (Australia) have 2 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "0bc25d75-319a-493e-86b2-96f84ea9ad55",
+    "name": "AUS vs EGY",
+    "opening_time": "2026-07-03T18:00:00.000Z",
+    "closing_time": "2026-07-03T20:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "03bed111-ecf0-4983-b009-fb744af21280",
+   "question": "Will Egypt win in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "0bc25d75-319a-493e-86b2-96f84ea9ad55",
+    "name": "AUS vs EGY",
+    "opening_time": "2026-07-03T18:00:00.000Z",
+    "closing_time": "2026-07-03T20:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "576eeb43-30a7-4032-8ccd-bf0e389cfcb0",
+   "question": "Will both teams receive at least one card in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "0bc25d75-319a-493e-86b2-96f84ea9ad55",
+    "name": "AUS vs EGY",
+    "opening_time": "2026-07-03T18:00:00.000Z",
+    "closing_time": "2026-07-03T20:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "f0a24625-4cc0-44f2-a25a-35659d0c2b7e",
+   "question": "Will there be 4 or more total cards shown in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "0bc25d75-319a-493e-86b2-96f84ea9ad55",
+    "name": "AUS vs EGY",
+    "opening_time": "2026-07-03T18:00:00.000Z",
+    "closing_time": "2026-07-03T20:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "83418d99-16ff-4054-b688-0eeaeb6ad937",
+   "question": "Will a penalty kick be awarded OR a red card be shown in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "0bc25d75-319a-493e-86b2-96f84ea9ad55",
+    "name": "AUS vs EGY",
+    "opening_time": "2026-07-03T18:00:00.000Z",
+    "closing_time": "2026-07-03T20:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "5a56e10d-51d9-44ea-8e1e-22a68e966f3c",
+   "question": "Will Egypt have 5 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "0bc25d75-319a-493e-86b2-96f84ea9ad55",
+    "name": "AUS vs EGY",
+    "opening_time": "2026-07-03T18:00:00.000Z",
+    "closing_time": "2026-07-03T20:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "1302cc43-72aa-4013-815d-4cee35349ae2",
+   "question": "Will there be 9 or more total corner kicks in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "0bc25d75-319a-493e-86b2-96f84ea9ad55",
+    "name": "AUS vs EGY",
+    "opening_time": "2026-07-03T18:00:00.000Z",
+    "closing_time": "2026-07-03T20:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "c1bfe7e5-5fb8-48af-8e31-cf2d12b001e9",
+   "question": "Will Egypt score the first goal of the match?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "0bc25d75-319a-493e-86b2-96f84ea9ad55",
+    "name": "AUS vs EGY",
+    "opening_time": "2026-07-03T18:00:00.000Z",
+    "closing_time": "2026-07-03T20:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "98a7eed2-6074-4c63-be57-15da97bc4119",
+   "question": "Will the second half produce more goals than the first half in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "0bc25d75-319a-493e-86b2-96f84ea9ad55",
+    "name": "AUS vs EGY",
+    "opening_time": "2026-07-03T18:00:00.000Z",
+    "closing_time": "2026-07-03T20:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "5b659dfa-fb37-4a8e-bb88-f7d0f99606b8",
+   "question": "Will there be 3 or more offside calls in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "0bc25d75-319a-493e-86b2-96f84ea9ad55",
+    "name": "AUS vs EGY",
+    "opening_time": "2026-07-03T18:00:00.000Z",
+    "closing_time": "2026-07-03T20:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "62b66a1e-1865-481c-b939-a1b1a2a37c97",
+   "question": "Will a substitution be made before halftime?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "0bc25d75-319a-493e-86b2-96f84ea9ad55",
+    "name": "AUS vs EGY",
+    "opening_time": "2026-07-03T18:00:00.000Z",
+    "closing_time": "2026-07-03T20:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "e8c8a1cc-e1f0-49d7-8382-bfe3432b0c8c",
+   "question": "Will there be 20 or more total shots (on and off target) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "0bc25d75-319a-493e-86b2-96f84ea9ad55",
+    "name": "AUS vs EGY",
+    "opening_time": "2026-07-03T18:00:00.000Z",
+    "closing_time": "2026-07-03T20:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "9844bc2b-4fbd-4457-aca6-7457c3ce5f6d",
+   "question": "Will Lionel Messi (Argentina) have 3 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec",
+    "name": "ARG vs CPV",
+    "opening_time": "2026-07-03T22:00:00.000Z",
+    "closing_time": "2026-07-04T00:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "ea296a71-54cd-4899-9172-9fbabac09b84",
+   "question": "Will a goal be scored before the first hydration break?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec",
+    "name": "ARG vs CPV",
+    "opening_time": "2026-07-03T22:00:00.000Z",
+    "closing_time": "2026-07-04T00:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "9c6d6e52-16ff-42c1-b758-afb9943cd40b",
+   "question": "Will Lautaro Martínez (Argentina) score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec",
+    "name": "ARG vs CPV",
+    "opening_time": "2026-07-03T22:00:00.000Z",
+    "closing_time": "2026-07-04T00:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "a9d654cd-6cd4-4afc-b6b2-dd44493e9223",
+   "question": "Will Argentina keep a clean sheet in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec",
+    "name": "ARG vs CPV",
+    "opening_time": "2026-07-03T22:00:00.000Z",
+    "closing_time": "2026-07-04T00:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "2f91ea01-f0cf-4782-91a9-67929e81a7be",
+   "question": "Will Argentina win in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec",
+    "name": "ARG vs CPV",
+    "opening_time": "2026-07-03T22:00:00.000Z",
+    "closing_time": "2026-07-04T00:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "aaa0e152-6833-4bb7-91e7-a7ea91f0a539",
+   "question": "Will Cape Verde have 2 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec",
+    "name": "ARG vs CPV",
+    "opening_time": "2026-07-03T22:00:00.000Z",
+    "closing_time": "2026-07-04T00:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "6be8fa1d-9147-4ad8-ab28-64e5fbb643cf",
+   "question": "Will Argentina score 3 or more goals in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec",
+    "name": "ARG vs CPV",
+    "opening_time": "2026-07-03T22:00:00.000Z",
+    "closing_time": "2026-07-04T00:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "60f6a76a-9f20-458f-b153-5ad9bf27b36c",
+   "question": "Will Argentina score in both halves in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec",
+    "name": "ARG vs CPV",
+    "opening_time": "2026-07-03T22:00:00.000Z",
+    "closing_time": "2026-07-04T00:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "69616caf-9b07-4d23-9282-2aca8c998480",
+   "question": "Will Argentina have 8 or more shots on target in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec",
+    "name": "ARG vs CPV",
+    "opening_time": "2026-07-03T22:00:00.000Z",
+    "closing_time": "2026-07-04T00:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "2c487b3c-4b7d-4e37-88c9-a773faa0ddee",
+   "question": "Will Julián Álvarez (Argentina) score or assist a goal (excluding own goals) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec",
+    "name": "ARG vs CPV",
+    "opening_time": "2026-07-03T22:00:00.000Z",
+    "closing_time": "2026-07-04T00:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "28f248b8-10fc-45fc-8a4c-a35908c18d43",
+   "question": "Will there be 3 or more total cards shown in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec",
+    "name": "ARG vs CPV",
+    "opening_time": "2026-07-03T22:00:00.000Z",
+    "closing_time": "2026-07-04T00:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "1af93b86-8ea1-4030-b614-105dd07817ba",
+   "question": "Will Argentina score the first goal of the match?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec",
+    "name": "ARG vs CPV",
+    "opening_time": "2026-07-03T22:00:00.000Z",
+    "closing_time": "2026-07-04T00:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "acababe1-851f-433e-9d89-475c08f392d0",
+   "question": "Will Argentina have 8 or more corner kicks in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec",
+    "name": "ARG vs CPV",
+    "opening_time": "2026-07-03T22:00:00.000Z",
+    "closing_time": "2026-07-04T00:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "76925538-dec6-4caa-b4d5-4cb1e8e56dfe",
+   "question": "Will Argentina be ahead at halftime?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec",
+    "name": "ARG vs CPV",
+    "opening_time": "2026-07-03T22:00:00.000Z",
+    "closing_time": "2026-07-04T00:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  },
+  {
+   "id": "2c0ffaa7-880d-492e-81a9-fd41caf1499a",
+   "question": "Will there be 22 or more total shots (on and off target) in regulation (90 minutes + stoppage time)?",
+   "event_type": "probability",
+   "status": "open",
+   "match": {
+    "id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec",
+    "name": "ARG vs CPV",
+    "opening_time": "2026-07-03T22:00:00.000Z",
+    "closing_time": "2026-07-04T00:30:00.000Z"
+   },
+   "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+  }
+ ]
+}

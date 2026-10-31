@@ -1,0 +1,1251 @@
+{
+ "scenario": "run_twice",
+ "steps": [
+  {
+   "argv": [
+    "run",
+    "--hours",
+    "5",
+    "--submit",
+    "--agent"
+   ],
+   "calls": [
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "limit": "100"
+     },
+     "path": "/api/v1/events",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/matches",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/lobbies",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "d55a394e-9ba6-4a4a-8112-994724f4b464"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "03995b66-4456-4acf-bc95-cf9f1645be0c"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "c5b16a05-c823-48c9-ac79-8923c44df945"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "c03909dc-6898-4224-851b-0250b179e749"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "f2212dc4-88e2-4170-b629-07a9ac003d2d"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "fd54f839-84ea-41be-9e7d-36858f54277f"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "9b65e63b-e296-4f3a-900f-75ae9a493e16"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "a07006f4-3304-4406-819d-0921767cb4f5"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "b2c86c3b-8060-4173-8321-fb68699210f4"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "0bc25d75-319a-493e-86b2-96f84ea9ad55"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-cod-uzb"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-cod-uzb"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "gamma-api.polymarket.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "closed": "false",
+      "limit": "200",
+      "tag_slug": "soccer"
+     },
+     "path": "/events",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-col-por"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-col-por"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "gamma-api.polymarket.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "closed": "false",
+      "limit": "200",
+      "tag_slug": "soccer"
+     },
+     "path": "/events",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260628"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-jor-arg"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "gamma-api.polymarket.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "closed": "false",
+      "limit": "200",
+      "tag_slug": "soccer"
+     },
+     "path": "/events",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "limit": "100"
+     },
+     "path": "/api/v1/events",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/lobbies",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+     },
+     "path": "/api/v1/predictions",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 47
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-2-000",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 39
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-2-001",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 74
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-2-002",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 39
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-2-003",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 37
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-2-004",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 37
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-2-005",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 19
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-2-006",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 37
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-2-007",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 25
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-2-008",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 48
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-2-009",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": {
+      "predictions": [
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "9f7c76ed-e5f2-459b-af43-29e03299257b",
+        "probability": 39
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "c48e143a-ce01-4977-9b79-98077a2e04bc",
+        "probability": 34
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "de87022c-d94b-41cc-84c9-096f933d5929",
+        "probability": 37
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "3b9f27bf-b9ca-4604-9112-ef8e99dfbe36",
+        "probability": 42
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "9abcb31a-2213-49d2-a515-43b9cc9a71ab",
+        "probability": 29
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "eb47fe91-b920-4acf-9c5a-1009ed7cb33a",
+        "probability": 45
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "c703d31f-77ab-4190-8666-7b334aa1bec8",
+        "probability": 57
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "c5fada39-248b-4118-ae3e-4e6af345fa96",
+        "probability": 56
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "7e371206-e93a-437d-9a4a-a5451e44012e",
+        "probability": 3
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "c52cb04a-6fdc-41ce-be3a-e52331e876e4",
+        "probability": 62
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "89051d35-6048-480e-a2f7-925ac9346337",
+        "probability": 48
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "4e2fd55d-652b-4fb5-9375-31e382bada1c",
+        "probability": 56
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "e7e494aa-0978-4c61-a66e-91876ab893cb",
+        "probability": 48
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "37f1e3ff-3bb5-41e3-b1d3-cf9bf02eefa0",
+        "probability": 43
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "11105aab-6512-426a-8398-c59c4b8ba8e4",
+        "probability": 33
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "3d4d7f4a-ad8a-43f4-a5a6-f777e18c7c76",
+        "probability": 23
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "65e32b43-e8cc-4a03-9e13-378ab6b950b6",
+        "probability": 60
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "a42becae-4a32-411a-904a-813bb1a2af6b",
+        "probability": 46
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "0689d420-b2dc-4ad5-bcf7-4f62a43ae956",
+        "probability": 35
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "ddb88604-c5b2-41e4-b54c-3a6251ca225a",
+        "probability": 57
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "89a055ad-c0e0-4d32-81d3-a697e201d01e",
+        "probability": 95
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "9737e196-a037-4bc7-94c7-6afe9ac69463",
+        "probability": 37
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "e71cc4d9-cfb2-42d6-a795-93c0ca645882",
+        "probability": 49
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "36d135a4-2db4-4702-a4f3-e020206a4d9f",
+        "probability": 80
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "64167c13-32d0-4b61-bd0b-f54a331f3336",
+        "probability": 37
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "eaf3a69b-22c2-43f1-bde5-80dc167fd331",
+        "probability": 61
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "3d98c4bc-7429-44d1-ba22-f94b9e89a24f",
+        "probability": 30
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "d246bfc5-f14e-4de2-939f-27d25176efec",
+        "probability": 43
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "265b0dde-79a3-477b-a989-e86a1bf2b530",
+        "probability": 31
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "db40a747-94d5-4120-9399-19b8a549c95e",
+        "probability": 74
+       }
+      ]
+     },
+     "method": "POST",
+     "params": {},
+     "path": "/api/v1/predictions/batch",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+     },
+     "path": "/api/v1/predictions",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 39
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-000",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 34
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-001",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 37
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-002",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 42
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-003",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 29
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-004",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 42
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-005",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 53
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-006",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 49
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-007",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 3
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-008",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 62
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-009",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 94
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-010",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 37
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-011",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 49
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-012",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 77
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-013",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 37
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-014",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 61
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-015",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 30
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-016",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 43
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-017",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 31
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-018",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "probability": 65
+     },
+     "method": "PATCH",
+     "params": {},
+     "path": "/api/v1/predictions/pre-1-019",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": {
+      "predictions": [
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "12f8261f-89b4-4c59-ab7b-4cea700478a1",
+        "probability": 47
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "2a93e720-962b-43d9-a6de-c595fdf29a0d",
+        "probability": 39
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "57a0208a-b784-4663-aca6-047aadc0fc4b",
+        "probability": 72
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "2392f003-e56a-4289-a3b1-b07e7de291b2",
+        "probability": 39
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "3f4a50eb-7a9a-4eba-b913-f3bb14d64ee7",
+        "probability": 37
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "bb825e94-a0a4-4ea9-a7f3-9835ecf3bca8",
+        "probability": 37
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "cf17a41d-37e3-4979-82aa-81934ce7b121",
+        "probability": 19
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "41bdce13-bfca-4c36-a0bb-12ad94b54db8",
+        "probability": 37
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "f3962b11-d359-4295-8efb-b9a55c574d3b",
+        "probability": 25
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "b7328c17-3a9c-49fe-a9a0-1eceed96a03a",
+        "probability": 42
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "89051d35-6048-480e-a2f7-925ac9346337",
+        "probability": 48
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "4e2fd55d-652b-4fb5-9375-31e382bada1c",
+        "probability": 54
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "e7e494aa-0978-4c61-a66e-91876ab893cb",
+        "probability": 48
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "37f1e3ff-3bb5-41e3-b1d3-cf9bf02eefa0",
+        "probability": 43
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "11105aab-6512-426a-8398-c59c4b8ba8e4",
+        "probability": 34
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "3d4d7f4a-ad8a-43f4-a5a6-f777e18c7c76",
+        "probability": 23
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "65e32b43-e8cc-4a03-9e13-378ab6b950b6",
+        "probability": 51
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "a42becae-4a32-411a-904a-813bb1a2af6b",
+        "probability": 40
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "0689d420-b2dc-4ad5-bcf7-4f62a43ae956",
+        "probability": 34
+       },
+       {
+        "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+        "market_id": "ddb88604-c5b2-41e4-b54c-3a6251ca225a",
+        "probability": 54
+       }
+      ]
+     },
+     "method": "POST",
+     "params": {},
+     "path": "/api/v1/predictions/batch",
+     "status": 200
+    }
+   ],
+   "exception": null,
+   "files": {
+    "data/cache/snapshot.json": "sha256:42ee79c8a4446bf797940f19796d337945e26c52d305b10718aa5513c4d70670",
+    "data/inputs/match_lineups.yaml": "ALG vs AUT:\n  kickoff: '2026-06-28T02:00:00+00:00'\n  minutes:\n    Marcel Sabitzer: 90\n  pulled_at: '2026-06-28T01:10:30+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nARG vs CPV:\n  kickoff: '2026-07-03T22:00:00+00:00'\n  minutes:\n    Julián Álvarez: 20\n    Lautaro Martínez: 90\n    Lionel Messi: 90\n  pulled_at: '2026-07-03T21:12:08+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nARG vs EGY:\n  kickoff: '2026-07-07T16:00:00+00:00'\n  minutes:\n    Julián Álvarez: 90\n    Lionel Messi: 90\n    Mohamed Salah: 90\n    Omar Marmoush: 20\n  pulled_at: '2026-07-07T15:58:28+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nARG vs SUI:\n  kickoff: '2026-07-12T01:00:00+00:00'\n  minutes:\n    Breel Embolo: 90\n    Julián Álvarez: 90\n    Lionel Messi: 90\n  pulled_at: '2026-07-12T00:12:03+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nAUS vs EGY:\n  kickoff: '2026-07-03T18:00:00+00:00'\n  minutes:\n    Mahmoud Trezeguet: 20\n    Nestory Irankunda: 90\n  pulled_at: '2026-07-03T17:10:36+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nBEL vs SEN:\n  kickoff: '2026-07-01T20:00:00+00:00'\n  minutes:\n    Ismaïla Sarr: 90\n    Kevin De Bruyne: 90\n    Leandro Trossard: 90\n    Sadio Mané: 90\n  pulled_at: '2026-07-01T19:12:42+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nBRA vs JPN:\n  kickoff: '2026-06-29T17:00:00+00:00'\n  minutes:\n    Ayase Ueda: 90\n    Matheus Cunha: 90\n  pulled_at: '2026-06-29T16:11:22+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nBRA vs NOR:\n  kickoff: '2026-07-05T20:00:00+00:00'\n  minutes:\n    Erling Haaland: 90\n    Martin Ødegaard: 90\n    Matheus Cunha: 90\n    Vinícius Júnior: 90\n  pulled_at: '2026-07-05T19:10:32+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nCAN vs MAR:\n  kickoff: '2026-07-04T17:00:00+00:00'\n  minutes:\n    Achraf Hakimi: 90\n    Alphonso Davies: 20\n    Brahim Díaz: 90\n    Ismael Saibari: 90\n    Jonathan David: 90\n  pulled_at: '2026-07-04T16:11:22+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nCIV vs NOR:\n  kickoff: '2026-06-30T17:00:00+00:00'\n  minutes:\n    Alexander Sørloth: 90\n    Amad Diallo: 20\n    Erling Haaland: 90\n    Martin Ødegaard: 90\n  pulled_at: '2026-06-30T16:10:51+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nCOD vs UZB:\n  kickoff: '2026-06-27T23:30:00+00:00'\n  minutes:\n    Cédric Bakambu: 90\n    Eldor Shomurodov: 90\n  pulled_at: '2026-06-27T22:42:12+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nCOL vs POR:\n  kickoff: '2026-06-27T23:30:00+00:00'\n  minutes:\n    Luis Díaz: 20\n  pulled_at: '2026-06-27T22:40:00+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - Gonçalo Ramos\nCRO vs GHA:\n  kickoff: '2026-06-27T21:00:00+00:00'\n  minutes:\n    Antoine Semenyo: 90\n    Luka Sučić: 20\n  pulled_at: '2026-06-27T20:10:47+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nENG vs ARG:\n  kickoff: '2026-07-15T19:00:00+00:00'\n  minutes:\n    Harry Kane: 90\n    Jude Bellingham: 90\n    Julián Álvarez: 90\n    Lionel Messi: 90\n  pulled_at: '2026-07-15T18:10:22+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nENG vs COD:\n  kickoff: '2026-07-01T16:00:00+00:00'\n  minutes:\n    Harry Kane: 90\n    Jude Bellingham: 90\n    Yoane Wissa: 90\n  pulled_at: '2026-07-01T15:13:10+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nESP vs ARG:\n  kickoff: '2026-07-19T19:00:00+00:00'\n  minutes:\n    Lamine Yamal: 90\n    Lionel Messi: 90\n  pulled_at: '2026-07-19T18:10:19+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nESP vs AUT:\n  kickoff: '2026-07-02T19:00:00+00:00'\n  minutes:\n    Lamine Yamal: 90\n    Marcel Sabitzer: 90\n    Mikel Oyarzabal: 90\n  pulled_at: '2026-07-02T18:13:22+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nESP vs BEL:\n  kickoff: '2026-07-10T19:00:00+00:00'\n  minutes:\n    Kevin De Bruyne: 90\n    Lamine Yamal: 90\n    Romelu Lukaku: 20\n  pulled_at: '2026-07-10T18:11:01+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nFRA vs ENG:\n  kickoff: '2026-07-18T21:00:00+00:00'\n  minutes:\n    Harry Kane: 20\n    Kylian Mbappé: 90\n    Ousmane Dembélé: 20\n  pulled_at: '2026-07-18T20:46:58+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nFRA vs ESP:\n  kickoff: '2026-07-14T19:00:00+00:00'\n  minutes:\n    Kylian Mbappé: 90\n    Lamine Yamal: 90\n  pulled_at: '2026-07-14T18:11:14+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nFRA vs MAR:\n  kickoff: '2026-07-09T20:00:00+00:00'\n  minutes:\n    Achraf Hakimi: 90\n    Brahim Díaz: 90\n    Kylian Mbappé: 90\n    Ousmane Dembélé: 90\n  pulled_at: '2026-07-09T19:14:25+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nFRA vs SWE:\n  kickoff: '2026-06-30T21:00:00+00:00'\n  minutes:\n    Alexander Isak: 90\n    Kylian Mbappé: 90\n    Ousmane Dembélé: 90\n    Viktor Gyökeres: 90\n  pulled_at: '2026-06-30T20:16:59+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nGER vs PAR:\n  kickoff: '2026-06-29T20:30:00+00:00'\n  minutes:\n    Florian Wirtz: 90\n    Jamal Musiala: 20\n    Julio Enciso: 90\n    Kai Havertz: 90\n  pulled_at: '2026-06-29T19:45:47+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nJOR vs ARG:\n  kickoff: '2026-06-28T02:00:00+00:00'\n  minutes: {}\n  pulled_at: '2026-06-28T01:10:31+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - Mousa Al-Taamari\nMEX vs ECU:\n  kickoff: '2026-07-01T01:00:00+00:00'\n  minutes:\n    Gonzalo Plata: 90\n    Raúl Jiménez: 90\n  pulled_at: '2026-07-01T00:19:33+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nMEX vs ENG:\n  kickoff: '2026-07-06T00:00:00+00:00'\n  minutes:\n    Harry Kane: 90\n    Jude Bellingham: 90\n    Julián Quiñones: 90\n    Raúl Jiménez: 90\n  pulled_at: '2026-07-05T23:14:24+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nNED vs MAR:\n  kickoff: '2026-06-30T01:00:00+00:00'\n  minutes:\n    Brian Brobbey: 90\n    Ismael Saibari: 90\n  pulled_at: '2026-06-30T00:13:42+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nPAN vs ENG:\n  kickoff: '2026-06-27T21:00:00+00:00'\n  minutes:\n    Harry Kane: 90\n    José Fajardo: 20\n  pulled_at: '2026-06-27T20:10:48+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nPAR vs FRA:\n  kickoff: '2026-07-04T21:00:00+00:00'\n  minutes:\n    Julio Enciso: 90\n    Kylian Mbappé: 90\n    Michael Olise: 90\n    Miguel Almirón: 90\n    Ousmane Dembélé: 90\n  pulled_at: '2026-07-04T20:12:17+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nPOR vs CRO:\n  kickoff: '2026-07-02T23:00:00+00:00'\n  minutes:\n    Bernardo Silva: 20\n    Bruno Fernandes: 90\n    Cristiano Ronaldo: 90\n    Luka Modrić: 90\n  pulled_at: '2026-07-02T22:35:10+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nRSA vs CAN:\n  kickoff: '2026-06-28T19:00:00+00:00'\n  minutes:\n    Cyle Larin: 20\n    Iqraam Rayners: 20\n  pulled_at: '2026-06-28T18:18:50+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nSUI vs ALG:\n  kickoff: '2026-07-03T03:00:00+00:00'\n  minutes:\n    Amine Gouiri: 20\n    Breel Embolo: 90\n    Riyad Mahrez: 90\n    Rubén Vargas: 90\n  pulled_at: '2026-07-03T02:12:42+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nSUI vs COL:\n  kickoff: '2026-07-07T20:00:00+00:00'\n  minutes:\n    Breel Embolo: 90\n    Dan Ndoye: 90\n    Jhon Arias: 90\n    Luis Díaz: 90\n  pulled_at: '2026-07-07T19:13:05+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nUSA vs BEL:\n  kickoff: '2026-07-07T00:00:00+00:00'\n  minutes:\n    Christian Pulisic: 90\n    Kevin De Bruyne: 20\n    Leandro Trossard: 90\n    Malik Tillman: 90\n    Romelu Lukaku: 20\n  pulled_at: '2026-07-06T23:13:49+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nUSA vs BIH:\n  kickoff: '2026-07-02T00:00:00+00:00'\n  minutes:\n    Ermedin Demirović: 90\n    Folarin Balogun: 90\n  pulled_at: '2026-07-01T23:21:10+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\n",
+    "data/logs/agent_last_run": "2026-06-27T22:40:00+00:00",
+    "data/logs/runs.log": "[2026-06-27T22:40:00+00:00] daily_run hours=5 mode=SUBMIT\n  matches=4 markets=40 actions={'create': 20, 'update': 20}\n  attention: COL vs POR: lineup could not match ['Gonçalo Ramos'] — verify against the posted XI (left at default 90)\n  attention: COL vs POR: STALE-RISK Luis Díaz scorer_prop_prob=0.3 is per-OPPONENT — confirm it is for THIS match's odds\n",
+    "data/logs/submissions.csv": "submitted_at,bot,market_id,probability,action,error\n2026-06-27T22:40:00+00:00,2,12f8261f-89b4-4c59-ab7b-4cea700478a1,47,update,\n2026-06-27T22:40:00+00:00,2,2a93e720-962b-43d9-a6de-c595fdf29a0d,39,update,\n2026-06-27T22:40:00+00:00,2,57a0208a-b784-4663-aca6-047aadc0fc4b,74,update,\n2026-06-27T22:40:00+00:00,2,2392f003-e56a-4289-a3b1-b07e7de291b2,39,update,\n2026-06-27T22:40:00+00:00,2,3f4a50eb-7a9a-4eba-b913-f3bb14d64ee7,37,update,\n2026-06-27T22:40:00+00:00,2,bb825e94-a0a4-4ea9-a7f3-9835ecf3bca8,37,update,\n2026-06-27T22:40:00+00:00,2,cf17a41d-37e3-4979-82aa-81934ce7b121,19,update,\n2026-06-27T22:40:00+00:00,2,41bdce13-bfca-4c36-a0bb-12ad94b54db8,37,update,\n2026-06-27T22:40:00+00:00,2,f3962b11-d359-4295-8efb-b9a55c574d3b,25,update,\n2026-06-27T22:40:00+00:00,2,b7328c17-3a9c-49fe-a9a0-1eceed96a03a,48,update,\n2026-06-27T22:40:00+00:00,2,9f7c76ed-e5f2-459b-af43-29e03299257b,39,create,\n2026-06-27T22:40:00+00:00,2,c48e143a-ce01-4977-9b79-98077a2e04bc,34,create,\n2026-06-27T22:40:00+00:00,2,de87022c-d94b-41cc-84c9-096f933d5929,37,create,\n2026-06-27T22:40:00+00:00,2,3b9f27bf-b9ca-4604-9112-ef8e99dfbe36,42,create,\n2026-06-27T22:40:00+00:00,2,9abcb31a-2213-49d2-a515-43b9cc9a71ab,29,create,\n2026-06-27T22:40:00+00:00,2,eb47fe91-b920-4acf-9c5a-1009ed7cb33a,45,create,\n2026-06-27T22:40:00+00:00,2,c703d31f-77ab-4190-8666-7b334aa1bec8,57,create,\n2026-06-27T22:40:00+00:00,2,c5fada39-248b-4118-ae3e-4e6af345fa96,56,create,\n2026-06-27T22:40:00+00:00,2,7e371206-e93a-437d-9a4a-a5451e44012e,3,create,\n2026-06-27T22:40:00+00:00,2,c52cb04a-6fdc-41ce-be3a-e52331e876e4,62,create,\n2026-06-27T22:40:00+00:00,2,89051d35-6048-480e-a2f7-925ac9346337,48,create,\n2026-06-27T22:40:00+00:00,2,4e2fd55d-652b-4fb5-9375-31e382bada1c,56,create,\n2026-06-27T22:40:00+00:00,2,e7e494aa-0978-4c61-a66e-91876ab893cb,48,create,\n2026-06-27T22:40:00+00:00,2,37f1e3ff-3bb5-41e3-b1d3-cf9bf02eefa0,43,create,\n2026-06-27T22:40:00+00:00,2,11105aab-6512-426a-8398-c59c4b8ba8e4,33,create,\n2026-06-27T22:40:00+00:00,2,3d4d7f4a-ad8a-43f4-a5a6-f777e18c7c76,23,create,\n2026-06-27T22:40:00+00:00,2,65e32b43-e8cc-4a03-9e13-378ab6b950b6,60,create,\n2026-06-27T22:40:00+00:00,2,a42becae-4a32-411a-904a-813bb1a2af6b,46,create,\n2026-06-27T22:40:00+00:00,2,0689d420-b2dc-4ad5-bcf7-4f62a43ae956,35,create,\n2026-06-27T22:40:00+00:00,2,ddb88604-c5b2-41e4-b54c-3a6251ca225a,57,create,\n2026-06-27T22:40:00+00:00,2,89a055ad-c0e0-4d32-81d3-a697e201d01e,95,create,\n2026-06-27T22:40:00+00:00,2,9737e196-a037-4bc7-94c7-6afe9ac69463,37,create,\n2026-06-27T22:40:00+00:00,2,e71cc4d9-cfb2-42d6-a795-93c0ca645882,49,create,\n2026-06-27T22:40:00+00:00,2,36d135a4-2db4-4702-a4f3-e020206a4d9f,80,create,\n2026-06-27T22:40:00+00:00,2,64167c13-32d0-4b61-bd0b-f54a331f3336,37,create,\n2026-06-27T22:40:00+00:00,2,eaf3a69b-22c2-43f1-bde5-80dc167fd331,61,create,\n2026-06-27T22:40:00+00:00,2,3d98c4bc-7429-44d1-ba22-f94b9e89a24f,30,create,\n2026-06-27T22:40:00+00:00,2,d246bfc5-f14e-4de2-939f-27d25176efec,43,create,\n2026-06-27T22:40:00+00:00,2,265b0dde-79a3-477b-a989-e86a1bf2b530,31,create,\n2026-06-27T22:40:00+00:00,2,db40a747-94d5-4120-9399-19b8a549c95e,74,create,\n2026-06-27T22:40:00+00:00,1,12f8261f-89b4-4c59-ab7b-4cea700478a1,47,create,\n2026-06-27T22:40:00+00:00,1,2a93e720-962b-43d9-a6de-c595fdf29a0d,39,create,\n2026-06-27T22:40:00+00:00,1,57a0208a-b784-4663-aca6-047aadc0fc4b,72,create,\n2026-06-27T22:40:00+00:00,1,2392f003-e56a-4289-a3b1-b07e7de291b2,39,create,\n2026-06-27T22:40:00+00:00,1,3f4a50eb-7a9a-4eba-b913-f3bb14d64ee7,37,create,\n2026-06-27T22:40:00+00:00,1,bb825e94-a0a4-4ea9-a7f3-9835ecf3bca8,37,create,\n2026-06-27T22:40:00+00:00,1,cf17a41d-37e3-4979-82aa-81934ce7b121,19,create,\n2026-06-27T22:40:00+00:00,1,41bdce13-bfca-4c36-a0bb-12ad94b54db8,37,create,\n2026-06-27T22:40:00+00:00,1,f3962b11-d359-4295-8efb-b9a55c574d3b,25,create,\n2026-06-27T22:40:00+00:00,1,b7328c17-3a9c-49fe-a9a0-1eceed96a03a,42,create,\n2026-06-27T22:40:00+00:00,1,9f7c76ed-e5f2-459b-af43-29e03299257b,39,update,\n2026-06-27T22:40:00+00:00,1,c48e143a-ce01-4977-9b79-98077a2e04bc,34,update,\n2026-06-27T22:40:00+00:00,1,de87022c-d94b-41cc-84c9-096f933d5929,37,update,\n2026-06-27T22:40:00+00:00,1,3b9f27bf-b9ca-4604-9112-ef8e99dfbe36,42,update,\n2026-06-27T22:40:00+00:00,1,9abcb31a-2213-49d2-a515-43b9cc9a71ab,29,update,\n2026-06-27T22:40:00+00:00,1,eb47fe91-b920-4acf-9c5a-1009ed7cb33a,42,update,\n2026-06-27T22:40:00+00:00,1,c703d31f-77ab-4190-8666-7b334aa1bec8,53,update,\n2026-06-27T22:40:00+00:00,1,c5fada39-248b-4118-ae3e-4e6af345fa96,49,update,\n2026-06-27T22:40:00+00:00,1,7e371206-e93a-437d-9a4a-a5451e44012e,3,update,\n2026-06-27T22:40:00+00:00,1,c52cb04a-6fdc-41ce-be3a-e52331e876e4,62,update,\n2026-06-27T22:40:00+00:00,1,89051d35-6048-480e-a2f7-925ac9346337,48,create,\n2026-06-27T22:40:00+00:00,1,4e2fd55d-652b-4fb5-9375-31e382bada1c,54,create,\n2026-06-27T22:40:00+00:00,1,e7e494aa-0978-4c61-a66e-91876ab893cb,48,create,\n2026-06-27T22:40:00+00:00,1,37f1e3ff-3bb5-41e3-b1d3-cf9bf02eefa0,43,create,\n2026-06-27T22:40:00+00:00,1,11105aab-6512-426a-8398-c59c4b8ba8e4,34,create,\n2026-06-27T22:40:00+00:00,1,3d4d7f4a-ad8a-43f4-a5a6-f777e18c7c76,23,create,\n2026-06-27T22:40:00+00:00,1,65e32b43-e8cc-4a03-9e13-378ab6b950b6,51,create,\n2026-06-27T22:40:00+00:00,1,a42becae-4a32-411a-904a-813bb1a2af6b,40,create,\n2026-06-27T22:40:00+00:00,1,0689d420-b2dc-4ad5-bcf7-4f62a43ae956,34,create,\n2026-06-27T22:40:00+00:00,1,ddb88604-c5b2-41e4-b54c-3a6251ca225a,54,create,\n2026-06-27T22:40:00+00:00,1,89a055ad-c0e0-4d32-81d3-a697e201d01e,94,update,\n2026-06-27T22:40:00+00:00,1,9737e196-a037-4bc7-94c7-6afe9ac69463,37,update,\n2026-06-27T22:40:00+00:00,1,e71cc4d9-cfb2-42d6-a795-93c0ca645882,49,update,\n2026-06-27T22:40:00+00:00,1,36d135a4-2db4-4702-a4f3-e020206a4d9f,77,update,\n2026-06-27T22:40:00+00:00,1,64167c13-32d0-4b61-bd0b-f54a331f3336,37,update,\n2026-06-27T22:40:00+00:00,1,eaf3a69b-22c2-43f1-bde5-80dc167fd331,61,update,\n2026-06-27T22:40:00+00:00,1,3d98c4bc-7429-44d1-ba22-f94b9e89a24f,30,update,\n2026-06-27T22:40:00+00:00,1,d246bfc5-f14e-4de2-939f-27d25176efec,43,update,\n2026-06-27T22:40:00+00:00,1,265b0dde-79a3-477b-a989-e86a1bf2b530,31,update,\n2026-06-27T22:40:00+00:00,1,db40a747-94d5-4120-9399-19b8a549c95e,65,update,\n",
+    "data/logs/unparsed_backlog.json": "{\n  \"Will the referee wear a yellow shirt?\": {\n    \"first_seen\": \"2026-06-27T22:40:00+00:00\",\n    \"status\": \"open\",\n    \"type\": \"other\",\n    \"last_seen\": \"2026-06-27T22:40:00+00:00\",\n    \"count\": 1\n  }\n}",
+    "data/logs/unparsed_backlog.md": "# Unparsed-question backlog (auto-maintained by scripts/scan_backlog.py)\n\nUpdated 2026-06-27 22:40 UTC. **1 open template(s) across 1 market instances.** (Full scan of 176 markets; 138 distinct questions parse.)\n\nEach `type` = one model to build (priority = total markets, KO are 2x weight). `other` = a template that matched no known type — review immediately.\n\n## other — 1 template(s), 1 markets  ⚠️ UNKNOWN TYPE — REVIEW\n- [1x · since 2026-06-27] Will the referee wear a yellow shirt?\n"
+   },
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "** bot 2 on EXPERIMENT 'golden-probe' (A/B vs bot-1 v4): synthetic bot-2 experiment that moves every swappable knob (golden tests only) **\n\n=== COD vs UZB  (kickoff 2026-06-27 23:30 UTC) ===\n  lineups: not_posted — not posted yet, all-90 default kept\nodds: ESPN/DraftKings (0.375/0.302/0.323, total 2.54)\n  ** scorer_prop for Dan Ndoye EXPIRED (researched for 'SUI vs COL', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Erling Haaland EXPIRED (researched for 'CIV vs NOR', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Folarin Balogun EXPIRED (researched for 'USA vs BIH', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Harry Kane EXPIRED (researched for 'FRA vs ENG', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Ismael Saibari EXPIRED (researched for 'CAN vs MAR', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Kylian Mbappé EXPIRED (researched for 'FRA vs ENG', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Lautaro Martínez EXPIRED (researched for 'ARG vs CPV', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Leandro Trossard EXPIRED (researched for 'BEL vs SEN', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Lionel Messi EXPIRED (researched for 'ENG vs ARG', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Luis Díaz EXPIRED (researched for 'SUI vs COL', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Matheus Cunha EXPIRED (researched for 'BRA vs JPN', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Mikel Oyarzabal EXPIRED (researched for 'ESP vs AUT', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Mohamed Salah EXPIRED (researched for 'ARG vs EGY', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Ousmane Dembélé EXPIRED (researched for 'FRA vs SWE', not 'COD vs UZB') — ignoring it, using the model **\n  0.467  Will Uzbekistan commit more fouls than DR Congo?\n  0.389  Will Uzbekistan be caught offside 2 or more times?\n  0.721  Will both teams have at least 1 shot on target in the second half?\n  0.390  Will both teams score AND the match have 3 or more total goals?\n  0.369  Will a penalty kick be awarded OR a red card be shown?\n  0.372  Will Uzbekistan have more shots on target than DR Congo in the second \n  0.190  Will Eldor Shomurodov have at least 1 shot on target in the second hal\n  0.375  Will DR Congo win the match?\n  0.252  Will Cédric Bakambu score or assist a goal (excluding own goals)?\n  0.416  Will Uzbekistan have 5 or more corner kicks?\n\n=== COL vs POR  (kickoff 2026-06-27 23:30 UTC) ===\n  lineups: ESPN confirmed XI — 0 of our players start, 1 benched; UNMATCHED ['Gonçalo Ramos']\nodds: ESPN/DraftKings (0.301/0.283/0.415, total 2.67)\nodds: Polymarket (0.287/0.297/0.416, vol $2.4M)\nodds: BLENDED home 0.294 / draw 0.290\n  ** scorer_prop for Dan Ndoye EXPIRED (researched for 'SUI vs COL', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Erling Haaland EXPIRED (researched for 'CIV vs NOR', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Folarin Balogun EXPIRED (researched for 'USA vs BIH', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Harry Kane EXPIRED (researched for 'FRA vs ENG', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Ismael Saibari EXPIRED (researched for 'CAN vs MAR', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Kylian Mbappé EXPIRED (researched for 'FRA vs ENG', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Lautaro Martínez EXPIRED (researched for 'ARG vs CPV', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Leandro Trossard EXPIRED (researched for 'BEL vs SEN', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Lionel Messi EXPIRED (researched for 'ENG vs ARG', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Luis Díaz EXPIRED (researched for 'SUI vs COL', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Matheus Cunha EXPIRED (researched for 'BRA vs JPN', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Mikel Oyarzabal EXPIRED (researched for 'ESP vs AUT', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Mohamed Salah EXPIRED (researched for 'ARG vs EGY', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Ousmane Dembélé EXPIRED (researched for 'FRA vs SWE', not 'COL vs POR') — ignoring it, using the model **\n  0.388  Will Colombia be caught offside 2 or more times?\n  0.341  In the second half, will Colombia have more shots on target than Portu\n  0.369  Will a penalty kick be awarded OR a red card be shown?\n  0.417  Will both teams score AND the match have 3 or more total goals?\n  0.294  Will Colombia win the match?\n  0.416  Will Colombia have 4 or more shots on target?\n  0.530  Will Portugal have 4 or more shots on target?\n  0.487  Will there be 5 or more total corner kicks in the second half?\n  0.032  Will Luis Díaz score a goal (excluding own goals)?\n  0.618  Will Gonçalo Ramos have at least 1 shot on target?\n\n=== ALG vs AUT  (kickoff 2026-06-28 02:00 UTC) ===\n  ** USING MANUAL ODDS OVERRIDE for ALG vs AUT: home 0.23 / draw 0.27 / total 2.6 **\n  ** scorer_prop for Dan Ndoye EXPIRED (researched for 'SUI vs COL', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Erling Haaland EXPIRED (researched for 'CIV vs NOR', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Folarin Balogun EXPIRED (researched for 'USA vs BIH', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Harry Kane EXPIRED (researched for 'FRA vs ENG', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Ismael Saibari EXPIRED (researched for 'CAN vs MAR', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Kylian Mbappé EXPIRED (researched for 'FRA vs ENG', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Lautaro Martínez EXPIRED (researched for 'ARG vs CPV', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Leandro Trossard EXPIRED (researched for 'BEL vs SEN', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Lionel Messi EXPIRED (researched for 'ENG vs ARG', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Luis Díaz EXPIRED (researched for 'SUI vs COL', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Matheus Cunha EXPIRED (researched for 'BRA vs JPN', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Mikel Oyarzabal EXPIRED (researched for 'ESP vs AUT', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Mohamed Salah EXPIRED (researched for 'ARG vs EGY', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Ousmane Dembélé EXPIRED (researched for 'FRA vs SWE', not 'ALG vs AUT') — ignoring it, using the model **\n  0.477  Will Algeria commit more fouls than Austria?\n  0.540  Will Austria have more shots on target than Algeria in the second half\n  0.483  Will Austria score the first goal of the second half?\n  0.425  Will Austria score more goals than Algeria in the second half?\n  0.340  Will Austria receive more cards than Algeria?\n  0.230  Will Algeria win the match?\n  0.508  Will there be 9 or more total corner kicks?\n  0.403  Will Austria have 5 or more shots on target?\n  0.340  Will Marcel Sabitzer have at least 1 shot on target?\n  0.539  Will Algeria have 3 or more shots on target?\n\n=== JOR vs ARG  (kickoff 2026-06-28 02:00 UTC) ===\nodds: ESPN/DraftKings (0.046/0.096/0.858, total 3.62)\nodds: Polymarket (0.208/0.119/0.673, vol $3.1M)\n  ** sources disagree on home win by 0.16 — check for stale odds **\nodds: BLENDED home 0.127 / draw 0.108\n  ** scorer_prop for Dan Ndoye EXPIRED (researched for 'SUI vs COL', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Erling Haaland EXPIRED (researched for 'CIV vs NOR', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Folarin Balogun EXPIRED (researched for 'USA vs BIH', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Harry Kane EXPIRED (researched for 'FRA vs ENG', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Ismael Saibari EXPIRED (researched for 'CAN vs MAR', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Kylian Mbappé EXPIRED (researched for 'FRA vs ENG', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Lautaro Martínez EXPIRED (researched for 'ARG vs CPV', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Leandro Trossard EXPIRED (researched for 'BEL vs SEN', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Lionel Messi EXPIRED (researched for 'ENG vs ARG', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Luis Díaz EXPIRED (researched for 'SUI vs COL', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Matheus Cunha EXPIRED (researched for 'BRA vs JPN', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Mikel Oyarzabal EXPIRED (researched for 'ESP vs AUT', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Mohamed Salah EXPIRED (researched for 'ARG vs EGY', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Ousmane Dembélé EXPIRED (researched for 'FRA vs SWE', not 'JOR vs ARG') — ignoring it, using the model **\n  0.937  Will Argentina have at least 1 corner kick in the first half?\n  0.369  Will Jordan be caught offside 2 or more times?\n  0.490  Will Jordan commit more fouls than Argentina?\n  0.768  Will Argentina have more shots on target than Jordan in the second hal\n  0.369  Will a penalty kick be awarded OR a red card be shown in the match?\n  0.607  Will Jordan score at least 1 goal?\n  0.299  Will the match have 2 or fewer total goals?\n  0.429  Will Jordan score in the second half?\n  0.312  Will Mousa Al-Taamari score or assist a goal (excluding own goals)?\n  0.648  Will Argentina have 6 or more shots on target?\n\nsubmitting 40 predictions to bot 2 [EXPERIMENT: golden-probe]...\nBatch 1: 30/30 succeeded\n  bot 2: {'create': 30, 'update': 10}\n\nsubmitting 40 predictions to bot 1 [stable v4]...\nBatch 1: 20/20 succeeded\n  bot 1: {'create': 20, 'update': 20}\n\nNEEDS ATTENTION:\n  - COL vs POR: lineup could not match ['Gonçalo Ramos'] — verify against the posted XI (left at default 90)\n  - COL vs POR: STALE-RISK Luis Díaz scorer_prop_prob=0.3 is per-OPPONENT — confirm it is for THIS match's odds\n\nBACKLOG: 1 unpriced markets across 1 open templates -> data/logs/unparsed_backlog.md\n",
+   "subprocess": []
+  },
+  {
+   "argv": [
+    "run",
+    "--hours",
+    "5",
+    "--submit",
+    "--agent"
+   ],
+   "calls": [
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-cod-uzb"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-cod-uzb"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "gamma-api.polymarket.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "closed": "false",
+      "limit": "200",
+      "tag_slug": "soccer"
+     },
+     "path": "/events",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-col-por"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-col-por"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "gamma-api.polymarket.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "closed": "false",
+      "limit": "200",
+      "tag_slug": "soccer"
+     },
+     "path": "/events",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260628"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-jor-arg"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "gamma-api.polymarket.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "closed": "false",
+      "limit": "200",
+      "tag_slug": "soccer"
+     },
+     "path": "/events",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "limit": "100"
+     },
+     "path": "/api/v1/events",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/lobbies",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+     },
+     "path": "/api/v1/predictions",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "limit": "100"
+     },
+     "path": "/api/v1/events",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/lobbies",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+     },
+     "path": "/api/v1/predictions",
+     "status": 200
+    }
+   ],
+   "exception": null,
+   "files": {
+    "data/logs/runs.log": "[2026-06-27T22:40:00+00:00] daily_run hours=5 mode=SUBMIT\n  matches=4 markets=40 actions={'create': 20, 'update': 20}\n  attention: COL vs POR: lineup could not match ['Gonçalo Ramos'] — verify against the posted XI (left at default 90)\n  attention: COL vs POR: STALE-RISK Luis Díaz scorer_prop_prob=0.3 is per-OPPONENT — confirm it is for THIS match's odds\n[2026-06-27T22:40:00+00:00] daily_run hours=5 mode=SUBMIT\n  matches=4 markets=40 actions={'unchanged': 40}\n  attention: COL vs POR: lineup could not match ['Gonçalo Ramos'] — verify against the posted XI (left at default 90)\n  attention: COL vs POR: STALE-RISK Luis Díaz scorer_prop_prob=0.3 is per-OPPONENT — confirm it is for THIS match's odds\n",
+    "data/logs/submissions.csv": "submitted_at,bot,market_id,probability,action,error\n2026-06-27T22:40:00+00:00,2,12f8261f-89b4-4c59-ab7b-4cea700478a1,47,update,\n2026-06-27T22:40:00+00:00,2,2a93e720-962b-43d9-a6de-c595fdf29a0d,39,update,\n2026-06-27T22:40:00+00:00,2,57a0208a-b784-4663-aca6-047aadc0fc4b,74,update,\n2026-06-27T22:40:00+00:00,2,2392f003-e56a-4289-a3b1-b07e7de291b2,39,update,\n2026-06-27T22:40:00+00:00,2,3f4a50eb-7a9a-4eba-b913-f3bb14d64ee7,37,update,\n2026-06-27T22:40:00+00:00,2,bb825e94-a0a4-4ea9-a7f3-9835ecf3bca8,37,update,\n2026-06-27T22:40:00+00:00,2,cf17a41d-37e3-4979-82aa-81934ce7b121,19,update,\n2026-06-27T22:40:00+00:00,2,41bdce13-bfca-4c36-a0bb-12ad94b54db8,37,update,\n2026-06-27T22:40:00+00:00,2,f3962b11-d359-4295-8efb-b9a55c574d3b,25,update,\n2026-06-27T22:40:00+00:00,2,b7328c17-3a9c-49fe-a9a0-1eceed96a03a,48,update,\n2026-06-27T22:40:00+00:00,2,9f7c76ed-e5f2-459b-af43-29e03299257b,39,create,\n2026-06-27T22:40:00+00:00,2,c48e143a-ce01-4977-9b79-98077a2e04bc,34,create,\n2026-06-27T22:40:00+00:00,2,de87022c-d94b-41cc-84c9-096f933d5929,37,create,\n2026-06-27T22:40:00+00:00,2,3b9f27bf-b9ca-4604-9112-ef8e99dfbe36,42,create,\n2026-06-27T22:40:00+00:00,2,9abcb31a-2213-49d2-a515-43b9cc9a71ab,29,create,\n2026-06-27T22:40:00+00:00,2,eb47fe91-b920-4acf-9c5a-1009ed7cb33a,45,create,\n2026-06-27T22:40:00+00:00,2,c703d31f-77ab-4190-8666-7b334aa1bec8,57,create,\n2026-06-27T22:40:00+00:00,2,c5fada39-248b-4118-ae3e-4e6af345fa96,56,create,\n2026-06-27T22:40:00+00:00,2,7e371206-e93a-437d-9a4a-a5451e44012e,3,create,\n2026-06-27T22:40:00+00:00,2,c52cb04a-6fdc-41ce-be3a-e52331e876e4,62,create,\n2026-06-27T22:40:00+00:00,2,89051d35-6048-480e-a2f7-925ac9346337,48,create,\n2026-06-27T22:40:00+00:00,2,4e2fd55d-652b-4fb5-9375-31e382bada1c,56,create,\n2026-06-27T22:40:00+00:00,2,e7e494aa-0978-4c61-a66e-91876ab893cb,48,create,\n2026-06-27T22:40:00+00:00,2,37f1e3ff-3bb5-41e3-b1d3-cf9bf02eefa0,43,create,\n2026-06-27T22:40:00+00:00,2,11105aab-6512-426a-8398-c59c4b8ba8e4,33,create,\n2026-06-27T22:40:00+00:00,2,3d4d7f4a-ad8a-43f4-a5a6-f777e18c7c76,23,create,\n2026-06-27T22:40:00+00:00,2,65e32b43-e8cc-4a03-9e13-378ab6b950b6,60,create,\n2026-06-27T22:40:00+00:00,2,a42becae-4a32-411a-904a-813bb1a2af6b,46,create,\n2026-06-27T22:40:00+00:00,2,0689d420-b2dc-4ad5-bcf7-4f62a43ae956,35,create,\n2026-06-27T22:40:00+00:00,2,ddb88604-c5b2-41e4-b54c-3a6251ca225a,57,create,\n2026-06-27T22:40:00+00:00,2,89a055ad-c0e0-4d32-81d3-a697e201d01e,95,create,\n2026-06-27T22:40:00+00:00,2,9737e196-a037-4bc7-94c7-6afe9ac69463,37,create,\n2026-06-27T22:40:00+00:00,2,e71cc4d9-cfb2-42d6-a795-93c0ca645882,49,create,\n2026-06-27T22:40:00+00:00,2,36d135a4-2db4-4702-a4f3-e020206a4d9f,80,create,\n2026-06-27T22:40:00+00:00,2,64167c13-32d0-4b61-bd0b-f54a331f3336,37,create,\n2026-06-27T22:40:00+00:00,2,eaf3a69b-22c2-43f1-bde5-80dc167fd331,61,create,\n2026-06-27T22:40:00+00:00,2,3d98c4bc-7429-44d1-ba22-f94b9e89a24f,30,create,\n2026-06-27T22:40:00+00:00,2,d246bfc5-f14e-4de2-939f-27d25176efec,43,create,\n2026-06-27T22:40:00+00:00,2,265b0dde-79a3-477b-a989-e86a1bf2b530,31,create,\n2026-06-27T22:40:00+00:00,2,db40a747-94d5-4120-9399-19b8a549c95e,74,create,\n2026-06-27T22:40:00+00:00,1,12f8261f-89b4-4c59-ab7b-4cea700478a1,47,create,\n2026-06-27T22:40:00+00:00,1,2a93e720-962b-43d9-a6de-c595fdf29a0d,39,create,\n2026-06-27T22:40:00+00:00,1,57a0208a-b784-4663-aca6-047aadc0fc4b,72,create,\n2026-06-27T22:40:00+00:00,1,2392f003-e56a-4289-a3b1-b07e7de291b2,39,create,\n2026-06-27T22:40:00+00:00,1,3f4a50eb-7a9a-4eba-b913-f3bb14d64ee7,37,create,\n2026-06-27T22:40:00+00:00,1,bb825e94-a0a4-4ea9-a7f3-9835ecf3bca8,37,create,\n2026-06-27T22:40:00+00:00,1,cf17a41d-37e3-4979-82aa-81934ce7b121,19,create,\n2026-06-27T22:40:00+00:00,1,41bdce13-bfca-4c36-a0bb-12ad94b54db8,37,create,\n2026-06-27T22:40:00+00:00,1,f3962b11-d359-4295-8efb-b9a55c574d3b,25,create,\n2026-06-27T22:40:00+00:00,1,b7328c17-3a9c-49fe-a9a0-1eceed96a03a,42,create,\n2026-06-27T22:40:00+00:00,1,9f7c76ed-e5f2-459b-af43-29e03299257b,39,update,\n2026-06-27T22:40:00+00:00,1,c48e143a-ce01-4977-9b79-98077a2e04bc,34,update,\n2026-06-27T22:40:00+00:00,1,de87022c-d94b-41cc-84c9-096f933d5929,37,update,\n2026-06-27T22:40:00+00:00,1,3b9f27bf-b9ca-4604-9112-ef8e99dfbe36,42,update,\n2026-06-27T22:40:00+00:00,1,9abcb31a-2213-49d2-a515-43b9cc9a71ab,29,update,\n2026-06-27T22:40:00+00:00,1,eb47fe91-b920-4acf-9c5a-1009ed7cb33a,42,update,\n2026-06-27T22:40:00+00:00,1,c703d31f-77ab-4190-8666-7b334aa1bec8,53,update,\n2026-06-27T22:40:00+00:00,1,c5fada39-248b-4118-ae3e-4e6af345fa96,49,update,\n2026-06-27T22:40:00+00:00,1,7e371206-e93a-437d-9a4a-a5451e44012e,3,update,\n2026-06-27T22:40:00+00:00,1,c52cb04a-6fdc-41ce-be3a-e52331e876e4,62,update,\n2026-06-27T22:40:00+00:00,1,89051d35-6048-480e-a2f7-925ac9346337,48,create,\n2026-06-27T22:40:00+00:00,1,4e2fd55d-652b-4fb5-9375-31e382bada1c,54,create,\n2026-06-27T22:40:00+00:00,1,e7e494aa-0978-4c61-a66e-91876ab893cb,48,create,\n2026-06-27T22:40:00+00:00,1,37f1e3ff-3bb5-41e3-b1d3-cf9bf02eefa0,43,create,\n2026-06-27T22:40:00+00:00,1,11105aab-6512-426a-8398-c59c4b8ba8e4,34,create,\n2026-06-27T22:40:00+00:00,1,3d4d7f4a-ad8a-43f4-a5a6-f777e18c7c76,23,create,\n2026-06-27T22:40:00+00:00,1,65e32b43-e8cc-4a03-9e13-378ab6b950b6,51,create,\n2026-06-27T22:40:00+00:00,1,a42becae-4a32-411a-904a-813bb1a2af6b,40,create,\n2026-06-27T22:40:00+00:00,1,0689d420-b2dc-4ad5-bcf7-4f62a43ae956,34,create,\n2026-06-27T22:40:00+00:00,1,ddb88604-c5b2-41e4-b54c-3a6251ca225a,54,create,\n2026-06-27T22:40:00+00:00,1,89a055ad-c0e0-4d32-81d3-a697e201d01e,94,update,\n2026-06-27T22:40:00+00:00,1,9737e196-a037-4bc7-94c7-6afe9ac69463,37,update,\n2026-06-27T22:40:00+00:00,1,e71cc4d9-cfb2-42d6-a795-93c0ca645882,49,update,\n2026-06-27T22:40:00+00:00,1,36d135a4-2db4-4702-a4f3-e020206a4d9f,77,update,\n2026-06-27T22:40:00+00:00,1,64167c13-32d0-4b61-bd0b-f54a331f3336,37,update,\n2026-06-27T22:40:00+00:00,1,eaf3a69b-22c2-43f1-bde5-80dc167fd331,61,update,\n2026-06-27T22:40:00+00:00,1,3d98c4bc-7429-44d1-ba22-f94b9e89a24f,30,update,\n2026-06-27T22:40:00+00:00,1,d246bfc5-f14e-4de2-939f-27d25176efec,43,update,\n2026-06-27T22:40:00+00:00,1,265b0dde-79a3-477b-a989-e86a1bf2b530,31,update,\n2026-06-27T22:40:00+00:00,1,db40a747-94d5-4120-9399-19b8a549c95e,65,update,\n2026-06-27T22:40:00+00:00,2,12f8261f-89b4-4c59-ab7b-4cea700478a1,47,unchanged,\n2026-06-27T22:40:00+00:00,2,2a93e720-962b-43d9-a6de-c595fdf29a0d,39,unchanged,\n2026-06-27T22:40:00+00:00,2,57a0208a-b784-4663-aca6-047aadc0fc4b,74,unchanged,\n2026-06-27T22:40:00+00:00,2,2392f003-e56a-4289-a3b1-b07e7de291b2,39,unchanged,\n2026-06-27T22:40:00+00:00,2,3f4a50eb-7a9a-4eba-b913-f3bb14d64ee7,37,unchanged,\n2026-06-27T22:40:00+00:00,2,bb825e94-a0a4-4ea9-a7f3-9835ecf3bca8,37,unchanged,\n2026-06-27T22:40:00+00:00,2,cf17a41d-37e3-4979-82aa-81934ce7b121,19,unchanged,\n2026-06-27T22:40:00+00:00,2,41bdce13-bfca-4c36-a0bb-12ad94b54db8,37,unchanged,\n2026-06-27T22:40:00+00:00,2,f3962b11-d359-4295-8efb-b9a55c574d3b,25,unchanged,\n2026-06-27T22:40:00+00:00,2,b7328c17-3a9c-49fe-a9a0-1eceed96a03a,48,unchanged,\n2026-06-27T22:40:00+00:00,2,9f7c76ed-e5f2-459b-af43-29e03299257b,39,unchanged,\n2026-06-27T22:40:00+00:00,2,c48e143a-ce01-4977-9b79-98077a2e04bc,34,unchanged,\n2026-06-27T22:40:00+00:00,2,de87022c-d94b-41cc-84c9-096f933d5929,37,unchanged,\n2026-06-27T22:40:00+00:00,2,3b9f27bf-b9ca-4604-9112-ef8e99dfbe36,42,unchanged,\n2026-06-27T22:40:00+00:00,2,9abcb31a-2213-49d2-a515-43b9cc9a71ab,29,unchanged,\n2026-06-27T22:40:00+00:00,2,eb47fe91-b920-4acf-9c5a-1009ed7cb33a,45,unchanged,\n2026-06-27T22:40:00+00:00,2,c703d31f-77ab-4190-8666-7b334aa1bec8,57,unchanged,\n2026-06-27T22:40:00+00:00,2,c5fada39-248b-4118-ae3e-4e6af345fa96,56,unchanged,\n2026-06-27T22:40:00+00:00,2,7e371206-e93a-437d-9a4a-a5451e44012e,3,unchanged,\n2026-06-27T22:40:00+00:00,2,c52cb04a-6fdc-41ce-be3a-e52331e876e4,62,unchanged,\n2026-06-27T22:40:00+00:00,2,89051d35-6048-480e-a2f7-925ac9346337,48,unchanged,\n2026-06-27T22:40:00+00:00,2,4e2fd55d-652b-4fb5-9375-31e382bada1c,56,unchanged,\n2026-06-27T22:40:00+00:00,2,e7e494aa-0978-4c61-a66e-91876ab893cb,48,unchanged,\n2026-06-27T22:40:00+00:00,2,37f1e3ff-3bb5-41e3-b1d3-cf9bf02eefa0,43,unchanged,\n2026-06-27T22:40:00+00:00,2,11105aab-6512-426a-8398-c59c4b8ba8e4,33,unchanged,\n2026-06-27T22:40:00+00:00,2,3d4d7f4a-ad8a-43f4-a5a6-f777e18c7c76,23,unchanged,\n2026-06-27T22:40:00+00:00,2,65e32b43-e8cc-4a03-9e13-378ab6b950b6,60,unchanged,\n2026-06-27T22:40:00+00:00,2,a42becae-4a32-411a-904a-813bb1a2af6b,46,unchanged,\n2026-06-27T22:40:00+00:00,2,0689d420-b2dc-4ad5-bcf7-4f62a43ae956,35,unchanged,\n2026-06-27T22:40:00+00:00,2,ddb88604-c5b2-41e4-b54c-3a6251ca225a,57,unchanged,\n2026-06-27T22:40:00+00:00,2,89a055ad-c0e0-4d32-81d3-a697e201d01e,95,unchanged,\n2026-06-27T22:40:00+00:00,2,9737e196-a037-4bc7-94c7-6afe9ac69463,37,unchanged,\n2026-06-27T22:40:00+00:00,2,e71cc4d9-cfb2-42d6-a795-93c0ca645882,49,unchanged,\n2026-06-27T22:40:00+00:00,2,36d135a4-2db4-4702-a4f3-e020206a4d9f,80,unchanged,\n2026-06-27T22:40:00+00:00,2,64167c13-32d0-4b61-bd0b-f54a331f3336,37,unchanged,\n2026-06-27T22:40:00+00:00,2,eaf3a69b-22c2-43f1-bde5-80dc167fd331,61,unchanged,\n2026-06-27T22:40:00+00:00,2,3d98c4bc-7429-44d1-ba22-f94b9e89a24f,30,unchanged,\n2026-06-27T22:40:00+00:00,2,d246bfc5-f14e-4de2-939f-27d25176efec,43,unchanged,\n2026-06-27T22:40:00+00:00,2,265b0dde-79a3-477b-a989-e86a1bf2b530,31,unchanged,\n2026-06-27T22:40:00+00:00,2,db40a747-94d5-4120-9399-19b8a549c95e,74,unchanged,\n2026-06-27T22:40:00+00:00,1,12f8261f-89b4-4c59-ab7b-4cea700478a1,47,unchanged,\n2026-06-27T22:40:00+00:00,1,2a93e720-962b-43d9-a6de-c595fdf29a0d,39,unchanged,\n2026-06-27T22:40:00+00:00,1,57a0208a-b784-4663-aca6-047aadc0fc4b,72,unchanged,\n2026-06-27T22:40:00+00:00,1,2392f003-e56a-4289-a3b1-b07e7de291b2,39,unchanged,\n2026-06-27T22:40:00+00:00,1,3f4a50eb-7a9a-4eba-b913-f3bb14d64ee7,37,unchanged,\n2026-06-27T22:40:00+00:00,1,bb825e94-a0a4-4ea9-a7f3-9835ecf3bca8,37,unchanged,\n2026-06-27T22:40:00+00:00,1,cf17a41d-37e3-4979-82aa-81934ce7b121,19,unchanged,\n2026-06-27T22:40:00+00:00,1,41bdce13-bfca-4c36-a0bb-12ad94b54db8,37,unchanged,\n2026-06-27T22:40:00+00:00,1,f3962b11-d359-4295-8efb-b9a55c574d3b,25,unchanged,\n2026-06-27T22:40:00+00:00,1,b7328c17-3a9c-49fe-a9a0-1eceed96a03a,42,unchanged,\n2026-06-27T22:40:00+00:00,1,9f7c76ed-e5f2-459b-af43-29e03299257b,39,unchanged,\n2026-06-27T22:40:00+00:00,1,c48e143a-ce01-4977-9b79-98077a2e04bc,34,unchanged,\n2026-06-27T22:40:00+00:00,1,de87022c-d94b-41cc-84c9-096f933d5929,37,unchanged,\n2026-06-27T22:40:00+00:00,1,3b9f27bf-b9ca-4604-9112-ef8e99dfbe36,42,unchanged,\n2026-06-27T22:40:00+00:00,1,9abcb31a-2213-49d2-a515-43b9cc9a71ab,29,unchanged,\n2026-06-27T22:40:00+00:00,1,eb47fe91-b920-4acf-9c5a-1009ed7cb33a,42,unchanged,\n2026-06-27T22:40:00+00:00,1,c703d31f-77ab-4190-8666-7b334aa1bec8,53,unchanged,\n2026-06-27T22:40:00+00:00,1,c5fada39-248b-4118-ae3e-4e6af345fa96,49,unchanged,\n2026-06-27T22:40:00+00:00,1,7e371206-e93a-437d-9a4a-a5451e44012e,3,unchanged,\n2026-06-27T22:40:00+00:00,1,c52cb04a-6fdc-41ce-be3a-e52331e876e4,62,unchanged,\n2026-06-27T22:40:00+00:00,1,89051d35-6048-480e-a2f7-925ac9346337,48,unchanged,\n2026-06-27T22:40:00+00:00,1,4e2fd55d-652b-4fb5-9375-31e382bada1c,54,unchanged,\n2026-06-27T22:40:00+00:00,1,e7e494aa-0978-4c61-a66e-91876ab893cb,48,unchanged,\n2026-06-27T22:40:00+00:00,1,37f1e3ff-3bb5-41e3-b1d3-cf9bf02eefa0,43,unchanged,\n2026-06-27T22:40:00+00:00,1,11105aab-6512-426a-8398-c59c4b8ba8e4,34,unchanged,\n2026-06-27T22:40:00+00:00,1,3d4d7f4a-ad8a-43f4-a5a6-f777e18c7c76,23,unchanged,\n2026-06-27T22:40:00+00:00,1,65e32b43-e8cc-4a03-9e13-378ab6b950b6,51,unchanged,\n2026-06-27T22:40:00+00:00,1,a42becae-4a32-411a-904a-813bb1a2af6b,40,unchanged,\n2026-06-27T22:40:00+00:00,1,0689d420-b2dc-4ad5-bcf7-4f62a43ae956,34,unchanged,\n2026-06-27T22:40:00+00:00,1,ddb88604-c5b2-41e4-b54c-3a6251ca225a,54,unchanged,\n2026-06-27T22:40:00+00:00,1,89a055ad-c0e0-4d32-81d3-a697e201d01e,94,unchanged,\n2026-06-27T22:40:00+00:00,1,9737e196-a037-4bc7-94c7-6afe9ac69463,37,unchanged,\n2026-06-27T22:40:00+00:00,1,e71cc4d9-cfb2-42d6-a795-93c0ca645882,49,unchanged,\n2026-06-27T22:40:00+00:00,1,36d135a4-2db4-4702-a4f3-e020206a4d9f,77,unchanged,\n2026-06-27T22:40:00+00:00,1,64167c13-32d0-4b61-bd0b-f54a331f3336,37,unchanged,\n2026-06-27T22:40:00+00:00,1,eaf3a69b-22c2-43f1-bde5-80dc167fd331,61,unchanged,\n2026-06-27T22:40:00+00:00,1,3d98c4bc-7429-44d1-ba22-f94b9e89a24f,30,unchanged,\n2026-06-27T22:40:00+00:00,1,d246bfc5-f14e-4de2-939f-27d25176efec,43,unchanged,\n2026-06-27T22:40:00+00:00,1,265b0dde-79a3-477b-a989-e86a1bf2b530,31,unchanged,\n2026-06-27T22:40:00+00:00,1,db40a747-94d5-4120-9399-19b8a549c95e,65,unchanged,\n"
+   },
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "** bot 2 on EXPERIMENT 'golden-probe' (A/B vs bot-1 v4): synthetic bot-2 experiment that moves every swappable knob (golden tests only) **\n\n=== COD vs UZB  (kickoff 2026-06-27 23:30 UTC) ===\n  lineups: not_posted — not posted yet, all-90 default kept\nodds: ESPN/DraftKings (0.375/0.302/0.323, total 2.54)\n  ** scorer_prop for Dan Ndoye EXPIRED (researched for 'SUI vs COL', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Erling Haaland EXPIRED (researched for 'CIV vs NOR', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Folarin Balogun EXPIRED (researched for 'USA vs BIH', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Harry Kane EXPIRED (researched for 'FRA vs ENG', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Ismael Saibari EXPIRED (researched for 'CAN vs MAR', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Kylian Mbappé EXPIRED (researched for 'FRA vs ENG', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Lautaro Martínez EXPIRED (researched for 'ARG vs CPV', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Leandro Trossard EXPIRED (researched for 'BEL vs SEN', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Lionel Messi EXPIRED (researched for 'ENG vs ARG', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Luis Díaz EXPIRED (researched for 'SUI vs COL', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Matheus Cunha EXPIRED (researched for 'BRA vs JPN', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Mikel Oyarzabal EXPIRED (researched for 'ESP vs AUT', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Mohamed Salah EXPIRED (researched for 'ARG vs EGY', not 'COD vs UZB') — ignoring it, using the model **\n  ** scorer_prop for Ousmane Dembélé EXPIRED (researched for 'FRA vs SWE', not 'COD vs UZB') — ignoring it, using the model **\n  0.467  Will Uzbekistan commit more fouls than DR Congo?\n  0.389  Will Uzbekistan be caught offside 2 or more times?\n  0.721  Will both teams have at least 1 shot on target in the second half?\n  0.390  Will both teams score AND the match have 3 or more total goals?\n  0.369  Will a penalty kick be awarded OR a red card be shown?\n  0.372  Will Uzbekistan have more shots on target than DR Congo in the second \n  0.190  Will Eldor Shomurodov have at least 1 shot on target in the second hal\n  0.375  Will DR Congo win the match?\n  0.252  Will Cédric Bakambu score or assist a goal (excluding own goals)?\n  0.416  Will Uzbekistan have 5 or more corner kicks?\n\n=== COL vs POR  (kickoff 2026-06-27 23:30 UTC) ===\n  lineups: ESPN confirmed XI — 0 of our players start, 1 benched; UNMATCHED ['Gonçalo Ramos']\nodds: ESPN/DraftKings (0.301/0.283/0.415, total 2.67)\nodds: Polymarket (0.287/0.297/0.416, vol $2.4M)\nodds: BLENDED home 0.294 / draw 0.290\n  ** scorer_prop for Dan Ndoye EXPIRED (researched for 'SUI vs COL', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Erling Haaland EXPIRED (researched for 'CIV vs NOR', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Folarin Balogun EXPIRED (researched for 'USA vs BIH', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Harry Kane EXPIRED (researched for 'FRA vs ENG', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Ismael Saibari EXPIRED (researched for 'CAN vs MAR', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Kylian Mbappé EXPIRED (researched for 'FRA vs ENG', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Lautaro Martínez EXPIRED (researched for 'ARG vs CPV', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Leandro Trossard EXPIRED (researched for 'BEL vs SEN', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Lionel Messi EXPIRED (researched for 'ENG vs ARG', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Luis Díaz EXPIRED (researched for 'SUI vs COL', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Matheus Cunha EXPIRED (researched for 'BRA vs JPN', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Mikel Oyarzabal EXPIRED (researched for 'ESP vs AUT', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Mohamed Salah EXPIRED (researched for 'ARG vs EGY', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Ousmane Dembélé EXPIRED (researched for 'FRA vs SWE', not 'COL vs POR') — ignoring it, using the model **\n  0.388  Will Colombia be caught offside 2 or more times?\n  0.341  In the second half, will Colombia have more shots on target than Portu\n  0.369  Will a penalty kick be awarded OR a red card be shown?\n  0.417  Will both teams score AND the match have 3 or more total goals?\n  0.294  Will Colombia win the match?\n  0.416  Will Colombia have 4 or more shots on target?\n  0.530  Will Portugal have 4 or more shots on target?\n  0.487  Will there be 5 or more total corner kicks in the second half?\n  0.032  Will Luis Díaz score a goal (excluding own goals)?\n  0.618  Will Gonçalo Ramos have at least 1 shot on target?\n\n=== ALG vs AUT  (kickoff 2026-06-28 02:00 UTC) ===\n  ** USING MANUAL ODDS OVERRIDE for ALG vs AUT: home 0.23 / draw 0.27 / total 2.6 **\n  ** scorer_prop for Dan Ndoye EXPIRED (researched for 'SUI vs COL', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Erling Haaland EXPIRED (researched for 'CIV vs NOR', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Folarin Balogun EXPIRED (researched for 'USA vs BIH', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Harry Kane EXPIRED (researched for 'FRA vs ENG', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Ismael Saibari EXPIRED (researched for 'CAN vs MAR', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Kylian Mbappé EXPIRED (researched for 'FRA vs ENG', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Lautaro Martínez EXPIRED (researched for 'ARG vs CPV', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Leandro Trossard EXPIRED (researched for 'BEL vs SEN', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Lionel Messi EXPIRED (researched for 'ENG vs ARG', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Luis Díaz EXPIRED (researched for 'SUI vs COL', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Matheus Cunha EXPIRED (researched for 'BRA vs JPN', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Mikel Oyarzabal EXPIRED (researched for 'ESP vs AUT', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Mohamed Salah EXPIRED (researched for 'ARG vs EGY', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Ousmane Dembélé EXPIRED (researched for 'FRA vs SWE', not 'ALG vs AUT') — ignoring it, using the model **\n  0.477  Will Algeria commit more fouls than Austria?\n  0.540  Will Austria have more shots on target than Algeria in the second half\n  0.483  Will Austria score the first goal of the second half?\n  0.425  Will Austria score more goals than Algeria in the second half?\n  0.340  Will Austria receive more cards than Algeria?\n  0.230  Will Algeria win the match?\n  0.508  Will there be 9 or more total corner kicks?\n  0.403  Will Austria have 5 or more shots on target?\n  0.340  Will Marcel Sabitzer have at least 1 shot on target?\n  0.539  Will Algeria have 3 or more shots on target?\n\n=== JOR vs ARG  (kickoff 2026-06-28 02:00 UTC) ===\nodds: ESPN/DraftKings (0.046/0.096/0.858, total 3.62)\nodds: Polymarket (0.208/0.119/0.673, vol $3.1M)\n  ** sources disagree on home win by 0.16 — check for stale odds **\nodds: BLENDED home 0.127 / draw 0.108\n  ** scorer_prop for Dan Ndoye EXPIRED (researched for 'SUI vs COL', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Erling Haaland EXPIRED (researched for 'CIV vs NOR', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Folarin Balogun EXPIRED (researched for 'USA vs BIH', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Harry Kane EXPIRED (researched for 'FRA vs ENG', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Ismael Saibari EXPIRED (researched for 'CAN vs MAR', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Kylian Mbappé EXPIRED (researched for 'FRA vs ENG', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Lautaro Martínez EXPIRED (researched for 'ARG vs CPV', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Leandro Trossard EXPIRED (researched for 'BEL vs SEN', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Lionel Messi EXPIRED (researched for 'ENG vs ARG', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Luis Díaz EXPIRED (researched for 'SUI vs COL', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Matheus Cunha EXPIRED (researched for 'BRA vs JPN', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Mikel Oyarzabal EXPIRED (researched for 'ESP vs AUT', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Mohamed Salah EXPIRED (researched for 'ARG vs EGY', not 'JOR vs ARG') — ignoring it, using the model **\n  ** scorer_prop for Ousmane Dembélé EXPIRED (researched for 'FRA vs SWE', not 'JOR vs ARG') — ignoring it, using the model **\n  0.937  Will Argentina have at least 1 corner kick in the first half?\n  0.369  Will Jordan be caught offside 2 or more times?\n  0.490  Will Jordan commit more fouls than Argentina?\n  0.768  Will Argentina have more shots on target than Jordan in the second hal\n  0.369  Will a penalty kick be awarded OR a red card be shown in the match?\n  0.607  Will Jordan score at least 1 goal?\n  0.299  Will the match have 2 or fewer total goals?\n  0.429  Will Jordan score in the second half?\n  0.312  Will Mousa Al-Taamari score or assist a goal (excluding own goals)?\n  0.648  Will Argentina have 6 or more shots on target?\n\nsubmitting 40 predictions to bot 2 [EXPERIMENT: golden-probe]...\n  bot 2: {'unchanged': 40}\n\nsubmitting 40 predictions to bot 1 [stable v4]...\n  bot 1: {'unchanged': 40}\n\nNEEDS ATTENTION:\n  - COL vs POR: lineup could not match ['Gonçalo Ramos'] — verify against the posted XI (left at default 90)\n  - COL vs POR: STALE-RISK Luis Díaz scorer_prop_prob=0.3 is per-OPPONENT — confirm it is for THIS match's odds\n\nBACKLOG: 1 unpriced markets across 1 open templates -> data/logs/unparsed_backlog.md\n",
+   "subprocess": []
+  }
+ ]
+}

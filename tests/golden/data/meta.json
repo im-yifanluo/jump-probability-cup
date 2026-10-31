@@ -1,0 +1,20 @@
+{
+ "generated_from": "tag tournament-final",
+ "state_file_sha256": {
+  "data/bot2_experiment.yaml": "2bed05a5eba4c9a8e975b2a03337fc0c2744d18e7df256e962205bf50716031a",
+  "data/count_models.json": "4754b04a6f6bbee9c5c4f744a6d30e1180044b09868b99a5dfc3357f17155b61",
+  "data/family_blend.json": "3515a6784a3c43df546b1aa7149332f4ec95b1cbd5439644fbcc637c51befdf2",
+  "data/match_lineups.yaml": "ede7d3c125728e8bd1f4db265b499627a2cac4afbedbf49b36ee8ab48dcc247a",
+  "data/player_overrides.yaml": "142ac90c96af0be85c3ee13dea1e93675cda244b03af59b48bf3b8f0471c74ee",
+  "data/referee_overrides.yaml": "ead173354b99c94bdd00f61889d1ced4ea252d6679500a102e3b52d8a544c873",
+  "data/statsbomb_players.parquet": "e9b67d4001815d5f444bbf9aa31605c47e65b1a0865e3560fe2eef317dff3dd0",
+  "data/statsbomb_team_halves.parquet": "c2cda4ae6c9281fdd421a7f26c824d417462f88ae92587689056bf33f65d4035"
+ },
+ "versions": {
+  "numpy": "2.4.6",
+  "pandas": "3.0.3",
+  "python": "3.13.12",
+  "scipy": "1.17.1",
+  "statsmodels": "0.14.6"
+ }
+}

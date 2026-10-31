@@ -1,0 +1,307 @@
+{
+ "scenario": "lineups",
+ "steps": [
+  {
+   "argv": [
+    "lineups",
+    "COL vs POR",
+    "--dry-run"
+   ],
+   "calls": [
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "limit": "100"
+     },
+     "path": "/api/v1/events",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/matches",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/lobbies",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "d55a394e-9ba6-4a4a-8112-994724f4b464"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "03995b66-4456-4acf-bc95-cf9f1645be0c"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "c5b16a05-c823-48c9-ac79-8923c44df945"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "c03909dc-6898-4224-851b-0250b179e749"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "f2212dc4-88e2-4170-b629-07a9ac003d2d"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "fd54f839-84ea-41be-9e7d-36858f54277f"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "9b65e63b-e296-4f3a-900f-75ae9a493e16"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "a07006f4-3304-4406-819d-0921767cb4f5"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "b2c86c3b-8060-4173-8321-fb68699210f4"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "0bc25d75-319a-493e-86b2-96f84ea9ad55"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-col-por"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    }
+   ],
+   "exception": null,
+   "files": {
+    "data/cache/snapshot.json": "sha256:42ee79c8a4446bf797940f19796d337945e26c52d305b10718aa5513c4d70670"
+   },
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "[pulled] COL vs POR  (kickoff 2026-06-27 23:30 UTC)\n   20  bench  Luis Díaz\n  UNMATCHED (left at default 90, verify manually): Gonçalo Ramos\n  -> dry run, nothing written\n",
+   "subprocess": []
+  },
+  {
+   "argv": [
+    "lineups",
+    "COL vs POR"
+   ],
+   "calls": [
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-col-por"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    }
+   ],
+   "exception": null,
+   "files": {
+    "data/inputs/match_lineups.yaml": "ALG vs AUT:\n  kickoff: '2026-06-28T02:00:00+00:00'\n  minutes:\n    Marcel Sabitzer: 90\n  pulled_at: '2026-06-28T01:10:30+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nARG vs CPV:\n  kickoff: '2026-07-03T22:00:00+00:00'\n  minutes:\n    Julián Álvarez: 20\n    Lautaro Martínez: 90\n    Lionel Messi: 90\n  pulled_at: '2026-07-03T21:12:08+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nARG vs EGY:\n  kickoff: '2026-07-07T16:00:00+00:00'\n  minutes:\n    Julián Álvarez: 90\n    Lionel Messi: 90\n    Mohamed Salah: 90\n    Omar Marmoush: 20\n  pulled_at: '2026-07-07T15:58:28+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nARG vs SUI:\n  kickoff: '2026-07-12T01:00:00+00:00'\n  minutes:\n    Breel Embolo: 90\n    Julián Álvarez: 90\n    Lionel Messi: 90\n  pulled_at: '2026-07-12T00:12:03+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nAUS vs EGY:\n  kickoff: '2026-07-03T18:00:00+00:00'\n  minutes:\n    Mahmoud Trezeguet: 20\n    Nestory Irankunda: 90\n  pulled_at: '2026-07-03T17:10:36+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nBEL vs SEN:\n  kickoff: '2026-07-01T20:00:00+00:00'\n  minutes:\n    Ismaïla Sarr: 90\n    Kevin De Bruyne: 90\n    Leandro Trossard: 90\n    Sadio Mané: 90\n  pulled_at: '2026-07-01T19:12:42+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nBRA vs JPN:\n  kickoff: '2026-06-29T17:00:00+00:00'\n  minutes:\n    Ayase Ueda: 90\n    Matheus Cunha: 90\n  pulled_at: '2026-06-29T16:11:22+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nBRA vs NOR:\n  kickoff: '2026-07-05T20:00:00+00:00'\n  minutes:\n    Erling Haaland: 90\n    Martin Ødegaard: 90\n    Matheus Cunha: 90\n    Vinícius Júnior: 90\n  pulled_at: '2026-07-05T19:10:32+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nCAN vs MAR:\n  kickoff: '2026-07-04T17:00:00+00:00'\n  minutes:\n    Achraf Hakimi: 90\n    Alphonso Davies: 20\n    Brahim Díaz: 90\n    Ismael Saibari: 90\n    Jonathan David: 90\n  pulled_at: '2026-07-04T16:11:22+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nCIV vs NOR:\n  kickoff: '2026-06-30T17:00:00+00:00'\n  minutes:\n    Alexander Sørloth: 90\n    Amad Diallo: 20\n    Erling Haaland: 90\n    Martin Ødegaard: 90\n  pulled_at: '2026-06-30T16:10:51+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nCOD vs UZB:\n  kickoff: '2026-06-27T23:30:00+00:00'\n  minutes:\n    Cédric Bakambu: 90\n    Eldor Shomurodov: 90\n  pulled_at: '2026-06-27T22:42:12+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nCOL vs POR:\n  kickoff: '2026-06-27T23:30:00+00:00'\n  minutes:\n    Luis Díaz: 20\n  pulled_at: '2026-06-27T22:40:00+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - Gonçalo Ramos\nCRO vs GHA:\n  kickoff: '2026-06-27T21:00:00+00:00'\n  minutes:\n    Antoine Semenyo: 90\n    Luka Sučić: 20\n  pulled_at: '2026-06-27T20:10:47+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nENG vs ARG:\n  kickoff: '2026-07-15T19:00:00+00:00'\n  minutes:\n    Harry Kane: 90\n    Jude Bellingham: 90\n    Julián Álvarez: 90\n    Lionel Messi: 90\n  pulled_at: '2026-07-15T18:10:22+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nENG vs COD:\n  kickoff: '2026-07-01T16:00:00+00:00'\n  minutes:\n    Harry Kane: 90\n    Jude Bellingham: 90\n    Yoane Wissa: 90\n  pulled_at: '2026-07-01T15:13:10+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nESP vs ARG:\n  kickoff: '2026-07-19T19:00:00+00:00'\n  minutes:\n    Lamine Yamal: 90\n    Lionel Messi: 90\n  pulled_at: '2026-07-19T18:10:19+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nESP vs AUT:\n  kickoff: '2026-07-02T19:00:00+00:00'\n  minutes:\n    Lamine Yamal: 90\n    Marcel Sabitzer: 90\n    Mikel Oyarzabal: 90\n  pulled_at: '2026-07-02T18:13:22+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nESP vs BEL:\n  kickoff: '2026-07-10T19:00:00+00:00'\n  minutes:\n    Kevin De Bruyne: 90\n    Lamine Yamal: 90\n    Romelu Lukaku: 20\n  pulled_at: '2026-07-10T18:11:01+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nFRA vs ENG:\n  kickoff: '2026-07-18T21:00:00+00:00'\n  minutes:\n    Harry Kane: 20\n    Kylian Mbappé: 90\n    Ousmane Dembélé: 20\n  pulled_at: '2026-07-18T20:46:58+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nFRA vs ESP:\n  kickoff: '2026-07-14T19:00:00+00:00'\n  minutes:\n    Kylian Mbappé: 90\n    Lamine Yamal: 90\n  pulled_at: '2026-07-14T18:11:14+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nFRA vs MAR:\n  kickoff: '2026-07-09T20:00:00+00:00'\n  minutes:\n    Achraf Hakimi: 90\n    Brahim Díaz: 90\n    Kylian Mbappé: 90\n    Ousmane Dembélé: 90\n  pulled_at: '2026-07-09T19:14:25+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nFRA vs SWE:\n  kickoff: '2026-06-30T21:00:00+00:00'\n  minutes:\n    Alexander Isak: 90\n    Kylian Mbappé: 90\n    Ousmane Dembélé: 90\n    Viktor Gyökeres: 90\n  pulled_at: '2026-06-30T20:16:59+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nGER vs PAR:\n  kickoff: '2026-06-29T20:30:00+00:00'\n  minutes:\n    Florian Wirtz: 90\n    Jamal Musiala: 20\n    Julio Enciso: 90\n    Kai Havertz: 90\n  pulled_at: '2026-06-29T19:45:47+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nJOR vs ARG:\n  kickoff: '2026-06-28T02:00:00+00:00'\n  minutes: {}\n  pulled_at: '2026-06-28T01:10:31+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - Mousa Al-Taamari\nMEX vs ECU:\n  kickoff: '2026-07-01T01:00:00+00:00'\n  minutes:\n    Gonzalo Plata: 90\n    Raúl Jiménez: 90\n  pulled_at: '2026-07-01T00:19:33+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nMEX vs ENG:\n  kickoff: '2026-07-06T00:00:00+00:00'\n  minutes:\n    Harry Kane: 90\n    Jude Bellingham: 90\n    Julián Quiñones: 90\n    Raúl Jiménez: 90\n  pulled_at: '2026-07-05T23:14:24+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nNED vs MAR:\n  kickoff: '2026-06-30T01:00:00+00:00'\n  minutes:\n    Brian Brobbey: 90\n    Ismael Saibari: 90\n  pulled_at: '2026-06-30T00:13:42+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nPAN vs ENG:\n  kickoff: '2026-06-27T21:00:00+00:00'\n  minutes:\n    Harry Kane: 90\n    José Fajardo: 20\n  pulled_at: '2026-06-27T20:10:48+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nPAR vs FRA:\n  kickoff: '2026-07-04T21:00:00+00:00'\n  minutes:\n    Julio Enciso: 90\n    Kylian Mbappé: 90\n    Michael Olise: 90\n    Miguel Almirón: 90\n    Ousmane Dembélé: 90\n  pulled_at: '2026-07-04T20:12:17+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nPOR vs CRO:\n  kickoff: '2026-07-02T23:00:00+00:00'\n  minutes:\n    Bernardo Silva: 20\n    Bruno Fernandes: 90\n    Cristiano Ronaldo: 90\n    Luka Modrić: 90\n  pulled_at: '2026-07-02T22:35:10+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nRSA vs CAN:\n  kickoff: '2026-06-28T19:00:00+00:00'\n  minutes:\n    Cyle Larin: 20\n    Iqraam Rayners: 20\n  pulled_at: '2026-06-28T18:18:50+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nSUI vs ALG:\n  kickoff: '2026-07-03T03:00:00+00:00'\n  minutes:\n    Amine Gouiri: 20\n    Breel Embolo: 90\n    Riyad Mahrez: 90\n    Rubén Vargas: 90\n  pulled_at: '2026-07-03T02:12:42+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nSUI vs COL:\n  kickoff: '2026-07-07T20:00:00+00:00'\n  minutes:\n    Breel Embolo: 90\n    Dan Ndoye: 90\n    Jhon Arias: 90\n    Luis Díaz: 90\n  pulled_at: '2026-07-07T19:13:05+00:00'\n  source: espn\n  status: pulled\n  unmatched:\n  - a substitute\nUSA vs BEL:\n  kickoff: '2026-07-07T00:00:00+00:00'\n  minutes:\n    Christian Pulisic: 90\n    Kevin De Bruyne: 20\n    Leandro Trossard: 90\n    Malik Tillman: 90\n    Romelu Lukaku: 20\n  pulled_at: '2026-07-06T23:13:49+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\nUSA vs BIH:\n  kickoff: '2026-07-02T00:00:00+00:00'\n  minutes:\n    Ermedin Demirović: 90\n    Folarin Balogun: 90\n  pulled_at: '2026-07-01T23:21:10+00:00'\n  source: espn\n  status: pulled\n  unmatched: []\n"
+   },
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "[pulled] COL vs POR  (kickoff 2026-06-27 23:30 UTC)\n   20  bench  Luis Díaz\n  UNMATCHED (left at default 90, verify manually): Gonçalo Ramos\n  -> wrote data/inputs/match_lineups.yaml['COL vs POR']\n",
+   "subprocess": []
+  },
+  {
+   "argv": [
+    "lineups",
+    "COD vs UZB"
+   ],
+   "calls": [
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-cod-uzb"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    }
+   ],
+   "exception": null,
+   "files": {},
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "[not_posted] COD vs UZB  (kickoff 2026-06-27 23:30 UTC)\n  UNMATCHED (left at default 90, verify manually): Cédric Bakambu, Eldor Shomurodov\n  -> lineups not posted / no event — NOTHING written, all-90 default kept\n",
+   "subprocess": []
+  }
+ ]
+}

@@ -1,0 +1,261 @@
+{
+ "scenario": "price",
+ "steps": [
+  {
+   "argv": [
+    "price",
+    "COL vs POR"
+   ],
+   "calls": [
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "limit": "100"
+     },
+     "path": "/api/v1/events",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/matches",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/lobbies",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "d55a394e-9ba6-4a4a-8112-994724f4b464"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "03995b66-4456-4acf-bc95-cf9f1645be0c"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "c5b16a05-c823-48c9-ac79-8923c44df945"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "c03909dc-6898-4224-851b-0250b179e749"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "f2212dc4-88e2-4170-b629-07a9ac003d2d"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "fd54f839-84ea-41be-9e7d-36858f54277f"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "9b65e63b-e296-4f3a-900f-75ae9a493e16"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "a07006f4-3304-4406-819d-0921767cb4f5"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "b2c86c3b-8060-4173-8321-fb68699210f4"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "0bc25d75-319a-493e-86b2-96f84ea9ad55"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "dates": "20260627"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "site.api.espn.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event": "espn-col-por"
+     },
+     "path": "/apis/site/v2/sports/soccer/fifa.world/summary",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "gamma-api.polymarket.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "closed": "false",
+      "limit": "200",
+      "tag_slug": "soccer"
+     },
+     "path": "/events",
+     "status": 200
+    }
+   ],
+   "exception": null,
+   "files": {
+    "data/cache/snapshot.json": "sha256:42ee79c8a4446bf797940f19796d337945e26c52d305b10718aa5513c4d70670"
+   },
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "odds: ESPN/DraftKings (0.301/0.283/0.415, total 2.67)\nodds: Polymarket (0.287/0.297/0.416, vol $2.4M)\nodds: BLENDED home 0.294 / draw 0.290\n  ** scorer_prop for Dan Ndoye EXPIRED (researched for 'SUI vs COL', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Erling Haaland EXPIRED (researched for 'CIV vs NOR', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Folarin Balogun EXPIRED (researched for 'USA vs BIH', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Harry Kane EXPIRED (researched for 'FRA vs ENG', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Ismael Saibari EXPIRED (researched for 'CAN vs MAR', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Kylian Mbappé EXPIRED (researched for 'FRA vs ENG', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Lautaro Martínez EXPIRED (researched for 'ARG vs CPV', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Leandro Trossard EXPIRED (researched for 'BEL vs SEN', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Lionel Messi EXPIRED (researched for 'ENG vs ARG', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Luis Díaz EXPIRED (researched for 'SUI vs COL', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Matheus Cunha EXPIRED (researched for 'BRA vs JPN', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Mikel Oyarzabal EXPIRED (researched for 'ESP vs AUT', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Mohamed Salah EXPIRED (researched for 'ARG vs EGY', not 'COL vs POR') — ignoring it, using the model **\n  ** scorer_prop for Ousmane Dembélé EXPIRED (researched for 'FRA vs SWE', not 'COL vs POR') — ignoring it, using the model **\n\nCOL vs POR  kickoff 2026-06-27 23:30 UTC\ngoal rates: Colombia 1.21, Portugal 1.47, rho -0.136\n\n probability                                                               question                        model\n       0.530                          Will Portugal have 4 or more shots on target?            team_count_ge/sot\n       0.487         Will there be 5 or more total corner kicks in the second half?       total_count_ge/corners\n       0.417        Will both teams score AND the match have 3 or more total goals?      btts_and_total_ge/goals\n       0.416                          Will Colombia have 4 or more shots on target?            team_count_ge/sot\n       0.388                       Will Colombia be caught offside 2 or more times?       team_count_ge/offsides\n       0.369                 Will a penalty kick be awarded OR a red card be shown?               penalty_or_red\n       0.341 In the second half, will Colombia have more shots on target than Po...     team_more_count_than/sot\n       0.294                                           Will Colombia win the match?                     team_win\n       0.196                     Will Gonçalo Ramos have at least 1 shot on target? player_sot_ge/sot [override]\n       0.135                     Will Luis Díaz score a goal (excluding own goals)?     player_scores [override]\n",
+   "subprocess": []
+  },
+  {
+   "argv": [
+    "price",
+    "ALG vs AUT",
+    "--save"
+   ],
+   "calls": [],
+   "exception": null,
+   "files": {
+    "data/cache/predictions_ALG_vs_AUT.csv": "market_id,question,probability,model\n4e2fd55d-652b-4fb5-9375-31e382bada1c,Will Austria have more shots on target than Algeria in the second half?,0.54,team_more_count_than/sot\nddb88604-c5b2-41e4-b54c-3a6251ca225a,Will Algeria have 3 or more shots on target?,0.539,team_count_ge/sot\n65e32b43-e8cc-4a03-9e13-378ab6b950b6,Will there be 9 or more total corner kicks?,0.508,total_count_ge/corners\ne7e494aa-0978-4c61-a66e-91876ab893cb,Will Austria score the first goal of the second half?,0.483,team_first_goal_2h/goals\n89051d35-6048-480e-a2f7-925ac9346337,Will Algeria commit more fouls than Austria?,0.477,team_more_count_than/fouls\n37f1e3ff-3bb5-41e3-b1d3-cf9bf02eefa0,Will Austria score more goals than Algeria in the second half?,0.425,team_more_goals_2h/goals\na42becae-4a32-411a-904a-813bb1a2af6b,Will Austria have 5 or more shots on target?,0.403,team_count_ge/sot\n11105aab-6512-426a-8398-c59c4b8ba8e4,Will Austria receive more cards than Algeria?,0.34,team_more_count_than/cards\n0689d420-b2dc-4ad5-bcf7-4f62a43ae956,Will Marcel Sabitzer have at least 1 shot on target?,0.34,player_sot_ge/sot [statsbomb]\n3d4d7f4a-ad8a-43f4-a5a6-f777e18c7c76,Will Algeria win the match?,0.23,team_win\n"
+   },
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "  ** USING MANUAL ODDS OVERRIDE for ALG vs AUT: home 0.23 / draw 0.27 / total 2.6 **\n  ** scorer_prop for Dan Ndoye EXPIRED (researched for 'SUI vs COL', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Erling Haaland EXPIRED (researched for 'CIV vs NOR', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Folarin Balogun EXPIRED (researched for 'USA vs BIH', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Harry Kane EXPIRED (researched for 'FRA vs ENG', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Ismael Saibari EXPIRED (researched for 'CAN vs MAR', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Kylian Mbappé EXPIRED (researched for 'FRA vs ENG', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Lautaro Martínez EXPIRED (researched for 'ARG vs CPV', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Leandro Trossard EXPIRED (researched for 'BEL vs SEN', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Lionel Messi EXPIRED (researched for 'ENG vs ARG', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Luis Díaz EXPIRED (researched for 'SUI vs COL', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Matheus Cunha EXPIRED (researched for 'BRA vs JPN', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Mikel Oyarzabal EXPIRED (researched for 'ESP vs AUT', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Mohamed Salah EXPIRED (researched for 'ARG vs EGY', not 'ALG vs AUT') — ignoring it, using the model **\n  ** scorer_prop for Ousmane Dembélé EXPIRED (researched for 'FRA vs SWE', not 'ALG vs AUT') — ignoring it, using the model **\n\nALG vs AUT  kickoff 2026-06-28 02:00 UTC\ngoal rates: Algeria 1.01, Austria 1.59, rho -0.081\n\n probability                                                               question                         model\n       0.540 Will Austria have more shots on target than Algeria in the second h...      team_more_count_than/sot\n       0.539                           Will Algeria have 3 or more shots on target?             team_count_ge/sot\n       0.508                            Will there be 9 or more total corner kicks?        total_count_ge/corners\n       0.483                  Will Austria score the first goal of the second half?      team_first_goal_2h/goals\n       0.477                           Will Algeria commit more fouls than Austria?    team_more_count_than/fouls\n       0.425         Will Austria score more goals than Algeria in the second half?      team_more_goals_2h/goals\n       0.403                           Will Austria have 5 or more shots on target?             team_count_ge/sot\n       0.340                          Will Austria receive more cards than Algeria?    team_more_count_than/cards\n       0.340                   Will Marcel Sabitzer have at least 1 shot on target? player_sot_ge/sot [statsbomb]\n       0.230                                            Will Algeria win the match?                      team_win\n\nsaved <ROOT>/data/cache/predictions_ALG_vs_AUT.csv\n",
+   "subprocess": []
+  }
+ ]
+}

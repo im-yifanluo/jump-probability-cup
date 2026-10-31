@@ -1,0 +1,16 @@
+name: golden-probe
+description: synthetic bot-2 experiment that moves every swappable knob (golden tests
+  only)
+tournament_intensity:
+  cards: 0.72
+  sot: 1.05
+  corners: 1.15
+  offsides: 0.9
+  fouls: 0.9
+tournament_team_sot: 4.3155
+favorite_sot_boost: 0.1
+total_cards_scale: 0.8
+total_sot_scale: 1.6
+total_offsides_scale: 1.2
+total_shots_scale: 1.1
+timing_scale: 0.7

@@ -1,0 +1,17 @@
+{
+ "scenario": "watchdog_clear",
+ "steps": [
+  {
+   "argv": [
+    "watchdog"
+   ],
+   "calls": [],
+   "exception": null,
+   "files": {},
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "[watchdog] all clear — last agent run 30 min ago, 2 game(s) within 2h.\n",
+   "subprocess": []
+  }
+ ]
+}

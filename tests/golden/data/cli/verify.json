@@ -1,0 +1,53 @@
+{
+ "scenario": "verify",
+ "steps": [
+  {
+   "argv": [
+    "verify",
+    "--bot",
+    "1"
+   ],
+   "calls": [
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "limit": "100"
+     },
+     "path": "/api/v1/events",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/lobbies",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+     },
+     "path": "/api/v1/predictions",
+     "status": 200
+    }
+   ],
+   "exception": null,
+   "files": {},
+   "rc": 1,
+   "stderr_tail": "",
+   "stdout": "platform: 10 predictions stored (bot 1)\nsubmission log: 5 markets we believe we submitted\n\nMISSING (1): logged but not on platform\n  missing-market-id  (we sent 55)\nMISMATCH (1): platform value != last submitted\n  de87022c-d94b-41cc-84c9-096f933d5929  sent 99 -> platform 42\nUNLOGGED (6): on platform, no submission record (expected for predictions made before logging existed)\n\nDISCREPANCIES FOUND — see above\n",
+   "subprocess": []
+  }
+ ]
+}

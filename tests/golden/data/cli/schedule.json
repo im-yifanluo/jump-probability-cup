@@ -1,0 +1,209 @@
+{
+ "scenario": "schedule",
+ "steps": [
+  {
+   "argv": [
+    "schedule"
+   ],
+   "calls": [
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "limit": "100"
+     },
+     "path": "/api/v1/events",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/matches",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/lobbies",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "d55a394e-9ba6-4a4a-8112-994724f4b464"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "03995b66-4456-4acf-bc95-cf9f1645be0c"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "c5b16a05-c823-48c9-ac79-8923c44df945"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "c03909dc-6898-4224-851b-0250b179e749"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "f2212dc4-88e2-4170-b629-07a9ac003d2d"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "fd54f839-84ea-41be-9e7d-36858f54277f"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "9b65e63b-e296-4f3a-900f-75ae9a493e16"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "a07006f4-3304-4406-819d-0921767cb4f5"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "b2c86c3b-8060-4173-8321-fb68699210f4"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "0bc25d75-319a-493e-86b2-96f84ea9ad55"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    }
+   ],
+   "exception": null,
+   "files": {
+    "data/cache/snapshot.json": "sha256:42ee79c8a4446bf797940f19796d337945e26c52d305b10718aa5513c4d70670"
+   },
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "# now Sat 2026-06-27 05:40PM CDT; lead=50min; 2 wave(s) within 18h\n\n# SKIP Sat 06:30PM kickoff — fire is only 0min away (too late for a fresh pass)\nSCHEDULE | kind=night | hours=26 | cron=\"10 20 27 6 *\" | fire=Sat 08:10PM | kickoff=Sat 09:00PM (2 match)\n\n# AGENT: first CronList + CronDelete any existing [AUTO-DAY] one-shots, then for\n# each SCHEDULE line create a one-shot cron (recurring:false) at its cron= expr.\n#   kind=final -> [AUTO-DAY] read matchday.md and run daily_run --hours 5 (both bots)\n#   kind=night -> [AUTO-DAY] read night_run.md, daily_run --hours 26, OUTPUT tomorrow\n",
+   "subprocess": []
+  }
+ ]
+}

@@ -1,0 +1,268 @@
+{
+ "scenario": "evaluation",
+ "steps": [
+  {
+   "argv": [
+    "ledger"
+   ],
+   "calls": [
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "limit": "100"
+     },
+     "path": "/api/v1/events",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/lobbies",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+     },
+     "path": "/api/v1/results",
+     "status": 200
+    }
+   ],
+   "exception": null,
+   "files": {
+    "data/cache/rbp_full.csv": "sha256:f5b3a64b7bd411b83d3ef2d8129bc5e47fcd27ae1888e0dc46fbbabf49de4f45"
+   },
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "parsed 1083 markets across 94 matches; total RBP +4086.9\n  V1: 78 markets (+191.1) | V2: 1005 (+3895.8)\n\n=== PER-FAMILY RBP (sorted, our leak/edge) ===\n                                        n  rbp_sum  rbp_mean  mean_you  mean_crowd   hit\nfamkey                                                                                  \ntotal_count_ge/sot                     17  -109.70     -6.45      0.54        0.62  0.76\ngk_saves_ge/sot                         1   -51.23    -51.23      0.28        0.51  1.00\nteam_any_player_sot_ge/sot              1   -40.95    -40.95      0.34        0.57  1.00\ntotal_count_ge/offsides                11   -36.14     -3.29      0.42        0.50  0.64\nsubstitute_scores/goals                 5   -32.05     -6.41      0.28        0.32  0.60\nteam_count_ge/cards                     6   -31.24     -5.21      0.65        0.58  0.17\nany_player_sot_ge/sot                   1   -19.03    -19.03      0.53        0.70  1.00\ncards_gt_goals/cards                    1   -15.38    -15.38      0.46        0.57  1.00\ntiming_event/offsides                   2   -13.00     -6.50      0.58        0.52  0.00\nsubstitution_at_ht                      1    -9.21     -9.21      0.50        0.41  0.00\ntotal_shots_ge/shots                   11    -3.94     -0.36      0.69        0.60  0.73\ntotal_goals_odd/goals                   1    -2.27     -2.27      0.49        0.52  1.00\nht_scoreless                            1     2.01      2.01      0.39        0.37  0.00\nfirst_goal_single_digit/goals           1     3.38      3.38      0.37        0.35  0.00\nfirst_card_before_goal/cards            2     3.53      1.76      0.48        0.50  1.00\nown_goal/goals                          1     6.34      6.34      0.10        0.14  0.00\nheader_goal/goals                       1     6.39      6.39      0.37        0.36  1.00\nclean_sheet                             2     8.35      4.18      0.44        0.46  0.50\nteam_first_substitution/subs            1    11.50     11.50      0.50        0.54  0.00\nmatch_drawn/goals                       2    12.08      6.04      0.28        0.30  0.00\noutside_box_goal/goals                  1    12.38     12.38      0.19        0.27  0.00\nboth_teams_count_ge/sot                16    12.78      0.80      0.59        0.64  0.69\nfirst_goal_not_players/goals            1    13.13     13.13      0.59        0.55  1.00\neither_wins_both_halves/goals           1    13.38     13.38      0.16        0.26  0.00\nsubstitution_before_ht                  2    13.53      6.76      0.20        0.22  0.00\ndecided_by_one_goal/goals               1    13.79     13.79      0.38        0.44  0.00\ntiming_event/cards                      3    13.96      4.65      0.55        0.55  0.00\nfirst_goal_in_2h/goals                  1    14.58     14.58      0.30        0.37  0.00\nteam_first_goal_2h/goals                4    15.28      3.82      0.41        0.41  0.50\nred_card                                2    15.62      7.81      0.10        0.18  0.00\nteam_win_by_ge/goals                    2    15.87      7.94      0.48        0.48  0.50\nteam_more_count_than/cards             19    15.90      0.84      0.44        0.48  0.63\nextra_time/goals                        2    19.84      9.92      0.29        0.33  0.00\ntotal_goals_exact/goals                 2    20.45     10.23      0.22        0.28  0.00\nteam_first_goal_game/goals             11    20.53      1.87      0.61        0.61  0.73\nsame_goals_halves/goals                 2    20.88     10.44      0.24        0.30  0.00\nhold_lead/goals                         3    21.18      7.06      0.27        0.30  0.00\ngoal_each_half/goals                    2    23.24     11.62      0.50        0.53  0.50\nvar_review                              1    26.02     26.02      0.30        0.42  0.00\ntiming_event/corners                    1    26.03     26.03      0.76        0.60  1.00\nteam_more_count_than/corners           29    29.18      1.01      0.40        0.45  0.38\ntotal_subs_ge/subs                      1    30.99     30.99      0.72        0.56  1.00\nteam_goals_ge/goals                    19    31.76      1.67      0.49        0.46  0.68\nshootout_decided/goals                  3    33.37     11.12      0.15        0.23  0.00\nplays_full_match                        1    33.64     33.64      0.28        0.46  0.00\npenalty_awarded                        11    35.50      3.23      0.29        0.29  0.18\nfirst_goal_and_other_scores_2h/goals    8    37.57      4.70      0.19        0.26  0.12\nboth_teams_count_ge/cards               5    42.64      8.53      0.57        0.64  0.40\nteam_more_goals_2h/goals                9    42.78      4.75      0.46        0.50  0.44\nany_player_braces/goals                 5    44.55      8.91      0.21        0.29  0.20\nbtts/goals                             18    53.93      3.00      0.51        0.53  0.61\nbtts_and_total_ge/goals                25    54.39      2.18      0.37        0.39  0.56\nteam_scores_in_half/goals              32    63.62      1.99      0.56        0.55  0.69\ncard_each_half/cards                    2    63.81     31.90      0.40        0.54  0.00\nh2_more_goals_than_h1/goals            18    65.27      3.63      0.49        0.50  0.39\nht_tied                                24    67.54      2.81      0.43        0.41  0.50\nht_team_winning                        15    77.86      5.19      0.42        0.48  0.40\nadvance                                16    77.89      4.87      0.60        0.59  0.62\nplayer_scores_or_assists               48    83.04      1.73      0.31        0.36  0.21\nteam_more_count_than/fouls             52    92.90      1.79      0.48        0.52  0.52\nteam_scores_both_halves/goals           6    93.11     15.52      0.42        0.49  0.17\npenalty_or_red                         37    93.59      2.53      0.37        0.36  0.30\ntotal_count_ge/corners                 15   108.69      7.25      0.46        0.52  0.27\ntiming_event/goals                     27   160.51      5.94      0.40        0.41  0.37\nteam_count_ge/offsides                 52   163.36      3.14      0.41        0.47  0.37\nteam_win                               63   183.46      2.91      0.53        0.56  0.52\nteam_more_count_than/sot               49   187.89      3.83      0.46        0.51  0.35\ntotal_goals/goals                      57   198.49      3.48      0.51        0.50  0.53\nteam_count_ge/corners                  31   222.74      7.19      0.45        0.51  0.48\nplayer_scores                          48   264.40      5.51      0.33        0.38  0.33\ntotal_count_ge/cards                   46   331.25      7.20      0.35        0.45  0.28\nteam_count_ge/sot                      58   336.95      5.81      0.36        0.49  0.43\nplayer_sot_ge/sot                     107   642.44      6.00      0.32        0.44  0.33\n",
+   "subprocess": []
+  },
+  {
+   "argv": [
+    "replay",
+    "policies"
+   ],
+   "calls": [],
+   "exception": null,
+   "files": {},
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "1083 settled markets over 94 games; submitted RBP baseline +2389.9\n\n             policy    n  delta   ci_lo  ci_hi      verdict                                       note\n      deviate x0.75 1083 -241.3  -544.6   66.0 inconclusive press/shrink ALL deviations from the crowd\n       deviate x0.9 1083  -68.0  -189.0   53.8 inconclusive press/shrink ALL deviations from the crowd\n       deviate x1.1 1083   30.0   -90.8  151.8 inconclusive press/shrink ALL deviations from the crowd\n      deviate x1.25 1083   40.0  -241.8  325.5 inconclusive press/shrink ALL deviations from the crowd\n       deviate x1.5 1083  -30.4  -562.2  517.2 inconclusive press/shrink ALL deviations from the crowd\n   ht_tied shrink50   24  -89.2  -212.0   17.9 inconclusive       drift family: over-predicts HT draws\nvery-low press x0.6 1083   12.3   -70.1   84.6 inconclusive       halve the sub-15% deviate-low prices\n   crowd blend 0.25 1083 -241.3  -544.6   66.0 inconclusive      anchor toward crowd (expect negative)\n    crowd blend 0.5 1083 -720.1 -1340.0 -102.6         LOSE      anchor toward crowd (expect negative)\n",
+   "subprocess": []
+  },
+  {
+   "argv": [
+    "replay",
+    "alpha"
+   ],
+   "calls": [],
+   "exception": null,
+   "files": {},
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "1083 settled markets over 94 games; submitted RBP baseline +2389.9\n\nwalk-forward deviation-amplification: 837 markets scored OOS\n  chosen alpha by era: {1.25: 24, 1.0: 20, 1.1: 13, 0.9: 12}\n  OOS delta vs submitted: -88.0 RBP\n  (positive = we should press deviations harder; negative = current sizing is right)\n",
+   "subprocess": []
+  },
+  {
+   "argv": [
+    "replay",
+    "policies",
+    "--recent",
+    "30"
+   ],
+   "calls": [],
+   "exception": null,
+   "files": {},
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "407 settled markets over 30 games (most recent 30); submitted RBP baseline +1654.1\n\n             policy   n  delta   ci_lo  ci_hi      verdict                                       note\n      deviate x0.75 407 -217.6  -452.8   27.2 inconclusive press/shrink ALL deviations from the crowd\n       deviate x0.9 407  -71.4  -164.7   27.2 inconclusive press/shrink ALL deviations from the crowd\n       deviate x1.1 407   50.4   -46.5  143.2 inconclusive press/shrink ALL deviations from the crowd\n      deviate x1.25 407  104.6  -123.3  329.7 inconclusive press/shrink ALL deviations from the crowd\n       deviate x1.5 407  148.8  -280.2  568.7 inconclusive press/shrink ALL deviations from the crowd\n   ht_tied shrink50  16 -107.7  -216.7   -8.6         LOSE       drift family: over-predicts HT draws\nvery-low press x0.6 407   25.0   -15.7   60.3 inconclusive       halve the sub-15% deviate-low prices\n   crowd blend 0.25 407 -217.6  -452.8   27.2 inconclusive      anchor toward crowd (expect negative)\n    crowd blend 0.5 407 -565.8 -1040.1  -73.1         LOSE      anchor toward crowd (expect negative)\n",
+   "subprocess": []
+  },
+  {
+   "argv": [
+    "replay",
+    "ab"
+   ],
+   "calls": [
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "limit": "100"
+     },
+     "path": "/api/v1/events",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/lobbies",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+     },
+     "path": "/api/v1/results",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "limit": "100"
+     },
+     "path": "/api/v1/events",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/lobbies",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+     },
+     "path": "/api/v1/results",
+     "status": 200
+    }
+   ],
+   "exception": null,
+   "files": {},
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "bot2-vs-bot1 replay: 1035 settled matched, 112 divergent\n  net dBrier -0.219 (negative = bot2/probe better) | bot2 wins 59/112\n  by created_date (newest 15):\n    p1= 47 p2= 42 dBr=-0.045  Will a goal be scored after the second hydration break i\n    p1= 37 p2= 32 dBr=-0.034  Will a card be shown during first- or second-half stoppa\n    p1= 48 p2= 43 dBr=-0.045  Will a goal be scored before the first hydration break?\n    p1= 54 p2= 57 dBr=-0.027  Will Spain have 5 or more shots on target in regulation \n    p1= 50 p2= 45 dBr=+0.052  Will a goal be scored after the second hydration break b\n    p1= 41 p2= 44 dBr=+0.025  Will Argentina have 5 or more shots on target in regulat\n    p1= 66 p2= 68 dBr=+0.027  Will there be 24 or more total shots (on and off target)\n    p1= 39 p2= 33 dBr=-0.043  Will a goal be scored after the second hydration break b\n    p1= 40 p2= 41 dBr=+0.008  Will Harry Kane (England, #9) have 2 or more shots on ta\n    p1= 30 p2= 31 dBr=+0.006  Will Jude Bellingham (England, #10) have 2 or more shots\n    p1= 40 p2= 35 dBr=+0.062  Will a goal be scored before the first hydration break?\n    p1= 37 p2= 43 dBr=-0.072  Will there be 4 or more offsides (both teams combined) i\n    p1= 70 p2= 63 dBr=+0.047  Will a goal be scored after the first hydration break bu\n    p1= 21 p2= 18 dBr=+0.048  Will a goal be scored during first- or second-half stopp\n    p1= 69 p2= 76 dBr=+0.101  Will there be 8 or more total shots on target (both team\n",
+   "subprocess": []
+  },
+  {
+   "argv": [
+    "drift"
+   ],
+   "calls": [
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "limit": "100"
+     },
+     "path": "/api/v1/events",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/lobbies",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+     },
+     "path": "/api/v1/results",
+     "status": 200
+    }
+   ],
+   "exception": null,
+   "files": {},
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "=== Per-family calibration · bot 1 · 1183 settled markets · overall Brier 0.2197 ===\nfamily                     n   pred  actual     gap   brier\n team_more_count_than    163  0.452   0.479  -0.027  0.2284\n team_count_ge           162  0.401   0.438  -0.038  0.2317\n player_sot_ge           115  0.323   0.322  +0.001  0.2076\n total_count_ge           99  0.415   0.444  -0.030  0.2448\n team_win                 70  0.542   0.571  -0.030  0.2330\n total_goals              60  0.505   0.550  -0.045  0.2301\n player_scores            53  0.315   0.302  +0.013  0.1710\n player_scores_or_assists  52  0.316   0.192  +0.124  0.2115\n penalty_or_red           42  0.370   0.262  +0.108  0.2050\n team_scores_in_half      36  0.544   0.667  -0.122  0.2160\n★timing_event             35  0.429   0.343  +0.086  0.2234\n btts_and_total_ge        29  0.368   0.414  -0.046  0.2218\n ht_tied                  27  0.431   0.407  +0.024  0.2489\n both_teams_count_ge      23  0.581   0.609  -0.027  0.2283\n team_goals_ge            20  0.491   0.650  -0.159  0.2761  <-- DRIFT\n★btts                     19  0.509   0.632  -0.123  0.2291\n h2_more_goals_than_h1    18  0.493   0.556  -0.062  0.2472\n★advance                  17  0.586   0.588  -0.002  0.1905\n ht_team_winning          15  0.424   0.467  -0.043  0.1934\n★total_shots_ge           12  0.682   0.667  +0.016  0.2401\n penalty_awarded          12  0.291   0.167  +0.124  0.1546\n★team_first_goal_game     11  0.605   0.727  -0.122  0.2033\n team_more_goals_2h       10  0.448   0.500  -0.052  0.1922\n first_goal_and_other_scores_2h   9  0.193   0.222  -0.029  0.1721\n★team_scores_both_halves   6  0.423   0.333  +0.090  0.2043\n team_first_goal_2h        5  0.446   0.600  -0.154  0.1706\n★any_player_braces         5  0.206   0.200  +0.006  0.1319\n★substitute_scores         5  0.282   0.600  -0.318  0.3729\n hold_lead                 3  0.273   0.000  +0.273  0.0791\n shootout_decided          3  0.147   0.000  +0.147  0.0219\n extra_time                3  0.300   0.333  -0.033  0.2108\n first_card_before_goal    2  0.485   1.000  -0.515  0.2664\n★match_drawn               2  0.275   0.000  +0.275  0.0756\n card_each_half            2  0.395   0.000  +0.395  0.1567\n★clean_sheet               2  0.445   0.500  -0.055  0.4587\n total_goals_exact         2  0.220   0.000  +0.220  0.0488\n★team_win_by_ge            2  0.480   0.500  -0.020  0.2605\n red_card                  2  0.100   0.000  +0.100  0.0100\n★substitution_before_ht    2  0.200   0.000  +0.200  0.0400\n same_goals_halves         2  0.245   0.000  +0.245  0.0600\n goal_each_half            2  0.495   0.500  -0.005  0.1981\n decided_by_one_goal       1  0.380   0.000  +0.380  0.1444\n★any_player_sot_ge         1  0.530   1.000  -0.470  0.2209\n cards_gt_goals            1  0.460   1.000  -0.540  0.2916\n either_wins_both_halves   1  0.160   0.000  +0.160  0.0256\n first_goal_in_2h          1  0.300   0.000  +0.300  0.0900\n first_goal_assisted       1  0.510   0.000  +0.510  0.2601\n first_goal_not_players    1  0.590   1.000  -0.410  0.1681\n ht_scoreless              1  0.390   0.000  +0.390  0.1521\n player_more_sot_than      1  0.280   1.000  -0.720  0.5184\n penalty_scored            1  0.210   0.000  +0.210  0.0441\n outside_box_goal          1  0.190   0.000  +0.190  0.0361\n own_goal                  1  0.100   0.000  +0.100  0.0100\n first_goal_single_digit   1  0.370   0.000  +0.370  0.1369\n gk_saves_ge               1  0.280   1.000  -0.720  0.5184\n header_goal               1  0.370   1.000  -0.630  0.3969\n plays_full_match          1  0.280   0.000  +0.280  0.0784\n team_first_substitution   1  0.500   1.000  -0.500  0.2500\n team_distinct_shooters_ge   1  0.910   1.000  -0.090  0.0081\n substitution_at_ht        1  0.500   1.000  -0.500  0.2500\n team_any_player_sot_ge    1  0.340   1.000  -0.660  0.4356\n team_n_in_one_half        1  0.400   0.000  +0.400  0.1600\n total_goals_odd           1  0.490   1.000  -0.510  0.2601\n total_subs_ge             1  0.720   1.000  -0.280  0.0784\n var_review                1  0.300   0.000  +0.300  0.0900\n\n★ = new R32 family (small live sample — watch closely).\nDRIFT (|gap|>0.15, n>=8): team_goals_ge -> investigate; shrink toward base rate or pull if it persists.\n",
+   "subprocess": []
+  },
+  {
+   "argv": [
+    "drift",
+    "--bot",
+    "2"
+   ],
+   "calls": [
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "limit": "100"
+     },
+     "path": "/api/v1/events",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/lobbies",
+     "status": 200
+    },
+    {
+     "bot": "2",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05"
+     },
+     "path": "/api/v1/results",
+     "status": 200
+    }
+   ],
+   "exception": null,
+   "files": {},
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "=== Per-family calibration · bot 2 · 1035 settled markets · overall Brier 0.2174 ===\nfamily                     n   pred  actual     gap   brier\n team_count_ge           143  0.401   0.455  -0.054  0.2301\n team_more_count_than    128  0.446   0.453  -0.007  0.2318\n player_sot_ge            99  0.307   0.354  -0.047  0.2065\n total_count_ge           89  0.401   0.416  -0.015  0.2367\n team_win                 57  0.552   0.596  -0.044  0.2086\n total_goals              52  0.511   0.558  -0.047  0.2281\n player_scores            50  0.314   0.320  -0.006  0.1744\n player_scores_or_assists  46  0.320   0.174  +0.146  0.2167\n penalty_or_red           38  0.370   0.289  +0.081  0.2122\n★timing_event             35  0.409   0.314  +0.095  0.2206\n team_scores_in_half      29  0.557   0.655  -0.098  0.2018\n ht_tied                  22  0.427   0.455  -0.028  0.2556\n btts_and_total_ge        22  0.373   0.455  -0.081  0.2325\n both_teams_count_ge      19  0.582   0.579  +0.003  0.2309\n★btts                     19  0.509   0.632  -0.123  0.2291\n team_goals_ge            18  0.489   0.667  -0.178  0.2674  <-- DRIFT\n★advance                  17  0.586   0.588  -0.002  0.1905\n h2_more_goals_than_h1    16  0.496   0.562  -0.067  0.2448\n ht_team_winning          15  0.424   0.467  -0.043  0.1934\n★total_shots_ge           12  0.757   0.667  +0.091  0.2547\n★team_first_goal_game     11  0.605   0.727  -0.122  0.2033\n penalty_awarded          10  0.290   0.200  +0.090  0.1681\n team_more_goals_2h        8  0.432   0.500  -0.068  0.1850\n first_goal_and_other_scores_2h   7  0.184   0.143  +0.041  0.1296\n★team_scores_both_halves   6  0.423   0.333  +0.090  0.2043\n★substitute_scores         5  0.282   0.600  -0.318  0.3729\n★any_player_braces         5  0.206   0.200  +0.006  0.1319\n team_first_goal_2h        4  0.497   0.750  -0.253  0.1988\n hold_lead                 3  0.273   0.000  +0.273  0.0791\n shootout_decided          3  0.147   0.000  +0.147  0.0219\n extra_time                3  0.300   0.333  -0.033  0.2108\n first_card_before_goal    2  0.475   1.000  -0.525  0.2777\n★match_drawn               2  0.275   0.000  +0.275  0.0756\n card_each_half            2  0.395   0.000  +0.395  0.1567\n★clean_sheet               2  0.445   0.500  -0.055  0.4587\n total_goals_exact         2  0.220   0.000  +0.220  0.0488\n★team_win_by_ge            2  0.480   0.500  -0.020  0.2605\n red_card                  2  0.100   0.000  +0.100  0.0100\n★substitution_before_ht    2  0.200   0.000  +0.200  0.0400\n same_goals_halves         2  0.245   0.000  +0.245  0.0600\n goal_each_half            2  0.495   0.500  -0.005  0.1981\n decided_by_one_goal       1  0.380   0.000  +0.380  0.1444\n★any_player_sot_ge         1  0.760   1.000  -0.240  0.0576\n cards_gt_goals            1  0.430   1.000  -0.570  0.3249\n either_wins_both_halves   1  0.160   0.000  +0.160  0.0256\n first_goal_in_2h          1  0.300   0.000  +0.300  0.0900\n first_goal_assisted       1  0.510   0.000  +0.510  0.2601\n first_goal_not_players    1  0.590   1.000  -0.410  0.1681\n ht_scoreless              1  0.390   0.000  +0.390  0.1521\n player_more_sot_than      1  0.280   1.000  -0.720  0.5184\n penalty_scored            1  0.210   0.000  +0.210  0.0441\n outside_box_goal          1  0.190   0.000  +0.190  0.0361\n own_goal                  1  0.100   0.000  +0.100  0.0100\n first_goal_single_digit   1  0.370   0.000  +0.370  0.1369\n gk_saves_ge               1  0.300   1.000  -0.700  0.4900\n header_goal               1  0.370   1.000  -0.630  0.3969\n plays_full_match          1  0.280   0.000  +0.280  0.0784\n team_first_substitution   1  0.500   1.000  -0.500  0.2500\n team_distinct_shooters_ge   1  0.910   1.000  -0.090  0.0081\n substitution_at_ht        1  0.500   1.000  -0.500  0.2500\n team_any_player_sot_ge    1  0.340   1.000  -0.660  0.4356\n team_n_in_one_half        1  0.400   0.000  +0.400  0.1600\n total_goals_odd           1  0.490   1.000  -0.510  0.2601\n total_subs_ge             1  0.720   1.000  -0.280  0.0784\n var_review                1  0.300   0.000  +0.300  0.0900\n\n★ = new R32 family (small live sample — watch closely).\nDRIFT (|gap|>0.15, n>=8): team_goals_ge -> investigate; shrink toward base rate or pull if it persists.\n",
+   "subprocess": []
+  }
+ ]
+}

@@ -1,0 +1,277 @@
+{
+ "scenario": "player_rates",
+ "steps": [
+  {
+   "argv": [
+    "player-rates",
+    "COL vs POR"
+   ],
+   "calls": [
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "limit": "100"
+     },
+     "path": "/api/v1/events",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/matches",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "event_id": "aa5572ec-5930-4d99-b06b-f8966333d172"
+     },
+     "path": "/api/v1/lobbies",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "03d5b4fb-f094-43e8-ae66-b99987ea03e7"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "d55a394e-9ba6-4a4a-8112-994724f4b464"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "03995b66-4456-4acf-bc95-cf9f1645be0c"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "c5b16a05-c823-48c9-ac79-8923c44df945"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "c03909dc-6898-4224-851b-0250b179e749"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "f2212dc4-88e2-4170-b629-07a9ac003d2d"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "fd54f839-84ea-41be-9e7d-36858f54277f"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "9b65e63b-e296-4f3a-900f-75ae9a493e16"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "b1772d21-e69c-4f9b-8f57-03f3b34a49c1"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "a07006f4-3304-4406-819d-0921767cb4f5"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "b2c86c3b-8060-4173-8321-fb68699210f4"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "0bc25d75-319a-493e-86b2-96f84ea9ad55"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": "1",
+     "host": "api.sportspredict.com",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "lobby_id": "8df8038c-fd2c-4a5f-be4e-0e11d5966c05",
+      "match_id": "9abe28c5-f74a-492f-a6f9-96d9bc03ecec"
+     },
+     "path": "/api/v1/markets",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "v3.football.api-sports.io",
+     "json": null,
+     "method": "GET",
+     "params": {},
+     "path": "/status",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "v3.football.api-sports.io",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "search": "Goncalo Ramos"
+     },
+     "path": "/players/profiles",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "v3.football.api-sports.io",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "search": "Ramos"
+     },
+     "path": "/players/profiles",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "v3.football.api-sports.io",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "id": "5002",
+      "season": "2024"
+     },
+     "path": "/players",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "v3.football.api-sports.io",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "search": "Luis Diaz"
+     },
+     "path": "/players/profiles",
+     "status": 200
+    },
+    {
+     "bot": null,
+     "host": "v3.football.api-sports.io",
+     "json": null,
+     "method": "GET",
+     "params": {
+      "id": "5001",
+      "season": "2024"
+     },
+     "path": "/players",
+     "status": 200
+    }
+   ],
+   "exception": null,
+   "files": {
+    "data/cache/snapshot.json": "sha256:42ee79c8a4446bf797940f19796d337945e26c52d305b10718aa5513c4d70670",
+    "data/inputs/player_overrides.yaml": "Akram Afif:\n  goal_share: 0.376\n  involvement_share: 0.69\n  sot_per_match: 0.773\n  source: api-football 2024 (22 apps, matched Akram Afif)\n  team: Qatar\nAlexander Isak:\n  sot_per_match: 0.43\n  source: 'web 2026-06-29: Liverpool 25-26 6 SOT/14 PL = 0.43 SOT/match (limited mins,\n    genuinely low). Confirms the ~2% floor was about right.'\n  team: Sweden\nAlexander Sørloth:\n  sot_per_match: 1.0\n  source: 'web 2026-06-29: Atletico 25-26 35 SOT/35 La Liga = 1.0 SOT/match (CL 1.07).\n    Replaces 0.72 prior.'\n  team: Norway\nAmad Diallo:\n  sot_per_match: 0.72\n  source: 'web 2026-06-29: Man Utd 25-26 23 SOT/32 = 0.72 SOT/match (~= the 0.72 prior;\n    grounds it + adds underdog tempo).'\n  team: Ivory Coast\nAmine Gouiri:\n  goal_share: 0.3\n  involvement_share: 0.4\n  sot_per_match: 1.0\n  source: 'web 2026-07-02: Marseille 25-26 8g/1328min (0.54 g/90), Algeria main striker\n    — but ESPN CONFIRMED XI benches him vs SUI (surprise rotation; predicted lineups\n    had him starting). Confirmed-sub proven-scorer treatment (Larin lesson): real\n    shares + the pulled 20min give the calibrated sub-scorer number, not the 0.032\n    double-deflation.'\n  team: Algeria\nAntoine Semenyo:\n  goal_share: 0.208\n  involvement_share: 0.305\n  sot_per_match: 1.023\n  source: api-football 2024 (43 apps, matched A. Semenyo)\n  team: Ghana\nAyase Ueda:\n  sot_per_match: 1.52\n  source: 'web 2026-06-29: Japan''s STARTING lone striker vs BRA (R32). MEASURED Feyenoord\n    25-26: 47 SOT/31 = 1.52 SOT/match (3.62 sh/90). Replaces the sparse-StatsBomb\n    floor (~0.20) and my earlier 1.2 guess with the measured club rate; the model\n    intl-discounts (x0.839), shrinks to the 0.72 prior, and tempo-scales for Japan\n    being the underdog.'\n  team: Japan\nBen Waine:\n  expected_minutes: 15\n  goal_share: 0.132\n  involvement_share: 0.132\n  sot_per_match: 0.135\n  source: api-football 2024 (52 apps, matched B. Waine); 2026-06-22 BENCHED vs EGY\n    (Chris Wood starts, Waine not in XI) — exp_min 15 for possible late cameo\n  team: New Zealand\nBrahim Díaz:\n  goal_share: 0.12\n  involvement_share: 0.3\n  sot_per_match: 0.9\n  source: 'web 2026-07-04: Real Madrid 25-26 1g+6a/1252min (rotation attacking mid).\n    Grounds the prior.'\n  team: Morocco\nBrian Brobbey:\n  sot_per_match: 0.58\n  source: 'web 2026-06-29: starts vs MAR (declared fit). MEASURED Sunderland (PL)\n    25-26: 18 SOT/31=0.58 SOT/match (a target striker, genuinely modest SOT). Replaces\n    sparse floor (2+SOT ~0.04); real rate is low so the fix is small.'\n  team: Netherlands\nChristian Pulisic:\n  position: FWD\n  source: '2026-07-02: position FWD for the plays-full-match family (5-sub-era starter\n    full-90: FWD 0.282 vs MID 0.575 — star attackers get subbed). USA vs BEL R16 locks\n    07-07.'\n  team: United States\nCody Gakpo:\n  goal_share: 0.25\n  involvement_share: 0.37\n  sot_per_match: 0.838\n  source: api-football 2024 (80 apps, matched C. Gakpo)\n  team: Netherlands\nCyle Larin:\n  source: 'ESPN confirmed XI 2026-06-28: BENCHED vs RSA (R32) — Canada starts J. David\n    + Oluwaseyi up front, Larin + Promise David on the bench. Pre-lineup FanDuel +190\n    (~0.31 de-margined) was STALE: it priced him as a starter. scorer_prop_prob 0.07\n    = calibrated anytime-scorer in REGULATION for a confirmed sub (proven striker\n    / Canada all-time top scorer, but behind 2 starting FWs; question excludes extra\n    time). The model''s 0.015 was a double-deflation: unrepresentative StatsBomb history\n    (8 apps, 0 goals) x a 20-min bench haircut. Re-price if he starts a later round.;\n    2026-06-29 CLEANUP: cleared stale scorer_prop_prob=0.07 (prior match settled /\n    opponent changed) -> reverts to opponent-aware model; re-research at the next\n    final pass.'\n  team: Canada\nCédric Bakambu:\n  goal_share: 0.152\n  involvement_share: 0.219\n  sot_per_match: 0.683\n  source: api-football 2024 (41 apps, matched C. Bakambu)\n  team: DR Congo\nDan Ndoye:\n  scorer_prop_match: SUI vs COL\n  scorer_prop_prob: 0.16\n  source: 'web 2026-07-07 (R16 vs COL, confirmed starter): anytime +470 = 0.175 implied\n    /1.10 = 0.159. Model 0.11 low. Market beats model. Grounds the sparse-StatsBomb\n    flag.'\n  team: Switzerland\nDani Olmo:\n  expected_minutes: 30\n  goal_share: 0.212\n  involvement_share: 0.332\n  sot_per_match: 0.692\n  source: 'api-football 2024 (52 apps, matched Dani Olmo); 2026-06-26 CONFIRMED BENCHED\n    vs Uruguay (Spain XI: Yamal/Oyarzabal/Baena fwd, Rodri/Merino/Pedri mid) -> expected_minutes\n    30 for a likely 2nd-half sub (was full 90)'\n  team: Spain\nDarwin Núñez:\n  goal_share: 0.25\n  involvement_share: 0.33\n  sot_per_match: 1.44\n  source: 'web 2026-06-14: Al-Hilal 6G+4A/16, 23 SOT/16; scorer_prop_prob from +140\n    anytime odds (KSA vs URU), de-margined /1.10. 2026-06-21 vs CPV: in predicted\n    XI but Bielsa hooked him at HT vs KSA & start is \"anybody''s guess\" — involvement_share\n    cut 0.40->0.33 (=75/90 min haircut; expected_minutes only scales SOT in-model,\n    not S/A) to price the documented hook/bench risk; also on-strategy (we fade S/A,\n    ~20% realized). NOT ruled out.; 2026-06-29 CLEANUP: cleared stale scorer_prop_prob=0.38\n    (prior match settled / opponent changed) -> reverts to opponent-aware model; re-research\n    at the next final pass.; 2026-06-29 CLEANUP: reverted expected_minutes=75 (group-stage\n    role) -> 90 default; the confirmed-XI pull sets the true minutes.'\n  team: Uruguay\nDiogo Costa:\n  source: '2026-07-06: team pin for the gk_saves side-resolution (keeper).'\n  team: Portugal\nDuckens Nazon:\n  expected_minutes: 35\n  goal_share: 0.319\n  involvement_share: 0.407\n  sot_per_match: 0.923\n  source: 'api-football 2024 (39 apps, matched D. Nazon); 2026-06-24 vs Morocco: DOUBTFUL\n    (unspecified injury), Isidor pushing to start & Haiti eliminated (likely rested)\n    -> exp_min 35 prices ~35% start + cameo. Revert/lower once XI confirmed.'\n  team: Haiti\nEdin Džeko:\n  goal_share: 0.299\n  involvement_share: 0.37\n  sot_per_match: 1.164\n  source: 'api-football 2024 (67 apps); 06-18 BENCHED vs Canada (mins->20). 2026-06-24\n    vs Qatar (MD3): CONFIRMED STARTING (\"Dzeko; Demirovic\" lead attack) -> mins 20->75\n    (40yo starter, likely subbed before 90). Revert when benched again.; 2026-06-29\n    CLEANUP: reverted expected_minutes=75 (group-stage role) -> 90 default; the confirmed-XI\n    pull sets the true minutes.'\n  team: Bosnia and Herzegovina\nEldor Shomurodov:\n  goal_share: 0.155\n  involvement_share: 0.241\n  sot_per_match: 0.475\n  source: api-football 2024 (40 apps, matched E. Shomurodov)\n  team: Uzbekistan\nEllyes Skhiri:\n  goal_share: 0.029\n  involvement_share: 0.072\n  sot_per_match: 0.104\n  source: api-football 2024 (48 apps, matched E. Skhiri)\n  team: Tunisia\nErling Haaland:\n  goal_share: 0.5\n  involvement_share: 0.6\n  scorer_prop_match: CIV vs NOR\n  scorer_prop_prob: 0.54\n  source: 'web 2026-06-29: Man City 38g/52 25-26, 4 goals in 2 WC games, focal striker\n    vs CIV. Anytime \"not much value\" (short odds) -> scorer_prop_prob 0.54 (tagged).\n    Was 0.16 no-data prior.'\n  team: Norway\nErmedin Demirović:\n  goal_share: 0.213\n  involvement_share: 0.304\n  sot_per_match: 1.309\n  source: api-football 2024 (68 apps, matched E. Demirović)\nFolarin Balogun:\n  goal_share: 0.3\n  involvement_share: 0.4\n  scorer_prop_match: USA vs BIH\n  scorer_prop_prob: 0.44\n  sot_per_match: 1.07\n  source: 'web 2026-06-18: Monaco 25-26 13G/30, 32 SOT/30=1.07/match. DO NOT run update_player_rates\n    on him — API mismatches Folarin -> \"L. Balogun\" (Leon Balogun, a defender: 0.13\n    SOT/0.02 goal_share) and badly under-rates USA''s starting striker. Restored 2026-07-01\n    after the night-run update re-introduced the mismatch.; 2026-07-01 vs BIH: anytime\n    scorer FanDuel +100 (0.455 de-marg) / ESPN +110 (0.433) -> ~0.44 (shortest on\n    the board, 2g vs PAR, leaky BIH D). Model 0.487 a touch high -> anchored 0.44.'\n  team: United States\nGonzalo Plata:\n  goal_share: 0.2\n  involvement_share: 0.38\n  source: 'web 2026-06-30: Flamengo 2g+2a/561min (~0.67 G+A/game), STARTS behind Valencia.\n    involvement 0.38 -> score/assist ~0.27 (was 0.18 prior).'\n  team: Ecuador\nGranit Xhaka:\n  goal_share: 0.041\n  involvement_share: 0.112\n  sot_per_match: 0.25\n  source: api-football 2024 (68 apps, matched G. Xhaka)\nHarry Kane:\n  goal_share: 0.537\n  involvement_share: 0.649\n  scorer_prop_match: FRA vs ENG\n  scorer_prop_prob: 0.15\n  sot_per_match: 1.691\n  source: '2026-07-18 bronze, BENCHED (confirmed XI): cameo decomposition P(on)~0.90\n    x P(score|~27min @1.2x late intensity, pens, 3.41-total game)~0.18 = 0.15. (Was\n    0.13 via Larin precedent; Kane case stronger — guaranteed farewell entry + pen\n    duty + open game.) Stale start-quote +115 discarded.'\nIbrahim Sangaré:\n  sot_per_match: 0.19\n  source: 'web 2026-06-13: Nottingham Forest 25-26 def mid, 5 SOT/27'\nIsmael Saibari:\n  goal_share: 0.35\n  involvement_share: 0.52\n  scorer_prop_match: CAN vs MAR\n  scorer_prop_prob: 0.33\n  sot_per_match: 1.41\n  source: 'web 2026-06-29: Morocco''s in-form talisman vs NED (R32). PSV 25-26 Player\n    of the Year 15G+8A/27, 38 SOT/27=1.41/match; scored in his first 2 WC games (3\n    in 3). Replaces sparse-StatsBomb floor (score/assist ~0.14): involvement_share\n    0.52 + goal_share 0.35 reflect his central role; intl-discounted+tempo-scaled\n    in-model.; web 2026-07-04 vs CAN: anytime +180/+175/+172 -> ~0.33 de-vig (3 tournament\n    goals, in form). Model 0.421 high -> anchored. J.David left on model 0.191 (books\n    conflict +800 vs +373, no clean line).'\n  team: Morocco\nJeremy Sarmiento:\n  expected_minutes: 45\n  involvement_share: 0.1\n  source: 'web 2026-06-13: fringe/rotation, 0G+0A limited mins, sub risk'\n  team: Ecuador\nJhon Arias:\n  involvement_share: 0.23\n  source: 'web 2026-07-07 (R16 vs SUI, confirmed starter): anytime-SCORE +440 = 0.168\n    de-marg; S/A must exceed. Default S/A 0.143 below his solo-score line (too low)\n    -> involvement_share 0.23 lifts S/A to ~0.24. Grounds sparse flag. RE-CHECK next\n    match.'\n  team: Colombia\nJordan Ayew:\n  goal_share: 0.22\n  involvement_share: 0.32\n  sot_per_match: 0.8\n  source: 'web 2026-07-02: Leicester Championship 25-26 6g+3a/2257min (0.24 g/90)\n    — grounds the sparse StatsBomb history with current club form.'\n  team: Ghana\nJosé Fajardo:\n  expected_minutes: 90\n  goal_share: 0.28\n  involvement_share: 0.35\n  sot_per_match: 0.68\n  source: 'web 2026-06-16: Univ Catolica 7g/19, 13 SOT/19 = 0.68/match'\n  team: Panama\nJude Bellingham:\n  involvement_share: 0.48\n  sot_per_match: 1.3\n  source: '2026-07-06: stale api-football-2024 rate (0.65) burned 2+SOT THREE times\n    (hit at 15% vs COD, 8% vs MEX). Tournament evidence: 2+ SOT in consecutive KO\n    games; Real Madrid attacking-mid role ~1.2-1.4. Set 1.3 (web SOT feed unavailable;\n    grounded on tournament + role). ; 2026-07-15 (SF vs ARG): S/A default 0.21 badly\n    LOW — 6 tournament goals (Kane+Bellingham=12 of ENG 13), braces in R16+QF; implied\n    anytime ~0.33-0.36 so S/A must be ~0.44. involvement_share 0.48 -> S/A ~0.44 (inverse-Yamal\n    form correction).'\n  team: England\nJulio Enciso:\n  goal_share: 0.077\n  involvement_share: 0.096\n  sot_per_match: 0.889\n  source: api-football 2024 (36 apps, matched J. Enciso)\n  team: Paraguay\nJulián Quiñones:\n  goal_share: 0.32\n  involvement_share: 0.42\n  sot_per_match: 1.6\n  source: 'web 2026-07-04: Al-Qadsiah SPL 25-26 33g+4a/2724min (SPL top-scorer form).\n    SOT est ~1.6 from output (no direct feed). Grounds sparse history.'\n  team: Mexico\nJulián Álvarez:\n  involvement_share: 0.33\n  source: '2026-07-11 vs SUI: ESPN CONFIRMED XI (pulled 00:11Z, 50min pre-KO) has\n    Álvarez at 90min — he STARTS (predicted-lineup research at 6:35PM wrongly had\n    him benched next to Lautaro). Reverted involvement_share 0.10->0.33 (starter,\n    S/A ~0.41). Backstop final pass caught the benched->starter correction. Anytime\n    shortened to ~+180 (from +950 bench quote).'\n  team: Argentina\nKevin De Bruyne:\n  goal_share: 0.17\n  involvement_share: 0.283\n  sot_per_match: 0.705\n  source: api-football 2024 (61 apps, matched K. De Bruyne)\nKylian Mbappé:\n  scorer_prop_match: FRA vs ENG\n  scorer_prop_prob: 0.55\n  sot_per_match: 2.06\n  source: 'web 2026-07-18 (bronze vs ENG): STARTS despite rotation — Golden Boot race\n    (tied Messi 8g, trails tiebreaker, last game). Anytime -135..-185 = 0.52-0.59\n    de-marg -> 0.55. Model 0.44 low.'\n  team: France\nLamine Yamal:\n  goal_share: 0.32\n  involvement_share: 0.38\n  sot_per_match: 1.36\n  source: 'web 2026-07-19 (WC FINAL vs ARG): S/A sweep. Anytime +240 = 0.267 de-marg\n    + elite creator uplift -> S/A ~0.40. involvement_share 0.28->0.38 -> 0.392. (His\n    07-10 ceiling-cut was vs a +550 line; the final prices him 0.267 — the share moves\n    WITH the market.)'\n  team: Spain\nLautaro Martínez:\n  scorer_prop_match: ARG vs CPV\n  scorer_prop_prob: 0.48\n  source: 'web 2026-07-03 vs CPV: anytime -120 (0.545 impl) / 21-20 (0.512) -> ~0.48\n    de-vig. Model 0.384 low for a starting striker in a blowout spot (5 goals in last\n    10 for ARG). Confirmed starter.'\nLeandro Bacuna:\n  goal_share: 0.117\n  involvement_share: 0.214\n  sot_per_match: 0.423\n  source: api-football 2024 (71 apps, matched J. Bacuna)\n  team: Curaçao\nLeandro Trossard:\n  goal_share: 0.123\n  involvement_share: 0.214\n  scorer_prop_match: BEL vs SEN\n  scorer_prop_prob: 0.22\n  sot_per_match: 0.5\n  source: 'api-football 2024 (90 apps, matched L. Trossard); 2026-07-01 vs SEN: anytime\n    scorer FanDuel +280 (0.239 de-marg) / OddsChecker 31/10 (0.222) -> ~0.22. Model\n    0.18 a touch low; confirmed starter, market anchor (still below the softer crowd,\n    keeps the deviate-low edge).'\nLionel Messi:\n  involvement_share: 0.62\n  scorer_prop_match: ENG vs ARG\n  scorer_prop_prob: 0.39\n  source: 'web 2026-07-19 (WC FINAL vs ESP): S/A-floor sweep (Dembélé patch). Anytime\n    +150 = 0.364 de-marg; Messi leads the ASSIST tiebreaker -> S/A floor ~0.46. involvement_share\n    0.33->0.62 -> S/A 0.468. Pre-anchor model 0.32 was the exact Dembélé-class stale-share\n    risk at 3x.'\n  team: Argentina\nLuis Díaz:\n  goal_share: 0.289\n  involvement_share: 0.423\n  scorer_prop_match: SUI vs COL\n  scorer_prop_prob: 0.3\n  sot_per_match: 1.226\n  source: api-football 2024 (31 apps, matched L. Díaz)\n  team: Colombia\nLuka Sučić:\n  expected_minutes: 20\n  goal_share: 0.08\n  involvement_share: 0.15\n  sot_per_match: 0.35\n  source: 'web 2026-06-16: Real Sociedad 25-26 3G+1A/22 rotation mid. 2026-06-23 vs\n    PAN: CONFIRMED benched — not in Croatia XI (midfield Kovačić/Modrić/Baturina);\n    exp_min 45->20 for a possible late cameo (was hedged at 45 on the 06-17 projection).'\n  team: Croatia\nMahmoud Trezeguet:\n  goal_share: 0.072\n  involvement_share: 0.096\n  sot_per_match: 0.483\n  source: 'api-football 2024 (29 apps, matched Trézéguet); 2026-06-26 STARTED vs Iran\n    as a midfielder — REVERTED the stale 06-22 vs-NZ benching (goal_share 0.018->0.072,\n    involvement 0.024->0.096, exp_min 15->80). MISS: the 06-26 EGY/IRN SOT market\n    was already locked at 5% because the 9:10pm night pass misparsed a garbled lineup\n    scrape as excluding him. Re-confirm XI if Egypt advances.; 2026-06-29 CLEANUP:\n    reverted expected_minutes=80 (group-stage role) -> 90 default; the confirmed-XI\n    pull sets the true minutes.'\n  team: Egypt\nMalik Tillman:\n  goal_share: 0.2\n  involvement_share: 0.32\n  sot_per_match: 1.0\n  source: 'web 2026-07-06: Leverkusen 25-26 6g/1677min Bundesliga (moved from PSV).\n    SOT est ~1.0.'\n  team: United States\nMartin Ødegaard:\n  goal_share: 0.15\n  involvement_share: 0.38\n  source: 'web 2026-06-29: Norway playmaker, 2 assists in the group stage. involvement_share\n    0.38 (score/assist ~0.41) vs the 0.20 prior (0.25).'\n  team: Norway\nMatheus Cunha:\n  scorer_prop_match: BRA vs JPN\n  scorer_prop_prob: 0.31\n  source: 'web 2026-06-29: Brazil''s STARTING #9 vs JPN (R32), 3 goals in 3 group\n    games. FanDuel anytime +185 -> de-margined ~0.31 (consensus FD +185 / ESPN +190\n    / Betfair 9-4, de-margined). Was on the generic 0.12 no-data prior (0.14). scorer_prop_match\n    scopes it to this fixture.'\n  team: Brazil\nMehdi Taremi:\n  goal_share: 0.063\n  involvement_share: 0.172\n  sot_per_match: 0.227\n  source: api-football 2024 (44 apps, matched M. Taremi)\nMichael Olise:\n  goal_share: 0.22\n  involvement_share: 0.38\n  sot_per_match: 1.3\n  source: 'web 2026-07-04: Bayern 25-26 Bundesliga 15g+19a/2317min (G+A/90 ~1.3, leads\n    assists, Golden Ball frontrunner). Was on the 0.12 no-data prior — badly floored\n    elite creator.; 2026-07-04 line-check vs PAR: S/A -160 (90min) -> 0.56 de-vig;\n    model 0.668 aggressive -> involvement 0.45->0.38 to match the line (no scorer_prop\n    hook for the S/A family).'\n  team: France\nMiguel Almirón:\n  goal_share: 0.15\n  involvement_share: 0.3\n  sot_per_match: 0.9\n  source: 'web 2026-07-04: Atlanta 2025 6g+7a/31 but 2026 MLS dip (0g 2a/8). Grounds\n    sparse history.'\n  team: Paraguay\nMikel Oyarzabal:\n  scorer_prop_match: ESP vs AUT\n  scorer_prop_prob: 0.44\n  source: 'web 2026-07-02 vs AUT: anytime scorer -105 (0.466 de-marg) / +105 (0.443)\n    / 11-10 (0.433), Dimers sim 0.40 -> ~0.44. Model 0.214 badly under-rated Spain''s\n    in-form main striker (10 goals in last 9 for Spain); club/history misses the national\n    role + hot form.'\n  team: Spain\nMohamed Salah:\n  scorer_prop_match: ARG vs EGY\n  scorer_prop_prob: 0.15\n  source: 'web 2026-07-07 (R16 vs ARG): STARTS but hamstring-hampered (reluctant to\n    sprint full pace through 120 min vs AUS). Bookmaker anytime 4/1 = ~0.20 raw /\n    ~0.17 de-margined, BUT Salah is a heavy public-name bet (odds shortened). Dimers\n    sim 13.3% and our model 0.135 agree independently. Set 0.15 = mild lift toward\n    the sharp de-margined market without chasing public-biased 0.20; if the platform\n    crowd over-prices him, a low honest value is +RBP. RE-CHECK at final pass.'\n  team: Egypt\nMohanad Ali:\n  expected_minutes: 90\n  goal_share: 0.32\n  involvement_share: 0.38\n  sot_per_match: 1.0\n  source: 'web 2026-06-15: Dibba Al Fujairah (UAE) 25-26 6G+1A/~14.5 games; Iraq talisman\n    (27g Iraqi league 24-25); SOT estimated'\n  team: Iraq\nMousa Al-Taamari:\n  goal_share: 0.2\n  involvement_share: 0.4\n  sot_per_match: 0.7\n  source: 'web 2026-06-15: Rennes 25-26 6G+6A/33 (moved from Montpellier); winger,\n    SOT estimated'\n  team: Jordan\nNestory Irankunda:\n  goal_share: 0.15\n  involvement_share: 0.28\n  sot_per_match: 0.8\n  source: 'web 2026-07-02: Watford Championship 25-26 4g+4a/2031min, winger. SOT estimated\n    ~0.8/match (no direct feed); replaces the no-data prior for his 2+SOT market.'\n  team: Australia\nOrkun Kökçü:\n  goal_share: 0.128\n  involvement_share: 0.256\n  sot_per_match: 0.629\n  source: api-football 2024 (70 apps, matched O. Kökçü)\nOswin Appollis:\n  goal_share: 0.119\n  involvement_share: 0.161\n  sot_per_match: 0.828\n  source: api-football 2024 (64 apps, matched O. Appollis)\n  team: South Africa\nOusmane Dembélé:\n  scorer_prop_match: FRA vs SWE\n  scorer_prop_prob: 0.46\n  sot_per_match: 0.82\n  source: 'web 2026-06-30: anytime scorer FOX +100 (0.455 de-marg), Goal 1.79 (0.508),\n    Kalshi 0.43 -> ~0.46 consensus; in-form (hat-trick vs NOR 06-26) vs leaky SWE\n    D. Model 0.104 = stale-history under-rate (creator -> primary attacker national\n    role).; web 2026-07-04: PSG 25-26 Ligue 1 18 SOT/22 = 0.82 SOT/match (10g). Grounds\n    his 2+SOT (was ~0.06 floored).'\n  team: France\nPatrik Schick:\n  goal_share: 0.375\n  involvement_share: 0.375\n  sot_per_match: 1.029\n  source: api-football 2024 (68 apps, matched P. Schick)\n  team: Czechia\nRaúl Jiménez:\n  goal_share: 0.32\n  involvement_share: 0.42\n  source: 'web 2026-06-30: Fulham 9g+3a/36 PL 25-26, STARTS vs ECU (rested last game).\n    Mexico focal #9. goal_share 0.32 -> scorer ~0.32 (was 0.11 no-data prior).'\n  team: Mexico\nRiyad Mahrez:\n  goal_share: 0.264\n  involvement_share: 0.558\n  sot_per_match: 0.787\n  source: api-football 2024 (47 apps, matched R. Mahrez)\nRyan Mendes:\n  goal_share: 0.241\n  involvement_share: 0.517\n  sot_per_match: 0.7\n  source: api-football 2024 (20 apps, matched Ryan Mendes)\n  team: Cape Verde\nSadio Mané:\n  goal_share: 0.252\n  involvement_share: 0.419\n  sot_per_match: 0.986\n  source: api-football 2024 (74 apps, matched S. Mané)\nSalem Al-Dawsari:\n  goal_share: 0.22\n  involvement_share: 0.35\n  sot_per_match: 0.77\n  source: 'web 2026-06-14: Al-Hilal 4G+5A/13; 2026-06-26 CONFIRMED STARTS vs Cape\n    Verde, anytime-scorer +275 FanDuel (range +220..+400) de-margined ~0.24. Prior\n    0.04 was STALE — the +3000 was vs SPAIN (wrong opponent, contained underdog).\n    markets beat model; 2026-06-29 CLEANUP: cleared stale scorer_prop_prob=0.24 (prior\n    match settled / opponent changed) -> reverts to opponent-aware model; re-research\n    at the next final pass.'\n  team: Saudi Arabia\nScott McTominay:\n  goal_share: 0.23\n  involvement_share: 0.29\n  sot_per_match: 0.93\n  source: api-football 2024 (57 apps, matched S. McTominay)\nSon Heung-min:\n  expected_minutes: 90\n  goal_share: 0.25\n  involvement_share: 0.45\n  sot_per_match: 0.77\n  source: 'web 2026-06-17: LAFC/MLS 25-26 10 SOT/13=0.77/match, 8 assists; Korea captain'\n  team: South Korea\nTakefusa Kubo:\n  expected_minutes: 0\n  goal_share: 0.07\n  involvement_share: 0.21\n  sot_per_match: 0.5\n  source: 'web 2026-06-13: Real Sociedad 25-26, 2G+4A/24, 12 SOT/24; RULED OUT 2026-06-21\n    (forced off vs NED, out of TUN match & poss. rest of group) — exp_min 0, not in\n    predicted XI (J. Ito replaces)'\nViktor Gyökeres:\n  goal_share: 0.31\n  involvement_share: 0.873\n  sot_per_match: 1.781\n  source: 'api-football 2024 (64 apps, matched V. Gyökeres); 2026-06-25 vs JPN anytime-scorer\n    +162/+175 (~0.34-0.35 de-margined) — markets beat the model''s 0.535 (high goal_share\n    over-rated him). Confirmed starting, in form.; 2026-06-29 CLEANUP: goal_share\n    0.732 (artifact) -> 0.31 = market-implied from the JPN anytime ~0.35 at lam~1.4;\n    the model now self-corrects by opponent (~0.35 vs JPN, ~0.21 vs FRA), so the static\n    prop is removed.'\n  team: Sweden\nVinícius Júnior:\n  goal_share: 0.3\n  involvement_share: 0.42\n  sot_per_match: 1.28\n  source: 'web 2026-07-04: Real Madrid 25-26 La Liga 16g, 46 SOT/36 = 1.28 SOT/match.\n    Grounds sparse history.'\n  team: Brazil\nYoane Wissa:\n  goal_share: 0.354\n  involvement_share: 0.424\n  sot_per_match: 1.154\n  source: api-football 2024 (39 apps, matched Y. Wissa)\nYouri Tielemans:\n  goal_share: 0.12\n  involvement_share: 0.23\n  sot_per_match: 0.449\n  source: api-football 2024 (69 apps, matched Y. Tielemans)\n"
+   },
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "2 players to look up (2 requests each), 88 API requests left today\n  Gonçalo Ramos                -> only 6 apps in 2024 (injury/transfer year?) — NOT overriding, research manually\n  Luis Díaz                    -> SOT 1.23/match, goals 0.42, apps 31\n\nwrote <ROOT>/data/inputs/player_overrides.yaml\n",
+   "subprocess": []
+  }
+ ]
+}

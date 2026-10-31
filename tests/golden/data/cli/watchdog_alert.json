@@ -1,0 +1,32 @@
+{
+ "scenario": "watchdog_alert",
+ "steps": [
+  {
+   "argv": [
+    "watchdog"
+   ],
+   "calls": [],
+   "exception": null,
+   "files": {
+    "data/logs/RUN_MISSED.txt": "⚠️  PROBABILITY CUP — RUN MISSED (2026-06-27T22:40:00+00:00)\n  • MORNING run has not run today (it is 17:40 local; last agent run never).\n  • FINAL PASS for COD vs UZB not done — locks in 50 min, last agent run never.\n  • FINAL PASS for COL vs POR not done — locks in 50 min, last agent run never.\n\n  ACTION: open the Claude session and trigger the run manually. NOTHING was auto-submitted.\n",
+    "data/logs/watchdog.log": "⚠️  PROBABILITY CUP — RUN MISSED (2026-06-27T22:40:00+00:00)\n  • MORNING run has not run today (it is 17:40 local; last agent run never).\n  • FINAL PASS for COD vs UZB not done — locks in 50 min, last agent run never.\n  • FINAL PASS for COL vs POR not done — locks in 50 min, last agent run never.\n\n  ACTION: open the Claude session and trigger the run manually. NOTHING was auto-submitted.\n\n"
+   },
+   "rc": 1,
+   "stderr_tail": "",
+   "stdout": "⚠️  PROBABILITY CUP — RUN MISSED (2026-06-27T22:40:00+00:00)\n  • MORNING run has not run today (it is 17:40 local; last agent run never).\n  • FINAL PASS for COD vs UZB not done — locks in 50 min, last agent run never.\n  • FINAL PASS for COL vs POR not done — locks in 50 min, last agent run never.\n\n  ACTION: open the Claude session and trigger the run manually. NOTHING was auto-submitted.\n\n",
+   "subprocess": [
+    [
+     "notify-send",
+     "-u",
+     "critical",
+     "⚠️ Probability Cup: RUN MISSED",
+     "MORNING run has not run today (it is 17:40 local; last agent run never).; FINAL PASS for COD vs UZB not done — locks in 50 min, last agent run never.; FINAL PASS for COL vs POR not done — locks in 50 min, last agent run never."
+    ],
+    [
+     "wall",
+     "⚠️  PROBABILITY CUP — RUN MISSED (2026-06-27T22:40:00+00:00)\n  • MORNING run has not run today (it is 17:40 local; last agent run never).\n  • FINAL PASS for COD vs UZB not done — locks in 50 min, last agent run never.\n  • FINAL PASS for COL vs POR not done — locks in 50 min, last agent run never.\n\n  ACTION: open the Claude session and trigger the run manually. NOTHING was auto-submitted.\n"
+    ]
+   ]
+  }
+ ]
+}
