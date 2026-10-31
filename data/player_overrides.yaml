@@ -1,0 +1,567 @@
+Akram Afif:
+  goal_share: 0.376
+  involvement_share: 0.69
+  sot_per_match: 0.773
+  source: api-football 2024 (22 apps, matched Akram Afif)
+  team: Qatar
+Alexander Isak:
+  sot_per_match: 0.43
+  source: 'web 2026-06-29: Liverpool 25-26 6 SOT/14 PL = 0.43 SOT/match (limited mins,
+    genuinely low). Confirms the ~2% floor was about right.'
+  team: Sweden
+Alexander Sørloth:
+  sot_per_match: 1.0
+  source: 'web 2026-06-29: Atletico 25-26 35 SOT/35 La Liga = 1.0 SOT/match (CL 1.07).
+    Replaces 0.72 prior.'
+  team: Norway
+Amad Diallo:
+  sot_per_match: 0.72
+  source: 'web 2026-06-29: Man Utd 25-26 23 SOT/32 = 0.72 SOT/match (~= the 0.72 prior;
+    grounds it + adds underdog tempo).'
+  team: Ivory Coast
+Amine Gouiri:
+  goal_share: 0.3
+  involvement_share: 0.4
+  sot_per_match: 1.0
+  source: 'web 2026-07-02: Marseille 25-26 8g/1328min (0.54 g/90), Algeria main striker
+    — but ESPN CONFIRMED XI benches him vs SUI (surprise rotation; predicted lineups
+    had him starting). Confirmed-sub proven-scorer treatment (Larin lesson): real
+    shares + the pulled 20min give the calibrated sub-scorer number, not the 0.032
+    double-deflation.'
+  team: Algeria
+Antoine Semenyo:
+  goal_share: 0.208
+  involvement_share: 0.305
+  sot_per_match: 1.023
+  source: api-football 2024 (43 apps, matched A. Semenyo)
+  team: Ghana
+Ayase Ueda:
+  sot_per_match: 1.52
+  source: 'web 2026-06-29: Japan''s STARTING lone striker vs BRA (R32). MEASURED Feyenoord
+    25-26: 47 SOT/31 = 1.52 SOT/match (3.62 sh/90). Replaces the sparse-StatsBomb
+    floor (~0.20) and my earlier 1.2 guess with the measured club rate; the model
+    intl-discounts (x0.839), shrinks to the 0.72 prior, and tempo-scales for Japan
+    being the underdog.'
+  team: Japan
+Ben Waine:
+  expected_minutes: 15
+  goal_share: 0.132
+  involvement_share: 0.132
+  sot_per_match: 0.135
+  source: api-football 2024 (52 apps, matched B. Waine); 2026-06-22 BENCHED vs EGY
+    (Chris Wood starts, Waine not in XI) — exp_min 15 for possible late cameo
+  team: New Zealand
+Brahim Díaz:
+  goal_share: 0.12
+  involvement_share: 0.3
+  sot_per_match: 0.9
+  source: 'web 2026-07-04: Real Madrid 25-26 1g+6a/1252min (rotation attacking mid).
+    Grounds the prior.'
+  team: Morocco
+Brian Brobbey:
+  sot_per_match: 0.58
+  source: 'web 2026-06-29: starts vs MAR (declared fit). MEASURED Sunderland (PL)
+    25-26: 18 SOT/31=0.58 SOT/match (a target striker, genuinely modest SOT). Replaces
+    sparse floor (2+SOT ~0.04); real rate is low so the fix is small.'
+  team: Netherlands
+Christian Pulisic:
+  position: FWD
+  source: '2026-07-02: position FWD for the plays-full-match family (5-sub-era starter
+    full-90: FWD 0.282 vs MID 0.575 — star attackers get subbed). USA vs BEL R16 locks
+    07-07.'
+  team: United States
+Cody Gakpo:
+  goal_share: 0.25
+  involvement_share: 0.37
+  sot_per_match: 0.838
+  source: api-football 2024 (80 apps, matched C. Gakpo)
+  team: Netherlands
+Cyle Larin:
+  source: 'ESPN confirmed XI 2026-06-28: BENCHED vs RSA (R32) — Canada starts J. David
+    + Oluwaseyi up front, Larin + Promise David on the bench. Pre-lineup FanDuel +190
+    (~0.31 de-margined) was STALE: it priced him as a starter. scorer_prop_prob 0.07
+    = calibrated anytime-scorer in REGULATION for a confirmed sub (proven striker
+    / Canada all-time top scorer, but behind 2 starting FWs; question excludes extra
+    time). The model''s 0.015 was a double-deflation: unrepresentative StatsBomb history
+    (8 apps, 0 goals) x a 20-min bench haircut. Re-price if he starts a later round.;
+    2026-06-29 CLEANUP: cleared stale scorer_prop_prob=0.07 (prior match settled /
+    opponent changed) -> reverts to opponent-aware model; re-research at the next
+    final pass.'
+  team: Canada
+Cédric Bakambu:
+  goal_share: 0.152
+  involvement_share: 0.219
+  sot_per_match: 0.683
+  source: api-football 2024 (41 apps, matched C. Bakambu)
+  team: DR Congo
+Dan Ndoye:
+  scorer_prop_match: SUI vs COL
+  scorer_prop_prob: 0.16
+  source: 'web 2026-07-07 (R16 vs COL, confirmed starter): anytime +470 = 0.175 implied
+    /1.10 = 0.159. Model 0.11 low. Market beats model. Grounds the sparse-StatsBomb
+    flag.'
+  team: Switzerland
+Dani Olmo:
+  expected_minutes: 30
+  goal_share: 0.212
+  involvement_share: 0.332
+  sot_per_match: 0.692
+  source: 'api-football 2024 (52 apps, matched Dani Olmo); 2026-06-26 CONFIRMED BENCHED
+    vs Uruguay (Spain XI: Yamal/Oyarzabal/Baena fwd, Rodri/Merino/Pedri mid) -> expected_minutes
+    30 for a likely 2nd-half sub (was full 90)'
+  team: Spain
+Darwin Núñez:
+  goal_share: 0.25
+  involvement_share: 0.33
+  sot_per_match: 1.44
+  source: 'web 2026-06-14: Al-Hilal 6G+4A/16, 23 SOT/16; scorer_prop_prob from +140
+    anytime odds (KSA vs URU), de-margined /1.10. 2026-06-21 vs CPV: in predicted
+    XI but Bielsa hooked him at HT vs KSA & start is "anybody''s guess" — involvement_share
+    cut 0.40->0.33 (=75/90 min haircut; expected_minutes only scales SOT in-model,
+    not S/A) to price the documented hook/bench risk; also on-strategy (we fade S/A,
+    ~20% realized). NOT ruled out.; 2026-06-29 CLEANUP: cleared stale scorer_prop_prob=0.38
+    (prior match settled / opponent changed) -> reverts to opponent-aware model; re-research
+    at the next final pass.; 2026-06-29 CLEANUP: reverted expected_minutes=75 (group-stage
+    role) -> 90 default; the confirmed-XI pull sets the true minutes.'
+  team: Uruguay
+Diogo Costa:
+  source: '2026-07-06: team pin for the gk_saves side-resolution (keeper).'
+  team: Portugal
+Duckens Nazon:
+  expected_minutes: 35
+  goal_share: 0.319
+  involvement_share: 0.407
+  sot_per_match: 0.923
+  source: 'api-football 2024 (39 apps, matched D. Nazon); 2026-06-24 vs Morocco: DOUBTFUL
+    (unspecified injury), Isidor pushing to start & Haiti eliminated (likely rested)
+    -> exp_min 35 prices ~35% start + cameo. Revert/lower once XI confirmed.'
+  team: Haiti
+Edin Džeko:
+  goal_share: 0.299
+  involvement_share: 0.37
+  sot_per_match: 1.164
+  source: 'api-football 2024 (67 apps); 06-18 BENCHED vs Canada (mins->20). 2026-06-24
+    vs Qatar (MD3): CONFIRMED STARTING ("Dzeko; Demirovic" lead attack) -> mins 20->75
+    (40yo starter, likely subbed before 90). Revert when benched again.; 2026-06-29
+    CLEANUP: reverted expected_minutes=75 (group-stage role) -> 90 default; the confirmed-XI
+    pull sets the true minutes.'
+  team: Bosnia and Herzegovina
+Eldor Shomurodov:
+  goal_share: 0.155
+  involvement_share: 0.241
+  sot_per_match: 0.475
+  source: api-football 2024 (40 apps, matched E. Shomurodov)
+  team: Uzbekistan
+Ellyes Skhiri:
+  goal_share: 0.029
+  involvement_share: 0.072
+  sot_per_match: 0.104
+  source: api-football 2024 (48 apps, matched E. Skhiri)
+  team: Tunisia
+Erling Haaland:
+  goal_share: 0.5
+  involvement_share: 0.6
+  scorer_prop_match: CIV vs NOR
+  scorer_prop_prob: 0.54
+  source: 'web 2026-06-29: Man City 38g/52 25-26, 4 goals in 2 WC games, focal striker
+    vs CIV. Anytime "not much value" (short odds) -> scorer_prop_prob 0.54 (tagged).
+    Was 0.16 no-data prior.'
+  team: Norway
+Ermedin Demirović:
+  goal_share: 0.213
+  involvement_share: 0.304
+  sot_per_match: 1.309
+  source: api-football 2024 (68 apps, matched E. Demirović)
+Folarin Balogun:
+  goal_share: 0.3
+  involvement_share: 0.4
+  scorer_prop_match: USA vs BIH
+  scorer_prop_prob: 0.44
+  sot_per_match: 1.07
+  source: 'web 2026-06-18: Monaco 25-26 13G/30, 32 SOT/30=1.07/match. DO NOT run update_player_rates
+    on him — API mismatches Folarin -> "L. Balogun" (Leon Balogun, a defender: 0.13
+    SOT/0.02 goal_share) and badly under-rates USA''s starting striker. Restored 2026-07-01
+    after the night-run update re-introduced the mismatch.; 2026-07-01 vs BIH: anytime
+    scorer FanDuel +100 (0.455 de-marg) / ESPN +110 (0.433) -> ~0.44 (shortest on
+    the board, 2g vs PAR, leaky BIH D). Model 0.487 a touch high -> anchored 0.44.'
+  team: United States
+Gonzalo Plata:
+  goal_share: 0.2
+  involvement_share: 0.38
+  source: 'web 2026-06-30: Flamengo 2g+2a/561min (~0.67 G+A/game), STARTS behind Valencia.
+    involvement 0.38 -> score/assist ~0.27 (was 0.18 prior).'
+  team: Ecuador
+Gonçalo Ramos:
+  goal_share: 0.25
+  involvement_share: 0.35
+  sot_per_match: 1.3
+  source: 'web 2026-06-16: PSG 25-26 26 SOT/30 (~1.79/90). 2026-06-23 vs UZB: BENCHED
+    — Ronaldo starts as striker, Ramos not in predicted XI. scorer_prop_prob 0.15
+    prices a likely ~25-min sub vs weak UZB + small residual start chance (was full-90
+    player_scores 0.507); expected_minutes 25. Revert to starts-for-POR assumption
+    when he is back in the XI.; 2026-06-29 CLEANUP: cleared stale scorer_prop_prob=0.15
+    (prior match settled / opponent changed) -> reverts to opponent-aware model; re-research
+    at the next final pass.; 2026-06-29 CLEANUP: reverted expected_minutes=25 (group-stage
+    role) -> 90 default; the confirmed-XI pull sets the true minutes.'
+  team: Portugal
+Granit Xhaka:
+  goal_share: 0.041
+  involvement_share: 0.112
+  sot_per_match: 0.25
+  source: api-football 2024 (68 apps, matched G. Xhaka)
+Harry Kane:
+  goal_share: 0.537
+  involvement_share: 0.649
+  scorer_prop_match: FRA vs ENG
+  scorer_prop_prob: 0.15
+  sot_per_match: 1.691
+  source: '2026-07-18 bronze, BENCHED (confirmed XI): cameo decomposition P(on)~0.90
+    x P(score|~27min @1.2x late intensity, pens, 3.41-total game)~0.18 = 0.15. (Was
+    0.13 via Larin precedent; Kane case stronger — guaranteed farewell entry + pen
+    duty + open game.) Stale start-quote +115 discarded.'
+Ibrahim Sangaré:
+  sot_per_match: 0.19
+  source: 'web 2026-06-13: Nottingham Forest 25-26 def mid, 5 SOT/27'
+Ismael Saibari:
+  goal_share: 0.35
+  involvement_share: 0.52
+  scorer_prop_match: CAN vs MAR
+  scorer_prop_prob: 0.33
+  sot_per_match: 1.41
+  source: 'web 2026-06-29: Morocco''s in-form talisman vs NED (R32). PSV 25-26 Player
+    of the Year 15G+8A/27, 38 SOT/27=1.41/match; scored in his first 2 WC games (3
+    in 3). Replaces sparse-StatsBomb floor (score/assist ~0.14): involvement_share
+    0.52 + goal_share 0.35 reflect his central role; intl-discounted+tempo-scaled
+    in-model.; web 2026-07-04 vs CAN: anytime +180/+175/+172 -> ~0.33 de-vig (3 tournament
+    goals, in form). Model 0.421 high -> anchored. J.David left on model 0.191 (books
+    conflict +800 vs +373, no clean line).'
+  team: Morocco
+Jeremy Sarmiento:
+  expected_minutes: 45
+  involvement_share: 0.1
+  source: 'web 2026-06-13: fringe/rotation, 0G+0A limited mins, sub risk'
+  team: Ecuador
+Jhon Arias:
+  involvement_share: 0.23
+  source: 'web 2026-07-07 (R16 vs SUI, confirmed starter): anytime-SCORE +440 = 0.168
+    de-marg; S/A must exceed. Default S/A 0.143 below his solo-score line (too low)
+    -> involvement_share 0.23 lifts S/A to ~0.24. Grounds sparse flag. RE-CHECK next
+    match.'
+  team: Colombia
+Jordan Ayew:
+  goal_share: 0.22
+  involvement_share: 0.32
+  sot_per_match: 0.8
+  source: 'web 2026-07-02: Leicester Championship 25-26 6g+3a/2257min (0.24 g/90)
+    — grounds the sparse StatsBomb history with current club form.'
+  team: Ghana
+José Fajardo:
+  expected_minutes: 90
+  goal_share: 0.28
+  involvement_share: 0.35
+  sot_per_match: 0.68
+  source: 'web 2026-06-16: Univ Catolica 7g/19, 13 SOT/19 = 0.68/match'
+  team: Panama
+Jude Bellingham:
+  involvement_share: 0.48
+  sot_per_match: 1.3
+  source: '2026-07-06: stale api-football-2024 rate (0.65) burned 2+SOT THREE times
+    (hit at 15% vs COD, 8% vs MEX). Tournament evidence: 2+ SOT in consecutive KO
+    games; Real Madrid attacking-mid role ~1.2-1.4. Set 1.3 (web SOT feed unavailable;
+    grounded on tournament + role). ; 2026-07-15 (SF vs ARG): S/A default 0.21 badly
+    LOW — 6 tournament goals (Kane+Bellingham=12 of ENG 13), braces in R16+QF; implied
+    anytime ~0.33-0.36 so S/A must be ~0.44. involvement_share 0.48 -> S/A ~0.44 (inverse-Yamal
+    form correction).'
+  team: England
+Julio Enciso:
+  goal_share: 0.077
+  involvement_share: 0.096
+  sot_per_match: 0.889
+  source: api-football 2024 (36 apps, matched J. Enciso)
+  team: Paraguay
+Julián Quiñones:
+  goal_share: 0.32
+  involvement_share: 0.42
+  sot_per_match: 1.6
+  source: 'web 2026-07-04: Al-Qadsiah SPL 25-26 33g+4a/2724min (SPL top-scorer form).
+    SOT est ~1.6 from output (no direct feed). Grounds sparse history.'
+  team: Mexico
+Julián Álvarez:
+  involvement_share: 0.33
+  source: '2026-07-11 vs SUI: ESPN CONFIRMED XI (pulled 00:11Z, 50min pre-KO) has
+    Álvarez at 90min — he STARTS (predicted-lineup research at 6:35PM wrongly had
+    him benched next to Lautaro). Reverted involvement_share 0.10->0.33 (starter,
+    S/A ~0.41). Backstop final pass caught the benched->starter correction. Anytime
+    shortened to ~+180 (from +950 bench quote).'
+  team: Argentina
+Kevin De Bruyne:
+  goal_share: 0.17
+  involvement_share: 0.283
+  sot_per_match: 0.705
+  source: api-football 2024 (61 apps, matched K. De Bruyne)
+Kylian Mbappé:
+  scorer_prop_match: FRA vs ENG
+  scorer_prop_prob: 0.55
+  sot_per_match: 2.06
+  source: 'web 2026-07-18 (bronze vs ENG): STARTS despite rotation — Golden Boot race
+    (tied Messi 8g, trails tiebreaker, last game). Anytime -135..-185 = 0.52-0.59
+    de-marg -> 0.55. Model 0.44 low.'
+  team: France
+Lamine Yamal:
+  goal_share: 0.32
+  involvement_share: 0.38
+  sot_per_match: 1.36
+  source: 'web 2026-07-19 (WC FINAL vs ARG): S/A sweep. Anytime +240 = 0.267 de-marg
+    + elite creator uplift -> S/A ~0.40. involvement_share 0.28->0.38 -> 0.392. (His
+    07-10 ceiling-cut was vs a +550 line; the final prices him 0.267 — the share moves
+    WITH the market.)'
+  team: Spain
+Lautaro Martínez:
+  scorer_prop_match: ARG vs CPV
+  scorer_prop_prob: 0.48
+  source: 'web 2026-07-03 vs CPV: anytime -120 (0.545 impl) / 21-20 (0.512) -> ~0.48
+    de-vig. Model 0.384 low for a starting striker in a blowout spot (5 goals in last
+    10 for ARG). Confirmed starter.'
+Leandro Bacuna:
+  goal_share: 0.117
+  involvement_share: 0.214
+  sot_per_match: 0.423
+  source: api-football 2024 (71 apps, matched J. Bacuna)
+  team: Curaçao
+Leandro Trossard:
+  goal_share: 0.123
+  involvement_share: 0.214
+  scorer_prop_match: BEL vs SEN
+  scorer_prop_prob: 0.22
+  sot_per_match: 0.5
+  source: 'api-football 2024 (90 apps, matched L. Trossard); 2026-07-01 vs SEN: anytime
+    scorer FanDuel +280 (0.239 de-marg) / OddsChecker 31/10 (0.222) -> ~0.22. Model
+    0.18 a touch low; confirmed starter, market anchor (still below the softer crowd,
+    keeps the deviate-low edge).'
+Lionel Messi:
+  involvement_share: 0.62
+  scorer_prop_match: ENG vs ARG
+  scorer_prop_prob: 0.39
+  source: 'web 2026-07-19 (WC FINAL vs ESP): S/A-floor sweep (Dembélé patch). Anytime
+    +150 = 0.364 de-marg; Messi leads the ASSIST tiebreaker -> S/A floor ~0.46. involvement_share
+    0.33->0.62 -> S/A 0.468. Pre-anchor model 0.32 was the exact Dembélé-class stale-share
+    risk at 3x.'
+  team: Argentina
+Luis Díaz:
+  scorer_prop_match: SUI vs COL
+  scorer_prop_prob: 0.3
+  source: 'web 2026-07-07 (R16 vs SUI): anytime range +170..+230, mid +200 = 0.333
+    /1.10 = 0.303. Model 0.33 a touch high -> anchor 0.30.'
+  team: Colombia
+Luka Sučić:
+  expected_minutes: 20
+  goal_share: 0.08
+  involvement_share: 0.15
+  sot_per_match: 0.35
+  source: 'web 2026-06-16: Real Sociedad 25-26 3G+1A/22 rotation mid. 2026-06-23 vs
+    PAN: CONFIRMED benched — not in Croatia XI (midfield Kovačić/Modrić/Baturina);
+    exp_min 45->20 for a possible late cameo (was hedged at 45 on the 06-17 projection).'
+  team: Croatia
+Mahmoud Trezeguet:
+  goal_share: 0.072
+  involvement_share: 0.096
+  sot_per_match: 0.483
+  source: 'api-football 2024 (29 apps, matched Trézéguet); 2026-06-26 STARTED vs Iran
+    as a midfielder — REVERTED the stale 06-22 vs-NZ benching (goal_share 0.018->0.072,
+    involvement 0.024->0.096, exp_min 15->80). MISS: the 06-26 EGY/IRN SOT market
+    was already locked at 5% because the 9:10pm night pass misparsed a garbled lineup
+    scrape as excluding him. Re-confirm XI if Egypt advances.; 2026-06-29 CLEANUP:
+    reverted expected_minutes=80 (group-stage role) -> 90 default; the confirmed-XI
+    pull sets the true minutes.'
+  team: Egypt
+Malik Tillman:
+  goal_share: 0.2
+  involvement_share: 0.32
+  sot_per_match: 1.0
+  source: 'web 2026-07-06: Leverkusen 25-26 6g/1677min Bundesliga (moved from PSV).
+    SOT est ~1.0.'
+  team: United States
+Martin Ødegaard:
+  goal_share: 0.15
+  involvement_share: 0.38
+  source: 'web 2026-06-29: Norway playmaker, 2 assists in the group stage. involvement_share
+    0.38 (score/assist ~0.41) vs the 0.20 prior (0.25).'
+  team: Norway
+Matheus Cunha:
+  scorer_prop_match: BRA vs JPN
+  scorer_prop_prob: 0.31
+  source: 'web 2026-06-29: Brazil''s STARTING #9 vs JPN (R32), 3 goals in 3 group
+    games. FanDuel anytime +185 -> de-margined ~0.31 (consensus FD +185 / ESPN +190
+    / Betfair 9-4, de-margined). Was on the generic 0.12 no-data prior (0.14). scorer_prop_match
+    scopes it to this fixture.'
+  team: Brazil
+Mehdi Taremi:
+  goal_share: 0.063
+  involvement_share: 0.172
+  sot_per_match: 0.227
+  source: api-football 2024 (44 apps, matched M. Taremi)
+Michael Olise:
+  goal_share: 0.22
+  involvement_share: 0.38
+  sot_per_match: 1.3
+  source: 'web 2026-07-04: Bayern 25-26 Bundesliga 15g+19a/2317min (G+A/90 ~1.3, leads
+    assists, Golden Ball frontrunner). Was on the 0.12 no-data prior — badly floored
+    elite creator.; 2026-07-04 line-check vs PAR: S/A -160 (90min) -> 0.56 de-vig;
+    model 0.668 aggressive -> involvement 0.45->0.38 to match the line (no scorer_prop
+    hook for the S/A family).'
+  team: France
+Miguel Almirón:
+  goal_share: 0.15
+  involvement_share: 0.3
+  sot_per_match: 0.9
+  source: 'web 2026-07-04: Atlanta 2025 6g+7a/31 but 2026 MLS dip (0g 2a/8). Grounds
+    sparse history.'
+  team: Paraguay
+Mikel Oyarzabal:
+  scorer_prop_match: ESP vs AUT
+  scorer_prop_prob: 0.44
+  source: 'web 2026-07-02 vs AUT: anytime scorer -105 (0.466 de-marg) / +105 (0.443)
+    / 11-10 (0.433), Dimers sim 0.40 -> ~0.44. Model 0.214 badly under-rated Spain''s
+    in-form main striker (10 goals in last 9 for Spain); club/history misses the national
+    role + hot form.'
+  team: Spain
+Mohamed Salah:
+  scorer_prop_match: ARG vs EGY
+  scorer_prop_prob: 0.15
+  source: 'web 2026-07-07 (R16 vs ARG): STARTS but hamstring-hampered (reluctant to
+    sprint full pace through 120 min vs AUS). Bookmaker anytime 4/1 = ~0.20 raw /
+    ~0.17 de-margined, BUT Salah is a heavy public-name bet (odds shortened). Dimers
+    sim 13.3% and our model 0.135 agree independently. Set 0.15 = mild lift toward
+    the sharp de-margined market without chasing public-biased 0.20; if the platform
+    crowd over-prices him, a low honest value is +RBP. RE-CHECK at final pass.'
+  team: Egypt
+Mohanad Ali:
+  expected_minutes: 90
+  goal_share: 0.32
+  involvement_share: 0.38
+  sot_per_match: 1.0
+  source: 'web 2026-06-15: Dibba Al Fujairah (UAE) 25-26 6G+1A/~14.5 games; Iraq talisman
+    (27g Iraqi league 24-25); SOT estimated'
+  team: Iraq
+Mousa Al-Taamari:
+  goal_share: 0.2
+  involvement_share: 0.4
+  sot_per_match: 0.7
+  source: 'web 2026-06-15: Rennes 25-26 6G+6A/33 (moved from Montpellier); winger,
+    SOT estimated'
+  team: Jordan
+Nestory Irankunda:
+  goal_share: 0.15
+  involvement_share: 0.28
+  sot_per_match: 0.8
+  source: 'web 2026-07-02: Watford Championship 25-26 4g+4a/2031min, winger. SOT estimated
+    ~0.8/match (no direct feed); replaces the no-data prior for his 2+SOT market.'
+  team: Australia
+Orkun Kökçü:
+  goal_share: 0.128
+  involvement_share: 0.256
+  sot_per_match: 0.629
+  source: api-football 2024 (70 apps, matched O. Kökçü)
+Oswin Appollis:
+  goal_share: 0.119
+  involvement_share: 0.161
+  sot_per_match: 0.828
+  source: api-football 2024 (64 apps, matched O. Appollis)
+  team: South Africa
+Ousmane Dembélé:
+  scorer_prop_match: FRA vs SWE
+  scorer_prop_prob: 0.46
+  sot_per_match: 0.82
+  source: 'web 2026-06-30: anytime scorer FOX +100 (0.455 de-marg), Goal 1.79 (0.508),
+    Kalshi 0.43 -> ~0.46 consensus; in-form (hat-trick vs NOR 06-26) vs leaky SWE
+    D. Model 0.104 = stale-history under-rate (creator -> primary attacker national
+    role).; web 2026-07-04: PSG 25-26 Ligue 1 18 SOT/22 = 0.82 SOT/match (10g). Grounds
+    his 2+SOT (was ~0.06 floored).'
+  team: France
+Patrik Schick:
+  goal_share: 0.375
+  involvement_share: 0.375
+  sot_per_match: 1.029
+  source: api-football 2024 (68 apps, matched P. Schick)
+  team: Czechia
+Raúl Jiménez:
+  goal_share: 0.32
+  involvement_share: 0.42
+  source: 'web 2026-06-30: Fulham 9g+3a/36 PL 25-26, STARTS vs ECU (rested last game).
+    Mexico focal #9. goal_share 0.32 -> scorer ~0.32 (was 0.11 no-data prior).'
+  team: Mexico
+Riyad Mahrez:
+  goal_share: 0.264
+  involvement_share: 0.558
+  sot_per_match: 0.787
+  source: api-football 2024 (47 apps, matched R. Mahrez)
+Ryan Mendes:
+  goal_share: 0.241
+  involvement_share: 0.517
+  sot_per_match: 0.7
+  source: api-football 2024 (20 apps, matched Ryan Mendes)
+  team: Cape Verde
+Sadio Mané:
+  goal_share: 0.252
+  involvement_share: 0.419
+  sot_per_match: 0.986
+  source: api-football 2024 (74 apps, matched S. Mané)
+Salem Al-Dawsari:
+  goal_share: 0.22
+  involvement_share: 0.35
+  sot_per_match: 0.77
+  source: 'web 2026-06-14: Al-Hilal 4G+5A/13; 2026-06-26 CONFIRMED STARTS vs Cape
+    Verde, anytime-scorer +275 FanDuel (range +220..+400) de-margined ~0.24. Prior
+    0.04 was STALE — the +3000 was vs SPAIN (wrong opponent, contained underdog).
+    markets beat model; 2026-06-29 CLEANUP: cleared stale scorer_prop_prob=0.24 (prior
+    match settled / opponent changed) -> reverts to opponent-aware model; re-research
+    at the next final pass.'
+  team: Saudi Arabia
+Scott McTominay:
+  goal_share: 0.23
+  involvement_share: 0.29
+  sot_per_match: 0.93
+  source: api-football 2024 (57 apps, matched S. McTominay)
+Son Heung-min:
+  expected_minutes: 90
+  goal_share: 0.25
+  involvement_share: 0.45
+  sot_per_match: 0.77
+  source: 'web 2026-06-17: LAFC/MLS 25-26 10 SOT/13=0.77/match, 8 assists; Korea captain'
+  team: South Korea
+Takefusa Kubo:
+  expected_minutes: 0
+  goal_share: 0.07
+  involvement_share: 0.21
+  sot_per_match: 0.5
+  source: 'web 2026-06-13: Real Sociedad 25-26, 2G+4A/24, 12 SOT/24; RULED OUT 2026-06-21
+    (forced off vs NED, out of TUN match & poss. rest of group) — exp_min 0, not in
+    predicted XI (J. Ito replaces)'
+Viktor Gyökeres:
+  goal_share: 0.31
+  involvement_share: 0.873
+  sot_per_match: 1.781
+  source: 'api-football 2024 (64 apps, matched V. Gyökeres); 2026-06-25 vs JPN anytime-scorer
+    +162/+175 (~0.34-0.35 de-margined) — markets beat the model''s 0.535 (high goal_share
+    over-rated him). Confirmed starting, in form.; 2026-06-29 CLEANUP: goal_share
+    0.732 (artifact) -> 0.31 = market-implied from the JPN anytime ~0.35 at lam~1.4;
+    the model now self-corrects by opponent (~0.35 vs JPN, ~0.21 vs FRA), so the static
+    prop is removed.'
+  team: Sweden
+Vinícius Júnior:
+  goal_share: 0.3
+  involvement_share: 0.42
+  sot_per_match: 1.28
+  source: 'web 2026-07-04: Real Madrid 25-26 La Liga 16g, 46 SOT/36 = 1.28 SOT/match.
+    Grounds sparse history.'
+  team: Brazil
+Yoane Wissa:
+  goal_share: 0.354
+  involvement_share: 0.424
+  sot_per_match: 1.154
+  source: api-football 2024 (39 apps, matched Y. Wissa)
+Youri Tielemans:
+  goal_share: 0.12
+  involvement_share: 0.23
+  sot_per_match: 0.449
+  source: api-football 2024 (69 apps, matched Y. Tielemans)

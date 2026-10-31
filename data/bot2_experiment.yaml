@@ -1,0 +1,27 @@
+name: final-best-config
+description: '2026-07-19 FINAL: A/B bench RETIRED — tournament ends today, no future
+  game for a probe to inform, and every surviving probe was flat-to-losing on clean
+  settles (totalSOT 1.60 lost both clean tests incl. -22 at ENG/ARG; favboost 0.10
+  5/13 net -0.111; offsides 1.20 ~flat). bot 2 plays the final on the best-validated
+  configuration = bot 1 stable v4, to maximize its knockout-period standing (Yifan
+  goal: cite bot2 KO rank + bot1 top-1pct overall).'
+started: 2026-07-02
+hypothesis: 'Each notch stands or falls on its own family''s settles vs bot-1''s new
+  levels. If a notch wins ~8-10 settles it promotes (standing authorization 07-02);
+  if it loses, bot-1''s level is confirmed and the probe retires. Keep bot 2 competitive:
+  all probes are mild (max 1 notch).
+
+  '
+tournament_intensity:
+  cards: 0.78
+  sot: 1.0
+  corners: 1.05
+  offsides: 0.9
+  fouls: 0.9
+tournament_team_sot: 4.11
+favorite_sot_boost: 0.06
+total_cards_scale: 0.85
+total_sot_scale: 1.5
+total_offsides_scale: 1.1
+total_shots_scale: 1.0
+timing_scale: 0.85

@@ -1,0 +1,210 @@
+ARG vs ALG:
+  cards_per_game: 3.9
+  referee: Szymon Marciniak (Poland)
+  source: 'web 2026-06-16: top controlled ref (2022 WC final); ~3.8-4.0 yellows/g,
+    estimate'
+ARG vs CPV:
+  cards_per_game: 3.4
+  referee: Drew Fischer (Canada)
+  source: 'web 2026-07-03: MLS/CONCACAF ref, ~3.3-3.6 y/g typical MLS -> ~3.4, mildly
+    lenient, factor ~0.98.'
+ARG vs EGY:
+  cards_per_game: 4.0
+  referee: François Letexier (France)
+  source: 'web 2026-07-07: career 3.55 y/g (~3.7 total), running hot 2025/26 at 4.72
+    total; stability-weighted 4.0 for KO intensity, factor ~1.16.'
+ARG vs SUI:
+  cards_per_game: 4.0
+  referee: João Pinheiro (Portugal)
+  source: 'web 2026-07-11: strict UEFA ref (~4 cards/g); factor >1 -> capped at 1.0,
+    no inflation.'
+AUS vs EGY:
+  cards_per_game: 4.7
+  referee: Gustavo Tejera (Uruguay)
+  source: 'web 2026-07-03: same ref as MEX/KOR (5.11-5.24 y/g strict CONMEBOL, moderated
+    4.7) -> caps at 1.0.'
+AUS vs TUR:
+  cards_per_game: 4.6
+  referee: Jesús Valenzuela (Venezuela)
+  source: 'web 2026-06-14: 5.0-5.7 yellows/g (CONMEBOL, card-heavy), moderated for
+    intl context'
+AUT vs JOR:
+  cards_per_game: 3.9
+  referee: Dahane Beida (Mauritania)
+  source: 'web 2026-06-16: 70 yellows/18 matches = 3.89/g'
+BEL vs EGY:
+  cards_per_game: 4.6
+  referee: Ramon Abatti (Brazil)
+  source: 'web 2026-06-15: 4.53-4.77 yellows/g (313 fixtures), strict — red card in
+    every Club World Cup game'
+BRA vs JPN:
+  cards_per_game: 4.2
+  referee: Maurizio Mariani
+  source: 'web 2026-06-29: Italian Serie A ref (card-heavy, est ~4.2/g) > avg 3.46
+    -> factor caps at 1.0 (no inflation)'
+BRA vs NOR:
+  cards_per_game: 3.8
+  referee: Ismail Elfath (USA)
+  source: 'web 2026-07-05: ~3.6-4.0 y/g (our NED/JPN profile) -> caps 1.0.'
+CAN vs MAR:
+  cards_per_game: 3.6
+  referee: Michael Oliver (England)
+  source: 'web 2026-07-04: EPL top ref ~3.5-3.7 y/g -> ~neutral, factor ~1.0.'
+CAN vs QAT:
+  cards_per_game: 4.1
+  referee: Cristián Garay (Chile)
+  source: 'web 2026-06-18: 4.40 yellows/g (197 fix, 867 yellows), card-active CONMEBOL;
+    moderated'
+CIV vs ECU:
+  cards_per_game: 4.0
+  referee: François Letexier (France)
+  source: 'web 2026-06-14: ~3.96 career, 4.7 recent (replaced injured M.Oliver)'
+CIV vs NOR:
+  cards_per_game: 3.9
+  referee: Jesus Valenzuela
+  source: 'web 2026-06-30: VEN ref ~avg-strict -> factor caps 1.0'
+COL vs GHA:
+  cards_per_game: 3.4
+  referee: Clément Turpin (France)
+  source: 'web 2026-07-03: 3.25-3.36 y/g career (same profile as our ENG/CRO entry),
+    lenient -> factor ~0.98.'
+CZE vs RSA:
+  cards_per_game: 3.5
+  referee: Tori Penso (USA)
+  source: 'web 2026-06-18: MLS ref (2nd woman to officiate a men''s WC match); ~3.5
+    yellows/g estimate'
+ENG vs ARG:
+  cards_per_game: 4.2
+  referee: Ismail Elfath (USA)
+  source: 'web 2026-07-15: MLS/CONCACAF, ~4.2 y/g moderate-strict; factor >1 -> capped
+    at 1.0, effectively neutral.'
+ENG vs CRO:
+  cards_per_game: 3.4
+  referee: Clément Turpin (France)
+  source: 'web 2026-06-17: 3.25-3.36 yellows/g career — lenient despite big-game profile'
+ESP vs ARG:
+  cards_per_game: 4.1
+  referee: Slavko Vinčić (Slovenia)
+  source: 'web 2026-07-19: UCL-final pedigree, ~4.1 cards/g, 6th match across 2 WCs.
+    Factor >1 -> capped at 1.0, neutral (documented).'
+ESP vs AUT:
+  cards_per_game: 3.3
+  referee: Glenn Nyberg (Sweden)
+  source: 'web 2026-07-02: statshub 3.21 / 2.98 / 3.65 / OddAlerts 3.53 -> ~3.3 yellows/g,
+    mildly LENIENT (<3.46 baseline) -> factor ~0.95, slight card reduction.'
+ESP vs BEL:
+  cards_per_game: 3.6
+  referee: Michael Oliver (England)
+  source: 'web 2026-07-10: top PL ref, ~3.6 cards/g (near tournament avg 3.46). Factor
+    ~1.04 -> capped at 1.0 (no card inflation), effectively neutral.'
+FRA vs ENG:
+  cards_per_game: 2.6
+  referee: Jesús Valenzuela (Venezuela)
+  source: 'web 2026-07-18: 4 yellows across 3 WC-26 games (~1.3/g!) , no reds — very
+    lenient this tournament; career moderate. Blended 2.6 (factor ~0.75, lowers cards).'
+FRA vs ESP:
+  cards_per_game: 2.8
+  referee: Iván Barton (El Salvador)
+  source: 'web 2026-07-14: same lenient-on-yellows ref as SUI/COL (~2.5-2.8 y/g this
+    WC, though quick with reds). 2.8 -> factor ~0.81, lowers card markets.'
+FRA vs MAR:
+  cards_per_game: 4.3
+  referee: Facundo Tello (Argentina)
+  source: 'web 2026-07-09: zero-tolerance CONMEBOL ref, career 4.59-4.69 y/g (~4.8
+    total), but 3.5 in his 2 WC-26 games; MAR has 4 players a booking from suspension
+    (cautious). Blended 4.3 total (factor ~1.24).'
+FRA vs SEN:
+  cards_per_game: 3.8
+  referee: Alireza Faghani (Australia/Iran)
+  source: 'web 2026-06-16: 3.62-4.26 yellows/g (439 fix); experienced, controlled
+    — toward lower intl figure'
+FRA vs SWE:
+  cards_per_game: 3.4
+  referee: Danny Makkelie (Netherlands)
+  source: 'web 2026-06-30 (refined): statshub 3.40, 253-match 3.37, 506-match 3.40
+    yellows/g — balanced/lenient, NOT card-heavy. Prior 3.8 over-estimate; 3.4<3.46
+    -> factor 0.98.'
+GER vs CIV:
+  cards_per_game: 4.78
+  referee: Juan Gabriel Benítez (Paraguay)
+  source: 'web 2026-06-20: 4.78 yellows/g, strict CONMEBOL ref; caps to 1.0 under
+    asymmetric card cap so no upward inflation (logged for audit; 4+ cards stays 0.383)'
+GER vs Curacao:
+  cards_per_game: 4.0
+  referee: Jalal Jiyed (Morocco)
+  source: 'web 2026-06-14: ~3.85 yellows/g'
+GER vs PAR:
+  cards_per_game: 3.7
+  referee: Jalal Jayed
+  source: 'web 2026-06-29: ~3.7 yellows/game (statshub 3.82 / 3.73 / 3.43) ~= tournament
+    avg 3.46 -> factor caps at 1.0'
+GHA vs PAN:
+  cards_per_game: 3.3
+  referee: Glenn Nyberg (Sweden)
+  source: 'web 2026-06-17: ~3.0-3.2 yellows/g (328-441 fix), lenient'
+Haiti vs SCO:
+  cards_per_game: 4.0
+  referee: Mustapha Ghorbal (Algeria)
+  source: 'web 2026-06-14: 3.87 yellows/g career, ~4.0 in WC matches'
+IRN vs New Zealand:
+  cards_per_game: 4.0
+  referee: César Arturo Ramos (Mexico)
+  source: 'web 2026-06-15: 4.18 yellows/g career (394 fixtures), ~4.0 Liga MX; intl-moderated'
+IRQ vs NOR:
+  cards_per_game: 3.9
+  referee: Pierre Atcho (Gabon)
+  source: 'web 2026-06-16: 3.63-4.04 yellows/g (52 fix); midpoint'
+KSA vs URU:
+  cards_per_game: 4.2
+  referee: Maurizio Mariani (Italy)
+  source: 'web 2026-06-15: 3.78-4.81 yellows/g range (185 Serie A), card-heavy; midpoint
+    used'
+MEX vs ENG:
+  cards_per_game: 3.8
+  referee: Alireza Faghani (Australia)
+  source: 'web 2026-07-05: 3.62-4.26 y/g controlled (our FRA/SEN profile) -> caps
+    1.0.'
+MEX vs KOR:
+  cards_per_game: 4.7
+  referee: Gustavo Tejera (Uruguay)
+  source: 'web 2026-06-18: 5.11-5.24 yellows/g (316-344 fix), very strict CONMEBOL
+    ref; moderated for intl context (cf. Valenzuela)'
+NED vs JPN:
+  cards_per_game: 3.8
+  referee: Ismail Elfath (USA)
+  source: 'web 2026-06-14: ~3.6-4.0 yellows/g'
+PAR vs FRA:
+  cards_per_game: 3.7
+  referee: Ilgiz Tantashev (Uzbekistan)
+  source: 'web 2026-07-04: AFC ref, no public card avg -> ~3.7 est, factor caps ~1.0
+    (neutral).'
+POR vs COD:
+  cards_per_game: 4.3
+  referee: Abdulrahman Al Jassim (Qatar)
+  source: 'web 2026-06-17: 4.3 yellows/g (107 intl matches), card-heavy intl (3.0
+    domestic)'
+POR vs CRO:
+  cards_per_game: 3.3
+  referee: Espen Eskås (Norway)
+  source: 'web 2026-07-02: 2.89 (368-game largest sample) / 3.42 / 3.53 -> ~3.3 yellows/g,
+    mildly lenient -> factor ~0.95.'
+SUI vs ALG:
+  cards_per_game: 4.5
+  referee: Yael Falcón Pérez (Argentina)
+  source: 'web 2026-07-02: Argentine Primera ref (card-heavy league ~4.5-5 y/g) ->
+    factor caps at 1.0, no change.'
+SUI vs BIH:
+  cards_per_game: 4.5
+  referee: João Pinheiro (Portugal)
+  source: 'web 2026-06-18: 4.41-4.79 yellows/g (129-390 fix), card-active UEFA ref;
+    light intl moderation'
+SUI vs COL:
+  cards_per_game: 2.8
+  referee: Iván Barton (El Salvador)
+  source: 'web 2026-07-07: lenient "let it flow" ref, 2.5 cards/g this WC (5Y across
+    2 games); set 2.8 blending the WC sample with KO intensity + small-sample regression.
+    Factor ~0.81.'
+UZB vs COL:
+  cards_per_game: 4.0
+  referee: Anthony Taylor (England)
+  source: 'web 2026-06-17: strict EPL ref, ~3.8-4.2 yellows/g, estimate'

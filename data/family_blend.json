@@ -1,0 +1,78 @@
+{
+  "btts_and_ge3": {
+    "base_rate": 0.3997,
+    "w_model": 1.0
+  },
+  "h2_more_than_h1": {
+    "base_rate": 0.4374,
+    "w_model": 0.673
+  },
+  "ht_team_winning": {
+    "base_rate": 0.3334,
+    "w_model": 1.0
+  },
+  "ht_tied": {
+    "base_rate": 0.4132,
+    "w_model": 1.0
+  },
+  "more_cards": {
+    "base_rate": 0.3335,
+    "w_model": 0.948
+  },
+  "more_corners": {
+    "base_rate": 0.5334,
+    "w_model": 0.971
+  },
+  "more_fouls": {
+    "base_rate": 0.4392,
+    "w_model": 0.818
+  },
+  "more_sot": {
+    "base_rate": 0.5292,
+    "w_model": 1.0
+  },
+  "team_corners_ge5": {
+    "base_rate": 0.5651,
+    "w_model": 1.0
+  },
+  "team_goals_ge2": {
+    "base_rate": 0.4242,
+    "w_model": 1.0
+  },
+  "team_more_goals_2h": {
+    "base_rate": 0.3652,
+    "w_model": 1.0
+  },
+  "team_scores_2h": {
+    "base_rate": 0.552,
+    "w_model": 1.0
+  },
+  "team_sot_ge4": {
+    "base_rate": 0.6345,
+    "w_model": 1.0
+  },
+  "team_win": {
+    "base_rate": 0.4293,
+    "w_model": 1.0
+  },
+  "total_cards_ge4": {
+    "base_rate": 0.5972,
+    "w_model": 0.402
+  },
+  "total_corners_ge10": {
+    "base_rate": 0.5041,
+    "w_model": 0.943
+  },
+  "total_goals_2h_ge2": {
+    "base_rate": 0.4401,
+    "w_model": 1.0
+  },
+  "total_goals_ge3": {
+    "base_rate": 0.5013,
+    "w_model": 1.0
+  },
+  "total_sot_ge8": {
+    "base_rate": 0.5888,
+    "w_model": 1.0
+  }
+}

@@ -1,0 +1,358 @@
+ALG vs AUT:
+  kickoff: '2026-06-28T02:00:00+00:00'
+  minutes:
+    Marcel Sabitzer: 90
+  pulled_at: '2026-06-28T01:10:30+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+ARG vs CPV:
+  kickoff: '2026-07-03T22:00:00+00:00'
+  minutes:
+    Julián Álvarez: 20
+    Lautaro Martínez: 90
+    Lionel Messi: 90
+  pulled_at: '2026-07-03T21:12:08+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+ARG vs EGY:
+  kickoff: '2026-07-07T16:00:00+00:00'
+  minutes:
+    Julián Álvarez: 90
+    Lionel Messi: 90
+    Mohamed Salah: 90
+    Omar Marmoush: 20
+  pulled_at: '2026-07-07T15:58:28+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+ARG vs SUI:
+  kickoff: '2026-07-12T01:00:00+00:00'
+  minutes:
+    Breel Embolo: 90
+    Julián Álvarez: 90
+    Lionel Messi: 90
+  pulled_at: '2026-07-12T00:12:03+00:00'
+  source: espn
+  status: pulled
+  unmatched:
+  - a substitute
+AUS vs EGY:
+  kickoff: '2026-07-03T18:00:00+00:00'
+  minutes:
+    Mahmoud Trezeguet: 20
+    Nestory Irankunda: 90
+  pulled_at: '2026-07-03T17:10:36+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+BEL vs SEN:
+  kickoff: '2026-07-01T20:00:00+00:00'
+  minutes:
+    Ismaïla Sarr: 90
+    Kevin De Bruyne: 90
+    Leandro Trossard: 90
+    Sadio Mané: 90
+  pulled_at: '2026-07-01T19:12:42+00:00'
+  source: espn
+  status: pulled
+  unmatched:
+  - a substitute
+BRA vs JPN:
+  kickoff: '2026-06-29T17:00:00+00:00'
+  minutes:
+    Ayase Ueda: 90
+    Matheus Cunha: 90
+  pulled_at: '2026-06-29T16:11:22+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+BRA vs NOR:
+  kickoff: '2026-07-05T20:00:00+00:00'
+  minutes:
+    Erling Haaland: 90
+    Martin Ødegaard: 90
+    Matheus Cunha: 90
+    Vinícius Júnior: 90
+  pulled_at: '2026-07-05T19:10:32+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+CAN vs MAR:
+  kickoff: '2026-07-04T17:00:00+00:00'
+  minutes:
+    Achraf Hakimi: 90
+    Alphonso Davies: 20
+    Brahim Díaz: 90
+    Ismael Saibari: 90
+    Jonathan David: 90
+  pulled_at: '2026-07-04T16:11:22+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+CIV vs NOR:
+  kickoff: '2026-06-30T17:00:00+00:00'
+  minutes:
+    Alexander Sørloth: 90
+    Amad Diallo: 20
+    Erling Haaland: 90
+    Martin Ødegaard: 90
+  pulled_at: '2026-06-30T16:10:51+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+COD vs UZB:
+  kickoff: '2026-06-27T23:30:00+00:00'
+  minutes:
+    Cédric Bakambu: 90
+    Eldor Shomurodov: 90
+  pulled_at: '2026-06-27T22:42:12+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+COL vs POR:
+  kickoff: '2026-06-27T23:30:00+00:00'
+  minutes:
+    Gonçalo Ramos: 20
+    Luis Díaz: 90
+  pulled_at: '2026-06-27T22:42:14+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+CRO vs GHA:
+  kickoff: '2026-06-27T21:00:00+00:00'
+  minutes:
+    Antoine Semenyo: 90
+    Luka Sučić: 20
+  pulled_at: '2026-06-27T20:10:47+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+ENG vs ARG:
+  kickoff: '2026-07-15T19:00:00+00:00'
+  minutes:
+    Harry Kane: 90
+    Jude Bellingham: 90
+    Julián Álvarez: 90
+    Lionel Messi: 90
+  pulled_at: '2026-07-15T18:10:22+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+ENG vs COD:
+  kickoff: '2026-07-01T16:00:00+00:00'
+  minutes:
+    Harry Kane: 90
+    Jude Bellingham: 90
+    Yoane Wissa: 90
+  pulled_at: '2026-07-01T15:13:10+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+ESP vs ARG:
+  kickoff: '2026-07-19T19:00:00+00:00'
+  minutes:
+    Lamine Yamal: 90
+    Lionel Messi: 90
+  pulled_at: '2026-07-19T18:10:19+00:00'
+  source: espn
+  status: pulled
+  unmatched:
+  - a substitute
+ESP vs AUT:
+  kickoff: '2026-07-02T19:00:00+00:00'
+  minutes:
+    Lamine Yamal: 90
+    Marcel Sabitzer: 90
+    Mikel Oyarzabal: 90
+  pulled_at: '2026-07-02T18:13:22+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+ESP vs BEL:
+  kickoff: '2026-07-10T19:00:00+00:00'
+  minutes:
+    Kevin De Bruyne: 90
+    Lamine Yamal: 90
+    Romelu Lukaku: 20
+  pulled_at: '2026-07-10T18:11:01+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+FRA vs ENG:
+  kickoff: '2026-07-18T21:00:00+00:00'
+  minutes:
+    Harry Kane: 20
+    Kylian Mbappé: 90
+    Ousmane Dembélé: 20
+  pulled_at: '2026-07-18T20:46:58+00:00'
+  source: espn
+  status: pulled
+  unmatched:
+  - a substitute
+FRA vs ESP:
+  kickoff: '2026-07-14T19:00:00+00:00'
+  minutes:
+    Kylian Mbappé: 90
+    Lamine Yamal: 90
+  pulled_at: '2026-07-14T18:11:14+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+FRA vs MAR:
+  kickoff: '2026-07-09T20:00:00+00:00'
+  minutes:
+    Achraf Hakimi: 90
+    Brahim Díaz: 90
+    Kylian Mbappé: 90
+    Ousmane Dembélé: 90
+  pulled_at: '2026-07-09T19:14:25+00:00'
+  source: espn
+  status: pulled
+  unmatched:
+  - a substitute
+FRA vs SWE:
+  kickoff: '2026-06-30T21:00:00+00:00'
+  minutes:
+    Alexander Isak: 90
+    Kylian Mbappé: 90
+    Ousmane Dembélé: 90
+    Viktor Gyökeres: 90
+  pulled_at: '2026-06-30T20:16:59+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+GER vs PAR:
+  kickoff: '2026-06-29T20:30:00+00:00'
+  minutes:
+    Florian Wirtz: 90
+    Jamal Musiala: 20
+    Julio Enciso: 90
+    Kai Havertz: 90
+  pulled_at: '2026-06-29T19:45:47+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+JOR vs ARG:
+  kickoff: '2026-06-28T02:00:00+00:00'
+  minutes: {}
+  pulled_at: '2026-06-28T01:10:31+00:00'
+  source: espn
+  status: pulled
+  unmatched:
+  - Mousa Al-Taamari
+MEX vs ECU:
+  kickoff: '2026-07-01T01:00:00+00:00'
+  minutes:
+    Gonzalo Plata: 90
+    Raúl Jiménez: 90
+  pulled_at: '2026-07-01T00:19:33+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+MEX vs ENG:
+  kickoff: '2026-07-06T00:00:00+00:00'
+  minutes:
+    Harry Kane: 90
+    Jude Bellingham: 90
+    Julián Quiñones: 90
+    Raúl Jiménez: 90
+  pulled_at: '2026-07-05T23:14:24+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+NED vs MAR:
+  kickoff: '2026-06-30T01:00:00+00:00'
+  minutes:
+    Brian Brobbey: 90
+    Ismael Saibari: 90
+  pulled_at: '2026-06-30T00:13:42+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+PAN vs ENG:
+  kickoff: '2026-06-27T21:00:00+00:00'
+  minutes:
+    Harry Kane: 90
+    José Fajardo: 20
+  pulled_at: '2026-06-27T20:10:48+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+PAR vs FRA:
+  kickoff: '2026-07-04T21:00:00+00:00'
+  minutes:
+    Julio Enciso: 90
+    Kylian Mbappé: 90
+    Michael Olise: 90
+    Miguel Almirón: 90
+    Ousmane Dembélé: 90
+  pulled_at: '2026-07-04T20:12:17+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+POR vs CRO:
+  kickoff: '2026-07-02T23:00:00+00:00'
+  minutes:
+    Bernardo Silva: 20
+    Bruno Fernandes: 90
+    Cristiano Ronaldo: 90
+    Luka Modrić: 90
+  pulled_at: '2026-07-02T22:35:10+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+RSA vs CAN:
+  kickoff: '2026-06-28T19:00:00+00:00'
+  minutes:
+    Cyle Larin: 20
+    Iqraam Rayners: 20
+  pulled_at: '2026-06-28T18:18:50+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+SUI vs ALG:
+  kickoff: '2026-07-03T03:00:00+00:00'
+  minutes:
+    Amine Gouiri: 20
+    Breel Embolo: 90
+    Riyad Mahrez: 90
+    Rubén Vargas: 90
+  pulled_at: '2026-07-03T02:12:42+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+SUI vs COL:
+  kickoff: '2026-07-07T20:00:00+00:00'
+  minutes:
+    Breel Embolo: 90
+    Dan Ndoye: 90
+    Jhon Arias: 90
+    Luis Díaz: 90
+  pulled_at: '2026-07-07T19:13:05+00:00'
+  source: espn
+  status: pulled
+  unmatched:
+  - a substitute
+USA vs BEL:
+  kickoff: '2026-07-07T00:00:00+00:00'
+  minutes:
+    Christian Pulisic: 90
+    Kevin De Bruyne: 20
+    Leandro Trossard: 90
+    Malik Tillman: 90
+    Romelu Lukaku: 20
+  pulled_at: '2026-07-06T23:13:49+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
+USA vs BIH:
+  kickoff: '2026-07-02T00:00:00+00:00'
+  minutes:
+    Ermedin Demirović: 90
+    Folarin Balogun: 90
+  pulled_at: '2026-07-01T23:21:10+00:00'
+  source: espn
+  status: pulled
+  unmatched: []
