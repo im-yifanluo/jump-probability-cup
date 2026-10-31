@@ -22,6 +22,7 @@ from scipy.optimize import least_squares
 MAX_GOALS = 12  # grid truncation; P(>12 goals) is negligible
 H2_GOAL_SHARE = 0.54  # measured on club data (see backtest validation)
 ET_FRACTION = 1.0 / 3.0  # 30' extra time vs 90' regulation, at the same Poisson rate
+_SINGLE_DIGIT_SHARE = 0.383  # StatsBomb: 269/703 goals scored by a jersey-1-9 player
 PENS_TILT = 0.25         # a penalty shootout retains only ~this share of the regulation
                          # strength edge — empirically shootouts are near coin-flips
 
@@ -195,6 +196,27 @@ class ScorelineModel:
         n = min(len(pmf1), len(pmf2))
         return float(np.sum(pmf1[:n] * pmf2[:n]))
 
+    def p_team_n_in_one_half(self, n: int) -> float:
+        """P(SOME team scores >= n goals within a single half) — the four
+        (team, half) cells as independent Poissons at the h2_share split
+        (final template, 2026-07-17)."""
+        cells = [self._half_lambda(side, half)
+                 for side in ("home", "away") for half in ("1h", "2h")]
+        p_none = 1.0
+        for lam in cells:
+            p_none *= float(poisson_pmf(lam)[:n].sum())   # P(cell < n)
+        return 1.0 - p_none
+
+    def p_first_goal_single_digit(self) -> float:
+        """P(the match's first goal — incl. extra time — is scored by a player
+        wearing a single-digit shirt 1-9; No if 0-0 after ET). = P(>=1 goal in
+        regulation+ET) x the StatsBomb single-digit scorer share (269/703=0.383;
+        modern attackers mostly wear 10/11/17+). ET only occurs on a reg draw."""
+        lam_et = (self.lam_home + self.lam_away) * ET_FRACTION
+        p00 = float(self.grid[0, 0])
+        p_goal = (1 - p00) + p00 * (1 - exp(-lam_et))   # reg goal, or 0-0 reg then ET goal
+        return float(p_goal * _SINGLE_DIGIT_SHARE)
+
     def p_first_goal_by_other(self, excl_lambda_sum: float) -> float:
         """P(the match's first goal is scored by a player OUTSIDE a named set) =
         P(>=1 goal) x (1 - the set's share of total scoring intensity). Competing
@@ -218,6 +240,12 @@ class ScorelineModel:
         margin==1 is "decided by exactly one goal"). Straight off the grid."""
         diff = np.abs(self._h - self._a)
         return float(self.grid[diff == margin].sum())
+
+    def p_ht_scoreless(self) -> float:
+        """P(the match is 0-0 at halftime) = P(no goals in the first half) =
+        exp(-lambda_1h_total), the first-half Poisson at the h2_share split."""
+        lam_1h = (self.lam_home + self.lam_away) * (1 - self.h2_share)
+        return float(exp(-lam_1h))
 
     def p_first_goal_in_2h(self) -> float:
         """P(the match's first goal falls in the second half) = P(no 1H goal) x

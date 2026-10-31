@@ -104,6 +104,10 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 def upcoming_matches(pc: ProbabilityCup, hours: float) -> pd.DataFrame:
     markets = pc.markets_df(max_age=pd.Timedelta(minutes=30).to_pytimedelta())
+    if markets.empty or "kickoff" not in markets:
+        # A fully-empty snapshot (between rounds: no open markets anywhere)
+        # yields a columnless frame — treat as "nothing upcoming", don't crash.
+        return pd.DataFrame()
     now = datetime.now(timezone.utc)
     horizon = now + timedelta(hours=hours)
     mask = (markets["kickoff"] > now) & (markets["kickoff"] <= horizon)
@@ -203,6 +207,12 @@ def main():
     markets = upcoming_matches(pc, args.hours)
     if markets.empty:
         print(f"No open markets with kickoff in the next {args.hours:.0f}h.")
+        # A no-op agent run still RAN — record the heartbeat so the watchdog does
+        # not false-alarm "morning run missed" on days with no games in horizon.
+        if args.agent and not dry:
+            AGENT_HEARTBEAT.parent.mkdir(parents=True, exist_ok=True)
+            AGENT_HEARTBEAT.write_text(datetime.now(timezone.utc).isoformat())
+        _log_run(args.hours, dry, pd.DataFrame(), {"noop": 1}, [])
         return
 
     experiment = _load_experiment(bots)
@@ -339,9 +349,12 @@ def _log_run(hours: float, dry: bool, markets: pd.DataFrame,
     (Per-market submission detail goes to submissions.csv via the domain layer.)"""
     RUNS_LOG.parent.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    # markets may be empty (e.g. a --defer-to-agent run that did nothing), in
+    # which case it has no columns — guard the match count.
+    n_matches = markets["match_name"].nunique() if "match_name" in markets else 0
     lines = [
         f"[{stamp}] daily_run hours={hours:g} mode={'dry-run' if dry else 'SUBMIT'}",
-        f"  matches={markets['match_name'].nunique()} markets={len(markets)} "
+        f"  matches={n_matches} markets={len(markets)} "
         f"actions={actions or 'none'}",
     ]
     lines += [f"  attention: {item}" for item in attention]

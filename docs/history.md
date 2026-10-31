@@ -11369,6 +11369,7 @@ RBP
 41.19
 Beat crowd
 
+## Quarterfinals
 ### France vs Morocco
 
 RBP +210.82
@@ -11552,4 +11553,1098 @@ OUTCOME
 0%
 RBP
 14.84
+Beat crowd
+
+### Spain vs Belgium
+
+RBP +37.69
+
+Q1
+RESULT: YES
+Will Spain advance to the semifinals?
+YOU
+74%
+CROWD
+73%
+OUTCOME
+100%
+RBP
+5.02
+Beat crowd
+Q2
+RESULT: YES
+Will the match be tied at halftime?
+YOU
+42%
+CROWD
+42%
+OUTCOME
+100%
+RBP
+3.12
+Beat crowd
+Q3
+RESULT: NO
+Will Belgium hold a lead at any point in regulation (90 minutes + stoppage time, excluding penalty shootout)?
+YOU
+32%
+CROWD
+34%
+OUTCOME
+0%
+RBP
+7.86
+Beat crowd
+Q4
+RESULT: NO
+Will either team make a substitution at halftime?
+YOU
+50%
+CROWD
+41%
+OUTCOME
+0%
+RBP
+-9.21
+Below crowd
+Q5
+RESULT: NO
+Will a goal be scored before the first hydration break?
+YOU
+48%
+CROWD
+37%
+OUTCOME
+0%
+RBP
+-13.61
+Below crowd
+Q6
+RESULT: YES
+Will a goal be scored after the second hydration break but before the end of regulation?
+YOU
+50%
+CROWD
+53%
+OUTCOME
+100%
+RBP
+-1.13
+Below crowd
+Q7
+RESULT: YES
+Will both teams score in regulation (90 minutes + stoppage time)?
+YOU
+54%
+CROWD
+50%
+OUTCOME
+100%
+RBP
+11.94
+Beat crowd
+Q8
+RESULT: NO
+Will Lamine Yamal (Spain, #19) score or assist a goal (excluding own goals) in regulation (90 minutes + stoppage time)?
+YOU
+42%
+CROWD
+49%
+OUTCOME
+0%
+RBP
+18.39
+Beat crowd
+Q9
+RESULT: YES
+Will Kevin De Bruyne (Belgium, #7) have 1 or more shots on target in regulation (90 minutes + stoppage time)?
+YOU
+40%
+CROWD
+47%
+OUTCOME
+100%
+RBP
+-9.43
+Below crowd
+Q10
+RESULT: NO
+Will Romelu Lukaku (Belgium, #9) have 1 or more shots on target in regulation (90 minutes + stoppage time)?
+YOU
+20%
+CROWD
+45%
+OUTCOME
+0%
+RBP
+40.57
+Beat crowd
+Q11
+RESULT: YES
+Will Spain have 5 or more shots on target in regulation (90 minutes + stoppage time)?
+YOU
+54%
+CROWD
+63%
+OUTCOME
+100%
+RBP
+-11.18
+Below crowd
+Q12
+RESULT: NO
+Will Belgium have 3 or more shots on target in regulation (90 minutes + stoppage time)?
+YOU
+52%
+CROWD
+56%
+OUTCOME
+0%
+RBP
+13.55
+Beat crowd
+Q13
+RESULT: NO
+Will Spain have 6 or more corner kicks in regulation (90 minutes + stoppage time)?
+YOU
+46%
+CROWD
+57%
+OUTCOME
+0%
+RBP
+27.24
+Beat crowd
+Q14
+RESULT: YES
+Will there be 4 or more total cards in regulation (90 minutes + stoppage time)?
+YOU
+21%
+CROWD
+38%
+OUTCOME
+100%
+RBP
+-44.2
+Below crowd
+Q15
+RESULT: NO
+Will a penalty kick be awarded OR a red card be shown in regulation (90 minutes + stoppage time)?
+YOU
+37%
+CROWD
+33%
+OUTCOME
+0%
+RBP
+-1.23
+Below crowd
+
+### Norway vs England
+
+RBP +168.06
+
+Q1
+RESULT: NO
+Will Erling Haaland (Norway, #9) score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?
+YOU
+44%
+CROWD
+55%
+OUTCOME
+0%
+RBP
+29.74
+Beat crowd
+Q2
+RESULT: NO
+Will Harry Kane (England, #9) have 2 or more shots on target in regulation (90 minutes + stoppage time)?
+YOU
+40%
+CROWD
+55%
+OUTCOME
+0%
+RBP
+36.68
+Beat crowd
+Q3
+RESULT: NO
+Will England win in regulation (90 minutes + stoppage time)?
+YOU
+50%
+CROWD
+52%
+OUTCOME
+0%
+RBP
+9.06
+Beat crowd
+Q4
+RESULT: NO
+Will Jude Bellingham (England, #10) have 2 or more shots on target in regulation (90 minutes + stoppage time)?
+YOU
+30%
+CROWD
+42%
+OUTCOME
+0%
+RBP
+24.75
+Beat crowd
+Q5
+RESULT: NO
+Will the match have 3 or more total goals in regulation (90 minutes + stoppage time)?
+YOU
+55%
+CROWD
+58%
+OUTCOME
+0%
+RBP
+11.91
+Beat crowd
+Q6
+RESULT: YES
+Will the match be tied at halftime?
+YOU
+42%
+CROWD
+44%
+OUTCOME
+100%
+RBP
+-1.02
+Below crowd
+Q7
+RESULT: YES
+Will both teams score in regulation (90 minutes + stoppage time)?
+YOU
+57%
+CROWD
+63%
+OUTCOME
+100%
+RBP
+-5.38
+Below crowd
+Q8
+RESULT: NO
+Will England have 6 or more corner kicks in regulation (90 minutes + stoppage time)?
+YOU
+40%
+CROWD
+51%
+OUTCOME
+0%
+RBP
+23.88
+Beat crowd
+Q9
+RESULT: YES
+Will Norway have 4 or more corner kicks in regulation (90 minutes + stoppage time)?
+YOU
+54%
+CROWD
+56%
+OUTCOME
+100%
+RBP
+0.3
+Beat crowd
+Q10
+RESULT: NO
+Will a substitute score or assist a goal (excluding own goals) in regulation (90 minutes + stoppage time)?
+YOU
+25%
+CROWD
+39%
+OUTCOME
+0%
+RBP
+22.56
+Beat crowd
+Q11
+RESULT: NO
+Will a penalty kick be awarded OR a red card be shown in regulation (90 minutes + stoppage time)?
+YOU
+37%
+CROWD
+35%
+OUTCOME
+0%
+RBP
+1
+Beat crowd
+Q12
+RESULT: NO
+Will at least one card be shown in each half of regulation (90 minutes + stoppage time)?
+YOU
+42%
+CROWD
+51%
+OUTCOME
+0%
+RBP
+22.62
+Beat crowd
+Q13
+RESULT: NO
+Will there be 24 or more total shots (on and off target) in regulation (90 minutes + stoppage time)?
+YOU
+66%
+CROWD
+56%
+OUTCOME
+0%
+RBP
+-18.47
+Below crowd
+Q14
+RESULT: NO
+Will the second half produce more goals than the first half in regulation (90 minutes + stoppage time)?
+YOU
+50%
+CROWD
+53%
+OUTCOME
+0%
+RBP
+10.43
+Beat crowd
+Q15
+RESULT: NO
+
+### Argentina vs Switzerland
+
+RBP +171.38
+
+Q1
+RESULT: YES
+Will Argentina advance to the semifinals?
+YOU
+73%
+CROWD
+75%
+OUTCOME
+100%
+RBP
+1.65
+Beat crowd
+Q2
+RESULT: NO
+Will the match be 0-0 at halftime?
+YOU
+39%
+CROWD
+37%
+OUTCOME
+0%
+RBP
+2.01
+Beat crowd
+Q3
+RESULT: NO
+Will Switzerland hold a lead at any point in regulation (90 minutes + stoppage time, excluding penalty shootout)?
+YOU
+32%
+CROWD
+33%
+OUTCOME
+0%
+RBP
+5.56
+Beat crowd
+Q4
+RESULT: YES
+Will the match have 2 or fewer total goals in regulation (90 minutes + stoppage time)?
+YOU
+58%
+CROWD
+52%
+OUTCOME
+100%
+RBP
+15.07
+Beat crowd
+Q5
+RESULT: NO
+Will a goal be scored after the second hydration break but before the end of regulation?
+YOU
+39%
+CROWD
+51%
+OUTCOME
+0%
+RBP
+25.45
+Beat crowd
+Q6
+RESULT: YES
+Will Switzerland have 3 or more shots on target in regulation (90 minutes + stoppage time)?
+YOU
+41%
+CROWD
+52%
+OUTCOME
+100%
+RBP
+-18.3
+Below crowd
+Q7
+RESULT: NO
+Will a substitute score or assist a goal (excluding own goals) in regulation (90 minutes + stoppage time)?
+YOU
+21%
+CROWD
+37%
+OUTCOME
+0%
+RBP
+22.46
+Beat crowd
+Q8
+RESULT: NO
+Will Lionel Messi (Argentina, #10) score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?
+YOU
+48%
+CROWD
+55%
+OUTCOME
+0%
+RBP
+20.67
+Beat crowd
+Q9
+RESULT: NO
+Will Julián Álvarez (Argentina, #9) score or assist a goal (excluding own goals) in regulation (90 minutes + stoppage time)?
+YOU
+41%
+CROWD
+40%
+OUTCOME
+0%
+RBP
+2.47
+Beat crowd
+Q10
+RESULT: YES
+Will Breel Embolo (Switzerland, #7) have 1 or more shots on target in regulation (90 minutes + stoppage time)?
+YOU
+43%
+CROWD
+51%
+OUTCOME
+100%
+RBP
+-12.6
+Below crowd
+Q11
+RESULT: NO
+Will Switzerland have 4 or more corner kicks in regulation (90 minutes + stoppage time)?
+YOU
+43%
+CROWD
+46%
+OUTCOME
+0%
+RBP
+8.62
+Beat crowd
+Q12
+RESULT: NO
+Will Argentina have 5 or more shots on target in regulation (90 minutes + stoppage time)?
+YOU
+41%
+CROWD
+61%
+OUTCOME
+0%
+RBP
+45.87
+Beat crowd
+Q13
+RESULT: NO
+Will Argentina have 7 or more corner kicks in regulation (90 minutes + stoppage time)?
+YOU
+29%
+CROWD
+38%
+OUTCOME
+0%
+RBP
+17.89
+Beat crowd
+Q14
+RESULT: NO
+Will there be 4 or more total cards in regulation (90 minutes + stoppage time)?
+YOU
+23%
+CROWD
+42%
+OUTCOME
+0%
+RBP
+29.03
+Beat crowd
+Q15
+RESULT: YES
+Will a penalty kick be awarded OR a red card be shown in regulation (90 minutes + stoppage time)?
+YOU
+37%
+CROWD
+36%
+OUTCOME
+100%
+RBP
+5.53
+Beat crowd
+
+## Semifinals
+### France vs Spain
+
+RBP +248.68
+
+Q1
+RESULT: YES
+Will there be 4 or more offsides (both teams combined) in regulation (90 minutes + stoppage time)?
+YOU
+37%
+CROWD
+50%
+OUTCOME
+100%
+RBP
+-24.29
+Below crowd
+Q2
+RESULT: NO
+Will there be 4 or more total cards in regulation (90 minutes + stoppage time)?
+YOU
+13%
+CROWD
+43%
+OUTCOME
+0%
+RBP
+38.51
+Beat crowd
+Q3
+RESULT: NO
+Will Lamine Yamal (Spain, #19) score or assist a goal (excluding own goals) in regulation (90 minutes + stoppage time)?
+YOU
+30%
+CROWD
+42%
+OUTCOME
+0%
+RBP
+24.03
+Beat crowd
+Q4
+RESULT: NO
+Will the referee conduct an on-field review at the pitchside VAR monitor at any point in regulation (90 minutes + stoppage time) or extra time? Reviews during the penalty shootout do not count.
+YOU
+30%
+CROWD
+42%
+OUTCOME
+0%
+RBP
+26.02
+Beat crowd
+Q5
+RESULT: NO
+Will the match have 3 or more total goals in regulation (90 minutes + stoppage time)?
+YOU
+49%
+CROWD
+53%
+OUTCOME
+0%
+RBP
+12.17
+Beat crowd
+Q6
+RESULT: NO
+Will the match be tied at the end of regulation (90 minutes + stoppage time) and go to extra time?
+YOU
+32%
+CROWD
+34%
+OUTCOME
+0%
+RBP
+7.42
+Beat crowd
+Q7
+RESULT: YES
+Will a goal be scored before the first hydration break?
+YOU
+40%
+CROWD
+38%
+OUTCOME
+100%
+RBP
+9.13
+Beat crowd
+Q8
+RESULT: NO
+Will the first goal of the match (including extra time, excluding penalty shootout) be scored by a player wearing a single-digit shirt number (1-9)? Resolves No if the score is 0-0 after extra time.
+YOU
+37%
+CROWD
+35%
+OUTCOME
+0%
+RBP
+3.38
+Beat crowd
+Q9
+RESULT: YES
+Will Spain advance to the final?
+YOU
+46%
+CROWD
+43%
+OUTCOME
+100%
+RBP
+12.3
+Beat crowd
+Q10
+RESULT: NO
+Will Kylian Mbappé (France, #10) score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?
+YOU
+45%
+CROWD
+52%
+OUTCOME
+0%
+RBP
+18.79
+Beat crowd
+Q11
+RESULT: YES
+Will a goal be scored after the first hydration break but before the second hydration break?
+YOU
+70%
+CROWD
+61%
+OUTCOME
+100%
+RBP
+17.85
+Beat crowd
+Q12
+RESULT: NO
+Will Spain have 5 or more shots on target in regulation (90 minutes + stoppage time)?
+YOU
+26%
+CROWD
+50%
+OUTCOME
+0%
+RBP
+40.43
+Beat crowd
+Q13
+RESULT: NO
+Will both teams score in regulation (90 minutes + stoppage time)?
+YOU
+57%
+CROWD
+59%
+OUTCOME
+0%
+RBP
+9.99
+Beat crowd
+Q14
+RESULT: NO
+Will Spain make the first substitution of the match in regulation (90 minutes + stoppage time)? If both teams substitute simultaneously, resolves by whichever outgoing player exits the field first.
+YOU
+50%
+CROWD
+54%
+OUTCOME
+0%
+RBP
+11.5
+Beat crowd
+Q15
+RESULT: NO
+Will France have 4 or more shots on target in regulation (90 minutes + stoppage time)?
+YOU
+50%
+CROWD
+66%
+OUTCOME
+0%
+RBP
+41.46
+Beat crowd
+### England vs Argentina
+Q1
+RESULT: NO
+Will there be 8 or more total shots on target (both teams combined) in regulation (90 minutes + stoppage time)?
+YOU
+69%
+CROWD
+58%
+OUTCOME
+0%
+RBP
+-22.42
+Below crowd
+Q2
+RESULT: YES
+Will a goal be scored during first- or second-half stoppage time in regulation?
+YOU
+21%
+CROWD
+34%
+OUTCOME
+100%
+RBP
+-30.12
+Below crowd
+Q3
+RESULT: YES
+Will Julián Álvarez (Argentina, #9) have 1 or more shots on target in regulation (90 minutes + stoppage time)?
+YOU
+62%
+CROWD
+58%
+OUTCOME
+100%
+RBP
+12.84
+Beat crowd
+Q4
+RESULT: NO
+Will England advance to the final?
+YOU
+53%
+CROWD
+53%
+OUTCOME
+0%
+RBP
+5.51
+Beat crowd
+Q5
+RESULT: NO
+Will a penalty kick be awarded in regulation (90 minutes + stoppage time)?
+YOU
+29%
+CROWD
+33%
+OUTCOME
+0%
+RBP
+11.62
+Beat crowd
+Q6
+RESULT: NO
+Will Lionel Messi (Argentina, #10) score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?
+YOU
+39%
+CROWD
+45%
+OUTCOME
+0%
+RBP
+17.13
+Beat crowd
+Q7
+RESULT: NO
+Will at least one goal be scored in each half of regulation (90 minutes + stoppage time)?
+YOU
+44%
+CROWD
+51%
+OUTCOME
+0%
+RBP
+18.04
+Beat crowd
+Q8
+RESULT: NO
+Will Jude Bellingham (England, #10) score or assist a goal (excluding own goals) in regulation (90 minutes + stoppage time)?
+YOU
+43%
+CROWD
+44%
+OUTCOME
+0%
+RBP
+9.34
+Beat crowd
+Q9
+RESULT: YES
+Will both teams receive at least one card in regulation (90 minutes + stoppage time)?
+YOU
+59%
+CROWD
+66%
+OUTCOME
+100%
+RBP
+-4
+Below crowd
+Q10
+RESULT: YES
+Will Argentina have more corner kicks than England in regulation (90 minutes + stoppage time)?
+YOU
+41%
+CROWD
+43%
+OUTCOME
+100%
+RBP
+-1.17
+Below crowd
+Q11
+RESULT: YES
+Will a card be shown before the first goal of the match in regulation (90 minutes + stoppage time)? If neither a card nor a goal occurs, resolves No.
+YOU
+52%
+CROWD
+50%
+OUTCOME
+100%
+RBP
+9.99
+Beat crowd
+Q12
+RESULT: NO
+Will Harry Kane (England, #9) score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?
+YOU
+41%
+CROWD
+44%
+OUTCOME
+0%
+RBP
+10.33
+Beat crowd
+Q13
+RESULT: NO
+Will there be 10 or more total corner kicks (both teams combined) in regulation (90 minutes + stoppage time)?
+YOU
+36%
+CROWD
+45%
+OUTCOME
+0%
+RBP
+21.47
+Beat crowd
+Q14
+RESULT: NO
+Will England lead at halftime?
+YOU
+27%
+CROWD
+35%
+OUTCOME
+0%
+RBP
+14.5
+Beat crowd
+Q15
+RESULT: YES
+Will Argentina score 2 or more goals in regulation (90 minutes + stoppage time)?
+YOU
+30%
+CROWD
+39%
+OUTCOME
+100%
+RBP
+-17.37
+Below crowd
+
+### England vs France
+Q1
+RESULT: NO
+Will there be 9 or more total corner kicks (both teams combined) in regulation (90 minutes + stoppage time)?
+YOU
+58%
+CROWD
+60%
+OUTCOME
+0%
+RBP
+11.42
+Beat crowd
+Q2
+RESULT: NO
+Will Harry Kane (England, #9) score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?
+YOU
+15%
+CROWD
+36%
+OUTCOME
+0%
+RBP
+31.64
+Beat crowd
+Q3
+RESULT: YES
+Will Kylian Mbappé (France, #10) score a goal (excluding own goals) in regulation (90 minutes + stoppage time)?
+YOU
+55%
+CROWD
+58%
+OUTCOME
+100%
+RBP
+2
+Beat crowd
+Q4
+RESULT: YES
+Will each team record 4 or more shots on target in regulation (90 minutes + stoppage time)?
+YOU
+35%
+CROWD
+52%
+OUTCOME
+100%
+RBP
+-31.31
+Below crowd
+Q5
+RESULT: NO
+Will France win the third-place match (Bronze Final)?
+YOU
+69%
+CROWD
+63%
+OUTCOME
+0%
+RBP
+-9.82
+Below crowd
+Q6
+RESULT: YES
+Will both teams score in regulation (90 minutes + stoppage time)?
+YOU
+65%
+CROWD
+66%
+OUTCOME
+100%
+RBP
+3.91
+Beat crowd
+Q7
+RESULT: YES
+Will the second half produce more goals than the first half in regulation (90 minutes + stoppage time)?
+YOU
+52%
+CROWD
+53%
+OUTCOME
+100%
+RBP
+2.5
+Beat crowd
+Q8
+RESULT: YES
+Will Ousmane Dembélé (France, #7) score or assist a goal (excluding own goals) in regulation (90 minutes + stoppage time)?
+YOU
+5%
+CROWD
+38%
+OUTCOME
+100%
+RBP
+-94.25
+Below crowd
+Q9
+RESULT: YES
+Will any player score 2 or more goals (excluding own goals) in regulation (90 minutes + stoppage time)?
+YOU
+28%
+CROWD
+35%
+OUTCOME
+100%
+RBP
+-12.79
+Below crowd
+Q10
+RESULT: YES
+Will the match have 4 or more total goals in regulation (90 minutes + stoppage time)?
+YOU
+43%
+CROWD
+42%
+OUTCOME
+100%
+RBP
+8.26
+Beat crowd
+Q11
+RESULT: NO
+Will France score the first goal of the match in regulation (90 minutes + stoppage time)?
+YOU
+59%
+CROWD
+58%
+OUTCOME
+0%
+RBP
+2.14
+Beat crowd
+Q12
+RESULT: YES
+Will a substitute score or assist a goal (excluding own goals) in regulation (90 minutes + stoppage time)?
+YOU
+29%
+CROWD
+45%
+OUTCOME
+100%
+RBP
+-33.31
+Below crowd
+Q13
+RESULT: YES
+Will a goal be scored before the first hydration break?
+YOU
+48%
+CROWD
+44%
+OUTCOME
+100%
+RBP
+15.53
+Beat crowd
+Q14
+RESULT: YES
+Will there be 20 or more total shots (on and off target) in regulation (90 minutes + stoppage time)?
+YOU
+92%
+CROWD
+71%
+OUTCOME
+100%
+RBP
+23.44
+Beat crowd
+Q15
+RESULT: NO
+Will the match be tied at halftime?
+YOU
+38%
+CROWD
+41%
+OUTCOME
+0%
+RBP
+9.96
 Beat crowd

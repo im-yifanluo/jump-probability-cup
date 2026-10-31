@@ -268,6 +268,14 @@ class PlayerModel:
             rate *= h2_share
         return p_ge(rate, SOT_ALPHA, threshold)
 
+    def sot_mean(self, player: str, team_sot_mean: float) -> float:
+        """Expected match SOT for a player — the same tempo x minutes scaling as
+        p_sot_ge but WITHOUT the threshold-1 compression (that is a >=1-family
+        calibration, not part of the mean). Feeds player-vs-player comparisons."""
+        r = self.rates(player)
+        tempo = min(team_sot_mean / TOURNAMENT_TEAM_SOT, MAX_TEMPO)
+        return r.sot_per_match * tempo * (r.expected_minutes / 90.0)
+
     def p_plays_full(self, player: str) -> float:
         """P(player plays the ENTIRE match in regulation). Position-group base
         rate (FULL90_RATE, 5-sub era); a player who is not starting (confirmed

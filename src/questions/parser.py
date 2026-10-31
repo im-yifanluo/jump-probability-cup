@@ -128,6 +128,12 @@ def _(m, teams):
     return MarketSpec("extra_time", stat="goals")
 
 
+@_rule(r"^Will the match be tied at the end and go to extra time\?$")
+def _(m, teams):
+    # A regulation tie IS what sends a KO match to extra time — same as extra_time.
+    return MarketSpec("extra_time", stat="goals")
+
+
 @_rule(r"^Will both halves have the same number of goals\?$")
 def _(m, teams):
     return MarketSpec("same_goals_halves", stat="goals")
@@ -135,6 +141,13 @@ def _(m, teams):
 
 @_rule(r"^Will the first card of the match be shown before the first goal is scored\?$")
 def _(m, teams):
+    return MarketSpec("first_card_before_goal", stat="cards")
+
+
+@_rule(r"^Will a card be shown before the first goal of the match\?.*$")
+def _(m, teams):
+    # A card before the first goal == the first card precedes the first goal.
+    # (Model's (1-e^-(lc+lg)) factor already resolves No when neither occurs.)
     return MarketSpec("first_card_before_goal", stat="cards")
 
 
@@ -192,12 +205,17 @@ def _(m, teams):
     return MarketSpec("ht_tied", period=H1)
 
 
+@_rule(r"^Will the match be 0-0 at halftime\?$")
+def _(m, teams):
+    return MarketSpec("ht_scoreless", period=H1)
+
+
 @_rule(r"^At halftime, will (?P<team>.+?) be winning\?$")
 def _(m, teams):
     return MarketSpec("ht_team_winning", team=m["team"], period=H1)
 
 
-@_rule(r"^Will (?P<team>.+?) be ahead at halftime\?$")
+@_rule(r"^Will (?P<team>.+?) (?:be ahead|lead) at halftime\?$")
 def _(m, teams):
     return MarketSpec("ht_team_winning", team=m["team"], period=H1)
 
@@ -317,19 +335,19 @@ def _(m, teams):
                       period=H1 if m["half"] == "first" else H2)
 
 
-@_rule(r"^Will there be (?P<n>\d+) or more total corner kicks(?: in the (?P<period>second half|match))?\?$")
+@_rule(r"^Will there be (?P<n>\d+) or more total corner kicks(?: \(both teams combined\))?(?: in the (?P<period>second half|match))?\?$")
 def _(m, teams):
     return MarketSpec("total_count_ge", stat="corners", threshold=int(m["n"]),
                       period=H2 if m["period"] == "second half" else MATCH)
 
 
-@_rule(r"^Will there be (?P<n>\d+) or more total shots on target(?P<h2> in the second half)?\?$")
+@_rule(r"^Will there be (?P<n>\d+) or more total shots on target(?: \(both teams combined\))?(?P<h2> in the second half)?\?$")
 def _(m, teams):
     return MarketSpec("total_count_ge", stat="sot", threshold=int(m["n"]),
                       period=H2 if m["h2"] else MATCH)
 
 
-@_rule(r"^Will there be (?P<n>\d+) or more (?:total )?offside(?: calls|s)?\?$")
+@_rule(r"^Will there be (?P<n>\d+) or more (?:total )?offside(?: calls|s)?(?: \(both teams combined\))?\?$")
 def _(m, teams):
     return MarketSpec("total_count_ge", stat="offsides", threshold=int(m["n"]))
 
@@ -474,6 +492,11 @@ def _(m, teams):
     return MarketSpec("timing_event", stat="goals", threshold=1, params={"window": "h1_after30"})
 
 
+@_rule(r"^Will a goal be scored after the first hydration break but before the second hydration break\?$")
+def _(m, teams):
+    return MarketSpec("timing_event", stat="goals", threshold=1, params={"window": "mid30_75"})
+
+
 @_rule(r"^Will a card be shown after the second hydration break(?:, including any extra time)?\?$")
 def _(m, teams):
     return MarketSpec("timing_event", stat="cards", threshold=1, params={"window": "after75"})
@@ -487,6 +510,11 @@ def _(m, teams):
 @_rule(r"^Will a card be shown during first- or second-half stoppage time(?: in regulation)?\?$")
 def _(m, teams):
     return MarketSpec("timing_event", stat="cards", threshold=1, params={"window": "stoppage"})
+
+
+@_rule(r"^Will a goal be scored during first- or second-half stoppage time(?: in regulation)?\?$")
+def _(m, teams):
+    return MarketSpec("timing_event", stat="goals", threshold=1, params={"window": "stoppage"})
 
 
 @_rule(r"^Will either team be ruled offside before the first hydration break\?$")
@@ -554,6 +582,72 @@ def _(m, teams):
 @_rule(r"^Will either team make a substitution at halftime\?$")
 def _(m, teams):
     return MarketSpec("substitution_at_ht")
+
+
+@_rule(r"^Will (?P<team>.+?) make the first substitution of the match\?.*$")
+def _(m, teams):
+    return MarketSpec("team_first_substitution", team=m["team"], stat="subs")
+
+
+@_rule(r"^Will the referee conduct an on-field review at the pitchside VAR monitor.*$")
+def _(m, teams):
+    return MarketSpec("var_review")
+
+
+@_rule(r"^Will the first goal of the match.*single-digit shirt number.*$")
+def _(m, teams):
+    return MarketSpec("first_goal_single_digit", stat="goals")
+
+
+# --- 3rd-place + FINAL templates (first seen FRA/ENG + ESP/ARG, 2026-07-17) ---
+
+@_rule(r"^Will (?P<team>.+?) win the third-place match(?: \(Bronze Final\))?\?$")
+def _(m, teams):
+    # No regulation qualifier and bronze finals tie-break (ET/pens) — winning
+    # the match = winning the tie, i.e. advance semantics, not regulation win.
+    return MarketSpec("advance", team=m["team"])
+
+
+@_rule(r"^Will (?P<team>.+?) win the World Cup\?$")
+def _(m, teams):
+    # The final: lifting the trophy = winning the tie incl. ET + shootout,
+    # which is exactly the advance model.
+    return MarketSpec("advance", team=m["team"])
+
+
+@_rule(r"^Will each team record (?P<n>\d+) or more shots on target\?$")
+def _(m, teams):
+    return MarketSpec("both_teams_count_ge", stat="sot", threshold=int(m["n"]), period=MATCH)
+
+
+@_rule(r"^Will a penalty kick be scored\?$")
+def _(m, teams):
+    return MarketSpec("penalty_scored")
+
+
+@_rule(r"^Will the first goal of the match be credited with an assist\?.*$")
+def _(m, teams):
+    return MarketSpec("first_goal_assisted", stat="goals")
+
+
+@_rule(r"^Will either team score (?P<n>\d+) or more goals in the same half\?$")
+def _(m, teams):
+    return MarketSpec("team_n_in_one_half", stat="goals", threshold=int(m["n"]))
+
+
+@_rule(r"^Will (?P<player>.+?) record more shots on target than (?P<opp>.+?)\?$")
+def _(m, teams):
+    # Second PLAYER goes in params — team/opponent fields are reserved for teams
+    # (test_subjects_resolve invariant).
+    strip = lambda s: re.sub(r"\s*\([^)]*\)\s*$", "", s).strip()
+    return MarketSpec("player_more_sot_than", player=strip(m["player"]), stat="sot",
+                      params={"opponent_player": strip(m["opp"])})
+
+
+@_rule(r"^Will (?P<n>\d+) or more different (?P<team>.+?) players attempt a shot\?$")
+def _(m, teams):
+    return MarketSpec("team_distinct_shooters_ge", team=m["team"], stat="shots",
+                      threshold=int(m["n"]))
 
 
 @_rule(r"^Will a substitution be made before halftime\?$")

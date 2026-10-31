@@ -82,6 +82,33 @@ def test_sf_ko_family_templates():
     assert fg.params["exclude"] == ["Lionel Messi", "Mohamed Salah"]
 
 
+def test_semifinal_family_templates():
+    """The SF families added 2026-07-13 (FRA/ESP + ENG/ARG)."""
+    teams = ["France", "Spain", "England", "Argentina"]
+    reg = " in regulation (90 minutes + stoppage time)"
+    assert parse(f"Will there be 4 or more offsides (both teams combined){reg}?", teams
+                 ) == MarketSpec("total_count_ge", stat="offsides", threshold=4)
+    assert parse(f"Will the match be tied at the end of regulation (90 minutes + "
+                 "stoppage time) and go to extra time?", teams).family == "extra_time"
+    assert parse("Will a goal be scored after the first hydration break but before "
+                 "the second hydration break?", teams).params["window"] == "mid30_75"
+    assert parse("Will the referee conduct an on-field review at the pitchside VAR "
+                 f"monitor at any point{reg} or extra time? Reviews during the penalty "
+                 "shootout do not count.", teams).family == "var_review"
+    assert parse(f"Will Spain make the first substitution of the match{reg}? If both "
+                 "teams substitute simultaneously, resolves by whichever outgoing "
+                 "player exits the field first.", teams
+                 ) == MarketSpec("team_first_substitution", team="Spain", stat="subs")
+    assert parse("Will the first goal of the match (including extra time, excluding "
+                 "penalty shootout) be scored by a player wearing a single-digit shirt "
+                 "number (1-9)? Resolves No if the score is 0-0 after extra time.", teams
+                 ).family == "first_goal_single_digit"
+    assert parse(f"Will England lead at halftime?", teams).family == "ht_team_winning"
+    assert parse(f"Will a goal be scored during first- or second-half stoppage time{reg}?",
+                 teams) == MarketSpec("timing_event", stat="goals", threshold=1,
+                                      params={"window": "stoppage"})
+
+
 def test_family_coverage_summary():
     families = Counter(
         parse(m["question"], teams=ALL_TEAM_NAMES).family for m in SNAPSHOT["markets"]

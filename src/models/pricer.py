@@ -11,8 +11,9 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from models.counts import (CountPricer, q_brace, p_sub_goal, SUB_BEFORE_HT_RATE,
-                            SUB_AT_HT_RATE, p_goal_method, _OWN_GOAL, _HEADER_GOAL,
-                            _OUTSIDE_GOAL)
+                            SUB_AT_HT_RATE, SUB_FIRST_RATE, VAR_REVIEW_RATE,
+                            PEN_CONVERSION, FIRST_GOAL_ASSISTED,
+                            p_goal_method, _OWN_GOAL, _HEADER_GOAL, _OUTSIDE_GOAL)
 from models.goals import ScorelineModel
 from models.players import PlayerModel
 from questions.parser import MarketSpec
@@ -189,6 +190,8 @@ class MatchPricer:
                 return c.p_total_subs_ge(spec.threshold)
             case "ht_tied":
                 return g.p_ht_tied()
+            case "ht_scoreless":
+                return g.p_ht_scoreless()
             case "ht_team_winning":
                 return g.p_ht_winning(self._side(spec.team))
             # goals
@@ -252,6 +255,34 @@ class MatchPricer:
                 return SUB_BEFORE_HT_RATE
             case "substitution_at_ht":
                 return SUB_AT_HT_RATE
+            case "team_first_substitution":
+                return SUB_FIRST_RATE
+            case "var_review":
+                return VAR_REVIEW_RATE
+            case "first_goal_single_digit":
+                return g.p_first_goal_single_digit()
+            case "penalty_scored":
+                return c.p_penalty() * PEN_CONVERSION
+            case "first_goal_assisted":
+                # P(>=1 goal) x StatsBomb share of first goals carrying an assist
+                return (1 - float(g.grid[0, 0])) * FIRST_GOAL_ASSISTED
+            case "team_n_in_one_half":
+                return g.p_team_n_in_one_half(spec.threshold)
+            case "team_distinct_shooters_ge":
+                return c.p_team_distinct_shooters_ge(self._side(spec.team), spec.threshold)
+            case "player_more_sot_than":
+                # Strictly more (tie -> No): independent Poissons at each player's
+                # tempo/minutes-scaled SOT mean.
+                import math
+                def _mean(pl):
+                    side = self._player_side(pl)
+                    team_sot = (c.mean("sot", side, "match") if side is not None else
+                                (c.mean("sot", "home", "match") + c.mean("sot", "away", "match")) / 2)
+                    return self.players.sot_mean(pl, team_sot)
+                ma, mb = _mean(spec.player), _mean(spec.params["opponent_player"])
+                pa = [math.exp(-ma) * ma ** k / math.factorial(k) for k in range(13)]
+                pb = [math.exp(-mb) * mb ** k / math.factorial(k) for k in range(13)]
+                return float(sum(pa[k] * sum(pb[:k]) for k in range(1, 13)))
             # counts
             case "total_count_ge":
                 return c.p_total_count_ge(spec.stat, spec.threshold, spec.period)

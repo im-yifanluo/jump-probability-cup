@@ -114,10 +114,13 @@ TOTAL_CARDS_SCALE = 0.85  # 2026-07-02 PROMOTED 1.0->0.85: cards over-predicted,
 # level 3.33 -> blowout 6.93, though that margin curve is ENDOGENOUS so we stay conservative).
 # Supremacy-gated multiplier on the FAVOURITE's team-SOT mean (cascades to its players' SOT via
 # tempo and to comparisons) — leaves even matches untouched. mu *= 1 + BOOST*min(lam_team/lam_opp-1, 2).
-# Timing-window event scale — DEFAULT 1.0 (bot 1 unchanged). BOT-2 PROBE 2026-07-03:
-# timing_event over-predicts (family calibration: pred 0.428 vs realized 0.263, gap +0.165,
-# n=19, recurring since 06-30). Scales the windowed mean in p_total_in_window only.
-TIMING_SCALE = 1.0
+# Timing-window event scale. 2026-07-10 PROMOTED 1.0->0.85 (Yifan OK): timing_event
+# over-predicts — realized 0.214 vs shipped 0.432 on n=28 settled. Three independent
+# signals: live A/B probe 5/6, family calibration +0.146, and a walk-forward backtest
+# (scripts/backtest_timing_scale.py, n=22 OOS) where 0.85 beat 1.0 by -1.83 Brier pts.
+# 0.85 is a validated PARTIAL correction (backtest optimum is lower ~0.45-0.70; 0.70 now
+# the bot-2 probe). Scales the windowed mean in p_total_in_window only.
+TIMING_SCALE = 0.85
 FAVORITE_SOT_BOOST = 0.06  # 2026-07-02 PROMOTED 0.0->0.06: the favourite-SOT under-prediction is
                            # bot 1's dominant recent leak — the 3 biggest losses in the last 4 games
                            # are ALL it (Bellingham 2+SOT -64, ENG 7+SOT -61, Spain 8+SOT -58).
@@ -165,6 +168,26 @@ SUB_BEFORE_HT_RATE = 0.197
 # minute 45. Coach-behaviour-driven and roughly match-independent -> flat base rate
 # (derive: scripts/validate_first_goal_drift.py sibling one-off, 2026-07-10).
 SUB_AT_HT_RATE = 0.497
+# P(a NAMED team makes the match's first substitution) — StatsBomb: P(first-listed
+# team subs first)=0.506 over n=314, i.e. symmetric ~0.50 (no pre-match tilt; who
+# trails is unknown at pricing time). SF/KO template 2026-07-13.
+SUB_FIRST_RATE = 0.50
+# P(>=1 on-field VAR review at the pitchside monitor in reg+ET) — no clean StatsBomb
+# event; reasoned estimate from recent-tournament on-field-review frequency (~0.3/game).
+# ESTIMATE — refine if a better source appears. SF/KO template 2026-07-13.
+VAR_REVIEW_RATE = 0.30
+# Regulation penalty-kick conversion — StatsBomb 79/109 across the 6 tournaments
+# (final template 2026-07-17). P(pen scored) = p_penalty x this.
+PEN_CONVERSION = 0.725
+# Share of matches' FIRST goals credited with an assist (pens/own goals have none) —
+# StatsBomb n=285 first goals (final template 2026-07-17).
+FIRST_GOAL_ASSISTED = 0.582
+# P(>=5 DISTINCT players attempt a shot | team total shots s) — StatsBomb per-shot-
+# count empirical curve (monotone-smoothed; n>=21 per point, 627 team-matches).
+# Steep in s, so the family integrates over the team's shots pmf, never a flat rate.
+_SHOOTERS_GE5_BY_SHOTS = {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.30, 6: 0.33,
+                          7: 0.71, 8: 0.84, 9: 0.88, 10: 0.97, 11: 0.97, 12: 0.98}
+# s >= 13 -> 1.0 (empirical: 134/134)
 
 
 def p_sub_goal(total_goals: int) -> float:
@@ -372,6 +395,20 @@ class CountPricer:
         total = np.convolve(home, away)
         return float(total[threshold:].sum())
 
+    def p_team_distinct_shooters_ge(self, side: str, threshold: int) -> float:
+        """P(>= `threshold` DIFFERENT players of `side` attempt a shot) — only the
+        5-threshold is modelled (the empirical curve is >=5-specific). Integrates
+        P(>=5 distinct | s) over the team's NB shots pmf; the curve is steep in s,
+        so pricing at the mean would bias (final template, 2026-07-17)."""
+        if threshold != 5:
+            raise ValueError(f"distinct-shooters only models threshold 5, got {threshold}")
+        # Team shots mean via the same SOT-tempo derivation as p_total_shots_ge
+        # (shots are not a per-team fitted stat; the /2 cancels in the ratio).
+        team_shots = TOURNAMENT_SHOTS_MEAN * self.mean("sot", side, "match") / COUNT_AVG_SOT
+        pmf = nb_pmf_grid(team_shots, SHOTS_ALPHA)
+        return float(sum(p * (_SHOOTERS_GE5_BY_SHOTS.get(s, 1.0) if s < 13 else 1.0)
+                         for s, p in enumerate(pmf)))
+
     def p_card_each_half(self) -> float:
         """P(>=1 card shown in EACH half of regulation) — independent halves, the
         card sibling of goals.p_goal_each_half. Each half is the convolved two-team
@@ -405,7 +442,12 @@ class CountPricer:
         """P(>=threshold of `stat` by both teams within a within-match time window)
         = match rate x the empirical window share (aggregates['timing']), Poisson
         for the small windowed count. Raises if no timing share exists for the stat."""
-        if window == "stoppage":
+        if window == "mid30_75":
+            # Between the two hydration breaks (~30'..~75') = the middle share left
+            # after removing the before-30 and after-75 windows.
+            t = self.aggregates.get("timing", {}).get(stat, {})
+            share = max(1.0 - (t.get("before30") or 0.0) - (t.get("after75") or 0.0), 0.0)
+        elif window == "stoppage":
             # A card in EITHER half's stoppage time = the union of the two disjoint
             # stoppage windows; disjoint => their shares (hence windowed means) add.
             t = self.aggregates.get("timing", {}).get(stat, {})

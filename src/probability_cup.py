@@ -127,6 +127,11 @@ class ProbabilityCup:
                     "kickoff": match.get("opening_time"),
                 }
             )
+        if not rows:
+            # Empty snapshot (between rounds) — return a typed empty frame so
+            # callers' column access (kickoff/status/...) degrades gracefully.
+            return pd.DataFrame(columns=["market_id", "question", "status",
+                                         "match_id", "match_name", "kickoff"])
         df = pd.DataFrame(rows)
         df["kickoff"] = pd.to_datetime(df["kickoff"])
         if open_only:
