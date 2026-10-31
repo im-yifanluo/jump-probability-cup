@@ -1,0 +1,24 @@
+# Exact versions the system ran with during the tournament (Python 3.13).
+# The golden tests compare floats exactly, so CI installs these pins.
+#   pip install -r requirements.lock && pip install -e . --no-deps
+certifi==2026.5.20
+charset-normalizer==3.4.7
+idna==3.18
+iniconfig==2.3.0
+numpy==2.4.6
+packaging==26.2
+pandas==3.0.3
+patsy==1.0.2
+pluggy==1.6.0
+pyarrow==24.0.0
+Pygments==2.20.0
+pytest==9.0.3
+python-dateutil==2.9.0.post0
+PyYAML==6.0.3
+requests==2.34.2
+scipy==1.17.1
+six==1.17.0
+statsmodels==0.14.6
+tqdm==4.68.2
+tzdata==2026.2
+urllib3==2.7.0

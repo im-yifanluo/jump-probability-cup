@@ -134,7 +134,7 @@ def main() -> None:
                                           "total_goals": total})
 
     FIX.mkdir(parents=True, exist_ok=True)
-    (FIX / "boards.json").write_text(json.dumps(boards, indent=1, ensure_ascii=False))
+    (ROOT / "examples" / "boards.json").write_text(json.dumps(boards, indent=1, ensure_ascii=False))
     (FIX / "odds.yaml").write_text(yaml.safe_dump(odds, sort_keys=True, allow_unicode=True))
 
     snap_src = ROOT.parent / "data" / "snapshot.json"

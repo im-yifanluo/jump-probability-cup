@@ -1,0 +1,8 @@
+# Odds anchors (p_home, p_draw for the first-listed team; expected total goals)
+# recovered from bot 1's submitted prices by examples/recover_odds.py.
+ESP vs ARG:
+  fitted_on: 4
+  p_draw: 0.3206
+  p_home: 0.4214
+  reproduced: 19/20
+  total_goals: 2.3378

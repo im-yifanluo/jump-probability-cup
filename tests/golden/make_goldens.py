@@ -180,7 +180,7 @@ def run_boards(code: str, work: Path, old_tree: Path | None = None, hashseed: st
     odds_rel = "data/manual_odds.yaml" if layout == "old" else sc.new_path("data/manual_odds.yaml")
     (root / odds_rel).write_text((sc.FIX / "odds.yaml").read_text())
     payload = work / "boards_payload.json"
-    payload.write_text(json.dumps({"boards": json.loads((sc.FIX / "boards.json").read_text()),
+    payload.write_text(json.dumps({"boards": json.loads(sc.BOARDS.read_text()),
                                    "questions": _questions()}))
     spec, record = work / "boards.spec.json", work / "boards.record.json"
     spec.write_text(json.dumps(sc.web_spec()))

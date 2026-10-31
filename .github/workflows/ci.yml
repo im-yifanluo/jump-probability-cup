@@ -1,0 +1,24 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      # Goldens compare floats exactly on the machine that recorded them; allow
+      # last-digit BLAS noise on other CPUs. Printed output is still compared exactly.
+      GOLDEN_TOL: "1e-9"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install pinned dependencies
+        run: |
+          pip install -r requirements.lock
+          pip install -e . --no-deps
+      - name: Run tests
+        run: pytest -q

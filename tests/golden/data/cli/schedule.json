@@ -202,7 +202,7 @@
    },
    "rc": 0,
    "stderr_tail": "",
-   "stdout": "# now Sat 2026-06-27 05:40PM CDT; lead=50min; 2 wave(s) within 18h\n\n# SKIP Sat 06:30PM kickoff — fire is only 0min away (too late for a fresh pass)\nSCHEDULE | kind=night | hours=26 | cron=\"10 20 27 6 *\" | fire=Sat 08:10PM | kickoff=Sat 09:00PM (2 match)\n\n# AGENT: first CronList + CronDelete any existing [AUTO-DAY] one-shots, then for\n# each SCHEDULE line create a one-shot cron (recurring:false) at its cron= expr.\n#   kind=final -> [AUTO-DAY] read matchday.md and run daily_run --hours 5 (both bots)\n#   kind=night -> [AUTO-DAY] read night_run.md, daily_run --hours 26, OUTPUT tomorrow\n",
+   "stdout": "# now Sat 2026-06-27 05:40PM CDT; lead=50min; 2 wave(s) within 18h\n\n# SKIP Sat 06:30PM kickoff — fire is only 0min away (too late for a fresh pass)\nSCHEDULE | kind=night | hours=26 | cron=\"10 20 27 6 *\" | fire=Sat 08:10PM | kickoff=Sat 09:00PM (2 match)\n\n# AGENT: first CronList + CronDelete any existing [AUTO-DAY] one-shots, then for\n# each SCHEDULE line create a one-shot cron (recurring:false) at its cron= expr.\n#   kind=final -> [AUTO-DAY] read matchday.md and run probcup run --hours 5 (both bots)\n#   kind=night -> [AUTO-DAY] read night_run.md, probcup run --hours 26, OUTPUT tomorrow\n",
    "subprocess": []
   }
  ]

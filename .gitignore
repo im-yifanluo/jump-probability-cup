@@ -1,4 +1,15 @@
 .env
-/data/
+.venv/
 __pycache__/
+.pytest_cache/
+*.egg-info/
+.ipynb_checkpoints/
+
+# regenerable or runtime data (data/models and data/inputs are tracked)
+/data/raw/
+/data/cache/
+/data/logs/
+/data/exports/
+
+# Claude Code scheduler runtime state
 .claude/scheduled_tasks.lock

@@ -200,7 +200,7 @@
    "files": {
     "data/cache/snapshot.json": "sha256:42ee79c8a4446bf797940f19796d337945e26c52d305b10718aa5513c4d70670",
     "data/logs/unparsed_backlog.json": "{\n  \"Will the referee wear a yellow shirt?\": {\n    \"first_seen\": \"2026-06-27T22:40:00+00:00\",\n    \"status\": \"open\",\n    \"type\": \"other\",\n    \"last_seen\": \"2026-06-27T22:40:00+00:00\",\n    \"count\": 1\n  }\n}",
-    "data/logs/unparsed_backlog.md": "# Unparsed-question backlog (auto-maintained by scripts/scan_backlog.py)\n\nUpdated 2026-06-27 22:40 UTC. **1 open template(s) across 1 market instances.** (Full scan of 176 markets; 138 distinct questions parse.)\n\nEach `type` = one model to build (priority = total markets, KO are 2x weight). `other` = a template that matched no known type — review immediately.\n\n## other — 1 template(s), 1 markets  ⚠️ UNKNOWN TYPE — REVIEW\n- [1x · since 2026-06-27] Will the referee wear a yellow shirt?\n"
+    "data/logs/unparsed_backlog.md": "# Unparsed-question backlog (auto-maintained by `probcup backlog`)\n\nUpdated 2026-06-27 22:40 UTC. **1 open template(s) across 1 market instances.** (Full scan of 176 markets; 138 distinct questions parse.)\n\nEach `type` = one model to build (priority = total markets, KO are 2x weight). `other` = a template that matched no known type — review immediately.\n\n## other — 1 template(s), 1 markets  ⚠️ UNKNOWN TYPE — REVIEW\n- [1x · since 2026-06-27] Will the referee wear a yellow shirt?\n"
    },
    "rc": 0,
    "stderr_tail": "",

@@ -18,6 +18,7 @@ import yaml
 
 REPO = Path(__file__).resolve().parents[2]
 FIX = REPO / "tests" / "fixtures"
+BOARDS = REPO / "examples" / "boards.json"
 NOW = "2026-06-27T22:40:00+00:00"
 
 KEYS = {"fake-key-bot-1": "1", "fake-key-bot-2": "2"}
@@ -62,9 +63,21 @@ def new_path(old_rel: str) -> str:
     return old_rel
 
 
+# Output text that names a script which no longer exists. The restructured code
+# prints the new command instead; nothing else about these lines changed.
+TEXT_RENAMES = {
+    "(update_player_rates)": "(probcup player-rates)",
+    "auto-maintained by scripts/scan_backlog.py": "auto-maintained by `probcup backlog`",
+    "and run daily_run --hours 5": "and run probcup run --hours 5",
+    "night_run.md, daily_run --hours 26": "night_run.md, probcup run --hours 26",
+}
+
+
 def translate_text(text: str) -> str:
-    """Rewrite original-layout path mentions inside output text."""
+    """Rewrite original-layout path and command mentions inside output text."""
     for old, new in sorted(PATH_MAP.items(), key=lambda kv: -len(kv[0])):
+        text = text.replace(old, new)
+    for old, new in TEXT_RENAMES.items():
         text = text.replace(old, new)
     return text.replace(PREDICTIONS_CSV_OLD, PREDICTIONS_CSV_NEW)
 

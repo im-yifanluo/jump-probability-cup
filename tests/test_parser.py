@@ -1,39 +1,45 @@
-"""Parser must handle every market in the live snapshot, with correct fields."""
+"""Parser must handle every real market question, with correct fields."""
 
 import json
-import sys
 from collections import Counter
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "src"))
+from probcup.questions.parser import MarketSpec, parse
+from probcup.questions.teams import ALL_TEAM_NAMES, match_teams
 
-from questions.parser import MarketSpec, parse
-from questions.teams import ALL_TEAM_NAMES, match_teams
+FIXTURES = Path(__file__).resolve().parent / "fixtures"
+SNAPSHOT = json.loads((FIXTURES / "platform_snapshot.json").read_text())  # a live board, 2026-06-27
+BOARDS = json.loads((FIXTURES.parent.parent / "examples" / "boards.json").read_text())  # every settled board
 
-SNAPSHOT = json.loads((ROOT / "data" / "snapshot.json").read_text())
+
+def _markets():
+    """(match name, question) for every real market: the settled boards plus the
+    live 2026-06-27 board."""
+    names = {m["id"]: m["name"] for m in SNAPSHOT["matches"]}
+    out = [(names[m["match"]["id"]], m["question"]) for m in SNAPSHOT["markets"]]
+    out += [(b["match_name"], m["question"]) for b in BOARDS for m in b["markets"]]
+    return out
 
 
 def test_all_snapshot_markets_parse():
     failures = []
-    for market in SNAPSHOT["markets"]:
+    for _, question in _markets():
         try:
-            parse(market["question"], teams=ALL_TEAM_NAMES)
+            parse(question, teams=ALL_TEAM_NAMES)
         except Exception as exc:
-            failures.append(f"{market['question']}  ({exc.__class__.__name__})")
+            failures.append(f"{question}  ({exc.__class__.__name__})")
     assert not failures, f"{len(failures)} unparsed:\n" + "\n".join(failures[:20])
 
 
 def test_subjects_resolve_to_match_teams_or_players():
     """Team fields must be one of that match's two teams; never a player."""
-    matches = {m["id"]: m for m in SNAPSHOT["matches"]}
-    for market in SNAPSHOT["markets"]:
-        spec = parse(market["question"], teams=ALL_TEAM_NAMES)
-        pair = set(match_teams(matches[market["match"]["id"]]["name"]))
+    for match_name, question in _markets():
+        spec = parse(question, teams=ALL_TEAM_NAMES)
+        pair = set(match_teams(match_name))
         for name in (spec.team, spec.opponent):
-            assert name is None or name in pair, (market["question"], name, pair)
+            assert name is None or name in pair, (question, name, pair)
         if spec.player is not None:
-            assert spec.player not in ALL_TEAM_NAMES, market["question"]
+            assert spec.player not in ALL_TEAM_NAMES, question
 
 
 def test_known_specs():
@@ -110,8 +116,8 @@ def test_semifinal_family_templates():
 
 
 def test_family_coverage_summary():
-    families = Counter(
-        parse(m["question"], teams=ALL_TEAM_NAMES).family for m in SNAPSHOT["markets"]
-    )
+    markets = _markets()
+    families = Counter(parse(q, teams=ALL_TEAM_NAMES).family for _, q in markets)
     print("\nFamily counts:", dict(families.most_common()))
-    assert sum(families.values()) == len(SNAPSHOT["markets"])
+    assert sum(families.values()) == len(markets) > 1000
+    assert len(families) >= 60
