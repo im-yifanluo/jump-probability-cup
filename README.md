@@ -1,311 +1,166 @@
-# Jump Trading Probability Cup — Prediction System
+# Probability Cup: an agent-operated forecasting system
 
-Competing on SportsPredict's **Probability Cup** (2026 World Cup, Jun 11 – Jul 19 2026)
-via the Model API. Full API reference: `docs/API-Documentation.pdf`. Canonical strategy
-write-up: `docs/strategy_v4.md`. Operating memory (decisions, fixes, current state) lives
-in the agent memory index (decisions, fixes, current state).
+A calibrated forecasting engine for the 2026 FIFA World Cup, operated in production for 38 days
+by a Claude Code agent: it scheduled its own pre-kickoff runs, researched the facts the betting
+market misses, submitted to two leaderboard entries, verified every submission, and ran a live
+A/B experiment on the second entry.
 
----
+**#17 of 4,013** overall (bot 1) · **#5 of 4,013** in the knockout stage (bot 2) · 2,218 settled forecasts
 
-## 0. The three entries
+[![tests](https://github.com/im-yifanluo/jump-probability-cup/actions/workflows/ci.yml/badge.svg)](https://github.com/im-yifanluo/jump-probability-cup/actions/workflows/ci.yml)
 
-We hold **three independent leaderboard entries** on the same markets. Each is scored on its
-own (RBP, §1); the standing is driven by whichever ranks best.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="results/figures/cumulative_points-dark.svg">
+  <img alt="Cumulative points against the crowd over 103 matches: bot 1 ends at +4,732 (#17), bot 2 at +4,451 (#31), with most points earned in the knockouts." src="results/figures/cumulative_points-light.svg">
+</picture>
 
-| Entry | Run by | What it is | Key |
-|---|---|---|---|
-| **bot 1** | the automated pipeline | **stable v4** — the calibrated production model; the current leader. Unvalidated changes are kept off it. | `SPORTSPREDICT_KEY_1` |
-| **bot 2** | the automated pipeline | **live A/B experiment** — prices the same odds as bot 1 with one candidate tweak (`data/bot2_experiment.yaml`), to test changes before they reach bot 1. | `SPORTSPREDICT_KEY_2` |
-| **manual** | a human/agent, by hand on the app | the third slot. There is no third API key — it is hand‑entered on the SportsPredict app, and currently carries bot 1's values. | none |
+## The challenge
 
-The pipeline (§5) produces and submits bot 1 and bot 2 and prints bot 1's daily chart; the
-manual entry is filled in by hand. Predictions can be revised until a match's kickoff (the
-deadline); the last value counts.
+The [Jump Trading Probability Cup](https://www.jumptrading.com/signals/introducing-the-jump-trading-probability-cup)
+asked about ten yes/no questions per World Cup match — will this player have a shot on
+target, will there be 5+ cards, will a goal come before the first hydration break — answered
+with a probability before kickoff. Each forecast was scored against the field: the average
+participant's Brier score minus yours, ×2 in the knockouts and ×3 in the final. Bots were
+allowed, two per person, each ranked as its own entry. More in [docs/competition.md](docs/competition.md).
 
-**Observations relevant to running several entries** (facts, not instructions):
-- Scoring is a **proper scoring rule** (§2): calibrated probabilities minimize expected Brier,
-  with no shading. bot 1 is built to exactly that.
-- Three entries carrying the *same* numbers rank near‑identically (fully correlated).
-  Decorrelating them is the only thing that turns three entries into three distinct shots — and
-  every step away from the calibrated value lowers expected score in exchange for variance
-  (proper scoring again).
-- Our edge analysis (`docs/strategy_v4.md`, agent memory) finds we **beat the crowd on soft
-  count markets** (offsides, corners, head‑to‑head "ties‑lose" comparisons) and **lose to it on
-  goals / 1X2 / totals**, where the betting market + Polymarket are sharper — so the bots anchor
-  to the market there.
-- The largest self‑inflicted losses on record came from pushing **low‑base‑rate props above the
-  crowd** on a hunch (benched players, longshot "X scores").
+Because the score is a proper scoring rule, the best strategy is the most accurate honest
+probability, never a bold one. The edge has to come from being better calibrated than the crowd
+where the crowd is biased, covering every question type, and having sharper inputs.
 
-Everything below describes the system that produces bot 1 / bot 2, so any number can be
-reproduced or reasoned about.
+## How it works
 
----
+```mermaid
+flowchart LR
+    Q[("SportsPredict<br/>questions")] --> E
+    O[("odds: ESPN/DraftKings<br/>+ Polymarket")] --> E
+    I[("researched inputs<br/>lineups · referees · scorer odds")] --> E
+    E["probcup pricing engine<br/>goal grid · count models · player props"] --> S["submit bot 2, then bot 1<br/>verify both"]
+    A["Claude Code agent<br/>(.claude/commands playbooks)"] -- "researches" --> I
+    A -- "runs on a self-built schedule" --> E
+    A -- "scores the A/B, promotes by rule" --> K[("calibration<br/>constants")]
+    K --> E
+    W["OS watchdog"] -. "alarm on a missed run" .-> A
+```
 
-## 1. The game in one paragraph
+- **Anchor on the market.** The engine never rates teams itself. It fits a Dixon-Coles
+  scoreline grid to the de-margined bookmaker and Polymarket odds, and answers every goal
+  question from that one grid, so no two answers contradict each other.
+- **Model what the market doesn't price.** Cards, corners, shots on target and offsides use
+  negative-binomial models trained on ~116k club matches with the odds-implied scoring rates
+  as inputs, corrected to tournament levels and to the referee's strictness.
+- **Players from the confirmed lineup.** Expected minutes come from the starting XI, pulled
+  automatically before kickoff; a researched scorer price for the exact fixture replaces the model.
+- **Every question type.** 65 families, from "more corners than" to "first goal by a
+  single-digit shirt"; all 1,153 questions on the archived boards parse, and new knockout
+  families were built and tested the day they appeared.
 
-~72 matches, each with ~10 binary yes/no markets (~720+ total). You submit a probability as an
-integer **1–99** per market before kickoff. Scoring is **Brier**: `(p − o)²`, lower is better
-(`o` = outcome 0/1). What ranks you is **Relative Brier Points**:
-`RBP = (crowd_brier − your_brier) × 100` — you win by beating the **crowd average**. Stage
-weighting: **group 1×, knockout 2×, final 3×** (so accuracy matters more now that the
-knockouts are here). Predictions can be revised until kickoff; the last value counts.
+Details: [architecture](docs/architecture.md) · [per-question methodology](docs/methodology.md) ·
+[strategy and the evidence behind each constant](docs/strategy.md) · [research](research/README.md).
 
-## 2. Why calibration, not boldness
+## How it ran
 
-Because RBP is **linear in your own Brier** (the crowd term is fixed and identical for every
-competitor), maximizing expected RBP = minimizing your own expected Brier = **reporting your
-true, calibrated probability.** Brier is *strictly proper*: any shading away from your honest
-estimate raises expected Brier. So there is **no extremizing, no game‑theoretic shading** — we
-researched and backtested this explicitly and retracted an "extremize" idea as invalid. Rank
-across competitors is decided purely by Brier‑vs‑outcome (the crowd‑variance term cancels).
-The whole system is built to produce the most calibrated number, then submit it unshaded.
+The agent worked from three playbooks ([`.claude/commands/`](.claude/commands/)): a morning run
+that scored yesterday, set bot 2's experiment, submitted both bots and then **scheduled the
+day's passes itself** 50 minutes before each kickoff; a final pass per kickoff wave with the
+confirmed lineup, referee and scorer odds; and a night run that also priced tomorrow. It never
+produced a probability itself: research entered only as per-match inputs, and bot 1 changed
+only when a bot-2 probe won on its own settled markets. When session-only scheduling failed
+on a restart, the fix was an alert-only watchdog, because a low-quality automatic submission
+can lose points while a skipped refresh costs only freshness.
 
-## 3. Where our edge is (and isn't)
+254 logged pipeline runs · 17,005 submission actions · 110 run reports · 21 memory notes ·
+every A/B verdict in [the experiment log](agent/logs/experiment_log.md).
+The daily cycle, guardrails and what went wrong: **[agent/README.md](agent/README.md)** ·
+how it evolved, directive by directive: [agent/timeline.md](agent/timeline.md).
 
-From ground‑truth RBP analysis across the tournament:
-- **Edge (soft markets):** niche counts the crowd guesses at — **offsides** (best), **corners**,
-  **head‑to‑head count comparisons** ("more corners/SOT/fouls than…", which **resolve "No" on a
-  tie** → even matchups price ~40%, a systematic crowd error we collect on), and certain
-  combos. This is where deviating from the crowd pays.
-- **No edge (sharp markets):** **goals / 1X2 / totals** — the betting market + Polymarket are
-  sharper than us; fighting them loses. We **anchor** to them.
-- **Calibration corrections (WC‑2026):** the count means carry per‑stat tournament multipliers
-  (`TOURNAMENT_INTENSITY` in `counts.py`: cards 0.78 — WC‑2026 is low‑card; sot 1.00; corners
-  1.05; offsides 0.90), OOS‑validated. See `docs/strategy_v4.md`.
+## Results
 
----
+| Entry | Overall | Knockout stage | Points | Brier | Beat the crowd on |
+|---|---|---|---|---|---|
+| Bot 1 (stable model) | **#17** of 4,013 | #8 | +4,732 | 0.2197 | 69.1% of 1,183 markets |
+| Bot 2 (A/B bench) | #31 | **#5** | +4,451 | 0.2174 | 69.7% of 1,035 markets |
 
-## 4. Methodology — how every probability is produced
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="results/figures/points_by_category-dark.svg">
+  <img alt="Bot 1's points by market type, led by goals and results (+1,462 over 379 markets), player shots on target (+662), goal scorers (+627), cards (+479) and corners (+362)." src="results/figures/points_by_category-light.svg">
+</picture>
 
-Three layers, in strict order of trust. Guiding result (literature + our backtest):
-**bookmaker closing odds are the best‑calibrated public forecast** — anchor on them and extend
-to the markets bookmakers don't price.
+Per market, the soft markets paid most (timing windows +8.4, player shots on target +5.7,
+cards +5.3), where the crowd over-prices events; on results and goal totals the crowd follows
+the same betting market and the edge is thinner (+3.9). Pricing below the crowd paid more the
+further it went; the final alone was worth +501.6 to bot 1. Calibration, the A/B record and
+the rest: [docs/results.md](docs/results.md).
 
-### Layer 1 — market anchors (used directly)
-- **1X2 odds** — de‑margined average of two independent sharp sources: bookmaker (ESPN →
-  DraftKings, `src/wcdata/odds_feeds.py`) and **Polymarket** (`src/wcdata/polymarket.py`). A
-  >0.10 disagreement is flagged as possible stale odds. Totals from the bookmaker.
-- **Anytime‑scorer prop odds** price "Will [player] score?" outright when researched: the daily
-  routine looks up the prop, de‑margins it (÷ ~1.10 margin), writes `scorer_prop_prob` into
-  `data/player_overrides.yaml`; the pricer prefers it over the model. **These are
-  per‑OPPONENT** — re‑research them each match (a stale one was a real miss; see §7).
-
-### Layer 2 — odds‑anchored Dixon‑Coles goal engine (`src/models/goals.py`)
-We do **not** estimate team strength; we solve for `(λ_home, λ_away, ρ)` that reproduce the
-market's `p_home`, `p_draw`, and total. Every goal‑derived market is then priced by enumerating
-the scoreline grid, so all answers are mutually consistent (P(win)+P(draw)+P(loss)=1, etc.).
-Half markets use per‑half Poisson `λ·share` with the **tournament‑measured** 2nd‑half goal share
-(~0.60). Families: win, draw, BTTS, total goals, team scores in half, win‑by‑N, score‑in‑both‑
-halves, first goal of game/half, halftime tied/leading, 2nd‑half‑more‑than‑1st, and combos.
-
-### Layer 3 — count models for markets without odds (`src/models/counts.py`)
-Corners, cards, SOT, fouls: **negative‑binomial regressions on ~116k club matches** with the
-*odds‑implied* goal rates as features, so they transfer to any fixture:
-`log E[count] = b0 + b1·log(λ_team) + b2·log(λ_opp) + b3·is_home`. Plus per‑stat WC‑2026
-calibration (§3) and a **referee strictness** multiplier for cards
-(`data/referee_overrides.yaml` — a strict vs lenient ref swings P(4+ cards) ~0.24→0.66).
-Offsides, penalty (0.293/match), red‑card (0.096), and every stat's 2nd‑half share come from
-**314 StatsBomb tournament matches**. Head‑to‑head comparisons enumerate both teams' NB
-distributions with **ties → "No"** (the ~40% even‑matchup edge).
-
-### Player props (`src/models/players.py`)
-- **Scorer / score‑or‑assist:** `1 − exp(−share · λ_team · expected_minutes/90)`. The
-  `expected_minutes/90` factor (added 2026‑06‑27) means a benched player is reduced and a
-  ruled‑out player → 0 **automatically from the pulled lineup** — no manual cut. A researched
-  `scorer_prop_prob` still wins outright when present.
-- **Shots on target:** per‑match rate × team tempo × `expected_minutes/90`, P(≥k) Poisson,
-  rates shrunk to the 0.72 tournament‑forward prior, club rates × 0.839 international discount.
-  Validated leave‑one‑tournament‑out (Brier 0.176).
-
-### Composite questions, blending, validation
-One `MatchPricer` per fixture holds one ScorelineModel + CountPricer + PlayerModel off the
-**same** market‑fitted λs; `MatchPricer._price_raw` (`src/models/pricer.py`) is the one
-auditable `family → method` routing table. Conjunctions are **exact joint enumeration** on the
-shared grid (never products of marginals). Each family is then shrunk toward a structural
-baseline by a **backtest‑derived weight** (`BLEND_WEIGHTS`; e.g. cards keep only 40% of the
-model deviation). Walk‑forward backtest (2017/18→2025/26, ~41k matches/family):
-**19/19 families beat always‑50%, 16/19 beat the base‑rate baseline, calibration within ±1%.**
-
----
-
-## 5. The daily process — what actually runs
-
-The pipeline auto‑prices and submits **bot 1 and bot 2**; it also **prints bot 1's chart for the
-manual entry**. Predictions are built fresh and revised through the day as information arrives.
-
-### The runs (dynamic, self‑scheduling)
-- **~07:48 — MORNING run** (`.claude/commands/morning_run.md`, the anchor): evaluate last
-  night's results + the bot1‑vs‑bot2 A/B; set bot 2's experiment; **flag** any bot‑1 promotion
-  (never auto‑apply); submit both bots at a 48 h horizon; **print today's bot‑1 chart for the
-  manual entry**; then **schedule that day's final passes** by running `scripts/schedule_day.py`,
-  which reads the day's real kickoffs and creates a one‑shot job ~**50 min before each wave**.
-- **Final passes** (`.claude/commands/matchday.md`, 5 h horizon), one per kickoff wave, ~50 min
-  out: this is where the edge is added — **confirmed lineups** (auto‑pulled, see below),
-  scorer odds, referees → update the override files → re‑price → submit both bots.
-- **~last wave — NIGHT run** (`.claude/commands/night_run.md`, 26 h horizon): the final pass for
-  the night's games **plus** prices all of **tomorrow** and **prints tomorrow's bot‑1 chart** so
-  the manual entry can be pre‑filled.
-
-Why dynamic: kickoff times move day to day, so fixed times mistime them. The morning run lays
-the day's passes against the *actual* schedule, ~50 min before each wave (after lineups post,
-with time to reprice). **Caveat:** these are in‑session crons — they do **not** survive closing the app; they fire only
-while the session is open, and otherwise each run is invoked by sending its prompt.
-
-### Confirmed lineups — pulled, not hand‑typed (`scripts/pull_lineups.py`)
-Within 100 min of kickoff, `daily_run` pulls the **posted starting XI from ESPN's free
-`summary` feed** (the same call we use for odds) and writes `expected_minutes` to
-`data/match_lineups.yaml` (starter→90, bench→20). The pricer reads it, **scoped to that match**,
-so a benching can't leak into a later fixture. Robust by construction: it writes **nothing**
-unless a real XI is posted (2 teams, ≥11 starters) and the teams orient to our match, and a
-player it can't confidently name‑match is **flagged, never force‑benched**. This replaced
-hand‑parsed web lineups (which caused a stale‑benched miss). `expected_minutes/90` then flows
-into **both** the SOT and scorer families.
-
-### The override files (per‑match research inputs — never raw probabilities)
-- `data/player_overrides.yaml` — **stable** player rates (`sot_per_match`, `goal_share`,
-  `involvement_share`, `team`) **and** researched `scorer_prop_prob`. `expected_minutes` is now
-  set by the pull; only hand‑set it for an injury known *before* lineups post.
-- `data/referee_overrides.yaml` — `{match: {referee, cards_per_game}}` for the card markets.
-- `data/manual_odds.yaml` — fallback 1X2/total when ESPN lacks a fixture (created on demand).
-- `data/bot2_experiment.yaml` — bot 2's active A/B tweak.
-- `data/match_lineups.yaml` — per‑match confirmed minutes (written by the pull; created on demand).
-
-### Staleness guard
-`daily_run` flags (in NEEDS ATTENTION) any player drawing a volatile value
-(`expected_minutes≠90` or `scorer_prop_prob`) from the **global** file that wasn't confirmed for
-*this* match — the safety net for the per‑opponent/per‑game staleness class.
-
-### Submission order (contamination safety)
-Both bots are priced off identical odds; **bot 2 (experiment) is submitted first, bot 1 (stable)
-last**, so if anything ever cross‑contaminated, the stable version is the final write on both.
-
----
-
-## 6. Making & submitting predictions (commands)
+## Try it
 
 ```bash
-cd "/home/yifan/World Cup Predictions/jump-probability-cup"
-source .venv/bin/activate   # interpreter: .venv/bin/python
-
-# Price + submit both bots for everything kicking off within N hours
-.venv/bin/python scripts/daily_run.py --hours 48 --submit --agent     # add --dry-run to preview
-#   --agent drops a heartbeat so the crontab fallback defers to this run
-#   within 100 min of a kickoff it auto-pulls the confirmed XI first
-
-# Price ONE fixture and see the full table (no submit)
-.venv/bin/python scripts/price_match.py "URU vs ESP"
-
-# Pull/inspect a confirmed lineup on demand
-.venv/bin/python scripts/pull_lineups.py "URU vs ESP" --dry-run
-
-# Plan today's final-pass schedule (what the morning run lays down)
-.venv/bin/python scripts/schedule_day.py
-
-# Read settled Brier (per bot)
-.venv/bin/python -c "import sys; sys.path.insert(0,'src'); from probability_cup import ProbabilityCup; print(ProbabilityCup(bot=1).results_df()[['question','brier_score']])"
+make setup     # .venv with the exact tournament dependencies (Python 3.11+, tested on 3.13)
+make demo      # reprice the World Cup final offline — no API keys needed
+make test      # 54 offline tests, including the golden equivalence suite (~30 s)
 ```
 
-**Manual entry:** there is no third API key — it is hand‑entered on the SportsPredict app before
-each kickoff (kickoff = the deadline). The day's model values are available from the bot‑1 chart
-the morning/night runs print, from `daily_run --dry-run` / `price_match.py`, and each bot's live
-stored predictions can be read via the API (§9).
-
----
-
-## 7. Project structure
-
 ```
-src/
-  sp_api.py            transport: REST endpoint wrappers (auth, retry/backoff)
-  probability_cup.py   domain: snapshot caching, DataFrames, upsert submit() — import ONLY this
-  questions/
-    parser.py          question text -> MarketSpec(family, team, player, stat, threshold, period)
-                       + _normalize() strips the KO "in regulation (90 min + stoppage time)" suffix
-    teams.py           FIFA code <-> full name bridge (match names use codes, questions use names)
-  wcdata/
-    odds_feeds.py      ESPN/DraftKings 1X2 + totals + (the same summary feed carries lineups)
-    polymarket.py      Polymarket prediction-market 1X2 (second sharp source)
-    statsbomb.py       314 tournament matches -> half shares, offsides, penalty/red, player rates
-    football_data_uk.py / internationals.py / api_football.py   club data, Elo, current-form rates
-  models/
-    goals.py           odds-fitted Dixon-Coles scoreline grid (all goal markets)
-    counts.py          NB count regressions + TOURNAMENT_INTENSITY + referee factor
-    players.py         scorer / score-or-assist / SOT (all scale by expected_minutes/90)
-    pricer.py          MatchPricer._price_raw — the family -> model routing table + BLEND_WEIGHTS
-    simulator.py / sim_pricer.py   game-state Monte Carlo pricer (knockout refinement)
-    deep.py / ensemble.py          optional H200 GRU track (earns weight only if it beats stats)
-scripts/
-  daily_run.py         the production loop: price + (auto lineup pull) + guard + submit BOTH bots
-  pull_lineups.py      ESPN confirmed XI -> expected_minutes (data/match_lineups.yaml)
-  schedule_day.py      compute the day's final-pass times (~50 min before each wave)
-  price_match.py       price one fixture; build_pricer() is the shared entry point
-  submit.py            CSV -> upsert predictions (manual path)
-  initialize.py / download_data.py / run_backtest.py    one-time setup + model fitting
-  update_player_rates.py  current-season SOT/goal rates from API-Football
-  verify_submissions.py / check_automation.py            health checks
-  analyze_rbp.py / parse_history_rbp.py / calibration_report.py   performance analysis
-.claude/commands/      morning_run.md, matchday.md, night_run.md  (the agent routines)
-data/
-  player_overrides.yaml, referee_overrides.yaml, manual_odds.yaml, bot2_experiment.yaml,
-  match_lineups.yaml   the per-match research/knob files (some created on demand)
-  count_models.json, family_blend.json, snapshot.json, *.parquet   fitted models + datasets
-  logs/                runs.log, submissions.csv, matchday_reports.md, experiment_log.md, agent_last_run
-docs/                  strategy_v4.md (canonical strategy), history.md (RBP history), API PDF
-tests/                 parser coverage, simulator, pull_lineups regression
+Spain vs Argentina — priced offline
+ ours  sent  crowd  result  points  market
+  51%   51%    66%      NO   +62.0  Will the first goal of the match be credited with an assist?
+  40%   40%    45%      NO   +29.0  Will Argentina win the World Cup?
+  10%   10%    40%      NO   +57.3  Will there be 5 or more total cards?
+  20%   20%    46%      NO   +64.4  Will there be 5 or more offsides?
+  ...
+Recomputed offline: 19 of 20 forecasts equal what bot 1 submitted (to the whole percent).
+Bot 1 on this board: +501.6 points against the crowd, mean Brier 0.208; beat the crowd on 15 of 20 markets.
 ```
 
-Two‑layer API design: notebooks/models import **only** `probability_cup.ProbabilityCup`, never
-raw HTTP.
+`probcup --help` lists every tool: the production run, single-match pricing, lineup pulls,
+scheduling, the watchdog, and the evaluation suite (ledger, A/B replay, drift, club backtest).
+The live commands need SportsPredict keys in `.env` ([.env.example](.env.example)); the
+competition is over, so they are here as the record of how it ran.
 
----
-
-## 8. Current state & recent hardening (2026‑06‑27)
-
-- **bot 1** = stable v4 (the leader). **bot 2** = live A/B (`aggressive-count-multipliers`:
-  cards 0.72 / sot 1.05 / corners 1.15 vs v4's conservative values) — **no settled verdict yet**.
-  Settled Brier runs ~0.21–0.24 (healthy).
-- **Lineup puller** (new): confirmed XIs auto‑pulled from ESPN → `expected_minutes`; fixed a
-  stale‑benched miss class.
-- **Model fix** (new): scorer/score‑or‑assist scale by `expected_minutes/90` (benched→reduced,
-  ruled‑out→0); starter prices unchanged.
-- **Staleness guard** (new): flags volatile global overrides not reconfirmed per match.
-- **Parser KO‑normalization** (new): the knockouts re‑phrased markets as "… in regulation
-  (90 minutes + stoppage time)". `_normalize()` strips it; live coverage **52% → 84%, 100% of
-  the high‑frequency families.** Unparseable markets **raise loudly and are skipped, never
-  mis‑submitted.**
-
-### Known gap — the Tier‑B market backlog (≈16% of live markets, mostly later/Sunday games)
-These genuinely‑new families are **not yet priced** (each needs a real model, not a parser rule);
-they currently submit **nothing** (flagged in NEEDS ATTENTION; the bots skip them). They are,
-with the approach each would need:
-- **Timing markets** (goal/card/offside/corner before the 1st hydration break <30′, after the
-  2nd >75′, stoppage‑time goals) — needs StatsBomb minute‑bucket extraction (the data has the
-  timestamps). *Biggest chunk; the planned next build.*
-- **Advance to Round of 16** — group qualification; needs a standings simulator or "to qualify" odds.
-- **Any player 2+ goals / 2+ SOT** — squad‑level distribution.
-- **Substitute scores** — sub‑goal‑share from StatsBomb.
-- **Total shots (on+off target)** — a shots model (we only model SOT).
-
----
-
-## 9. Live‑API quirks & cheat sheet
-
-- **`opening_time` is the kickoff = prediction deadline**; `closing_time` is ~2.5 h later.
-- `GET /predictions` returns `probability` as a **percentage** (40), not 0–1.
-- Match names use FIFA codes (`URU vs ESP`); questions use full names (`Uruguay`) — bridged by
-  `src/questions/teams.py`.
-- 60 req/min; the client backs off on 429. `409` on submit = already predicted → PATCH instead.
+## Repository
 
 ```
-Base https://api.sportspredict.com/api/v1   header: Authorization: Bearer sp_live_...
-GET /events -> GET /lobbies?event_id= -> POST /lobbies/{id}/join -> GET /matches?event_id=
--> GET /markets?lobby_id=&match_id= -> POST /predictions/batch (<=50) -> PATCH /predictions/{id}
--> GET /results (settled, per-prediction brier_score)
-
-# Inspect what a bot has stored (swap the key per entry):
-curl -s "https://api.sportspredict.com/api/v1/predictions" -H "Authorization: Bearer $SPORTSPREDICT_KEY_1" | python3 -m json.tool
+src/probcup/       the package: sportspredict · questions · sources · models · pipeline · ops · evaluation
+.claude/commands/  the agent's playbooks
+agent/             how it was operated: daily cycle, guardrails, incidents, timeline, memory, logs
+research/          the study behind every tuned constant, and two models that were rejected
+results/           the platform's settled-results export, figures, and the script that builds them
+examples/          the 101 real boards and the final's recovered odds, for the demo
+data/              fitted models and researched inputs as they stood for the final
+docs/              competition · architecture · methodology · strategy · results · API notes
+tests/             offline tests and golden recordings of the tournament code
 ```
 
-### Tests
-`.venv/bin/python -m pytest tests/` — parser, simulator, and the `pull_lineups` regression guard.
-(The snapshot "all‑parse" assertion is intentionally red on the Tier‑B backlog above.)
+## Verified to behave exactly as it did live
+
+This repository was restructured after the tournament. Before anything moved, the code that
+ran the final (tag [`tournament-final`](../../tree/tournament-final)) was run against a fake
+outside world and recorded: 1,153 real markets priced for both bots, and 13 command scenarios
+down to every HTTP request and file written. The restructured package reproduces all of it
+exactly ([tests/golden](tests/golden/README.md)), and the ten research studies and the full
+club backtest give byte-identical output before and after.
+
+## Known issues
+
+Found in a post-tournament audit and deliberately left as they ran, so the archive matches the
+live system:
+
+- "Will a substitute score **or assist**?" is misparsed as a player named "a substitute" and
+  priced at the generic player prior (~0.21), including in the final. The "…score?" phrasing is
+  handled correctly.
+- `probcup run` can stop before submitting either bot if ESPN's team names fail to orient
+  (it raises `SystemExit`, which the per-match error handling doesn't catch), or if bot 2's key
+  is present but empty in `.env`.
+- `--dry-run` still writes the lineup file and the logs.
+- `probcup player-rates` drops a player's whole override entry, researched scorer price
+  included, when the player has fewer than 10 club appearances.
+- The club backtest rewrites `data/models/count_models.json` as a side effect, and the
+  knockout-era total-level scales are not gated to tournament mode, so a re-run today scores
+  total shots on target and cards worse than the June 13 run the published results come from.
+
+## Data and acknowledgements
+
+Event data from [StatsBomb open data](https://github.com/statsbomb/open-data); club results
+and closing odds from [football-data.co.uk](https://www.football-data.co.uk/); live odds from
+ESPN (DraftKings) and [Polymarket](https://polymarket.com/); player season rates from
+[API-Football](https://www.api-football.com/). Not affiliated with Jump Trading, SportsPredict
+or FIFA.

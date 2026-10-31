@@ -1,0 +1,17 @@
+matches: 314  (KO 86, group 228)
+
+stat      group_mean  ko_mean  KO/group      t       p
+sot             7.57     6.97     0.921  -1.71   0.089
+shots          23.68    22.66     0.957  -1.42   0.158
+corners         8.93     8.42     0.942  -1.21   0.229
+cards           3.46     3.48     1.006   0.08   0.938
+goals           2.45     2.47     1.005   0.07   0.947
+offsides        0.36     0.27     0.735  -1.41   0.159
+
+per-tournament total-SOT KO/group ratio:
+  afcon2023  group  6.89 (n= 36)  ko  5.62 (n= 16)  ratio 0.817
+  copa2024   group  7.88 (n= 24)  ko  6.12 (n=  8)  ratio 0.778
+  euro2020   group  7.42 (n= 36)  ko  7.20 (n= 15)  ratio 0.971
+  euro2024   group  8.47 (n= 36)  ko  6.87 (n= 15)  ratio 0.810
+  wc2018     group  7.35 (n= 48)  ko  7.50 (n= 16)  ratio 1.020
+  wc2022     group  7.56 (n= 48)  ko  8.06 (n= 16)  ratio 1.066

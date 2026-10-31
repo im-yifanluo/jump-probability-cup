@@ -1,0 +1,7 @@
+Leave-one-tournament-out P(>=1 SOT), n=4989 player-matches:
+  shipping model     Brier 0.1740
+  previous model     Brier 0.2115
+  always-prior       Brier 0.2571
+  coin flip          Brier 0.2500
+
+OK: shipping model beats the previous model and the 0.20 bar.

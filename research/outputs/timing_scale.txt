@@ -1,0 +1,28 @@
+settled timing_event markets: n=35
+  realized rate 0.286 vs mean shipped prob 0.429
+
+in-sample Brier by scale:
+  scale 0.45: Brier 0.2039
+  scale 0.50: Brier 0.2016
+  scale 0.55: Brier 0.2003
+  scale 0.60: Brier 0.2001
+  scale 0.65: Brier 0.2007
+  scale 0.70: Brier 0.2022  <-- deeper probe
+  scale 0.75: Brier 0.2043
+  scale 0.80: Brier 0.2071
+  scale 0.85: Brier 0.2105  <-- candidate
+  scale 0.90: Brier 0.2144
+  scale 0.95: Brier 0.2187
+  scale 1.00: Brier 0.2234  <-- shipped
+  scale 1.05: Brier 0.2284
+  scale 1.10: Brier 0.2337
+  scale 1.15: Brier 0.2393
+  scale 1.20: Brier 0.2450
+  scale 1.25: Brier 0.2509
+  => in-sample optimum: scale 0.60 (Brier 0.2001)
+
+walk-forward (n=29 OOS, 6-market warmup):
+  shipped 1.00 : Brier 0.2063
+  candidate 0.85: Brier 0.2028  (-0.34 vs shipped)
+  deeper   0.70 : Brier 0.2049  (-0.13 vs shipped)
+  fitted-scale  : Brier 0.2286  (+2.23 vs shipped)

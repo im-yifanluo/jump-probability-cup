@@ -254,12 +254,16 @@ def main() -> int:
     ap.add_argument("--only", nargs="*", help="scenario names (default: all, plus boards)")
     ap.add_argument("--hashseed", default="0")
     ap.add_argument("--tol", type=float, default=0.0, help="float tolerance (default exact)")
+    ap.add_argument("--current", action="store_true",
+                    help="record from the current code: only after an intentional, reviewed "
+                         "change of behaviour (explain the golden diff in the commit)")
     args = ap.parse_args()
 
     names = args.only if args.only else ["boards", *sc.SCENARIOS]
     code = "old" if args.old_tree else "new"
-    if args.action == "record" and code != "old":
-        ap.error("record needs --old-tree (goldens come from the original code)")
+    if args.action == "record" and code != "old" and not args.current:
+        ap.error("record needs --old-tree (goldens come from the original code), "
+                 "or --current after an intentional change")
 
     failures = 0
     with tempfile.TemporaryDirectory(prefix="golden-") as tmp:
@@ -278,9 +282,10 @@ def main() -> int:
             print(f"{'OK  ' if not problems else 'DIFF'} {name}")
             for p in problems:
                 print("   ", p)
-    if args.action == "record":
-        meta = {"generated_from": "tag tournament-final",
-                "state_file_sha256": state_hashes("old", args.old_tree),
+    if args.action == "record" and not args.only:
+        meta = {"generated_from": "tag tournament-final" if code == "old" else "current code",
+                "state_file_sha256": (state_hashes("old", args.old_tree) if code == "old"
+                                      else state_hashes("new", sc.REPO)),
                 "versions": _versions()}
         (GOLDEN / "meta.json").write_text(json.dumps(meta, indent=1, sort_keys=True))
     return 1 if failures else 0

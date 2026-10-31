@@ -1,0 +1,21 @@
+Per-tournament marginal P(a substitute scores in regulation):
+  afcon2023  n= 52  P(sub scored)=0.288  [5-sub]
+  copa2024   n= 32  P(sub scored)=0.344  [5-sub]
+  euro2020   n= 51  P(sub scored)=0.196  [5-sub]
+  euro2024   n= 51  P(sub scored)=0.353  [5-sub]
+  wc2018     n= 64  P(sub scored)=0.172  [3-sub]
+  wc2022     n= 64  P(sub scored)=0.312  [5-sub]
+
+Marginal P(sub scores): pooled(314)=0.271   5-sub-only(250)=0.296
+
+ G |  current |  pooled(n)   | 5-sub-only(n)
+ 0 |  0.000   | 0.000 ( 29)  | 0.000 ( 28)
+ 1 |  0.068   | 0.052 ( 58)  | 0.070 ( 43)
+ 2 |  0.225   | 0.231 ( 91)  | 0.264 ( 72)
+ 3 |  0.304   | 0.261 ( 69)  | 0.333 ( 51)
+ 4 |  0.600   | 0.606 ( 33)  | 0.586 ( 29)
+ 5 |  0.579   | 0.579 ( 19)  | 0.529 ( 17)
+ 6+|  0.917   | 0.800 ( 15)  | 0.900 ( 10)
+
+5-sub-only table (paste into counts._SUB_GOAL if materially different):
+  (0.0, 0.07, 0.264, 0.333, 0.586, 0.529, 0.9)

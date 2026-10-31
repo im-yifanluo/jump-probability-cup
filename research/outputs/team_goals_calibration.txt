@@ -1,0 +1,13 @@
+team_goals_ge(2) calibration on 12000 team-matches (real from_market model):
+  mean predicted 0.379  vs realized 0.381  gap +0.002  (z=0.47, Brier 0.2134)
+  per-decile (pred -> realized, n):
+    0.174 -> 0.164   (n=1200)
+    0.240 -> 0.240   (n=1200)
+    0.279 -> 0.266   (n=1200)
+    0.313 -> 0.312   (n=1200)
+    0.344 -> 0.343   (n=1200)
+    0.379 -> 0.379   (n=1200)
+    0.416 -> 0.410   (n=1200)
+    0.459 -> 0.461   (n=1200)
+    0.522 -> 0.534   (n=1200)
+    0.661 -> 0.699   (n=1200)

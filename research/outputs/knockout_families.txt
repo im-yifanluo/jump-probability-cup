@@ -1,0 +1,11 @@
+hold_lead conditionals (314 matches, both teams):
+  P(led at any point | won         ) = 1.000  (n=219)
+  P(led at any point | drew_first  ) = 1.000  (n=66)
+  P(led at any point | drew_nofirst) = 0.073  (n=124)
+  P(led at any point | lost        ) = 0.132  (n=219)
+
+plays_full_match — starter full-90 share, 5-sub era (199 matches):
+  GK: nan  (n=0)
+  DEF: 0.790  (n=1688)
+  MID: 0.575  (n=1740)
+  FWD: 0.282  (n=950)

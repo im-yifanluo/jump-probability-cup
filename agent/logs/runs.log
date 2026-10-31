@@ -1,0 +1,1253 @@
+[2026-06-12T17:30:21+00:00] daily_run hours=2 mode=dry-run
+  matches=1 markets=10 actions={'unchanged': 7, 'update': 3}
+[2026-06-12T17:30:41+00:00] daily_run hours=2 mode=SUBMIT
+  matches=1 markets=10 actions={'unchanged': 7, 'update': 3}
+[2026-06-13T01:32:50+00:00] daily_run hours=24 mode=SUBMIT
+  matches=3 markets=30 actions={'unchanged': 16, 'update': 14}
+  attention: QAT vs SUI: Akram Afif priced on prior
+  attention: Haiti vs SCO: Duckens Nazon priced on prior
+[2026-06-13T01:33:57+00:00] daily_run hours=24 mode=SUBMIT
+  matches=3 markets=30 actions={'unchanged': 28, 'update': 2}
+[2026-06-13T03:58:06+00:00] daily_run hours=36 mode=SUBMIT
+  matches=4 markets=39 actions={'unchanged': 25, 'update': 14}
+[2026-06-13T04:02:17+00:00] daily_run hours=36 mode=SUBMIT
+  matches=4 markets=39 actions={'unchanged': 36, 'update': 3}
+[2026-06-13T04:40:39+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=79 actions={'create': 40, 'unchanged': 27, 'update': 12}
+  attention: AUS vs TUR: Orkun Kökçü on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: GER vs Curacao: Leandro Bacuna priced on prior (no data)
+  attention: NED vs JPN: Cody Gakpo priced on prior (no data)
+  attention: NED vs JPN: Takefusa Kubo on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs ECU: Ibrahim Sangaré on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs ECU: Jeremy Sarmiento priced on prior (no data)
+  attention: SWE vs TUN: Viktor Gyökeres priced on prior (no data)
+  attention: SWE vs TUN: Ellyes Skhiri priced on prior (no data)
+[2026-06-13T04:43:14+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=79 actions={'unchanged': 77, 'update': 2}
+  attention: AUS vs TUR: Orkun Kökçü on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: GER vs Curacao: Leandro Bacuna priced on prior (no data)
+  attention: NED vs JPN: Takefusa Kubo on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs ECU: Ibrahim Sangaré on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs ECU: Jeremy Sarmiento priced on prior (no data)
+  attention: SWE vs TUN: Viktor Gyökeres priced on prior (no data)
+  attention: SWE vs TUN: Ellyes Skhiri priced on prior (no data)
+[2026-06-13T04:43:35+00:00] daily_run hours=48 mode=dry-run
+  matches=8 markets=79 actions={'unchanged': 79}
+  attention: AUS vs TUR: Orkun Kökçü on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: GER vs Curacao: Leandro Bacuna priced on prior (no data)
+  attention: NED vs JPN: Takefusa Kubo on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs ECU: Ibrahim Sangaré on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs ECU: Jeremy Sarmiento priced on prior (no data)
+  attention: SWE vs TUN: Viktor Gyökeres priced on prior (no data)
+  attention: SWE vs TUN: Ellyes Skhiri priced on prior (no data)
+[2026-06-13T04:53:01+00:00] daily_run hours=48 mode=dry-run
+  matches=8 markets=79 actions={'unchanged': 77, 'update': 2}
+  attention: AUS vs TUR: Orkun Kökçü on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: GER vs Curacao: Leandro Bacuna priced on prior (no data)
+  attention: NED vs JPN: Takefusa Kubo on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs ECU: Ibrahim Sangaré on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs ECU: Jeremy Sarmiento priced on prior (no data)
+  attention: SWE vs TUN: Viktor Gyökeres priced on prior (no data)
+  attention: SWE vs TUN: Ellyes Skhiri priced on prior (no data)
+[2026-06-13T04:54:16+00:00] daily_run hours=48 mode=dry-run
+  matches=8 markets=79 actions={'unchanged': 73, 'update': 6}
+  attention: AUS vs TUR: Orkun Kökçü on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: GER vs Curacao: Leandro Bacuna priced on prior (no data)
+  attention: NED vs JPN: Takefusa Kubo on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs ECU: Ibrahim Sangaré on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs ECU: Jeremy Sarmiento priced on prior (no data)
+  attention: SWE vs TUN: Viktor Gyökeres priced on prior (no data)
+  attention: SWE vs TUN: Ellyes Skhiri priced on prior (no data)
+[2026-06-13T04:57:24+00:00] daily_run hours=48 mode=dry-run
+  matches=8 markets=79 actions={'unchanged': 73, 'update': 6}
+  attention: AUS vs TUR: Orkun Kökçü on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: GER vs Curacao: Leandro Bacuna priced on prior (no data)
+  attention: NED vs JPN: Takefusa Kubo on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs ECU: Ibrahim Sangaré on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs ECU: Jeremy Sarmiento priced on prior (no data)
+  attention: SWE vs TUN: Viktor Gyökeres priced on prior (no data)
+  attention: SWE vs TUN: Ellyes Skhiri priced on prior (no data)
+[2026-06-13T05:18:59+00:00] daily_run hours=48 mode=dry-run
+  matches=8 markets=79 actions={'unchanged': 67, 'update': 12}
+  attention: AUS vs TUR: Orkun Kökçü on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: GER vs Curacao: Leandro Bacuna priced on prior (no data)
+  attention: NED vs JPN: Takefusa Kubo on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs ECU: Ibrahim Sangaré on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs ECU: Jeremy Sarmiento priced on prior (no data)
+  attention: SWE vs TUN: Viktor Gyökeres priced on prior (no data)
+  attention: SWE vs TUN: Ellyes Skhiri priced on prior (no data)
+[2026-06-13T13:36:05+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=79 actions={'unchanged': 56, 'update': 23}
+  attention: AUS vs TUR: Orkun Kökçü on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: GER vs Curacao: Leandro Bacuna priced on prior (no data)
+  attention: NED vs JPN: Takefusa Kubo on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs ECU: Ibrahim Sangaré on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs ECU: Jeremy Sarmiento priced on prior (no data)
+  attention: SWE vs TUN: Viktor Gyökeres priced on prior (no data)
+  attention: SWE vs TUN: Ellyes Skhiri priced on prior (no data)
+[2026-06-13T13:41:30+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=79 actions={'unchanged': 63, 'update': 16}
+[2026-06-13T17:04:44+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 12, 'update': 8}
+[2026-06-13T18:33:28+00:00] daily_run hours=48 mode=dry-run
+  matches=9 markets=89 actions={'unchanged': 61, 'update': 18, 'create': 10}
+  attention: ESP vs CPV: Dani Olmo priced on prior (no data)
+  attention: ESP vs CPV: Ryan Mendes priced on prior (no data)
+[2026-06-13T18:34:13+00:00] daily_run hours=48 mode=SUBMIT
+  matches=9 markets=89 actions={'unchanged': 61, 'update': 18, 'create': 10}
+  attention: ESP vs CPV: Dani Olmo priced on prior (no data)
+  attention: ESP vs CPV: Ryan Mendes priced on prior (no data)
+[2026-06-13T21:31:14+00:00] daily_run hours=48 mode=SUBMIT
+  matches=9 markets=89 actions={'update': 44, 'unchanged': 35, 'create': 10}
+  attention: ESP vs CPV: Dani Olmo priced on prior (no data)
+  attention: ESP vs CPV: Ryan Mendes priced on prior (no data)
+  attention: BEL vs EGY: Mahmoud Trezeguet priced on prior (no data)
+[2026-06-13T21:32:34+00:00] daily_run hours=14 mode=SUBMIT
+  matches=3 markets=29 actions={'unchanged': 29}
+[2026-06-14T00:35:52+00:00] daily_run hours=14 mode=SUBMIT
+  matches=2 markets=19 actions={'unchanged': 13, 'update': 6}
+[2026-06-14T07:39:13+00:00] daily_run hours=30 mode=SUBMIT
+  matches=4 markets=40 actions={'update': 31, 'unchanged': 9}
+[2026-06-14T07:52:50+00:00] daily_run hours=30 mode=SUBMIT
+  matches=4 markets=40 actions={'update': 22, 'unchanged': 18}
+[2026-06-14T08:09:15+00:00] daily_run hours=36 mode=SUBMIT
+  matches=6 markets=60 actions={'unchanged': 39, 'update': 21}
+  attention: ESP vs CPV: Dani Olmo priced on prior (no data)
+  attention: ESP vs CPV: Ryan Mendes priced on prior (no data)
+  attention: BEL vs EGY: Mahmoud Trezeguet priced on prior (no data)
+[2026-06-14T13:36:01+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=80 actions={'unchanged': 43, 'create': 20, 'update': 17}
+  attention: ESP vs CPV: Dani Olmo priced on prior (no data)
+  attention: ESP vs CPV: Ryan Mendes priced on prior (no data)
+  attention: BEL vs EGY: Mahmoud Trezeguet priced on prior (no data)
+  attention: KSA vs URU: Salem Al-Dawsari priced on prior (no data)
+  attention: KSA vs URU: Darwin Núñez priced on prior (no data)
+  attention: IRN vs New Zealand: Mehdi Taremi on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: IRN vs New Zealand: Ben Waine priced on prior (no data)
+[2026-06-14T13:41:34+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=80 actions={'unchanged': 68, 'update': 12}
+[2026-06-14T17:04:45+00:00] daily_run hours=5 mode=SUBMIT
+  matches=1 markets=10 actions={'unchanged': 10}
+[2026-06-14T21:28:45+00:00] daily_run hours=14 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 19, 'update': 1}
+[2026-06-15T13:35:55+00:00] daily_run hours=48 mode=dry-run
+  matches=8 markets=80 actions={'create': 40, 'unchanged': 22, 'update': 18}
+  attention: FRA vs SEN: Sadio Mané on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: IRQ vs NOR: Mohanad Ali priced on prior (no data)
+  attention: ARG vs ALG: Riyad Mahrez on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: AUT vs JOR: Mousa Al-Taamari priced on prior (no data)
+[2026-06-15T13:37:06+00:00] daily_run hours=48 mode=dry-run
+  matches=8 markets=80 actions={'create': 40, 'unchanged': 22, 'update': 18}
+  attention: FRA vs SEN: Sadio Mané on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: IRQ vs NOR: Mohanad Ali priced on prior (no data)
+  attention: ARG vs ALG: Riyad Mahrez on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: AUT vs JOR: Mousa Al-Taamari priced on prior (no data)
+[2026-06-15T17:03:49+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 12, 'update': 8}
+[2026-06-15T17:07:58+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 17, 'update': 3}
+[2026-06-15T19:54:03+00:00] daily_run hours=36 mode=SUBMIT
+  matches=6 markets=60 actions={'create': 40, 'unchanged': 15, 'update': 5}
+  attention: FRA vs SEN: Sadio Mané on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: IRQ vs NOR: Mohanad Ali priced on prior (no data)
+  attention: ARG vs ALG: Riyad Mahrez on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: AUT vs JOR: Mousa Al-Taamari priced on prior (no data)
+[2026-06-15T19:59:58+00:00] daily_run hours=36 mode=SUBMIT
+  matches=6 markets=60 actions={'unchanged': 54, 'update': 6}
+[2026-06-15T20:34:30+00:00] daily_run hours=36 mode=dry-run
+  matches=6 markets=60 actions={'unchanged': 53, 'update': 7}
+[2026-06-15T20:35:21+00:00] daily_run hours=36 mode=SUBMIT
+  matches=6 markets=60 actions={'unchanged': 53, 'update': 7}
+[2026-06-15T21:27:49+00:00] daily_run hours=14 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 19, 'update': 1}
+[2026-06-15T21:30:04+00:00] daily_run hours=14 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 19, 'update': 1}
+[2026-06-16T13:34:52+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=80 actions={'create': 40, 'update': 27, 'unchanged': 13}
+  attention: POR vs COD: Gonçalo Ramos priced on prior (no data)
+  attention: POR vs COD: Cédric Bakambu on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: ENG vs CRO: Luka Sučić on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: GHA vs PAN: Antoine Semenyo on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: GHA vs PAN: José Fajardo priced on prior (no data)
+  attention: UZB vs COL: Luis Díaz priced on prior (no data)
+  attention: UZB vs COL: Eldor Shomurodov priced on prior (no data)
+[2026-06-16T13:42:45+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=80 actions={'unchanged': 70, 'update': 10}
+[2026-06-16T14:26:21+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=80 actions={'unchanged': 72, 'update': 8}
+[2026-06-16T17:03:45+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 15, 'update': 5}
+[2026-06-16T17:07:36+00:00] daily_run hours=48 mode=SUBMIT
+  matches=9 markets=90 actions={'unchanged': 74, 'create': 10, 'update': 6}
+  attention: CZE vs RSA: Patrik Schick on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CZE vs RSA: Oswin Appollis priced on prior (no data)
+[2026-06-16T21:28:10+00:00] daily_run hours=14 mode=SUBMIT
+  matches=3 markets=30 actions={'unchanged': 27, 'update': 3}
+[2026-06-16T21:29:49+00:00] daily_run hours=14 mode=SUBMIT
+  matches=3 markets=30 actions={'unchanged': 29, 'update': 1}
+[2026-06-17T13:34:38+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=79 actions={'create': 29, 'update': 27, 'unchanged': 23}
+  attention: CZE vs RSA: Patrik Schick on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CZE vs RSA: Oswin Appollis priced on prior (no data)
+  attention: MEX vs KOR: Son Heung-min on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-06-17T13:38:31+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=79 actions={'unchanged': 76, 'update': 3}
+[2026-06-17T17:56:49+00:00] daily_run hours=5 mode=SUBMIT
+  matches=1 markets=10 actions={'unchanged': 9, 'update': 1}
+[2026-06-17T17:59:03+00:00] daily_run hours=5 mode=SUBMIT
+  matches=1 markets=10 actions={'unchanged': 9, 'update': 1}
+[2026-06-17T21:27:50+00:00] daily_run hours=14 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 13, 'update': 7}
+[2026-06-17T21:29:34+00:00] daily_run hours=14 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 20}
+[2026-06-18T08:38:51+00:00] daily_run hours=20 mode=SUBMIT
+  matches=4 markets=39 actions={'unchanged': 20, 'update': 19}
+[2026-06-18T08:46:18+00:00] daily_run hours=12 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 17, 'update': 3}
+[2026-06-18T13:34:53+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=78 actions={'create': 39, 'unchanged': 24, 'update': 15}
+  attention: USA vs AUS: Folarin Balogun on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: TUR vs PAR: Julio Enciso priced on prior (no data)
+[2026-06-18T13:39:01+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=78 actions={'unchanged': 75, 'update': 3}
+[2026-06-18T17:03:37+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 17, 'update': 3}
+[2026-06-18T17:05:16+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 17, 'update': 3}
+[2026-06-18T21:27:49+00:00] daily_run hours=14 mode=SUBMIT
+  matches=2 markets=19 actions={'update': 13, 'unchanged': 6}
+[2026-06-19T15:15:12+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=78 actions={'create': 39, 'update': 31, 'unchanged': 8}
+[2026-06-19T15:15:56+00:00] daily_run hours=48 mode=dry-run
+  matches=8 markets=78 actions={'unchanged': 78}
+[2026-06-19T18:43:47+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=19 actions={'update': 11, 'unchanged': 8}
+[2026-06-19T22:13:44+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 14, 'update': 6}
+[2026-06-20T00:51:06+00:00] daily_run hours=14 mode=SUBMIT
+  matches=1 markets=10 actions={'unchanged': 6, 'update': 4}
+[2026-06-20T15:13:47+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=79 actions={'create': 40, 'update': 23, 'unchanged': 16}
+[2026-06-20T18:43:41+00:00] daily_run hours=5 mode=SUBMIT
+  matches=1 markets=10 actions={'update': 9, 'unchanged': 1}
+[2026-06-20T22:13:15+00:00] daily_run hours=5 mode=SUBMIT
+  matches=1 markets=9 actions={'update': 7, 'unchanged': 2}
+[2026-06-21T00:51:15+00:00] daily_run hours=14 mode=SUBMIT
+  matches=1 markets=10 actions={'update': 6, 'unchanged': 4}
+[2026-06-21T00:53:10+00:00] daily_run hours=14 mode=SUBMIT
+  matches=1 markets=10 actions={'unchanged': 9, 'update': 1}
+[2026-06-21T15:13:38+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=80 actions={'create': 40, 'unchanged': 28, 'update': 12}
+[2026-06-21T15:17:23+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=80 actions={'unchanged': 76, 'update': 4}
+[2026-06-21T18:43:30+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=20 actions={'update': 12, 'unchanged': 8}
+[2026-06-21T18:46:14+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 20}
+[2026-06-21T18:47:41+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 19, 'update': 1}
+[2026-06-21T22:13:18+00:00] daily_run hours=5 mode=SUBMIT
+  matches=1 markets=10 actions={'unchanged': 7, 'update': 3}
+[2026-06-22T00:52:02+00:00] daily_run hours=14 mode=SUBMIT
+  matches=1 markets=10 actions={'update': 7, 'unchanged': 3}
+[2026-06-22T00:54:15+00:00] daily_run hours=14 mode=SUBMIT
+  matches=1 markets=10 actions={'unchanged': 8, 'update': 2}
+[2026-06-22T15:13:40+00:00] daily_run hours=48 mode=SUBMIT
+  matches=8 markets=79 actions={'create': 40, 'update': 21, 'unchanged': 18}
+[2026-06-22T18:45:21+00:00] daily_run hours=5 mode=SUBMIT
+  matches=1 markets=9 actions={'unchanged': 8, 'update': 1}
+[2026-06-23T00:51:44+00:00] daily_run hours=5 mode=SUBMIT
+  matches=1 markets=10 actions={'unchanged': 7, 'update': 3}
+[2026-06-23T00:53:06+00:00] daily_run hours=14 mode=SUBMIT
+  matches=1 markets=10 actions={'unchanged': 10}
+[2026-06-23T15:14:12+00:00] daily_run hours=48 mode=SUBMIT
+  matches=10 markets=99 actions={'create': 59, 'update': 23, 'unchanged': 17}
+[2026-06-23T15:16:45+00:00] daily_run hours=48 mode=SUBMIT
+  matches=10 markets=99 actions={'unchanged': 98, 'update': 1}
+[2026-06-23T18:43:34+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 14, 'update': 6}
+[2026-06-23T22:13:41+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=20 actions={'update': 11, 'unchanged': 9}
+[2026-06-23T22:15:42+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=20 actions={'unchanged': 19, 'update': 1}
+[2026-06-24T00:51:10+00:00] daily_run hours=14 mode=SUBMIT
+  matches=1 markets=10 actions={'unchanged': 9, 'update': 1}
+[2026-06-24T08:37:25+00:00] daily_run hours=90 mode=SUBMIT
+  matches=24 markets=238 actions={'create': 179, 'update': 39, 'unchanged': 20}
+[2026-06-24T18:12:57+00:00] daily_run hours=90 mode=SUBMIT
+  matches=24 markets=238 actions={'unchanged': 148, 'update': 90}
+[2026-06-24T18:28:11+00:00] daily_run hours=48 mode=SUBMIT
+  matches=12 markets=118 actions={'unchanged': 110, 'update': 8}
+[2026-06-24T18:43:24+00:00] daily_run hours=5 mode=SUBMIT
+  matches=4 markets=40 actions={'unchanged': 39, 'update': 1}
+[2026-06-24T18:46:54+00:00] daily_run hours=5 mode=SUBMIT
+  matches=4 markets=40 actions={'unchanged': 34, 'update': 6}
+[2026-06-24T22:14:57+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=19 actions={'unchanged': 12, 'update': 6, 'error': 1}
+  attention: bot 1: 1 submission errors
+[2026-06-25T00:51:18+00:00] daily_run hours=14 mode=SUBMIT
+  matches=2 markets=19 actions={'update': 15, 'unchanged': 4}
+[2026-06-25T15:16:59+00:00] daily_run hours=48 mode=SUBMIT
+  matches=12 markets=117 actions={'update': 61, 'unchanged': 56}
+[2026-06-25T18:45:23+00:00] daily_run hours=5 mode=SUBMIT
+  matches=4 markets=38 actions={'unchanged': 27, 'update': 11}
+[2026-06-25T18:48:03+00:00] daily_run hours=5 mode=SUBMIT
+  matches=4 markets=38 actions={'unchanged': 37, 'update': 1}
+[2026-06-25T22:13:41+00:00] daily_run hours=5 mode=SUBMIT
+  matches=4 markets=37 actions={'update': 21, 'unchanged': 16}
+[2026-06-25T22:16:23+00:00] daily_run hours=5 mode=SUBMIT
+  matches=4 markets=37 actions={'unchanged': 28, 'update': 9}
+[2026-06-26T00:51:24+00:00] daily_run hours=14 mode=SUBMIT
+  matches=2 markets=19 actions={'unchanged': 14, 'update': 5}
+[2026-06-26T00:53:24+00:00] daily_run hours=14 mode=SUBMIT
+  matches=2 markets=19 actions={'unchanged': 18, 'update': 1}
+[2026-06-26T10:27:19+00:00] daily_run hours=48 mode=dry-run
+  matches=12 markets=120 actions={'update': 61, 'unchanged': 59}
+[2026-06-26T10:28:01+00:00] daily_run hours=48 mode=dry-run
+  matches=12 markets=120 actions={'update': 61, 'unchanged': 59}
+[2026-06-26T10:32:21+00:00] daily_run hours=90 mode=SUBMIT
+  matches=12 markets=120 actions={'update': 62, 'unchanged': 58}
+[2026-06-26T10:39:58+00:00] daily_run hours=48 mode=dry-run
+  matches=12 markets=120 actions={'unchanged': 113, 'update': 7}
+[2026-06-26T10:42:34+00:00] daily_run hours=48 mode=SUBMIT
+  matches=12 markets=120 actions={'unchanged': 113, 'update': 7}
+[2026-06-26T12:53:38+00:00] daily_run hours=48 mode=SUBMIT
+  matches=12 markets=120 actions={'unchanged': 107, 'update': 13}
+[2026-06-26T18:10:55+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=20 actions={'update': 11, 'unchanged': 9}
+[2026-06-26T23:10:41+00:00] daily_run hours=5 mode=SUBMIT
+  matches=4 markets=40 actions={'update': 28, 'unchanged': 12}
+[2026-06-26T23:14:31+00:00] daily_run hours=5 mode=SUBMIT
+  matches=4 markets=40 actions={'unchanged': 36, 'update': 4}
+[2026-06-27T02:12:00+00:00] daily_run hours=26 mode=SUBMIT
+  matches=8 markets=80 actions={'update': 46, 'unchanged': 34}
+[2026-06-27T04:13:41+00:00] daily_run hours=24 mode=dry-run
+  matches=6 markets=60 actions={'unchanged': 39, 'update': 21}
+  attention: CRO vs GHA: STALE-RISK Luka Sučić expected_minutes=20 from a GLOBAL override (past game), NOT confirmed by today's pull — verify the XI
+  attention: COL vs POR: STALE-RISK Gonçalo Ramos expected_minutes=25 from a GLOBAL override (past game), NOT confirmed by today's pull — verify the XI
+  attention: COL vs POR: STALE-RISK Gonçalo Ramos scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-06-27T12:54:06+00:00] daily_run hours=48 mode=SUBMIT
+  matches=7 markets=75 actions={'update': 42, 'unchanged': 18, 'create': 9}
+  attention: CRO vs GHA: STALE-RISK Luka Sučić expected_minutes=20 from a GLOBAL override (past game), NOT confirmed by today's pull — verify the XI
+  attention: COL vs POR: STALE-RISK Gonçalo Ramos expected_minutes=25 from a GLOBAL override (past game), NOT confirmed by today's pull — verify the XI
+  attention: COL vs POR: STALE-RISK Gonçalo Ramos scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: RSA vs CAN: CANNOT PARSE 'Will a card be shown after the second hydration break, including any extra time?' (Will a card be shown after the second hydration break, including any extra time?)
+  attention: RSA vs CAN: CANNOT PARSE 'Will either team be ruled offside before the first hydration break?' (Will either team be ruled offside before the first hydration break?)
+  attention: RSA vs CAN: CANNOT PARSE 'Will a substitute score a goal in regulation (90 minutes + stoppage time)?' (Will a substitute score a goal in regulation (90 minutes + stoppage time)?)
+  attention: RSA vs CAN: CANNOT PARSE 'Will a goal be scored before the first hydration break?' (Will a goal be scored before the first hydration break?)
+  attention: RSA vs CAN: CANNOT PARSE 'Will South Africa advance to the Round of 16?' (Will South Africa advance to the Round of 16?)
+  attention: RSA vs CAN: CANNOT PARSE 'Will any player score more than 1 goal (excluding own goals) in regulation (90 minutes + stoppage time)?' (Will any player score more than 1 goal (excluding own goals) in regulation (90 minutes + stoppage time)?)
+  attention: RSA vs CAN: Iqraam Rayners priced on prior (no data)
+[2026-06-27T20:10:55+00:00] daily_run hours=5 mode=SUBMIT
+  matches=4 markets=40 actions={'update': 28, 'unchanged': 12}
+  attention: COL vs POR: STALE-RISK Gonçalo Ramos expected_minutes=25 from a GLOBAL override (past game), NOT confirmed by today's pull — verify the XI
+  attention: COL vs POR: STALE-RISK Gonçalo Ramos scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-06-27T22:40:43+00:00] daily_run hours=5 mode=SUBMIT
+  matches=4 markets=40 actions={'update': 27, 'unchanged': 13}
+  attention: COL vs POR: STALE-RISK Gonçalo Ramos scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-06-27T22:42:18+00:00] daily_run hours=5 mode=SUBMIT
+  matches=4 markets=40 actions={'unchanged': 39, 'update': 1}
+  attention: COL vs POR: STALE-RISK Gonçalo Ramos scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: COL vs POR: STALE-RISK Luis Díaz scorer_prop_prob=0.2 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-06-28T01:10:35+00:00] daily_run hours=26 mode=SUBMIT
+  matches=3 markets=35 actions={'update': 15, 'unchanged': 14}
+  attention: JOR vs ARG: lineup could not match ['Mousa Al-Taamari'] — verify against the posted XI (left at default 90)
+  attention: RSA vs CAN: CANNOT PARSE 'Will a card be shown after the second hydration break, including any extra time?' (Will a card be shown after the second hydration break, including any extra time?)
+  attention: RSA vs CAN: CANNOT PARSE 'Will either team be ruled offside before the first hydration break?' (Will either team be ruled offside before the first hydration break?)
+  attention: RSA vs CAN: CANNOT PARSE 'Will a substitute score a goal in regulation (90 minutes + stoppage time)?' (Will a substitute score a goal in regulation (90 minutes + stoppage time)?)
+  attention: RSA vs CAN: CANNOT PARSE 'Will a goal be scored before the first hydration break?' (Will a goal be scored before the first hydration break?)
+  attention: RSA vs CAN: CANNOT PARSE 'Will South Africa advance to the Round of 16?' (Will South Africa advance to the Round of 16?)
+  attention: RSA vs CAN: CANNOT PARSE 'Will any player score more than 1 goal (excluding own goals) in regulation (90 minutes + stoppage time)?' (Will any player score more than 1 goal (excluding own goals) in regulation (90 minutes + stoppage time)?)
+  attention: RSA vs CAN: Iqraam Rayners priced on prior (no data)
+[2026-06-28T09:37:55+00:00] daily_run hours=48 mode=SUBMIT
+  matches=4 markets=60 actions={'create': 41, 'unchanged': 6, 'update': 3}
+  attention: RSA vs CAN: CANNOT PARSE 'Will a substitute score a goal in regulation (90 minutes + stoppage time)?' (Will a substitute score a goal in regulation (90 minutes + stoppage time)?)
+  attention: RSA vs CAN: CANNOT PARSE 'Will South Africa advance to the Round of 16?' (Will South Africa advance to the Round of 16?)
+  attention: RSA vs CAN: CANNOT PARSE 'Will any player score more than 1 goal (excluding own goals) in regulation (90 minutes + stoppage time)?' (Will any player score more than 1 goal (excluding own goals) in regulation (90 minutes + stoppage time)?)
+  attention: RSA vs CAN: Iqraam Rayners priced on prior (no data)
+  attention: BRA vs JPN: CANNOT PARSE 'Will any player record 2 or more shots on target in regulation (90 minutes + stoppage time)?' (Will any player record 2 or more shots on target in regulation (90 minutes + stoppage time)?)
+  attention: BRA vs JPN: CANNOT PARSE 'Will Japan advance to the Round of 16?' (Will Japan advance to the Round of 16?)
+  attention: BRA vs JPN: CANNOT PARSE 'Will a substitute score a goal in regulation (90 minutes + stoppage time)?' (Will a substitute score a goal in regulation (90 minutes + stoppage time)?)
+  attention: BRA vs JPN: CANNOT PARSE 'Will any player score more than 1 goal (excluding own goals) in regulation (90 minutes + stoppage time)?' (Will any player score more than 1 goal (excluding own goals) in regulation (90 minutes + stoppage time)?)
+  attention: BRA vs JPN: Matheus Cunha priced on prior (no data)
+  attention: BRA vs JPN: Ayase Ueda on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: GER vs PAR: Kai Havertz (Germany) priced on prior (no data)
+  attention: GER vs PAR: Jamal Musiala (Germany) priced on prior (no data)
+  attention: GER vs PAR: Julio Enciso (Paraguay) priced on prior (no data)
+  attention: GER vs PAR: Florian Wirtz (Germany) priced on prior (no data)
+  attention: NED vs MAR: CANNOT PRICE 'Will the Netherlands score the first goal of the match?' (KeyError: "'the Netherlands' is not in Netherlands vs Morocco")
+  attention: NED vs MAR: Brian Brobbey on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: NED vs MAR: CANNOT PRICE 'Will the Netherlands have more corner kicks than Morocco in regulation (90 minutes + stoppage time)?' (KeyError: "'the Netherlands' is not in Netherlands vs Morocco")
+  attention: NED vs MAR: CANNOT PRICE 'Will the Netherlands win in regulation (90 minutes + stoppage time)?' (KeyError: "'the Netherlands' is not in Netherlands vs Morocco")
+  attention: NED vs MAR: Ismael Saibari on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-06-28T09:59:16+00:00] daily_run hours=48 mode=SUBMIT
+  matches=4 markets=60 actions={'unchanged': 45, 'create': 6, 'update': 5}
+  attention: RSA vs CAN: CANNOT PARSE 'Will a substitute score a goal in regulation (90 minutes + stoppage time)?' (Will a substitute score a goal in regulation (90 minutes + stoppage time)?)
+  attention: RSA vs CAN: CANNOT PARSE 'Will South Africa advance to the Round of 16?' (Will South Africa advance to the Round of 16?)
+  attention: RSA vs CAN: Iqraam Rayners priced on prior (no data)
+  attention: BRA vs JPN: CANNOT PARSE 'Will Japan advance to the Round of 16?' (Will Japan advance to the Round of 16?)
+  attention: BRA vs JPN: CANNOT PARSE 'Will a substitute score a goal in regulation (90 minutes + stoppage time)?' (Will a substitute score a goal in regulation (90 minutes + stoppage time)?)
+  attention: BRA vs JPN: Matheus Cunha priced on prior (no data)
+  attention: BRA vs JPN: Ayase Ueda on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: GER vs PAR: Kai Havertz (Germany) priced on prior (no data)
+  attention: GER vs PAR: Jamal Musiala (Germany) priced on prior (no data)
+  attention: GER vs PAR: Julio Enciso (Paraguay) priced on prior (no data)
+  attention: GER vs PAR: Florian Wirtz (Germany) priced on prior (no data)
+  attention: NED vs MAR: Brian Brobbey on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: NED vs MAR: Ismael Saibari on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-06-28T10:04:55+00:00] daily_run hours=48 mode=SUBMIT
+  matches=4 markets=60 actions={'unchanged': 50, 'update': 6, 'create': 4}
+  attention: RSA vs CAN: Iqraam Rayners priced on prior (no data)
+  attention: BRA vs JPN: Matheus Cunha priced on prior (no data)
+  attention: BRA vs JPN: Ayase Ueda on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: GER vs PAR: Kai Havertz (Germany) priced on prior (no data)
+  attention: GER vs PAR: Jamal Musiala (Germany) priced on prior (no data)
+  attention: GER vs PAR: Julio Enciso (Paraguay) priced on prior (no data)
+  attention: GER vs PAR: Florian Wirtz (Germany) priced on prior (no data)
+  attention: NED vs MAR: Brian Brobbey on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: NED vs MAR: Ismael Saibari on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-06-28T12:52:28+00:00] daily_run hours=48 mode=SUBMIT
+  matches=4 markets=60 actions={'unchanged': 44, 'update': 16}
+  attention: RSA vs CAN: Iqraam Rayners priced on prior (no data)
+  attention: BRA vs JPN: Matheus Cunha priced on prior (no data)
+  attention: BRA vs JPN: Ayase Ueda on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: GER vs PAR: Kai Havertz (Germany) priced on prior (no data)
+  attention: GER vs PAR: Jamal Musiala (Germany) priced on prior (no data)
+  attention: GER vs PAR: Julio Enciso (Paraguay) priced on prior (no data)
+  attention: GER vs PAR: Florian Wirtz (Germany) priced on prior (no data)
+  attention: NED vs MAR: Brian Brobbey on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: NED vs MAR: Ismael Saibari on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-06-28T18:10:33+00:00] daily_run hours=26 mode=SUBMIT
+  matches=2 markets=30 actions={'update': 15, 'unchanged': 15}
+  attention: RSA vs CAN: Iqraam Rayners priced on prior (no data)
+  attention: BRA vs JPN: Matheus Cunha priced on prior (no data)
+  attention: BRA vs JPN: Ayase Ueda on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-06-28T18:18:53+00:00] daily_run hours=26 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 25, 'update': 5}
+  attention: RSA vs CAN: STALE-RISK Cyle Larin scorer_prop_prob=0.07 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: RSA vs CAN: Iqraam Rayners priced on prior (no data)
+  attention: BRA vs JPN: Matheus Cunha priced on prior (no data)
+  attention: BRA vs JPN: Ayase Ueda on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-06-28T20:05:45+00:00] daily_run hours=26 mode=SUBMIT
+  matches=2 markets=30 actions={'update': 19, 'unchanged': 11}
+  attention: BRA vs JPN: Matheus Cunha priced on prior (no data)
+  attention: BRA vs JPN: Ayase Ueda on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: GER vs PAR: Florian Wirtz on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-06-29T10:57:28+00:00] daily_run hours=8 mode=dry-run
+  matches=1 markets=15 actions={'update': 12, 'unchanged': 3}
+  attention: BRA vs JPN: STALE-RISK Matheus Cunha scorer_prop_prob=0.31 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-06-29T12:57:06+00:00] daily_run hours=48 mode=SUBMIT
+  matches=5 markets=75 actions={'update': 31, 'create': 30, 'unchanged': 14}
+  attention: BRA vs JPN: STALE-RISK Matheus Cunha scorer_prop_prob=0.31 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: GER vs PAR: Florian Wirtz on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CIV vs NOR: Erling Haaland priced on prior (no data)
+  attention: CIV vs NOR: Martin Ødegaard priced on prior (no data)
+  attention: CIV vs NOR: Amad Diallo priced on prior (no data)
+  attention: CIV vs NOR: Alexander Sørloth priced on prior (no data)
+  attention: FRA vs SWE: Kylian Mbappé priced on prior (no data)
+  attention: FRA vs SWE: Alexander Isak on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-06-29T16:11:30+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'update': 24, 'unchanged': 6}
+  attention: BRA vs JPN: STALE-RISK Matheus Cunha scorer_prop_prob=0.31 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: GER vs PAR: Florian Wirtz on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-06-29T18:41:23+00:00] daily_run hours=8 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 18, 'update': 12}
+  attention: GER vs PAR: Florian Wirtz on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-06-29T19:37:30+00:00] daily_run hours=8 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 19, 'update': 11}
+  attention: GER vs PAR: Florian Wirtz on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-06-29T19:39:47+00:00] daily_run hours=8 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 30}
+  attention: GER vs PAR: Florian Wirtz on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-06-29T19:45:50+00:00] daily_run hours=5 mode=SUBMIT
+  matches=1 markets=15 actions={'unchanged': 15}
+  attention: GER vs PAR: Florian Wirtz on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-06-30T00:15:12+00:00] daily_run hours=26 mode=SUBMIT
+  matches=4 markets=60 actions={'update': 33, 'create': 13, 'unchanged': 12}
+  attention: CIV vs NOR: STALE-RISK Erling Haaland scorer_prop_prob=0.54 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: MEX vs ECU: CANNOT PARSE 'Will a goal be scored from outside the penalty area in regulation (90 minutes + stoppage time)?' (Will a goal be scored from outside the penalty area in regulation (90 minutes + stoppage time)?)
+  attention: MEX vs ECU: CANNOT PARSE 'Will an own goal be scored in regulation (90 minutes + stoppage time)?' (Will an own goal be scored in regulation (90 minutes + stoppage time)?)
+  attention: MEX vs ECU: Raúl Jiménez priced on prior (no data)
+  attention: MEX vs ECU: Gonzalo Plata priced on prior (no data)
+[2026-06-30T12:54:55+00:00] daily_run hours=48 mode=SUBMIT
+  matches=6 markets=90 actions={'create': 45, 'unchanged': 26, 'update': 17}
+  attention: CIV vs NOR: STALE-RISK Erling Haaland scorer_prop_prob=0.54 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: MEX vs ECU: CANNOT PARSE 'Will a goal be scored from outside the penalty area in regulation (90 minutes + stoppage time)?' (Will a goal be scored from outside the penalty area in regulation (90 minutes + stoppage time)?)
+  attention: MEX vs ECU: CANNOT PARSE 'Will an own goal be scored in regulation (90 minutes + stoppage time)?' (Will an own goal be scored in regulation (90 minutes + stoppage time)?)
+  attention: ENG vs COD: DR Congo priced on prior (no data)
+  attention: ENG vs COD: Yoane Wissa on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: BEL vs SEN: Leandro Trossard on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+  attention: USA vs BIH: Ermedin Demirović priced on prior (no data)
+  attention: USA vs BIH: the United States priced on prior (no data)
+[2026-06-30T16:10:56+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 22, 'update': 8}
+  attention: CIV vs NOR: STALE-RISK Erling Haaland scorer_prop_prob=0.54 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-06-30T19:32:36+00:00] daily_run hours=8 mode=dry-run
+  matches=2 markets=30 actions={'unchanged': 21, 'update': 7, 'create': 2}
+[2026-06-30T19:33:21+00:00] daily_run hours=8 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 21, 'update': 7, 'create': 2}
+[2026-06-30T19:34:15+00:00] daily_run hours=52 mode=dry-run
+  matches=7 markets=105 actions={'unchanged': 56, 'create': 30, 'update': 19}
+  attention: ENG vs COD: Yoane Wissa on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: BEL vs SEN: Leandro Trossard on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+  attention: USA vs BIH: Ermedin Demirović priced on prior (no data)
+  attention: USA vs BIH: the United States priced on prior (no data)
+  attention: ESP vs AUT: Lamine Yamal priced on prior (no data)
+  attention: ESP vs AUT: Mikel Oyarzabal priced on prior (no data)
+  attention: POR vs CRO: Cristiano Ronaldo priced on prior (no data)
+  attention: POR vs CRO: Bruno Fernandes priced on prior (no data)
+  attention: POR vs CRO: Bernardo Silva priced on prior (no data)
+[2026-06-30T19:35:20+00:00] daily_run hours=52 mode=SUBMIT
+  matches=7 markets=105 actions={'unchanged': 56, 'create': 30, 'update': 19}
+  attention: ENG vs COD: Yoane Wissa on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: BEL vs SEN: Leandro Trossard on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+  attention: USA vs BIH: Ermedin Demirović priced on prior (no data)
+  attention: USA vs BIH: the United States priced on prior (no data)
+  attention: ESP vs AUT: Lamine Yamal priced on prior (no data)
+  attention: ESP vs AUT: Mikel Oyarzabal priced on prior (no data)
+  attention: POR vs CRO: Cristiano Ronaldo priced on prior (no data)
+  attention: POR vs CRO: Bruno Fernandes priced on prior (no data)
+  attention: POR vs CRO: Bernardo Silva priced on prior (no data)
+[2026-06-30T19:35:51+00:00] daily_run hours=52 mode=dry-run
+  matches=7 markets=105 actions={'unchanged': 104, 'update': 1}
+  attention: ENG vs COD: Yoane Wissa on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: BEL vs SEN: Leandro Trossard on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+  attention: USA vs BIH: Ermedin Demirović priced on prior (no data)
+  attention: USA vs BIH: the United States priced on prior (no data)
+  attention: ESP vs AUT: Lamine Yamal priced on prior (no data)
+  attention: ESP vs AUT: Mikel Oyarzabal priced on prior (no data)
+  attention: POR vs CRO: Cristiano Ronaldo priced on prior (no data)
+  attention: POR vs CRO: Bruno Fernandes priced on prior (no data)
+  attention: POR vs CRO: Bernardo Silva priced on prior (no data)
+[2026-06-30T19:39:00+00:00] daily_run hours=52 mode=SUBMIT
+  matches=7 markets=105 actions={'unchanged': 104, 'update': 1}
+  attention: ENG vs COD: Yoane Wissa on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: BEL vs SEN: Leandro Trossard on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+  attention: USA vs BIH: Ermedin Demirović priced on prior (no data)
+  attention: ESP vs AUT: Lamine Yamal priced on prior (no data)
+  attention: ESP vs AUT: Mikel Oyarzabal priced on prior (no data)
+  attention: POR vs CRO: Cristiano Ronaldo priced on prior (no data)
+  attention: POR vs CRO: Bruno Fernandes priced on prior (no data)
+  attention: POR vs CRO: Bernardo Silva priced on prior (no data)
+[2026-06-30T19:43:01+00:00] daily_run hours=52 mode=dry-run
+  matches=7 markets=105 actions={'unchanged': 88, 'update': 17}
+  attention: ENG vs COD: Yoane Wissa on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: BEL vs SEN: Leandro Trossard on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+  attention: USA vs BIH: Ermedin Demirović priced on prior (no data)
+  attention: ESP vs AUT: Lamine Yamal on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-06-30T19:43:47+00:00] daily_run hours=52 mode=SUBMIT
+  matches=7 markets=105 actions={'unchanged': 88, 'update': 17}
+  attention: ENG vs COD: Yoane Wissa on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: BEL vs SEN: Leandro Trossard on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+  attention: USA vs BIH: Ermedin Demirović priced on prior (no data)
+  attention: ESP vs AUT: Lamine Yamal on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-06-30T20:10:35+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 21, 'update': 9}
+[2026-06-30T20:11:32+00:00] daily_run hours=5 mode=dry-run
+  matches=2 markets=30 actions={'unchanged': 30}
+[2026-06-30T20:17:03+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 28, 'update': 2}
+  attention: FRA vs SWE: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-01T00:10:59+00:00] daily_run hours=26 mode=SUBMIT
+  matches=4 markets=60 actions={'unchanged': 35, 'update': 25}
+  attention: ENG vs COD: Yoane Wissa on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: BEL vs SEN: Leandro Trossard on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+  attention: USA vs BIH: Ermedin Demirović priced on prior (no data)
+[2026-07-01T00:19:40+00:00] daily_run hours=26 mode=SUBMIT
+  matches=4 markets=60 actions={'unchanged': 48, 'update': 12}
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+[2026-07-01T10:14:41+00:00] daily_run hours=26 mode=dry-run
+  matches=3 markets=45 actions={'unchanged': 34, 'update': 11}
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+[2026-07-01T10:18:31+00:00] daily_run hours=26 mode=dry-run
+  matches=3 markets=45 actions={'unchanged': 34, 'update': 11}
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+[2026-07-01T10:19:29+00:00] daily_run hours=26 mode=SUBMIT
+  matches=3 markets=45 actions={'unchanged': 34, 'update': 11}
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+[2026-07-01T12:56:47+00:00] daily_run hours=48 mode=SUBMIT
+  matches=6 markets=90 actions={'unchanged': 57, 'update': 18, 'create': 15}
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+  attention: ESP vs AUT: Lamine Yamal on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs ALG: Amine Gouiri priced on prior (no data)
+[2026-07-01T15:10:41+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'update': 18, 'unchanged': 12}
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+[2026-07-01T15:13:15+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 29, 'update': 1}
+  attention: ENG vs COD: STALE-RISK Harry Kane scorer_prop_prob=0.51 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+[2026-07-01T19:10:34+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'update': 18, 'unchanged': 12}
+  attention: BEL vs SEN: lineup could not match ['a substitute'] — verify against the posted XI (left at default 90)
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+[2026-07-01T19:12:46+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 29, 'update': 1}
+  attention: BEL vs SEN: lineup could not match ['a substitute'] — verify against the posted XI (left at default 90)
+  attention: BEL vs SEN: STALE-RISK Leandro Trossard scorer_prop_prob=0.22 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BEL vs SEN: a substitute priced on prior (no data)
+[2026-07-01T23:10:40+00:00] daily_run hours=26 mode=SUBMIT
+  matches=3 markets=45 actions={'unchanged': 27, 'update': 18}
+  attention: ESP vs AUT: Lamine Yamal on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-01T23:12:49+00:00] daily_run hours=26 mode=SUBMIT
+  matches=3 markets=45 actions={'unchanged': 40, 'update': 5}
+  attention: USA vs BIH: STALE-RISK Folarin Balogun scorer_prop_prob=0.44 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-01T23:21:14+00:00] daily_run hours=26 mode=SUBMIT
+  matches=3 markets=45 actions={'unchanged': 45}
+  attention: USA vs BIH: STALE-RISK Folarin Balogun scorer_prop_prob=0.44 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-02T12:56:42+00:00] daily_run hours=48 mode=SUBMIT
+  matches=6 markets=90 actions={'create': 45, 'update': 34, 'unchanged': 11}
+  attention: SUI vs ALG: Amine Gouiri priced on prior (no data)
+  attention: AUS vs EGY: Nestory Irankunda priced on prior (no data)
+  attention: COL vs GHA: Jordan Ayew on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-02T18:10:33+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'update': 16, 'unchanged': 14}
+[2026-07-02T18:13:25+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 28, 'update': 2}
+  attention: ESP vs AUT: STALE-RISK Mikel Oyarzabal scorer_prop_prob=0.44 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-02T22:10:24+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'update': 19, 'unchanged': 11}
+  attention: SUI vs ALG: Amine Gouiri priced on prior (no data)
+[2026-07-02T22:12:05+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 23, 'update': 7}
+  attention: SUI vs ALG: Amine Gouiri priced on prior (no data)
+[2026-07-02T22:25:36+00:00] daily_run hours=8 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 19, 'update': 11}
+  attention: SUI vs ALG: Amine Gouiri priced on prior (no data)
+[2026-07-02T22:35:27+00:00] daily_run hours=106 mode=SUBMIT
+  matches=10 markets=150 actions={'create': 75, 'unchanged': 51, 'update': 24}
+  attention: SUI vs ALG: Amine Gouiri priced on prior (no data)
+  attention: AUS vs EGY: Nestory Irankunda priced on prior (no data)
+  attention: COL vs GHA: Jordan Ayew on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: CAN vs MAR: Brahim Díaz priced on prior (no data)
+  attention: PAR vs FRA: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: PAR vs FRA: Miguel Almirón on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: PAR vs FRA: Michael Olise priced on prior (no data)
+  attention: BRA vs NOR: STALE-RISK Erling Haaland scorer_prop_prob=0.54 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BRA vs NOR: STALE-RISK Matheus Cunha scorer_prop_prob=0.31 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BRA vs NOR: Vinícius Júnior on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: MEX vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.51 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: MEX vs ENG: Julián Quiñones on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: USA vs BEL: STALE-RISK Leandro Trossard scorer_prop_prob=0.22 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: USA vs BEL: Malik Tillman on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-03T02:11:09+00:00] daily_run hours=26 mode=SUBMIT
+  matches=4 markets=60 actions={'unchanged': 43, 'update': 17}
+  attention: SUI vs ALG: Amine Gouiri priced on prior (no data)
+  attention: AUS vs EGY: Nestory Irankunda priced on prior (no data)
+  attention: COL vs GHA: Jordan Ayew on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-03T02:12:49+00:00] daily_run hours=26 mode=SUBMIT
+  matches=4 markets=60 actions={'unchanged': 57, 'update': 3}
+[2026-07-03T13:22:51+00:00] daily_run hours=48 mode=SUBMIT
+  matches=5 markets=75 actions={'unchanged': 42, 'update': 33}
+  attention: CAN vs MAR: Brahim Díaz priced on prior (no data)
+  attention: PAR vs FRA: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: PAR vs FRA: Miguel Almirón on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: PAR vs FRA: Michael Olise priced on prior (no data)
+[2026-07-03T17:10:43+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 16, 'update': 14}
+[2026-07-03T21:11:03+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 28, 'update': 2}
+[2026-07-03T21:12:11+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 29, 'update': 1}
+  attention: ARG vs CPV: STALE-RISK Lautaro Martínez scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-04T09:45:07+00:00] daily_run hours=40 mode=SUBMIT
+  matches=4 markets=60 actions={'update': 34, 'unchanged': 26}
+  attention: PAR vs FRA: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BRA vs NOR: STALE-RISK Erling Haaland scorer_prop_prob=0.54 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BRA vs NOR: STALE-RISK Matheus Cunha scorer_prop_prob=0.31 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BRA vs NOR: Vinícius Júnior on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: MEX vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.51 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: MEX vs ENG: Julián Quiñones on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-04T13:19:54+00:00] daily_run hours=48 mode=SUBMIT
+  matches=4 markets=60 actions={'unchanged': 46, 'update': 14}
+  attention: PAR vs FRA: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BRA vs NOR: STALE-RISK Erling Haaland scorer_prop_prob=0.54 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BRA vs NOR: STALE-RISK Matheus Cunha scorer_prop_prob=0.31 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BRA vs NOR: Vinícius Júnior on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: MEX vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.51 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: MEX vs ENG: Julián Quiñones on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-04T16:10:37+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 18, 'update': 12}
+  attention: PAR vs FRA: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-04T16:11:26+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 29, 'update': 1}
+  attention: CAN vs MAR: STALE-RISK Ismael Saibari scorer_prop_prob=0.33 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: PAR vs FRA: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-04T20:11:08+00:00] daily_run hours=26 mode=SUBMIT
+  matches=2 markets=30 actions={'update': 15, 'unchanged': 15}
+  attention: PAR vs FRA: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BRA vs NOR: STALE-RISK Erling Haaland scorer_prop_prob=0.54 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BRA vs NOR: STALE-RISK Matheus Cunha scorer_prop_prob=0.31 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BRA vs NOR: Vinícius Júnior on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-04T20:12:20+00:00] daily_run hours=26 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 27, 'update': 3}
+  attention: PAR vs FRA: STALE-RISK Kylian Mbappé scorer_prop_prob=0.6 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: PAR vs FRA: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BRA vs NOR: STALE-RISK Erling Haaland scorer_prop_prob=0.54 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BRA vs NOR: STALE-RISK Matheus Cunha scorer_prop_prob=0.31 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-05T13:19:40+00:00] daily_run hours=48 mode=SUBMIT
+  matches=4 markets=60 actions={'update': 23, 'unchanged': 22, 'create': 10}
+  attention: BRA vs NOR: STALE-RISK Erling Haaland scorer_prop_prob=0.54 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BRA vs NOR: STALE-RISK Matheus Cunha scorer_prop_prob=0.31 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: MEX vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.51 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: POR vs ESP: CANNOT PARSE 'Will both halves have the same number of goals in regulation (90 minutes + stoppage time)?' (Will both halves have the same number of goals in regulation (90 minutes + stoppage time)?)
+  attention: POR vs ESP: CANNOT PARSE 'Will the first card of the match be shown before the first goal is scored?' (Will the first card of the match be shown before the first goal is scored?)
+  attention: POR vs ESP: CANNOT PARSE 'Will Diogo Costa (Portugal) make 4 or more saves in regulation (90 minutes + stoppage time)?' (Will Diogo Costa (Portugal) make 4 or more saves in regulation (90 minutes + stoppage time)?)
+  attention: POR vs ESP: CANNOT PARSE 'Will there be 9 or more total substitutions (both teams combined) in regulation (90 minutes + stoppage time)?' (Will there be 9 or more total substitutions (both teams combined) in regulation (90 minutes + stoppage time)?)
+  attention: POR vs ESP: CANNOT PARSE 'Will the match go to extra time?' (Will the match go to extra time?)
+  attention: POR vs ESP: any Portugal player priced on prior (no data)
+  attention: USA vs BEL: STALE-RISK Leandro Trossard scorer_prop_prob=0.22 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: USA vs BEL: Malik Tillman on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-05T19:10:38+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'update': 17, 'unchanged': 13}
+  attention: BRA vs NOR: STALE-RISK Erling Haaland scorer_prop_prob=0.54 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: BRA vs NOR: STALE-RISK Matheus Cunha scorer_prop_prob=0.31 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: MEX vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.51 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-05T23:12:55+00:00] daily_run hours=30 mode=SUBMIT
+  matches=3 markets=45 actions={'update': 22, 'unchanged': 18}
+  attention: MEX vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.51 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: POR vs ESP: CANNOT PARSE 'Will both halves have the same number of goals in regulation (90 minutes + stoppage time)?' (Will both halves have the same number of goals in regulation (90 minutes + stoppage time)?)
+  attention: POR vs ESP: CANNOT PARSE 'Will the first card of the match be shown before the first goal is scored?' (Will the first card of the match be shown before the first goal is scored?)
+  attention: POR vs ESP: CANNOT PARSE 'Will Diogo Costa (Portugal) make 4 or more saves in regulation (90 minutes + stoppage time)?' (Will Diogo Costa (Portugal) make 4 or more saves in regulation (90 minutes + stoppage time)?)
+  attention: POR vs ESP: CANNOT PARSE 'Will there be 9 or more total substitutions (both teams combined) in regulation (90 minutes + stoppage time)?' (Will there be 9 or more total substitutions (both teams combined) in regulation (90 minutes + stoppage time)?)
+  attention: POR vs ESP: CANNOT PARSE 'Will the match go to extra time?' (Will the match go to extra time?)
+  attention: POR vs ESP: any Portugal player priced on prior (no data)
+  attention: USA vs BEL: STALE-RISK Leandro Trossard scorer_prop_prob=0.22 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: USA vs BEL: Malik Tillman on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-05T23:13:38+00:00] daily_run hours=30 mode=SUBMIT
+  matches=3 markets=45 actions={'unchanged': 39, 'update': 1}
+  attention: MEX vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.51 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: POR vs ESP: CANNOT PARSE 'Will both halves have the same number of goals in regulation (90 minutes + stoppage time)?' (Will both halves have the same number of goals in regulation (90 minutes + stoppage time)?)
+  attention: POR vs ESP: CANNOT PARSE 'Will the first card of the match be shown before the first goal is scored?' (Will the first card of the match be shown before the first goal is scored?)
+  attention: POR vs ESP: CANNOT PARSE 'Will Diogo Costa (Portugal) make 4 or more saves in regulation (90 minutes + stoppage time)?' (Will Diogo Costa (Portugal) make 4 or more saves in regulation (90 minutes + stoppage time)?)
+  attention: POR vs ESP: CANNOT PARSE 'Will there be 9 or more total substitutions (both teams combined) in regulation (90 minutes + stoppage time)?' (Will there be 9 or more total substitutions (both teams combined) in regulation (90 minutes + stoppage time)?)
+  attention: POR vs ESP: CANNOT PARSE 'Will the match go to extra time?' (Will the match go to extra time?)
+  attention: USA vs BEL: STALE-RISK Leandro Trossard scorer_prop_prob=0.22 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: USA vs BEL: Malik Tillman on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-05T23:14:28+00:00] daily_run hours=30 mode=SUBMIT
+  matches=3 markets=45 actions={'unchanged': 39, 'update': 1}
+  attention: MEX vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.38 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: POR vs ESP: CANNOT PARSE 'Will both halves have the same number of goals in regulation (90 minutes + stoppage time)?' (Will both halves have the same number of goals in regulation (90 minutes + stoppage time)?)
+  attention: POR vs ESP: CANNOT PARSE 'Will the first card of the match be shown before the first goal is scored?' (Will the first card of the match be shown before the first goal is scored?)
+  attention: POR vs ESP: CANNOT PARSE 'Will Diogo Costa (Portugal) make 4 or more saves in regulation (90 minutes + stoppage time)?' (Will Diogo Costa (Portugal) make 4 or more saves in regulation (90 minutes + stoppage time)?)
+  attention: POR vs ESP: CANNOT PARSE 'Will there be 9 or more total substitutions (both teams combined) in regulation (90 minutes + stoppage time)?' (Will there be 9 or more total substitutions (both teams combined) in regulation (90 minutes + stoppage time)?)
+  attention: POR vs ESP: CANNOT PARSE 'Will the match go to extra time?' (Will the match go to extra time?)
+  attention: USA vs BEL: STALE-RISK Leandro Trossard scorer_prop_prob=0.22 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: USA vs BEL: Malik Tillman on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-06T13:22:01+00:00] daily_run hours=48 mode=SUBMIT
+  matches=2 markets=30 actions={'update': 17, 'unchanged': 8, 'create': 5}
+  attention: USA vs BEL: STALE-RISK Leandro Trossard scorer_prop_prob=0.22 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-06T23:13:58+00:00] daily_run hours=26 mode=SUBMIT
+  matches=3 markets=45 actions={'create': 23, 'update': 12, 'unchanged': 3}
+  attention: USA vs BEL: STALE-RISK Leandro Trossard scorer_prop_prob=0.22 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: CANNOT PARSE 'Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?' (Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will the total number of goals in regulation (90 minutes + stoppage time) be an odd number?' (Will the total number of goals in regulation (90 minutes + stoppage time) be an odd number?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will a goal be scored in the first half after the first hydration break?' (Will a goal be scored in the first half after the first hydration break?)
+  attention: ARG vs EGY: Mohamed Salah on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: CANNOT PARSE 'Will the first goal of the match be scored in the second half of regulation (90 minutes + stoppage time)?' (Will the first goal of the match be scored in the second half of regulation (90 minutes + stoppage time)?)
+  attention: SUI vs COL: CANNOT PARSE 'Will either team win both halves in regulation (90 minutes + stoppage time)?' (Will either team win both halves in regulation (90 minutes + stoppage time)?)
+  attention: SUI vs COL: CANNOT PARSE 'Will the match be decided by exactly one goal in regulation (90 minutes + stoppage time)?' (Will the match be decided by exactly one goal in regulation (90 minutes + stoppage time)?)
+  attention: SUI vs COL: CANNOT PARSE 'Will at least one card be shown in each half of regulation (90 minutes + stoppage time)?' (Will at least one card be shown in each half of regulation (90 minutes + stoppage time)?)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+[2026-07-07T08:28:01+00:00] daily_run hours=48 mode=SUBMIT
+  matches=2 markets=30 actions={'update': 15, 'unchanged': 8}
+  attention: ARG vs EGY: CANNOT PARSE 'Will the total number of goals in regulation (90 minutes + stoppage time) be an odd number?' (Will the total number of goals in regulation (90 minutes + stoppage time) be an odd number?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will a goal be scored in the first half after the first hydration break?' (Will a goal be scored in the first half after the first hydration break?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?' (Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?)
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: ARG vs EGY: Mohamed Salah on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: CANNOT PARSE 'Will the first goal of the match be scored in the second half of regulation (90 minutes + stoppage time)?' (Will the first goal of the match be scored in the second half of regulation (90 minutes + stoppage time)?)
+  attention: SUI vs COL: CANNOT PARSE 'Will either team win both halves in regulation (90 minutes + stoppage time)?' (Will either team win both halves in regulation (90 minutes + stoppage time)?)
+  attention: SUI vs COL: CANNOT PARSE 'Will the match be decided by exactly one goal in regulation (90 minutes + stoppage time)?' (Will the match be decided by exactly one goal in regulation (90 minutes + stoppage time)?)
+  attention: SUI vs COL: CANNOT PARSE 'Will at least one card be shown in each half of regulation (90 minutes + stoppage time)?' (Will at least one card be shown in each half of regulation (90 minutes + stoppage time)?)
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T13:24:04+00:00] daily_run hours=7 mode=dry-run
+  matches=2 markets=30 actions={'unchanged': 17, 'update': 6}
+  attention: ARG vs EGY: CANNOT PARSE 'Will the total number of goals in regulation (90 minutes + stoppage time) be an odd number?' (Will the total number of goals in regulation (90 minutes + stoppage time) be an odd number?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will a goal be scored in the first half after the first hydration break?' (Will a goal be scored in the first half after the first hydration break?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?' (Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?)
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: ARG vs EGY: Mohamed Salah on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: CANNOT PARSE 'Will the first goal of the match be scored in the second half of regulation (90 minutes + stoppage time)?' (Will the first goal of the match be scored in the second half of regulation (90 minutes + stoppage time)?)
+  attention: SUI vs COL: CANNOT PARSE 'Will either team win both halves in regulation (90 minutes + stoppage time)?' (Will either team win both halves in regulation (90 minutes + stoppage time)?)
+  attention: SUI vs COL: CANNOT PARSE 'Will the match be decided by exactly one goal in regulation (90 minutes + stoppage time)?' (Will the match be decided by exactly one goal in regulation (90 minutes + stoppage time)?)
+  attention: SUI vs COL: CANNOT PARSE 'Will at least one card be shown in each half of regulation (90 minutes + stoppage time)?' (Will at least one card be shown in each half of regulation (90 minutes + stoppage time)?)
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T13:27:25+00:00] daily_run hours=7 mode=dry-run
+  matches=2 markets=30 actions={'unchanged': 17, 'update': 6, 'create': 5}
+  attention: ARG vs EGY: CANNOT PARSE 'Will a goal be scored in the first half after the first hydration break?' (Will a goal be scored in the first half after the first hydration break?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?' (Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?)
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: ARG vs EGY: Mohamed Salah on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T13:32:18+00:00] daily_run hours=7 mode=dry-run
+  matches=2 markets=30 actions={'unchanged': 17, 'update': 6, 'create': 5}
+  attention: ARG vs EGY: CANNOT PARSE 'Will a goal be scored in the first half after the first hydration break?' (Will a goal be scored in the first half after the first hydration break?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?' (Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?)
+  attention: ARG vs EGY: STALE-RISK Mohamed Salah scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T13:32:35+00:00] daily_run hours=7 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 17, 'update': 6, 'create': 5}
+  attention: ARG vs EGY: CANNOT PARSE 'Will a goal be scored in the first half after the first hydration break?' (Will a goal be scored in the first half after the first hydration break?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?' (Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?)
+  attention: ARG vs EGY: STALE-RISK Mohamed Salah scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T15:13:47+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 14, 'update': 14}
+  attention: ARG vs EGY: CANNOT PARSE 'Will a goal be scored in the first half after the first hydration break?' (Will a goal be scored in the first half after the first hydration break?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?' (Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?)
+  attention: ARG vs EGY: STALE-RISK Lionel Messi scorer_prop_prob=0.53 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: STALE-RISK Mohamed Salah scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T15:14:50+00:00] daily_run hours=5 mode=dry-run
+  matches=2 markets=30 actions={'unchanged': 27, 'update': 1}
+  attention: ARG vs EGY: CANNOT PARSE 'Will a goal be scored in the first half after the first hydration break?' (Will a goal be scored in the first half after the first hydration break?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?' (Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?)
+  attention: ARG vs EGY: STALE-RISK Lionel Messi scorer_prop_prob=0.53 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: STALE-RISK Mohamed Salah scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T15:15:05+00:00] daily_run hours=5 mode=dry-run
+  matches=2 markets=30 actions={'unchanged': 27, 'update': 1}
+  attention: ARG vs EGY: CANNOT PARSE 'Will a goal be scored in the first half after the first hydration break?' (Will a goal be scored in the first half after the first hydration break?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?' (Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?)
+  attention: ARG vs EGY: STALE-RISK Lionel Messi scorer_prop_prob=0.53 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: STALE-RISK Mohamed Salah scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T15:15:09+00:00] daily_run hours=5 mode=dry-run
+  matches=2 markets=30 actions={'unchanged': 27, 'update': 1}
+  attention: ARG vs EGY: CANNOT PARSE 'Will a goal be scored in the first half after the first hydration break?' (Will a goal be scored in the first half after the first hydration break?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?' (Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?)
+  attention: ARG vs EGY: STALE-RISK Lionel Messi scorer_prop_prob=0.53 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: STALE-RISK Mohamed Salah scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T15:15:22+00:00] daily_run hours=5 mode=dry-run
+  matches=2 markets=30 actions={'unchanged': 27, 'update': 1}
+  attention: ARG vs EGY: CANNOT PARSE 'Will a goal be scored in the first half after the first hydration break?' (Will a goal be scored in the first half after the first hydration break?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?' (Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?)
+  attention: ARG vs EGY: STALE-RISK Lionel Messi scorer_prop_prob=0.53 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: STALE-RISK Mohamed Salah scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T15:15:25+00:00] daily_run hours=5 mode=dry-run
+  matches=2 markets=30 actions={'unchanged': 27, 'update': 1}
+  attention: ARG vs EGY: CANNOT PARSE 'Will a goal be scored in the first half after the first hydration break?' (Will a goal be scored in the first half after the first hydration break?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?' (Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?)
+  attention: ARG vs EGY: STALE-RISK Lionel Messi scorer_prop_prob=0.53 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: STALE-RISK Mohamed Salah scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T15:15:46+00:00] daily_run hours=5 mode=dry-run
+  matches=2 markets=30 actions={'unchanged': 27, 'update': 1}
+  attention: ARG vs EGY: CANNOT PARSE 'Will a goal be scored in the first half after the first hydration break?' (Will a goal be scored in the first half after the first hydration break?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?' (Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?)
+  attention: ARG vs EGY: STALE-RISK Lionel Messi scorer_prop_prob=0.53 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: STALE-RISK Mohamed Salah scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T15:16:06+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 27, 'update': 1}
+  attention: ARG vs EGY: CANNOT PARSE 'Will a goal be scored in the first half after the first hydration break?' (Will a goal be scored in the first half after the first hydration break?)
+  attention: ARG vs EGY: CANNOT PARSE 'Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?' (Will the first goal of the match be scored by a player other than Lionel Messi and Mohamed Salah?)
+  attention: ARG vs EGY: STALE-RISK Lionel Messi scorer_prop_prob=0.53 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: STALE-RISK Mohamed Salah scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T15:54:57+00:00] daily_run hours=5 mode=dry-run
+  matches=2 markets=30 actions={'unchanged': 28, 'create': 1}
+  attention: ARG vs EGY: CANNOT PARSE 'Will a goal be scored in the first half after the first hydration break?' (Will a goal be scored in the first half after the first hydration break?)
+  attention: ARG vs EGY: STALE-RISK Lionel Messi scorer_prop_prob=0.53 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: STALE-RISK Mohamed Salah scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T15:55:41+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 28, 'create': 1}
+  attention: ARG vs EGY: CANNOT PARSE 'Will a goal be scored in the first half after the first hydration break?' (Will a goal be scored in the first half after the first hydration break?)
+  attention: ARG vs EGY: STALE-RISK Lionel Messi scorer_prop_prob=0.53 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: STALE-RISK Mohamed Salah scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T15:58:10+00:00] daily_run hours=5 mode=dry-run
+  matches=2 markets=30 actions={'unchanged': 29, 'create': 1}
+  attention: ARG vs EGY: STALE-RISK Lionel Messi scorer_prop_prob=0.53 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: STALE-RISK Mohamed Salah scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T15:58:31+00:00] daily_run hours=5 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 29, 'create': 1}
+  attention: ARG vs EGY: STALE-RISK Lionel Messi scorer_prop_prob=0.53 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: STALE-RISK Mohamed Salah scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs EGY: Omar Marmoush on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: Dan Ndoye on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T19:12:21+00:00] daily_run hours=26 mode=dry-run
+  matches=1 markets=15 actions={'update': 9, 'unchanged': 6}
+  attention: SUI vs COL: lineup could not match ['a substitute'] — verify against the posted XI (left at default 90)
+  attention: SUI vs COL: STALE-RISK Dan Ndoye scorer_prop_prob=0.16 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: SUI vs COL: STALE-RISK Luis Díaz scorer_prop_prob=0.3 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: SUI vs COL: a substitute priced on prior (no data)
+  attention: SUI vs COL: Jhon Arias on sparse StatsBomb history — fetch current club form (update_player_rates) or research
+[2026-07-07T19:12:35+00:00] daily_run hours=26 mode=dry-run
+  matches=1 markets=15 actions={'update': 9, 'unchanged': 6}
+  attention: SUI vs COL: lineup could not match ['a substitute'] — verify against the posted XI (left at default 90)
+  attention: SUI vs COL: STALE-RISK Dan Ndoye scorer_prop_prob=0.16 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: SUI vs COL: STALE-RISK Luis Díaz scorer_prop_prob=0.3 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: SUI vs COL: a substitute priced on prior (no data)
+[2026-07-07T19:12:38+00:00] daily_run hours=26 mode=dry-run
+  matches=1 markets=15 actions={'update': 9, 'unchanged': 6}
+  attention: SUI vs COL: lineup could not match ['a substitute'] — verify against the posted XI (left at default 90)
+  attention: SUI vs COL: STALE-RISK Dan Ndoye scorer_prop_prob=0.16 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: SUI vs COL: STALE-RISK Luis Díaz scorer_prop_prob=0.3 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: SUI vs COL: a substitute priced on prior (no data)
+[2026-07-07T19:12:55+00:00] daily_run hours=26 mode=dry-run
+  matches=1 markets=15 actions={'update': 9, 'unchanged': 6}
+  attention: SUI vs COL: lineup could not match ['a substitute'] — verify against the posted XI (left at default 90)
+  attention: SUI vs COL: STALE-RISK Dan Ndoye scorer_prop_prob=0.16 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: SUI vs COL: STALE-RISK Luis Díaz scorer_prop_prob=0.3 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: SUI vs COL: a substitute priced on prior (no data)
+[2026-07-07T19:13:08+00:00] daily_run hours=26 mode=SUBMIT
+  matches=1 markets=15 actions={'update': 9, 'unchanged': 6}
+  attention: SUI vs COL: lineup could not match ['a substitute'] — verify against the posted XI (left at default 90)
+  attention: SUI vs COL: STALE-RISK Dan Ndoye scorer_prop_prob=0.16 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: SUI vs COL: STALE-RISK Luis Díaz scorer_prop_prob=0.3 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: SUI vs COL: a substitute priced on prior (no data)
+[2026-07-08T13:21:22+00:00] daily_run hours=48 mode=SUBMIT
+  matches=1 markets=15 actions={'create': 14}
+  attention: FRA vs MAR: CANNOT PARSE 'Will a card be shown during first- or second-half stoppage time in regulation?' (Will a card be shown during first- or second-half stoppage time in regulation?)
+  attention: FRA vs MAR: STALE-RISK Kylian Mbappé scorer_prop_prob=0.6 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs MAR: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs MAR: a substitute priced on prior (no data)
+[2026-07-08T13:21:56+00:00] daily_run hours=48 mode=dry-run
+  matches=1 markets=15 actions={'unchanged': 14}
+  attention: FRA vs MAR: CANNOT PARSE 'Will a card be shown during first- or second-half stoppage time in regulation?' (Will a card be shown during first- or second-half stoppage time in regulation?)
+  attention: FRA vs MAR: STALE-RISK Kylian Mbappé scorer_prop_prob=0.6 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs MAR: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs MAR: a substitute priced on prior (no data)
+[2026-07-08T13:22:55+00:00] daily_run hours=48 mode=dry-run
+  matches=1 markets=15 actions={'unchanged': 14, 'create': 1}
+  attention: FRA vs MAR: STALE-RISK Kylian Mbappé scorer_prop_prob=0.6 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs MAR: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs MAR: a substitute priced on prior (no data)
+[2026-07-08T13:23:14+00:00] daily_run hours=48 mode=SUBMIT
+  matches=1 markets=15 actions={'unchanged': 14, 'create': 1}
+  attention: FRA vs MAR: STALE-RISK Kylian Mbappé scorer_prop_prob=0.6 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs MAR: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs MAR: a substitute priced on prior (no data)
+[2026-07-09T13:20:48+00:00] daily_run hours=48 mode=SUBMIT
+  matches=1 markets=15 actions={'unchanged': 8, 'update': 7}
+  attention: FRA vs MAR: STALE-RISK Kylian Mbappé scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs MAR: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs MAR: a substitute priced on prior (no data)
+[2026-07-09T19:11:08+00:00] daily_run hours=26 mode=SUBMIT
+  matches=2 markets=30 actions={'create': 11, 'update': 8, 'unchanged': 7}
+  attention: FRA vs MAR: lineup could not match ['a substitute'] — verify against the posted XI (left at default 90)
+  attention: FRA vs MAR: STALE-RISK Kylian Mbappé scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs MAR: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs MAR: a substitute priced on prior (no data)
+  attention: ESP vs BEL: CANNOT PARSE 'Will Belgium hold a lead at any point in regulation (90 minutes + stoppage time, excluding penalty shootout)?' (Will Belgium hold a lead at any point in regulation (90 minutes + stoppage time, excluding penalty shootout)?)
+  attention: ESP vs BEL: CANNOT PARSE 'Will either team make a substitution at halftime?' (Will either team make a substitution at halftime?)
+  attention: ESP vs BEL: CANNOT PARSE 'Will a goal be scored after the second hydration break but before the end of regulation?' (Will a goal be scored after the second hydration break but before the end of regulation?)
+  attention: ESP vs BEL: CANNOT PARSE 'Will there be 4 or more total cards in regulation (90 minutes + stoppage time)?' (Will there be 4 or more total cards in regulation (90 minutes + stoppage time)?)
+[2026-07-09T19:11:38+00:00] daily_run hours=26 mode=dry-run
+  matches=2 markets=30 actions={'unchanged': 26}
+  attention: FRA vs MAR: lineup could not match ['a substitute'] — verify against the posted XI (left at default 90)
+  attention: FRA vs MAR: STALE-RISK Kylian Mbappé scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs MAR: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs MAR: a substitute priced on prior (no data)
+  attention: ESP vs BEL: CANNOT PARSE 'Will Belgium hold a lead at any point in regulation (90 minutes + stoppage time, excluding penalty shootout)?' (Will Belgium hold a lead at any point in regulation (90 minutes + stoppage time, excluding penalty shootout)?)
+  attention: ESP vs BEL: CANNOT PARSE 'Will either team make a substitution at halftime?' (Will either team make a substitution at halftime?)
+  attention: ESP vs BEL: CANNOT PARSE 'Will a goal be scored after the second hydration break but before the end of regulation?' (Will a goal be scored after the second hydration break but before the end of regulation?)
+  attention: ESP vs BEL: CANNOT PARSE 'Will there be 4 or more total cards in regulation (90 minutes + stoppage time)?' (Will there be 4 or more total cards in regulation (90 minutes + stoppage time)?)
+[2026-07-09T19:14:30+00:00] daily_run hours=26 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 25, 'create': 3, 'update': 1}
+  attention: FRA vs MAR: lineup could not match ['a substitute'] — verify against the posted XI (left at default 90)
+  attention: FRA vs MAR: STALE-RISK Kylian Mbappé scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs MAR: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs MAR: a substitute priced on prior (no data)
+  attention: ESP vs BEL: CANNOT PARSE 'Will either team make a substitution at halftime?' (Will either team make a substitution at halftime?)
+[2026-07-10T09:35:55+00:00] daily_run hours=26 mode=SUBMIT
+  matches=1 markets=15 actions={'unchanged': 10, 'update': 4, 'create': 1}
+[2026-07-10T13:21:30+00:00] daily_run hours=26 mode=dry-run
+  matches=1 markets=15 actions={'unchanged': 14, 'update': 1}
+[2026-07-10T13:21:33+00:00] daily_run hours=26 mode=dry-run
+  matches=1 markets=15 actions={'unchanged': 14, 'update': 1}
+[2026-07-10T13:22:09+00:00] daily_run hours=48 mode=SUBMIT
+  matches=3 markets=45 actions={'create': 28, 'unchanged': 14, 'update': 1}
+  attention: NOR vs ENG: CANNOT PARSE 'Will England have more corner kicks AND more total shots than Norway in regulation (90 minutes + stoppage time)?' (Will England have more corner kicks AND more total shots than Norway in regulation (90 minutes + stoppage time)?)
+  attention: NOR vs ENG: STALE-RISK Erling Haaland scorer_prop_prob=0.54 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: NOR vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.38 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: NOR vs ENG: a substitute priced on prior (no data)
+  attention: ARG vs SUI: CANNOT PARSE 'Will the match be 0-0 at halftime?' (Will the match be 0-0 at halftime?)
+  attention: ARG vs SUI: STALE-RISK Lionel Messi scorer_prop_prob=0.53 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs SUI: a substitute priced on prior (no data)
+[2026-07-10T13:23:38+00:00] daily_run hours=48 mode=SUBMIT
+  matches=3 markets=45 actions={'unchanged': 43, 'create': 1}
+  attention: NOR vs ENG: CANNOT PARSE 'Will England have more corner kicks AND more total shots than Norway in regulation (90 minutes + stoppage time)?' (Will England have more corner kicks AND more total shots than Norway in regulation (90 minutes + stoppage time)?)
+  attention: NOR vs ENG: STALE-RISK Erling Haaland scorer_prop_prob=0.54 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: NOR vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.38 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: NOR vs ENG: a substitute priced on prior (no data)
+  attention: ARG vs SUI: STALE-RISK Lionel Messi scorer_prop_prob=0.53 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs SUI: a substitute priced on prior (no data)
+[2026-07-10T18:11:05+00:00] daily_run hours=26 mode=SUBMIT
+  matches=1 markets=15 actions={'unchanged': 9, 'update': 6}
+[2026-07-10T22:09:55+00:00] daily_run hours=48 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 22, 'update': 7}
+  attention: NOR vs ENG: CANNOT PARSE 'Will England have more corner kicks AND more total shots than Norway in regulation (90 minutes + stoppage time)?' (Will England have more corner kicks AND more total shots than Norway in regulation (90 minutes + stoppage time)?)
+  attention: NOR vs ENG: STALE-RISK Erling Haaland scorer_prop_prob=0.54 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: NOR vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.38 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: NOR vs ENG: a substitute priced on prior (no data)
+  attention: ARG vs SUI: STALE-RISK Lionel Messi scorer_prop_prob=0.53 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs SUI: a substitute priced on prior (no data)
+[2026-07-11T23:34:34+00:00] daily_run hours=5 mode=dry-run
+  matches=1 markets=15 actions={'unchanged': 8, 'update': 7}
+  attention: ARG vs SUI: STALE-RISK Lionel Messi scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs SUI: a substitute priced on prior (no data)
+[2026-07-11T23:34:49+00:00] daily_run hours=5 mode=SUBMIT
+  matches=1 markets=15 actions={'unchanged': 8, 'update': 7}
+  attention: ARG vs SUI: STALE-RISK Lionel Messi scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs SUI: a substitute priced on prior (no data)
+[2026-07-11T23:43:11+00:00] daily_run hours=2 mode=SUBMIT
+  matches=0 markets=0 actions={'deferred': 1}
+  attention: deferring to agent (ran 8 min ago, within 75)
+[2026-07-12T00:11:04+00:00] daily_run hours=26 mode=SUBMIT
+  matches=1 markets=15 actions={'unchanged': 11, 'update': 4}
+  attention: ARG vs SUI: lineup could not match ['a substitute'] — verify against the posted XI (left at default 90)
+  attention: ARG vs SUI: STALE-RISK Lionel Messi scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs SUI: a substitute priced on prior (no data)
+[2026-07-12T00:12:05+00:00] daily_run hours=26 mode=SUBMIT
+  matches=1 markets=15 actions={'unchanged': 14, 'update': 1}
+  attention: ARG vs SUI: lineup could not match ['a substitute'] — verify against the posted XI (left at default 90)
+  attention: ARG vs SUI: STALE-RISK Lionel Messi scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ARG vs SUI: a substitute priced on prior (no data)
+[2026-07-13T05:39:31+00:00] daily_run hours=48 mode=SUBMIT
+  matches=1 markets=15 actions={'create': 9}
+  attention: FRA vs ESP: CANNOT PARSE 'Will there be 4 or more offsides (both teams combined) in regulation (90 minutes + stoppage time)?' (Will there be 4 or more offsides (both teams combined) in regulation (90 minutes + stoppage time)?)
+  attention: FRA vs ESP: CANNOT PARSE 'Will the referee conduct an on-field review at the pitchside VAR monitor at any point in regulation (90 minutes + stoppage time) or extra time? Reviews during the penalty shootout do not count.' (Will the referee conduct an on-field review at the pitchside VAR monitor at any point in regulation (90 minutes + stoppage time) or extra time? Reviews during the penalty shootout do not count.)
+  attention: FRA vs ESP: CANNOT PARSE 'Will the match be tied at the end of regulation (90 minutes + stoppage time) and go to extra time?' (Will the match be tied at the end of regulation (90 minutes + stoppage time) and go to extra time?)
+  attention: FRA vs ESP: CANNOT PARSE 'Will the first goal of the match (including extra time, excluding penalty shootout) be scored by a player wearing a single-digit shirt number (1-9)? Resolves No if the score is 0-0 after extra time.' (Will the first goal of the match (including extra time, excluding penalty shootout) be scored by a player wearing a single-digit shirt number (1-9)? Resolves No if the score is 0-0 after extra time.)
+  attention: FRA vs ESP: CANNOT PARSE 'Will a goal be scored after the first hydration break but before the second hydration break?' (Will a goal be scored after the first hydration break but before the second hydration break?)
+  attention: FRA vs ESP: CANNOT PARSE 'Will Spain make the first substitution of the match in regulation (90 minutes + stoppage time)? If both teams substitute simultaneously, resolves by whichever outgoing player exits the field first.' (Will Spain make the first substitution of the match in regulation (90 minutes + stoppage time)? If both teams substitute simultaneously, resolves by whichever outgoing player exits the field first.)
+  attention: FRA vs ESP: STALE-RISK Kylian Mbappé scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-13T05:39:44+00:00] daily_run hours=48 mode=SUBMIT
+  matches=1 markets=15 actions={'unchanged': 9}
+  attention: FRA vs ESP: CANNOT PARSE 'Will there be 4 or more offsides (both teams combined) in regulation (90 minutes + stoppage time)?' (Will there be 4 or more offsides (both teams combined) in regulation (90 minutes + stoppage time)?)
+  attention: FRA vs ESP: CANNOT PARSE 'Will the referee conduct an on-field review at the pitchside VAR monitor at any point in regulation (90 minutes + stoppage time) or extra time? Reviews during the penalty shootout do not count.' (Will the referee conduct an on-field review at the pitchside VAR monitor at any point in regulation (90 minutes + stoppage time) or extra time? Reviews during the penalty shootout do not count.)
+  attention: FRA vs ESP: CANNOT PARSE 'Will the match be tied at the end of regulation (90 minutes + stoppage time) and go to extra time?' (Will the match be tied at the end of regulation (90 minutes + stoppage time) and go to extra time?)
+  attention: FRA vs ESP: CANNOT PARSE 'Will the first goal of the match (including extra time, excluding penalty shootout) be scored by a player wearing a single-digit shirt number (1-9)? Resolves No if the score is 0-0 after extra time.' (Will the first goal of the match (including extra time, excluding penalty shootout) be scored by a player wearing a single-digit shirt number (1-9)? Resolves No if the score is 0-0 after extra time.)
+  attention: FRA vs ESP: CANNOT PARSE 'Will a goal be scored after the first hydration break but before the second hydration break?' (Will a goal be scored after the first hydration break but before the second hydration break?)
+  attention: FRA vs ESP: CANNOT PARSE 'Will Spain make the first substitution of the match in regulation (90 minutes + stoppage time)? If both teams substitute simultaneously, resolves by whichever outgoing player exits the field first.' (Will Spain make the first substitution of the match in regulation (90 minutes + stoppage time)? If both teams substitute simultaneously, resolves by whichever outgoing player exits the field first.)
+  attention: FRA vs ESP: STALE-RISK Kylian Mbappé scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-13T13:24:16+00:00] daily_run hours=48 mode=dry-run
+  matches=1 markets=15 actions={'create': 6, 'update': 6, 'unchanged': 3}
+  attention: FRA vs ESP: STALE-RISK Kylian Mbappé scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-13T13:25:18+00:00] daily_run hours=48 mode=SUBMIT
+  matches=1 markets=15 actions={'create': 6, 'update': 6, 'unchanged': 3}
+  attention: FRA vs ESP: STALE-RISK Kylian Mbappé scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-13T13:27:13+00:00] daily_run hours=72 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 15, 'create': 14}
+  attention: FRA vs ESP: STALE-RISK Kylian Mbappé scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ENG vs ARG: CANNOT PARSE 'Will a card be shown before the first goal of the match in regulation (90 minutes + stoppage time)? If neither a card nor a goal occurs, resolves No.' (Will a card be shown before the first goal of the match in regulation (90 minutes + stoppage time)? If neither a card nor a goal occurs, resolves No.)
+  attention: ENG vs ARG: STALE-RISK Harry Kane scorer_prop_prob=0.38 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ENG vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-13T13:28:00+00:00] daily_run hours=72 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 29, 'create': 1}
+  attention: FRA vs ESP: STALE-RISK Kylian Mbappé scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ENG vs ARG: STALE-RISK Harry Kane scorer_prop_prob=0.38 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ENG vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-14T13:20:40+00:00] daily_run hours=48 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 19, 'update': 11}
+  attention: FRA vs ESP: STALE-RISK Kylian Mbappé scorer_prop_prob=0.43 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ENG vs ARG: STALE-RISK Harry Kane scorer_prop_prob=0.38 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ENG vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-14T18:11:19+00:00] daily_run hours=26 mode=SUBMIT
+  matches=2 markets=30 actions={'unchanged': 22, 'update': 8}
+  attention: FRA vs ESP: STALE-RISK Kylian Mbappé scorer_prop_prob=0.45 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ENG vs ARG: STALE-RISK Harry Kane scorer_prop_prob=0.38 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ENG vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-15T13:20:39+00:00] daily_run hours=26 mode=dry-run
+  matches=1 markets=15 actions={'unchanged': 10, 'update': 5}
+  attention: ENG vs ARG: STALE-RISK Harry Kane scorer_prop_prob=0.38 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ENG vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-15T13:20:44+00:00] daily_run hours=26 mode=dry-run
+  matches=1 markets=15 actions={'unchanged': 10, 'update': 5}
+  attention: ENG vs ARG: STALE-RISK Harry Kane scorer_prop_prob=0.38 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ENG vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-15T13:21:01+00:00] daily_run hours=26 mode=dry-run
+  matches=1 markets=15 actions={'unchanged': 10, 'update': 5}
+  attention: ENG vs ARG: STALE-RISK Harry Kane scorer_prop_prob=0.38 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ENG vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.48 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-15T13:21:59+00:00] daily_run hours=26 mode=dry-run
+  matches=1 markets=15 actions={'unchanged': 9, 'update': 6}
+  attention: ENG vs ARG: STALE-RISK Harry Kane scorer_prop_prob=0.41 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ENG vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-15T13:22:25+00:00] daily_run hours=48 mode=SUBMIT
+  matches=1 markets=15 actions={'unchanged': 9, 'update': 6}
+  attention: ENG vs ARG: STALE-RISK Harry Kane scorer_prop_prob=0.41 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ENG vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-15T18:10:25+00:00] daily_run hours=26 mode=SUBMIT
+  matches=1 markets=15 actions={'update': 8, 'unchanged': 7}
+  attention: ENG vs ARG: STALE-RISK Harry Kane scorer_prop_prob=0.41 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ENG vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+[2026-07-16T13:24:08+00:00] daily_run hours=48 mode=SUBMIT
+  matches=0 markets=0 actions={'noop': 1}
+[2026-07-17T13:18:46+00:00] daily_run hours=60 mode=dry-run
+  matches=2 markets=35 actions={'create': 27}
+  attention: FRA vs ENG: CANNOT PARSE 'Will each team record 4 or more shots on target in regulation (90 minutes + stoppage time)?' (Will each team record 4 or more shots on target in regulation (90 minutes + stoppage time)?)
+  attention: FRA vs ENG: CANNOT PARSE 'Will France win the third-place match (Bronze Final)?' (Will France win the third-place match (Bronze Final)?)
+  attention: FRA vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.41 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Kylian Mbappé scorer_prop_prob=0.45 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: a substitute priced on prior (no data)
+  attention: ESP vs ARG: CANNOT PARSE 'Will a penalty kick be scored in regulation (90 minutes + stoppage time)?' (Will a penalty kick be scored in regulation (90 minutes + stoppage time)?)
+  attention: ESP vs ARG: CANNOT PARSE 'Will the first goal of the match be credited with an assist in regulation (90 minutes + stoppage time)? Settles No if the match is 0-0.' (Will the first goal of the match be credited with an assist in regulation (90 minutes + stoppage time)? Settles No if the match is 0-0.)
+  attention: ESP vs ARG: CANNOT PARSE 'Will either team score 2 or more goals in the same half of regulation (90 minutes + stoppage time)?' (Will either team score 2 or more goals in the same half of regulation (90 minutes + stoppage time)?)
+  attention: ESP vs ARG: CANNOT PARSE 'Will Lamine Yamal (Spain, #19) record more shots on target than Lionel Messi (Argentina, #10) in regulation (90 minutes + stoppage time)?' (Will Lamine Yamal (Spain, #19) record more shots on target than Lionel Messi (Argentina, #10) in regulation (90 minutes + stoppage time)?)
+  attention: ESP vs ARG: CANNOT PARSE 'Will 5 or more different Spain players attempt a shot in regulation (90 minutes + stoppage time)?' (Will 5 or more different Spain players attempt a shot in regulation (90 minutes + stoppage time)?)
+  attention: ESP vs ARG: CANNOT PARSE 'Will Argentina win the World Cup?' (Will Argentina win the World Cup?)
+  attention: ESP vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ESP vs ARG: a substitute priced on prior (no data)
+[2026-07-17T13:19:36+00:00] daily_run hours=60 mode=SUBMIT
+  matches=2 markets=35 actions={'create': 27}
+  attention: FRA vs ENG: CANNOT PARSE 'Will each team record 4 or more shots on target in regulation (90 minutes + stoppage time)?' (Will each team record 4 or more shots on target in regulation (90 minutes + stoppage time)?)
+  attention: FRA vs ENG: CANNOT PARSE 'Will France win the third-place match (Bronze Final)?' (Will France win the third-place match (Bronze Final)?)
+  attention: FRA vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.41 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Kylian Mbappé scorer_prop_prob=0.45 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: a substitute priced on prior (no data)
+  attention: ESP vs ARG: CANNOT PARSE 'Will a penalty kick be scored in regulation (90 minutes + stoppage time)?' (Will a penalty kick be scored in regulation (90 minutes + stoppage time)?)
+  attention: ESP vs ARG: CANNOT PARSE 'Will the first goal of the match be credited with an assist in regulation (90 minutes + stoppage time)? Settles No if the match is 0-0.' (Will the first goal of the match be credited with an assist in regulation (90 minutes + stoppage time)? Settles No if the match is 0-0.)
+  attention: ESP vs ARG: CANNOT PARSE 'Will either team score 2 or more goals in the same half of regulation (90 minutes + stoppage time)?' (Will either team score 2 or more goals in the same half of regulation (90 minutes + stoppage time)?)
+  attention: ESP vs ARG: CANNOT PARSE 'Will Lamine Yamal (Spain, #19) record more shots on target than Lionel Messi (Argentina, #10) in regulation (90 minutes + stoppage time)?' (Will Lamine Yamal (Spain, #19) record more shots on target than Lionel Messi (Argentina, #10) in regulation (90 minutes + stoppage time)?)
+  attention: ESP vs ARG: CANNOT PARSE 'Will 5 or more different Spain players attempt a shot in regulation (90 minutes + stoppage time)?' (Will 5 or more different Spain players attempt a shot in regulation (90 minutes + stoppage time)?)
+  attention: ESP vs ARG: CANNOT PARSE 'Will Argentina win the World Cup?' (Will Argentina win the World Cup?)
+  attention: ESP vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ESP vs ARG: a substitute priced on prior (no data)
+[2026-07-17T13:23:07+00:00] daily_run hours=60 mode=dry-run
+  matches=2 markets=35 actions={'unchanged': 27, 'create': 8}
+  attention: FRA vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.41 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Kylian Mbappé scorer_prop_prob=0.45 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: a substitute priced on prior (no data)
+  attention: ESP vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ESP vs ARG: a substitute priced on prior (no data)
+[2026-07-17T13:23:48+00:00] daily_run hours=60 mode=SUBMIT
+  matches=2 markets=35 actions={'unchanged': 27, 'create': 8}
+  attention: FRA vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.41 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Kylian Mbappé scorer_prop_prob=0.45 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: a substitute priced on prior (no data)
+  attention: ESP vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ESP vs ARG: a substitute priced on prior (no data)
+[2026-07-17T13:24:40+00:00] daily_run hours=60 mode=SUBMIT
+  matches=2 markets=35 actions={'unchanged': 35}
+  attention: FRA vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.41 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Kylian Mbappé scorer_prop_prob=0.45 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: a substitute priced on prior (no data)
+  attention: ESP vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ESP vs ARG: a substitute priced on prior (no data)
+[2026-07-18T13:19:27+00:00] daily_run hours=48 mode=SUBMIT
+  matches=2 markets=35 actions={'unchanged': 20, 'update': 15}
+  attention: FRA vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.42 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Kylian Mbappé scorer_prop_prob=0.55 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: a substitute priced on prior (no data)
+  attention: ESP vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ESP vs ARG: a substitute priced on prior (no data)
+[2026-07-18T20:10:39+00:00] daily_run hours=26 mode=SUBMIT
+  matches=2 markets=35 actions={'unchanged': 30, 'update': 5}
+  attention: FRA vs ENG: lineup could not match ['a substitute'] — verify against the posted XI (left at default 90)
+  attention: FRA vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.42 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Kylian Mbappé scorer_prop_prob=0.55 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: a substitute priced on prior (no data)
+  attention: ESP vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ESP vs ARG: a substitute priced on prior (no data)
+[2026-07-18T20:11:32+00:00] daily_run hours=26 mode=SUBMIT
+  matches=2 markets=35 actions={'unchanged': 34, 'update': 1}
+  attention: FRA vs ENG: lineup could not match ['a substitute'] — verify against the posted XI (left at default 90)
+  attention: FRA vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.13 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Kylian Mbappé scorer_prop_prob=0.55 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: a substitute priced on prior (no data)
+  attention: ESP vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ESP vs ARG: a substitute priced on prior (no data)
+[2026-07-18T20:47:02+00:00] daily_run hours=26 mode=SUBMIT
+  matches=2 markets=35 actions={'unchanged': 25, 'update': 10}
+  attention: FRA vs ENG: lineup could not match ['a substitute'] — verify against the posted XI (left at default 90)
+  attention: FRA vs ENG: STALE-RISK Harry Kane scorer_prop_prob=0.15 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Kylian Mbappé scorer_prop_prob=0.55 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: STALE-RISK Ousmane Dembélé scorer_prop_prob=0.46 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: FRA vs ENG: a substitute priced on prior (no data)
+  attention: ESP vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ESP vs ARG: a substitute priced on prior (no data)
+[2026-07-19T08:26:43+00:00] daily_run hours=26 mode=SUBMIT
+  matches=1 markets=20 actions={'update': 12, 'unchanged': 8}
+  attention: ESP vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ESP vs ARG: a substitute priced on prior (no data)
+[2026-07-19T13:19:58+00:00] daily_run hours=26 mode=dry-run
+  matches=1 markets=20 actions={'unchanged': 13, 'update': 7}
+  attention: ESP vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ESP vs ARG: a substitute priced on prior (no data)
+[2026-07-19T13:20:11+00:00] daily_run hours=26 mode=dry-run
+  matches=1 markets=20 actions={'unchanged': 13, 'update': 7}
+  attention: ESP vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ESP vs ARG: a substitute priced on prior (no data)
+[2026-07-19T13:20:34+00:00] daily_run hours=26 mode=SUBMIT
+  matches=1 markets=20 actions={'unchanged': 13, 'update': 7}
+  attention: ESP vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ESP vs ARG: a substitute priced on prior (no data)
+[2026-07-19T18:10:22+00:00] daily_run hours=26 mode=SUBMIT
+  matches=1 markets=20 actions={'unchanged': 13, 'update': 7}
+  attention: ESP vs ARG: lineup could not match ['a substitute'] — verify against the posted XI (left at default 90)
+  attention: ESP vs ARG: STALE-RISK Lionel Messi scorer_prop_prob=0.39 is per-OPPONENT — confirm it is for THIS match's odds
+  attention: ESP vs ARG: a substitute priced on prior (no data)

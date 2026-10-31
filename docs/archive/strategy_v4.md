@@ -1,5 +1,8 @@
 # Probability Cup — v4 Strategy (reference)
 
+> *Archived. Superseded by [docs/strategy.md](../strategy.md); file paths below refer to the
+> layout at the time (see the `tournament-final` tag).*
+
 *Last updated 2026-06-25. Supersedes v3. Lives at `docs/strategy_v4.md`.*
 
 This is the complete description of the live prediction system (v4), why it beats v3,

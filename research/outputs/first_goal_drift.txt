@@ -1,0 +1,6 @@
+StatsBomb matches with a goal-count favourite: n=219
+  P(higher-count team scored FIRST): observed 0.886 vs model(exchangeable) 0.878
+  GAP = +0.007  (SE 0.022, z=0.35)
+  by dominance:
+    big edge (>=2x)  n=209  obs 0.885  model 0.892  gap -0.007
+    small edge (<2x) n= 10  obs 0.900  model 0.597  gap +0.303

@@ -1,9 +1,10 @@
 # Pricing Methodology by Question Type
 
-*Companion to [strategy_v5.md](strategy_v5.md). For every question family the platform asks,
+*Companion to [strategy.md](strategy.md). For every question family the platform asks,
 this file states: **Method** — exactly how the probability is computed; **Evidence** — the
 research, data, and live observations that justify it. Code references are the ground truth:
-`src/models/goals.py`, `src/models/counts.py`, `src/models/players.py`, `src/models/pricer.py`.*
+`src/probcup/models/goals.py`, `counts.py`, `players.py`, `pricer.py`, and every tuned constant in
+`src/probcup/models/calibration.py`.*
 
 **Notation.** λ_H, λ_A = the two teams' expected goals. "The grid" = the joint scoreline
 distribution built from λ_H, λ_A. "NB" = negative binomial. "De-margined" = bookmaker implied
@@ -32,9 +33,9 @@ more back-loaded).
   grid matches a sharp crowd and wins on rounding/freshness, exactly as an odds anchor should.
 - BTTS calibration test: model fitted to 6,000 historical club matches' closing odds
   predicted BTTS 0.514 vs realized 0.519 (z=0.8), calibrated in every decile
-  (`scripts/backtest_btts_calibration.py`).
+  ([`research/validations/btts_calibration.py`](../research/validations/btts_calibration.py)).
 - Team-goals calibration test on 12,000 club team-matches: predicted 0.379 vs realized
-  0.381 overall (`scripts/backtest_team_goals_ge.py`). One documented flaw: the top decile
+  0.381 overall ([`research/validations/team_goals_calibration.py`](../research/validations/team_goals_calibration.py)). One documented flaw: the top decile
   (heavy favourites) under-predicts by +0.038 (z=2.9). Left unshipped — no remaining market
   was affected — but recorded for future use.
 
@@ -50,7 +51,7 @@ misprices uneven matches).
   tournament corrections provide the level (§7 lists each with its own validation).
 - Live record: count families are the system's largest RBP source (SOT thresholds +642
   player / +337 team; cards +331; corners +223; offsides +163) against a crowd measured
-  to sit 5–12 points too high on them (16 games of scraped crowd data, `docs/history.md`).
+  to sit 5–12 points too high on them (16 games of scraped crowd data, `docs/archive/crowd_history.md`).
 
 ---
 
@@ -71,7 +72,7 @@ have tie-breaks; a plain regulation-win read would under-price the favourite).
 **Evidence.**
 - Shootouts are empirically near 50/50 regardless of team strength (public shootout datasets);
   the old proportional-to-odds tie-break over-favoured strong teams, and the explicit version
-  lifted underdogs — deployed 06-28 (`scripts/derive_r16_families.py` era) and validated on
+  lifted underdogs — deployed 06-28 (`research/derivations/knockout_families.py` era) and validated on
   R32 settles.
 - Live: `advance` family +78 RBP over 16 settles with a sharp crowd (gap −0.6 pts).
 
@@ -159,7 +160,7 @@ All use per-half Poissons: `λ_half = λ × share`, share = 1−0.60 / 0.60 (1st
 gap −0.19) was tested on all 314 StatsBomb matches: conditional on final score, the
 higher-scoring team scored first 88.6% vs the exchangeable-model 87.8% (z=0.35) —
 **goals are time-exchangeable; the formula is exact; the live drift was noise**
-(`scripts/validate_first_goal_drift.py`). No change was made — this is the reference example
+([`research/validations/first_goal_drift.py`](../research/validations/first_goal_drift.py)). No change was made — this is the reference example
 of the "large sample before touching the model" rule.
 
 ### "Will the first goal be scored by a player other than A and B?"
@@ -201,7 +202,7 @@ break" = (1 − h2share) − before30.
   independent ways: family calibration (shipped 0.432 vs realized 0.214, n=28), the live
   bot-2 A/B (0.85 beat 1.0 on 5 of 6 clean settles), and a walk-forward backtest that
   re-prices every settled timing market at candidate scales from its recovered window mean
-  (0.85 −1.83 Brier OOS vs 1.0; `scripts/backtest_timing_scale.py`).
+  (0.85 −1.83 Brier OOS vs 1.0; [`research/validations/timing_scale.py`](../research/validations/timing_scale.py)).
 - The deeper 0.70 probe then lost 5 of 5 live settles → 0.85 confirmed as the level, 0.70
   retired. Family net +161 RBP (27 settles).
 
@@ -263,7 +264,7 @@ the observed error:
 | `TOTAL_OFFSIDES_SCALE` | 1.10 | totals only | same platform-counting logic; promoted 07-02 |
 | Referee `card_factor` | (ref cards/g) ÷ 3.46, **capped at 1.0** | all card markets | strictness swings P(4+ cards) 0.24→0.66 (StatsBomb), but WC card counts run below refs' club averages, so only *leniency* is priced: the cap is RBP-validated, and the lenient-ref fades (Barton 2.8) produced the best single card results (4+ cards at 13%, Brier 0.017) |
 | `FAVORITE_SOT_BOOST` | 0.06, only when λ_team>λ_opp, capped at 2× supremacy | favourite team SOT | the club-fitted SOT elasticity (0.797) is too flat for WC blowouts; gated so even matches are untouched; the 0.10 probe stayed net-negative and never promoted |
-| KO-stage tempo | **no correction** | — | hypothesis "knockout games are lower-tempo" tested on 314 StatsBomb matches: World Cups show *no* KO compression (SOT ratio 1.02–1.07); the dip exists only at AFCON/Copa/Euro24 (`scripts/backtest_ko_tempo.py`). Two low-event live KO games were variance |
+| KO-stage tempo | **no correction** | — | hypothesis "knockout games are lower-tempo" tested on 314 StatsBomb matches: World Cups show *no* KO compression (SOT ratio 1.02–1.07); the dip exists only at AFCON/Copa/Euro24 ([`research/validations/knockout_tempo.py`](../research/validations/knockout_tempo.py)). Two low-event live KO games were variance |
 
 ---
 
@@ -313,7 +314,7 @@ tempo swing is halved (`SOT1_TEMPO_BETA = 0.5`) — ≥1 SOT saturates.
 **Evidence.**
 - **Never market-anchored** — this is the model's best family: +642 RBP over 107 settles
   against a crowd measured +11.5 points too high.
-- The tempo compression is backtested (`scripts/backtest_sot1_tempo.py`, StatsBomb).
+- The tempo compression is backtested ([`research/validations/sot1_tempo.py`](../research/validations/sot1_tempo.py), StatsBomb).
 - Stale-rate discipline: Bellingham's API rate (0.65) burned three settles before web
   grounding (1.3); Balogun carries a "do not auto-update" guard (API name mis-match to a
   defender). Rates are inputs to be researched, not trusted blindly.
@@ -350,7 +351,7 @@ recorded watch item — the family is priced but flagged as the model's weakest.
 | "Substitution at halftime?" | flat 0.497 | 5-sub era, n=199 (HT subs are logged at period 2, minute 45) |
 | "Will TEAM make the first substitution?" | 0.50 | P(first-listed team subs first) = 0.506, n=314 — symmetric; who trails is unknowable pre-match |
 | "N+ total substitutions?" | tail lookup {6: .97, 7: .92, 8: .84, 9: .72, 10: .41, 11: .01} | 5-sub-era distribution |
-| "A substitute scores / scores-or-assists?" | `Σ_G P(G) × P(sub goal | G)` table (0.07 at G=1 … 0.90 at G=6) | derived 5-sub era (`derive_sub_scores.py`); the parser routes "a substitute" to this family — it once fell to a player-name prior and cost −47 |
+| "A substitute scores / scores-or-assists?" | `Σ_G P(G) × P(sub goal | G)` table (0.07 at G=1 … 0.90 at G=6) | derived 5-sub era (`research/derivations/substitute_scorers.py`). The parser routes "a substitute **scores**" here (it once fell to a player-name prior and cost −47). **Known issue:** the score-*or-assist* phrasing still misparses as a player named "a substitute" and is priced at the generic player prior (~0.21), including in the final |
 | "Any player scores 2+ (brace)?" | `Σ_G P(G) × q_brace(G)` | StatsBomb brace share by total goals |
 | "Own goal / header goal / outside-box goal?" | `Σ_G P(G) × P(≥1 of type | G)` per-type tables | StatsBomb, leave-one-tournament-out validated (`derive_goal_methods.py`); these markets were forfeited before 06-30 |
 | "TEAM holds a lead at any point?" | exact decomposition: P(led\|won)=1, P(led\|drew, scored first)=1, P(led\|drew, didn't)=0.073, P(led\|lost)=0.132, composed with the grid's result probabilities and first-goal share | 314 matches / 628 team-matches (`derive_r16_families.py`); won on debut |
@@ -391,10 +392,10 @@ both of which produced real losses before the checks existed.
 
 ---
 
-*Last updated 2026-07-19, post-final. Numbers cited from: `scripts/parse_history_rbp.py`
-(per-family RBP and crowd gaps over 16 games), `scripts/family_calibration.py` (1,163
-settled markets), the `scripts/backtest_*.py` suite, and the StatsBomb derivations in
-`scripts/derive_*.py`.*
+*Last updated 2026-07-19, post-final (paths updated for the restructure). Numbers cited from:
+`probcup ledger` (per-family RBP and crowd gaps over 16 games), `probcup drift` (1,163 settled
+markets), the validations in `research/validations/`, and the StatsBomb derivations in
+`research/derivations/`.*
 
 ---
 

@@ -1,0 +1,14 @@
+StatsBomb: 314 matches across 6 tournaments
+
+=== own goal ===  base rate P(>=1) = 0.124
+   P(>=1 | G):  G0:0.00(n29)  G1:0.10(n58)  G2:0.05(n91)  G3:0.20(n69)  G4:0.12(n33)  G5:0.21(n19)  G6:0.40(n15)
+   LOTO Brier: conditional-on-G 0.1092  vs flat base-rate 0.1109  -> CONDITION on G
+
+=== header goal ===  base rate P(>=1) = 0.331
+   P(>=1 | G):  G0:0.00(n29)  G1:0.22(n58)  G2:0.27(n91)  G3:0.38(n69)  G4:0.48(n33)  G5:0.74(n19)  G6:0.67(n15)
+   LOTO Brier: conditional-on-G 0.1955  vs flat base-rate 0.2221  -> CONDITION on G
+
+=== outside-box goal ===  base rate P(>=1) = 0.242
+   P(>=1 | G):  G0:0.00(n29)  G1:0.07(n58)  G2:0.23(n91)  G3:0.36(n69)  G4:0.27(n33)  G5:0.47(n19)  G6:0.53(n15)
+   LOTO Brier: conditional-on-G 0.1699  vs flat base-rate 0.1844  -> CONDITION on G
+

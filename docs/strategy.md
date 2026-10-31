@@ -1,9 +1,10 @@
-# Strategy v5 — The Final System (2026 World Cup, tournament-final state)
+# Strategy (v5): the system that ran the knockouts and the final
 
 *Written 2026-07-19, after the final. This documents the **exact strategy as it ran** for the
-knockout rounds and the final — the evolved successor to [strategy_v4.md](strategy_v4.md).
-Final standing: **bot 1 rank 31 of ~4,000 (top 1%) overall; bot 2 overall Brier 0.2176 (better
-than bot 1's 0.2199), carrying the knockout record.***
+knockout rounds and the final — the evolved successor to [v4](archive/strategy_v4.md).
+Final standing (leaderboard after the final settled): **bot 1 #17 of 4,013 overall (#8 in the
+knockout stage); bot 2 #31 overall and #5 in the knockout stage.** Overall Brier 0.2197 (bot 1)
+and 0.2174 (bot 2). When this was written, the night of the final, bot 1 stood 31st.*
 
 > **Per-question-type reference:** [methodology.md](methodology.md) states, for every question
 > family, the exact pricing method and the research/observations behind it.
@@ -38,13 +39,13 @@ odds, lineups, referee, player form (§4–5).
 ## 2. Architecture
 
 ```
-snapshot (platform API)                       data/snapshot.json
+snapshot (platform API)                       data/cache/snapshot.json
   └─ questions/parser.py    455+ templates → ~40 structured MarketSpec families (100% parse)
        └─ models/pricer.py  one MatchPricer per fixture routes every family:
             ├─ models/goals.py    ScorelineModel — Dixon-Coles grid FITTED TO LIVE ODDS
             ├─ models/counts.py   NB count models (corners/cards/SOT/fouls/offsides) + derived families
             └─ models/players.py  scorer / SOT / involvement props (market-anchored, §4)
-  └─ scripts/daily_run.py   prices + submits BOTH bots (bot 2 first, bot 1 last), pulls
+  └─ probcup run            prices + submits BOTH bots (bot 2 first, bot 1 last), pulls
                             confirmed XIs, expires stale props, logs everything
 ```
 
@@ -131,7 +132,7 @@ rates by position {GK .95, DEF .79, MID .575, FWD .282}.
 
 ## 6. The edge map — where RBP actually came from
 
-Ground truth from 16 games of scraped crowd data (`docs/history.md` → `parse_history_rbp.py`).
+Ground truth from 16 games of scraped crowd data (`docs/archive/crowd_history.md` → `probcup ledger`).
 Mean crowd−us gap per family, and cumulative RBP:
 
 | Family | Crowd sits | Cum. RBP | Play |
@@ -174,12 +175,12 @@ is what lets group-stage rules serve every KO re-phrasing.
 
 1. **Hypothesis** → runs as a bot-2 probe (one notch, disjoint families, bot 2 stays
    competitive) via `bot2_experiment.yaml`.
-2. **Scoring** → `backtest_engine.py ab` replays settled divergent markets. A probe
+2. **Scoring** → `probcup replay ab` replays settled divergent markets. A probe
    promotes on **~8–10 clean own-family settles in a consistent direction**; it retires
    when clearly losing. **Confound filter**: only settles *after* bot 1's last level change
    for that constant count (the totalSOT "10/13" that was really n=0 clean nearly caused a
    bad promotion).
-3. **Drift flags** (`family_calibration.py`, |gap|>0.15, n≥8) are *candidates*, never
+3. **Drift flags** (`probcup drift`, |gap|>0.15, n≥8) are *candidates*, never
    fixes: every flag gets a **large-sample validation** before any change — StatsBomb
    (n=219 cleared first-goal "drift" as noise), club data with the real model (n=6000
    cleared BTTS; n=12000 confirmed team_goals_ge overall but found a real +0.04
@@ -207,12 +208,12 @@ level — but 0/5 in a consistent direction does end a probe.
   summary (a silent bug once left bot 2 empty for ~15 matches).
 - **Scheduling is two-layer** (learned by losing a final pass to a session restart):
   session-level crons do the researched runs; a **durable OS-cron watchdog**
-  (`run_watchdog.py`, every 20 min, survives reboots) *never submits* — it alarms
+  (`probcup watchdog`, every 20 min, survives reboots) *never submits* — it alarms
   (desktop + sticky file) when a run was missed. **No mechanical auto-submit exists by
   decision**: a low-quality submission bleeds RBP (negative), a missed refresh only loses
   freshness (we are always already submitted from the prior pass). Quality > coverage.
 - Every run leaves a trace: `runs.log`, `submissions.csv`, `matchday_reports.md`,
-  `experiment_log.md`; settled crowd data is pasted into `docs/history.md` (the only crowd
+  `experiment_log.md`; settled crowd data is pasted into `docs/archive/crowd_history.md` (the only crowd
   source) and parsed into the per-family RBP ledger.
 
 ## 10. Risk policy
@@ -256,7 +257,7 @@ tournament (they are knowable from any prior World Cup's boards); and keep a sta
 cameo-decomposition price for every elite bench player the moment lineups post.
 
 ---
-*Provenance: constants in `src/models/{counts,goals,players}.py`; validations in
-`scripts/backtest_*.py`, `scripts/family_calibration.py`, `scripts/backtest_engine.py`;
-decision log in `data/logs/experiment_log.md`; per-run history in
-`data/logs/matchday_reports.md`; crowd ledger in `docs/history.md`.*
+*Provenance: constants in `src/probcup/models/calibration.py`; validations in `research/`
+(index: [research/README.md](../research/README.md)), `probcup drift` and `probcup replay`;
+decision log in [agent/logs/experiment_log.md](../agent/logs/experiment_log.md); per-run history in
+[agent/logs/run_reports.md](../agent/logs/run_reports.md); crowd ledger in `docs/archive/crowd_history.md`.*

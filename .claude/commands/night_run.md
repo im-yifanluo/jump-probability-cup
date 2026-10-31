@@ -9,12 +9,12 @@ checklist: `matchday.md`.
 
 Steps:
 0. **STRATEGY REVIEW first** (matchday.md step 0 — fires before EVERY wave): score the
-   active bot-2 probes on their own-family settles (`backtest_engine.py ab`); promote
+   active bot-2 probes on their own-family settles (`probcup replay ab`); promote
    clear winners to bot 1 per the 2026-07-02 standing authorization; retire clear losers.
 1. **FINAL PASS for tonight's imminent late games** — confirmed lineups + scorer odds +
    referees (matchday.md steps 2/2b/2c): ruled-out → expected_minutes 0 (+ kill scorer keys);
    benched-then-restored → revert; market-anchor scorer props.
-2. **SUBMIT both bots:** `daily_run.py --hours 26 --submit --agent` — this horizon covers
+2. **SUBMIT both bots:** `.venv/bin/probcup run --hours 26 --submit --agent` — this horizon covers
    tonight's late games AND all of TOMORROW (bot 2 first, bot 1 LAST). VERIFY both bots' open
    counts equal; bot 2 differs only on count markets (expected).
 3. **OUTPUT TOMORROW'S PREDICTIONS to chat — every time.** bot 1 (stable v4) values for ALL of
