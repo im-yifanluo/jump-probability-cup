@@ -1,5 +1,5 @@
 """Rigorous OOS test of the goal model's BTTS calibration on historical club data
-(data/club_matches.parquet, ~116k matches with 1X2 + O/U 2.5 odds + FT scores).
+(the club-match cache: ~116k matches, ~47k of them with 1X2 + O/U 2.5 odds).
 
 The live drift (WC-2026, n=16): BTTS predicted ~0.497 vs realized ~0.688 — we
 UNDER-predict. Is that a real flaw in the odds-anchored goal model, or small-sample

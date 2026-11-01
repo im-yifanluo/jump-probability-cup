@@ -39,7 +39,8 @@ the market's view of the match and derives everything else from it consistently.
    contradict each other.
 5. **Counts.** [`CountPricer`](../src/probcup/models/counts.py) predicts corners, cards, shots
    on target, fouls and offsides for each team as negative-binomial counts whose means come
-   from regressions on ~116k club matches *with the odds-implied scoring rates as inputs*, so
+   from regressions on ~41k club matches (those with closing odds and match statistics)
+   *with the odds-implied scoring rates as inputs*, so
    they transfer to any fixture. Tournament corrections and the referee's strictness scale
    the means. Totals are exact convolutions of the two teams' distributions; "more X than"
    comparisons enumerate both, with ties resolving to No.

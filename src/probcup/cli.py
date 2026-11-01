@@ -26,7 +26,7 @@ COMMANDS: dict[str, tuple[str, str]] = {
     "ledger": ("probcup.evaluation.ledger", "rebuild the crowd ledger from the hand-copied history"),
     "replay": ("probcup.evaluation.replay", "replay settled markets: policy grid, walk-forward, bot 2 vs bot 1"),
     "drift": ("probcup.evaluation.drift", "per-family calibration drift over settled markets"),
-    "backtest": ("probcup.evaluation.club_backtest", "walk-forward backtest on ~116k club matches"),
+    "backtest": ("probcup.evaluation.club_backtest", "walk-forward backtest on club seasons with closing odds"),
     "download-data": ("probcup.sources.download", "download the raw StatsBomb + football-data.co.uk data"),
 }
 

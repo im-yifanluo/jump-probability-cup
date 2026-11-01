@@ -41,8 +41,8 @@ more back-loaded).
 
 ### 0.2 The count models (`counts.py`)
 **Method.** For each stat (corners, cards, SOT, fouls; offsides separately), a per-team NB
-with mean `exp(const + a·log λ_team + b·log λ_opp + c·home)` — fitted on ~116k club matches
-(football-data.co.uk) — multiplied by tournament-specific corrections (§7). Totals are the
+with mean `exp(const + a·log λ_team + b·log λ_opp + c·home)` — fitted on ~41k club matches
+with closing odds and match statistics (football-data.co.uk) — multiplied by tournament-specific corrections (§7). Totals are the
 **exact convolution** of the two team NBs (a sum of unequal-mean NBs is not NB; a shortcut
 misprices uneven matches).
 
@@ -417,5 +417,5 @@ markets), the validations in `research/validations/`, and the StatsBomb derivati
    265–280. — The Poisson + low-score-correction scoreline model implemented in `goals.py`.
 4. *Softer empirical grounds (no single canonical paper):* shootout near-coinflips (win-rate
    data; `PENS_TILT 0.25` is a modeling choice), NB overdispersion for corners/cards
-   (confirmed by our own α>0 fits on ~116k club matches), second-half goal share
+   (confirmed by our own α>0 fits on ~41k club matches), second-half goal share
    (our measurement: 0.54 club, 0.60 international).
