@@ -1,13 +1,16 @@
 # Results
 
-| Entry | Overall rank | Knockout-stage rank | Points | Settled markets | Brier | Beat the crowd on |
+| Entry | Overall rank | Knockout-stage rank | Points | Settled markets | Brier | Above the field average |
 |---|---|---|---|---|---|---|
 | Bot 1 (stable) | **#17** of 4,013 | #8 | +4,732 | 1,183 | 0.2197 | 69.1% of markets |
 | Bot 2 (A/B bench) | #31 | **#5** | +4,451 | 1,035 | 0.2174 | 69.7% |
 
 Ranks are from the final leaderboard; everything else is computed from the platform's
 settled-results export in [results/data/](../results/data/) (its points sum to the leaderboard
-totals within rounding). Figures are rebuilt by
+totals within rounding). *Above the field average* is the share of markets where the entry's
+Brier score beat the average participant's (positive points); a stricter test, being closer to
+the outcome than the crowd's average forecast, bot 1 passed on 57.0% of markets and bot 2 on
+57.3%. The [technical report](../paper/report.pdf) decomposes the points into these two parts. Figures are rebuilt by
 [results/make_figures.py](../results/make_figures.py); every chart's numbers are in a CSV next
 to the export.
 
@@ -16,7 +19,7 @@ to the export.
   <img alt="Cumulative points against the crowd for both bots over 103 matches, rising faster in the knockouts; bot 1 ends at +4,732 (#17), bot 2 at +4,451 (#31)." src="../results/figures/cumulative_points-light.svg">
 </picture>
 
-Nearly two-thirds of bot 1's points (63%) came after the group stage, where forecasts counted
+Two-thirds of bot 1's points (66%) came after the group stage, where forecasts counted
 double, and it took +501.6 on the final alone (3×), which moved it from 31st to 17th overnight. Bot 2's
 line is flat for the first ~15 matches: it was silently receiving nothing until the
 verification step caught it.
@@ -34,7 +37,7 @@ results, where the crowd follows the same betting market we anchor to. That is t
 strategy was built around ([strategy.md §6](strategy.md)): the crowd systematically
 over-prices events on niche count markets and follows the raw quote on star scorers, while it
 is hard to beat on results and goal totals. Fouls were the weakest family (+1.4 per market,
-better than the crowd only 38% of the time). Full table:
+closer to the outcome than the crowd's average forecast only 38% of the time). Full table:
 [points_by_category.csv](../results/data/points_by_category.csv).
 
 ## Disagreeing with the crowd

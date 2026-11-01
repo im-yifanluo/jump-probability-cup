@@ -36,7 +36,8 @@ THEMES = {
     "dark": dict(surface="#1a1a19", ink="#f0efec", ink2="#c3c2b7", muted="#898781",
                  grid="#2c2c2a", axis="#383835", s1="#3987e5", s2="#d95926"),
 }
-plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 10, "svg.fonttype": "path"})
+plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 10, "svg.fonttype": "path",
+                     "svg.hashsalt": "probcup"})  # stable element ids: rebuilds diff only on content
 LINE = 1.5          # 2px at 96 dpi
 BAR_PX = 16         # bar thickness (<= 24px)
 CAP_PX = 4          # rounded data-end radius
@@ -50,18 +51,19 @@ def settled(bot: int) -> pd.DataFrame:
 
 
 def match_order() -> pd.DataFrame:
-    """Matches in the order they were played, with their stage."""
+    """Matches in the order they were played, with their stage. Knockout questions
+    carry the regulation qualifier ("... in regulation (90 minutes + stoppage time)"),
+    so each match's stage is read from its own settled questions; every match is in
+    the export, while two knockout boards are missing from examples/boards.json."""
+    both = pd.concat([settled(1), settled(2)])
+    first = both.groupby("match_id")["created_date"].min()
+    knockout = both.groupby("match_id")["question"].agg(
+        lambda q: q.str.contains("in regulation", regex=False).any())
     boards = json.loads((ROOT / "examples" / "boards.json").read_text())
-    first = pd.concat([settled(1), settled(2)]).groupby("match_id")["created_date"].min()
-    stage = {}
-    for b in boards:
-        qs = " ".join(m["question"] for m in b["markets"])
-        stage[b["match_id"]] = ("Final" if b["match_name"] == "ESP vs ARG"
-                                else "Knockout" if "in regulation" in qs else "Group")
+    final = {b["match_id"] for b in boards if b["match_name"] == "ESP vs ARG"}
     out = first.rename("first_created").reset_index().sort_values("first_created")
-    out["stage"] = out["match_id"].map(stage)
-    # the two boards missing from examples/ (three teams mentioned) are group-stage boards
-    out["stage"] = out["stage"].fillna("Group")
+    out["stage"] = np.where(out["match_id"].isin(final), "Final",
+                            np.where(out["match_id"].map(knockout), "Knockout", "Group"))
     out["n"] = np.arange(1, len(out) + 1)
     return out
 
@@ -230,7 +232,7 @@ def _bar(ax, base, end, center, thick, color, horizontal=True):
 
 def _save(fig, name, mode):
     FIGS.mkdir(parents=True, exist_ok=True)
-    fig.savefig(FIGS / f"{name}-{mode}.svg", facecolor=fig.get_facecolor())
+    fig.savefig(FIGS / f"{name}-{mode}.svg", facecolor=fig.get_facecolor(), metadata={"Date": None})
     plt.close(fig)
 
 
