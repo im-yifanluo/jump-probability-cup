@@ -61,7 +61,7 @@ at the [`tournament-final`](../../../tree/tournament-final/.claude/commands) tag
 | | Responsibility |
 |---|---|
 | **Pipeline** | Every probability. Odds-anchored goal model, count models, player props, one pricer per match. |
-| **Agent** | Inputs the market misses (confirmed lineups, referee strictness, de-margined scorer odds), written to the per-match override files in `data/inputs/` — never a raw probability. Running the pipeline on schedule, verifying submissions, running the A/B bench, writing reports and memory. |
+| **Agent** | Inputs the market misses (confirmed lineups, referee strictness, de-margined scorer odds), written to the per-match override files in `data/inputs/`, which the pipeline turns into probabilities. Running the pipeline on schedule, verifying submissions, running the A/B bench, writing reports and memory. |
 | **Operator** | Objectives, approvals and the rules: standing authorization for bot-1 submissions (June 12) and for promoting validated probes (July 2), the quality-over-coverage policy, the final-day objectives. |
 
 ## Guardrails
