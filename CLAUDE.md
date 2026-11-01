@@ -10,6 +10,7 @@ archived, runnable system. Start with `README.md`; how it ran is in `agent/READM
 make setup       # .venv with the exact tournament dependencies (requirements.lock)
 make test        # offline unit + golden tests (~30 s); must stay green
 make demo        # price the World Cup final offline, compare with what was submitted
+make paper       # rebuild paper/report.pdf from results/data (needs latexmk + pdflatex)
 .venv/bin/probcup --help
 ```
 
@@ -24,6 +25,8 @@ Run Python with `PYTHONPATH` unset (the Makefile does): this machine's shell exp
 - `research/` — the studies behind each constant; `research/rejected/` is not production.
 - `data/models/`, `data/inputs/` are tracked state as of the final; `cache/ raw/ logs/` are not.
 - `tests/golden/` — recordings of what the tournament-final code did; see its README.
+- `paper/` — the technical report; `build_assets.py` generates its numbers, tables and figures
+  from `results/data`, so edit the generator, never `paper/generated/` or `paper/figures/`.
 
 ## Rules
 

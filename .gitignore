@@ -13,3 +13,14 @@ __pycache__/
 
 # Claude Code scheduler runtime state
 .claude/scheduled_tasks.lock
+
+# LaTeX build files (paper/report.pdf itself is committed)
+/paper/*.aux
+/paper/*.bbl
+/paper/*.blg
+/paper/*.fdb_latexmk
+/paper/*.fls
+/paper/*.log
+/paper/*.out
+/paper/*.synctex.gz
+/paper/*.toc
